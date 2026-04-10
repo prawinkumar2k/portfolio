@@ -61,8 +61,8 @@ export default function Navbar() {
 
           {/* CTA Button */}
           <motion.a
-            href="/Prawinkumar_resume.pdf"
-            download="Prawinkumar_resume.pdf"
+            href="/PrawinKumar_Resume.pdf"
+            download="PrawinKumar_Resume.pdf"
             className="hidden md:block px-6 py-2 bg-gradient-to-r from-neon-blue to-neon-purple rounded-lg text-white font-semibold hover:shadow-lg hover:shadow-neon-blue/50 transition-shadow"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -106,8 +106,8 @@ export default function Navbar() {
               </motion.a>
             ))}
             <motion.a
-              href="/Prawinkumar_resume.pdf"
-              download="Prawinkumar_resume.pdf"
+              href="/PrawinKumar_Resume.pdf"
+              download="PrawinKumar_Resume.pdf"
               className="block w-full mt-4 px-6 py-2 bg-gradient-to-r from-neon-blue to-neon-purple rounded-lg text-white font-semibold text-center"
               whileTap={{ scale: 0.95 }}
             >

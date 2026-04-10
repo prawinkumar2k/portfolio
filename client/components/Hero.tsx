@@ -113,8 +113,8 @@ export default function Hero() {
             </motion.button>
 
             <motion.a
-              href="/Prawinkumar_resume.pdf"
-              download="Prawinkumar_resume.pdf"
+              href="/PrawinKumar_Resume.pdf"
+              download="PrawinKumar_Resume.pdf"
               className="px-8 py-3 border-2 border-neon-blue/50 rounded-lg text-neon-blue font-semibold hover:bg-neon-blue/10 transition-all"
               whileHover={{ scale: 1.05, borderColor: "#00d9ff" }}
               whileTap={{ scale: 0.95 }}
