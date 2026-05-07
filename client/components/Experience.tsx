@@ -7,7 +7,8 @@ interface TimelineItem {
   title: string;
   company: string;
   period: string;
-  description: string;
+  description?: string;
+  bullets?: string[];
   technologies: string[];
   icon: React.ReactNode;
 }
@@ -18,8 +19,13 @@ const timeline: TimelineItem[] = [
     title: "Software Developer / ERP System Developer",
     company: "SearchFirst Technologies | Erode, Tamil Nadu",
     period: "Jan 2025 – Present",
-    description: "Developed and maintained full-stack web applications and ERP platforms—including a Tamil Nadu Government portal (DOTE)—collectively serving 50,000+ end users. Configured dedicated production servers from the OS level, engineered multi-role RBAC systems (reducing administrative workload by ~60%), and integrated payment gateways to achieve 100% digital fee processing.",
-    technologies: ["React 18", "Node.js", "Express.js", "MySQL", "MongoDB", "Sequelize ORM"],
+    bullets: [
+      "Developed and maintained full-stack web applications and ERP platforms — including a Tamil Nadu Government portal (DOTE) — collectively serving 50,000+ end users; configured dedicated production servers from OS level with 99.9% uptime",
+      "Engineered multi-role RBAC systems and complex server-side business logic, reducing manual administrative workload by ~60% across client platforms",
+      "Integrated third-party payment gateways enabling 100% digital transaction processing for enterprise and government clients, replacing legacy paper-based workflows",
+      "Designed RESTful APIs with Node.js and Express.js; optimized MySQL and MongoDB schemas, improving query performance by 40% across production applications"
+    ],
+    technologies: ["React 18", "Node.js", "Express.js", "MySQL", "MongoDB", "Sequelize ORM", "CCAvenue"],
     icon: <Code className="w-6 h-6" />,
   },
   {
@@ -27,7 +33,10 @@ const timeline: TimelineItem[] = [
     title: "Web Developer Intern",
     company: "SHENai Private Software Solutions | Erode, Tamil Nadu",
     period: "Jun 2024 – Dec 2024",
-    description: "Delivered 3+ client-facing web applications using PHP, MySQL, and JavaScript. Implemented robust database schemas and backend logic, reducing manual reporting time by 25%. Improved UI performance and application responsiveness by 30% through systematic debugging and optimization.",
+    bullets: [
+      "Delivered 3+ client-facing web applications using PHP, MySQL, HTML5, CSS3, and JavaScript; implemented backend logic and integrated relational databases, reducing manual reporting time by 25%",
+      "Improved UI performance and application responsiveness by 30% through systematic debugging, code refactoring, and performance profiling"
+    ],
     technologies: ["PHP", "MySQL", "HTML5", "CSS3", "JavaScript"],
     icon: <Briefcase className="w-6 h-6" />,
   },
@@ -36,16 +45,22 @@ const timeline: TimelineItem[] = [
     title: "Full Stack Developer (Personal & Open Source)",
     company: "GitHub | Remote",
     period: "2023 – Present",
-    description: "Independently designed and shipped 5+ production-grade full-stack applications across healthcare, payroll, ERP, and IoT domains—solving real-world institutional and enterprise problems with highly scalable architecture.",
-    technologies: ["React.js", "Node.js", "Express.js", "MongoDB", "PHP", "Arduino"],
+    bullets: [
+      "Independently designed and shipped 5+ production-grade full-stack applications across healthcare, payroll, ERP, and IoT domains — solving real-world institutional and enterprise problems with scalable architecture"
+    ],
+    technologies: ["React.js", "Node.js", "Express.js", "MongoDB", "PHP", "Arduino", "Tailwind CSS"],
     icon: <Code className="w-6 h-6" />,
   },
   {
     id: 4,
     title: "B.Tech – Artificial Intelligence & Data Science",
-    company: "Nandha Engineering College, Erode, Tamil Nadu",
+    company: "Nandha Engineering College, Erode, Tamil Nadu | Anna University Affiliated",
     period: "2023 – Present",
-    description: "Pursuing a Bachelor of Technology in Artificial Intelligence and Data Science (Affiliated with Anna University). Maintaining strong academic standings and actively developing award-winning innovative projects (like IoT Smart Attendance).",
+    bullets: [
+      "Pursuing a Bachelor of Technology in Artificial Intelligence and Data Science (Affiliated with Anna University).",
+      "Winner — Unique Project Award, Innovation Day 2024 for the IoT Smart Attendance System.",
+      "Actively developing award-winning innovative projects and maintaining high academic excellence."
+    ],
     technologies: ["Artificial Intelligence", "Machine Learning", "Python", "Data Structures", "DBMS"],
     icon: <Briefcase className="w-6 h-6" />,
   },
@@ -62,7 +77,7 @@ const TimelineCard = ({ item, index }: { item: TimelineItem; index: number }) =>
       className={`flex gap-8 items-center ${isEven ? "flex-row" : "flex-row-reverse"}`}
     >
       {/* Card content */}
-      <div className={`flex-1 ${isEven ? "text-right" : "text-left"}`}>
+      <div className="flex-1 text-left">
         <motion.div
           className="glass rounded-xl p-6 hover:shadow-lg hover:shadow-neon-blue/30 transition-shadow"
           whileHover={{ y: -5 }}
@@ -70,7 +85,19 @@ const TimelineCard = ({ item, index }: { item: TimelineItem; index: number }) =>
           <h3 className="text-xl font-bold text-white mb-2">{item.title}</h3>
           <p className="text-neon-blue font-semibold mb-1">{item.company}</p>
           <p className="text-white/60 text-sm mb-3">{item.period}</p>
-          <p className="text-white/70 mb-4">{item.description}</p>
+          
+          {item.bullets ? (
+            <ul className="text-white/70 text-sm space-y-2 mb-4">
+              {item.bullets.map((bullet, bIdx) => (
+                <li key={bIdx} className="flex gap-2 items-start leading-relaxed">
+                  <span className="w-1.5 h-1.5 rounded-full bg-neon-blue mt-2 flex-shrink-0" />
+                  <span>{bullet}</span>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p className="text-white/70 mb-4">{item.description}</p>
+          )}
 
           {/* Technologies */}
           <div className="flex flex-wrap gap-2 justify-start">

@@ -17,15 +17,15 @@ const projects: Project[] = [
   {
     id: 1,
     title: "Government Admissions Portal — DOTE, Tamil Nadu",
-    description: "Large-scale government admissions portal serving 50,000+ students statewide. Built server-side filtering, a 3-role RBAC, and integrated digital payment gateways to process 100% of fee transactions digitally. Configured and managed dedicated production servers with 99.9% uptime.",
+    description: "Built and deployed a large-scale government admissions portal for DOTE, Tamil Nadu, serving 50,000+ students statewide; set up and manage a dedicated production server from OS installation with 99.9% uptime. Implemented 3-role RBAC, server-side filtering logic, and payment gateway integration — processing 100% of fee transactions digitally and eliminating paper-based workflows.",
     image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=500&h=300&fit=crop",
-    tags: ["React 18", "Node.js", "Express", "MySQL", "Sequelize", "CCAvenue"],
+    tags: ["React 18 + Vite", "Node.js", "Express.js", "MySQL", "Sequelize ORM", "CCAvenue Payment Gateway"],
     category: ["Government", "Full Stack"],
   },
   {
     id: 2,
     title: "Campus ERP System — Nandha Engineering College",
-    description: "Designed and deployed a full-scale institutional ERP managing 1,000+ student records, attendance, and academic reporting under a certified 1-year engagement. Replaced legacy paper-based reporting, reducing administrative workload.",
+    description: "Designed and deployed a full-scale institutional ERP for Nandha Engineering College managing 1,000+ student records, attendance, and academic reporting — delivered under a certified 1-year engagement.",
     image: "/sf_cms.png",
     tags: ["PHP", "SQL Server", "JavaScript", "Bootstrap"],
     category: ["ERP", "Full Stack"],
@@ -34,7 +34,7 @@ const projects: Project[] = [
   {
     id: 3,
     title: "Hospital Management System",
-    description: "Production-deployed healthcare platform managing patient records, appointments, and billing. Reduced manual data entry by 70% with dedicated, secure role-based dashboards for clinical and administrative staff.",
+    description: "Production-deployed healthcare platform managing patient records, appointments, and billing; reduced manual data entry by 70% with role-based dashboards for clinical and administrative staff.",
     image: "/hms_pro.png",
     tags: ["React.js", "Node.js", "Express.js", "MySQL"],
     category: ["Healthcare", "Full Stack"],
@@ -43,7 +43,7 @@ const projects: Project[] = [
   {
     id: 4,
     title: "Enterprise Payroll Management System",
-    description: "Payroll platform with secure JWT authentication, 3-role RBAC, and salary processing APIs managing 100+ employee records. Improved database responsiveness, reducing MongoDB query execution time by 35% through indexing.",
+    description: "Payroll platform with JWT authentication, 3-role RBAC, and salary processing APIs managing 100+ employee records; reduced MongoDB query execution time by 35% through schema optimization and indexing.",
     image: "https://images.unsplash.com/photo-1460925895917-adf4e75fb37f?w=500&h=300&fit=crop",
     tags: ["Node.js", "Express.js", "MongoDB", "React.js", "Tailwind CSS"],
     category: ["ERP", "MERN"],
@@ -51,7 +51,7 @@ const projects: Project[] = [
   {
     id: 5,
     title: "Smart Attendance System — RFID Based",
-    description: "Award-winning IoT system automating attendance for 200+ students using Arduino RFID hardware with a PHP/SQL Server backend. Eliminated 100% of manual attendance recording with real-time tracking.",
+    description: "Award-winning IoT system automating attendance for 200+ students using Arduino RFID hardware with a PHP/SQL Server backend — eliminated 100% of manual attendance recording. (Winner: Innovation Day 2024)",
     image: "https://images.unsplash.com/photo-1550355291-bbee04a92027?w=500&h=300&fit=crop",
     tags: ["Arduino", "RFID", "PHP", "SQL Server", "IoT"],
     category: ["IoT"],

@@ -8,34 +8,43 @@ interface Skill {
 }
 
 const skills: Skill[] = [
+  // Languages
+  { name: "JavaScript (ES6+)", level: 92, category: "Languages" },
+  { name: "Python", level: 82, category: "Languages" },
+  { name: "PHP", level: 85, category: "Languages" },
+
   // Frontend
-  { name: "React.js", level: 90, category: "Frontend" },
-  { name: "HTML/CSS", level: 95, category: "Frontend" },
-  { name: "JavaScript", level: 90, category: "Frontend" },
+  { name: "React.js (React 18 + Vite)", level: 92, category: "Frontend" },
+  { name: "HTML5 / CSS3", level: 95, category: "Frontend" },
+  { name: "Tailwind CSS", level: 90, category: "Frontend" },
   { name: "Bootstrap", level: 85, category: "Frontend" },
 
   // Backend
-  { name: "Node.js", level: 88, category: "Backend" },
-  { name: "Express.js", level: 88, category: "Backend" },
-  { name: "PHP", level: 80, category: "Backend" },
-  { name: "REST APIs", level: 90, category: "Backend" },
+  { name: "Node.js", level: 90, category: "Backend" },
+  { name: "Express.js", level: 90, category: "Backend" },
+  { name: "REST API Design & Development", level: 88, category: "Backend" },
+  { name: "PHP Backend", level: 82, category: "Backend" },
 
-  // Database
+  // Databases
+  { name: "MySQL", level: 88, category: "Database" },
   { name: "MongoDB", level: 85, category: "Database" },
-  { name: "MySQL", level: 85, category: "Database" },
   { name: "SQL Server", level: 80, category: "Database" },
+  { name: "Sequelize ORM", level: 82, category: "Database" },
 
-  // Languages
-  { name: "Python", level: 80, category: "Languages" },
-  { name: "JavaScript", level: 90, category: "Languages" },
-  { name: "PHP", level: 80, category: "Languages" },
+  // Server & DevOps
+  { name: "Dedicated Server Setup & OS Configuration", level: 88, category: "Server & DevOps" },
+  { name: "AWS EC2", level: 80, category: "Server & DevOps" },
+  { name: "Cloud Deployment", level: 85, category: "Server & DevOps" },
+  { name: "Server Management", level: 85, category: "Server & DevOps" },
+  { name: "Azure (Learning)", level: 60, category: "Server & DevOps" },
 
-  // Tools & Cloud
-  { name: "Git/GitHub", level: 90, category: "Tools" },
-  { name: "AWS (EC2)", level: 70, category: "Tools" },
-  { name: "VPS Hosting", level: 75, category: "Tools" },
-  { name: "VS Code", level: 95, category: "Tools" },
-  { name: "SSMS", level: 78, category: "Tools" },
+  // Tools & Concepts
+  { name: "Git & GitHub", level: 90, category: "Tools" },
+  { name: "Postman", level: 88, category: "Tools" },
+  { name: "VS Code / SSMS", level: 92, category: "Tools" },
+  { name: "System Design & RBAC", level: 85, category: "Tools" },
+  { name: "SDLC & Agile Methodologies", level: 85, category: "Tools" },
+  { name: "IoT Integration", level: 80, category: "Tools" },
 ];
 
 const SkillBar = ({ skill, delay }: { skill: Skill; delay: number }) => {
@@ -78,7 +87,7 @@ const SkillBar = ({ skill, delay }: { skill: Skill; delay: number }) => {
   );
 };
 
-const categories = ["Frontend", "Backend", "Database", "Languages", "Tools"];
+const categories = ["Languages", "Frontend", "Backend", "Database", "Server & DevOps", "Tools"];
 
 export default function Skills() {
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
@@ -142,7 +151,7 @@ export default function Skills() {
         {/* Skills grid */}
         <div className="grid md:grid-cols-2 gap-12">
           {filteredSkills.map((skill, idx) => (
-            <SkillBar key={skill.name} skill={skill} delay={idx * 0.05} />
+            <SkillBar key={`${skill.category}-${skill.name}`} skill={skill} delay={idx * 0.05} />
           ))}
         </div>
       </div>
