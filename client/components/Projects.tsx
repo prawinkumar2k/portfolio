@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { ExternalLink, Github } from "lucide-react";
-import { useState, useRef } from "react";
+import React, { useState, useRef } from "react";
 
 interface Project {
   id: number;
@@ -16,45 +16,45 @@ interface Project {
 const projects: Project[] = [
   {
     id: 1,
-    title: "Hospital Management System",
-    description: "Full-stack HMS for patient records, appointments, and billing. Built RESTful APIs with Node.js & Express.js, responsive React UI for doctors and admin, MySQL database with optimized queries. Deployed for real-time live usage.",
-    image: "/hms_pro.png",
-    tags: ["React.js", "Node.js", "Express.js", "MySQL"],
-    category: ["ERP", "Full Stack"],
-    demoLink: "http://72.61.229.231",
+    title: "Government Admissions Portal — DOTE, Tamil Nadu",
+    description: "Large-scale government admissions portal serving 50,000+ students statewide. Built server-side filtering, a 3-role RBAC, and integrated digital payment gateways to process 100% of fee transactions digitally. Configured and managed dedicated production servers with 99.9% uptime.",
+    image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=500&h=300&fit=crop",
+    tags: ["React 18", "Node.js", "Express", "MySQL", "Sequelize", "CCAvenue"],
+    category: ["Government", "Full Stack"],
   },
   {
     id: 2,
-    title: "Enterprise Payroll Management System",
-    description: "Scalable payroll system for employee salaries, attendance, and payslips. Implemented secure authentication, role-based access control, and optimized database operations for faster payroll calculations.",
-    image: "https://images.unsplash.com/photo-1460925895917-adf4e75fb37f?w=500&h=300&fit=crop",
-    tags: ["Node.js", "Express.js", "MongoDB", "React.js"],
-    category: ["ERP", "MERN"],
-  },
-  {
-    id: 3,
-    title: "Campus ERP System",
-    description: "Full-stack Campus ERP for student management, attendance tracking, and academic records. Built with React.js frontend, Node.js & Express.js backend, and MySQL for large-scale institutional data with dynamic dashboards and reporting.",
+    title: "Campus ERP System — Nandha Engineering College",
+    description: "Designed and deployed a full-scale institutional ERP managing 1,000+ student records, attendance, and academic reporting under a certified 1-year engagement. Replaced legacy paper-based reporting, reducing administrative workload.",
     image: "/sf_cms.png",
-    tags: ["React.js", "Node.js", "Express.js", "MySQL"],
+    tags: ["PHP", "SQL Server", "JavaScript", "Bootstrap"],
     category: ["ERP", "Full Stack"],
     demoLink: "https://searchfirst.in",
   },
   {
+    id: 3,
+    title: "Hospital Management System",
+    description: "Production-deployed healthcare platform managing patient records, appointments, and billing. Reduced manual data entry by 70% with dedicated, secure role-based dashboards for clinical and administrative staff.",
+    image: "/hms_pro.png",
+    tags: ["React.js", "Node.js", "Express.js", "MySQL"],
+    category: ["Healthcare", "Full Stack"],
+    demoLink: "http://72.61.229.231",
+  },
+  {
     id: 4,
-    title: "Smart Attendance Management System (RFID)",
-    description: "Automated attendance system using RFID-enabled ID cards with hourly recording and real-time database updates. Web portal for attendance monitoring, report generation, and performance tracking.",
-    image: "https://images.unsplash.com/photo-1550355291-bbee04a92027?w=500&h=300&fit=crop",
-    tags: ["Arduino", "RFID", "PHP", "SQL Server"],
-    category: ["IoT"],
+    title: "Enterprise Payroll Management System",
+    description: "Payroll platform with secure JWT authentication, 3-role RBAC, and salary processing APIs managing 100+ employee records. Improved database responsiveness, reducing MongoDB query execution time by 35% through indexing.",
+    image: "https://images.unsplash.com/photo-1460925895917-adf4e75fb37f?w=500&h=300&fit=crop",
+    tags: ["Node.js", "Express.js", "MongoDB", "React.js", "Tailwind CSS"],
+    category: ["ERP", "MERN"],
   },
   {
     id: 5,
-    title: "Autonomous Smart Car with AI Integration ⭐",
-    description: "Multi-functional autonomous vehicle with Bluetooth control, human-following via IR sensors, RFID-based access control, AI voice assistant for engine control, and real-time unauthorized access alerts.",
-    image: "https://images.unsplash.com/photo-1452587925148-ce544e77e70d?w=500&h=300&fit=crop",
-    tags: ["Arduino UNO", "ESP8266", "ESP32", "Python", "IoT", "AI"],
-    category: ["AI", "IoT"],
+    title: "Smart Attendance System — RFID Based",
+    description: "Award-winning IoT system automating attendance for 200+ students using Arduino RFID hardware with a PHP/SQL Server backend. Eliminated 100% of manual attendance recording with real-time tracking.",
+    image: "https://images.unsplash.com/photo-1550355291-bbee04a92027?w=500&h=300&fit=crop",
+    tags: ["Arduino", "RFID", "PHP", "SQL Server", "IoT"],
+    category: ["IoT"],
   },
 ];
 

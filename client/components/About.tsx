@@ -47,7 +47,9 @@ const StatCard = ({ number, label, delay }: { number: number; label: string; del
       transition={{ delay, duration: 0.6 }}
       className="glass rounded-xl p-6 text-center"
     >
-      <div className="text-4xl font-bold text-gradient mb-2">{count}+</div>
+      <div className="text-4xl font-bold text-gradient mb-2">
+        {number === 50 ? `${count}K+` : `${count}+`}
+      </div>
       <p className="text-white/70">{label}</p>
     </motion.div>
   );
@@ -84,7 +86,10 @@ export default function About() {
             <div className="space-y-4">
               <h3 className="text-2xl font-bold text-white">Full Stack Developer</h3>
               <p className="text-white/70">
-                With experience in building enterprise-level applications, ERP systems, and modern SaaS platforms. I combine strong technical skills with a passion for creating user-centric solutions.
+                I am a results-driven Full Stack Developer with hands-on experience designing, building, and deploying scalable web applications across government, healthcare, ERP, and SaaS domains. 
+              </p>
+              <p className="text-white/70">
+                Proficient in API Development, Cloud Deployment, and Agile Methodologies, I have expertise in Node.js, React.js, MySQL, MongoDB, and PHP. I am experienced in end-to-end software delivery—from system architecture and REST API design through database optimization to dedicated server configuration and production deployment.
               </p>
             </div>
 
@@ -94,9 +99,9 @@ export default function About() {
                 {[
                   "MERN Stack Development",
                   "Enterprise Resource Planning Systems",
-                  "Scalable Architecture Design",
-                  "Real-world Deployments",
-                  "System Design & Optimization",
+                  "Dedicated Server Setup & OS Configuration",
+                  "Real-world Production Deployments",
+                  "Relational & NoSQL Database Optimization",
                   "AI/IoT Integration",
                 ].map((item, idx) => (
                   <motion.li
@@ -122,9 +127,9 @@ export default function About() {
             transition={{ duration: 0.8 }}
           >
             <StatCard number={10} label="Projects Completed" delay={0} />
-            <StatCard number={25} label="Technologies" delay={0.1} />
+            <StatCard number={25} label="Technologies Used" delay={0.1} />
             <StatCard number={5} label="Live Deployments" delay={0.2} />
-            <StatCard number={3} label="Years Experience" delay={0.3} />
+            <StatCard number={50} label="End Users Served" delay={0.3} />
           </motion.div>
         </div>
       </div>

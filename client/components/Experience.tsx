@@ -1,3 +1,4 @@
+import React from "react";
 import { motion } from "framer-motion";
 import { Briefcase, Code } from "lucide-react";
 
@@ -16,27 +17,27 @@ const timeline: TimelineItem[] = [
     id: 1,
     title: "Software Developer / ERP System Developer",
     company: "SearchFirst Technologies | Erode, Tamil Nadu",
-    period: "2025 – Present",
-    description: "Developed full-stack ERP and SaaS applications using MERN stack. Designed scalable backend APIs and system architecture using Node.js and Express.js. Built responsive UIs with React.js and worked with MongoDB for database design.",
-    technologies: ["React.js", "Node.js", "MongoDB", "Express.js"],
+    period: "Jan 2025 – Present",
+    description: "Developed and maintained full-stack web applications and ERP platforms—including a Tamil Nadu Government portal (DOTE)—collectively serving 50,000+ end users. Configured dedicated production servers from the OS level, engineered multi-role RBAC systems (reducing administrative workload by ~60%), and integrated payment gateways to achieve 100% digital fee processing.",
+    technologies: ["React 18", "Node.js", "Express.js", "MySQL", "MongoDB", "Sequelize ORM"],
     icon: <Code className="w-6 h-6" />,
   },
   {
     id: 2,
     title: "Web Developer Intern",
     company: "SHENai Private Software Solutions | Erode, Tamil Nadu",
-    period: "2025",
-    description: "Developed dynamic web applications using PHP, MySQL, HTML, CSS, and JavaScript. Implemented backend logic and database connectivity. Improved UI/UX using responsive design principles.",
-    technologies: ["PHP", "MySQL", "HTML", "CSS", "JavaScript"],
+    period: "Jun 2024 – Dec 2024",
+    description: "Delivered 3+ client-facing web applications using PHP, MySQL, and JavaScript. Implemented robust database schemas and backend logic, reducing manual reporting time by 25%. Improved UI performance and application responsiveness by 30% through systematic debugging and optimization.",
+    technologies: ["PHP", "MySQL", "HTML5", "CSS3", "JavaScript"],
     icon: <Briefcase className="w-6 h-6" />,
   },
   {
     id: 3,
-    title: "Open Source / Personal Projects",
+    title: "Full Stack Developer (Personal & Open Source)",
     company: "GitHub | Remote",
-    period: "2024 – Present",
-    description: "Developed real-world applications including ERP systems and SaaS platforms. Built and deployed Hospital Management System and Campus ERP solutions. Designed database schemas and implemented REST API integrations.",
-    technologies: ["React.js", "Node.js", "PHP", "MySQL", "Arduino"],
+    period: "2023 – Present",
+    description: "Independently designed and shipped 5+ production-grade full-stack applications across healthcare, payroll, ERP, and IoT domains—solving real-world institutional and enterprise problems with highly scalable architecture.",
+    technologies: ["React.js", "Node.js", "Express.js", "MongoDB", "PHP", "Arduino"],
     icon: <Code className="w-6 h-6" />,
   },
   {
@@ -44,8 +45,8 @@ const timeline: TimelineItem[] = [
     title: "B.Tech – Artificial Intelligence & Data Science",
     company: "Nandha Engineering College, Erode, Tamil Nadu",
     period: "2023 – Present",
-    description: "Pursuing Bachelor of Technology in Artificial Intelligence and Data Science. Relevant coursework: Data Structures, DBMS, Machine Learning, Artificial Intelligence.",
-    technologies: ["Machine Learning", "AI", "DBMS", "Data Structures"],
+    description: "Pursuing a Bachelor of Technology in Artificial Intelligence and Data Science (Affiliated with Anna University). Maintaining strong academic standings and actively developing award-winning innovative projects (like IoT Smart Attendance).",
+    technologies: ["Artificial Intelligence", "Machine Learning", "Python", "Data Structures", "DBMS"],
     icon: <Briefcase className="w-6 h-6" />,
   },
 ];

@@ -5,28 +5,28 @@ const achievements = [
   {
     id: 1,
     title: "Unique Project Award",
-    description: "Won 'Unique Project Award' at Nandha Engineering College for innovative project development",
+    description: "Winner of the 'Unique Project Award' at Innovation Day for the IoT Smart Attendance System automating tracking for 200+ students.",
     icon: Trophy,
     color: "neon-blue",
   },
   {
     id: 2,
-    title: "Live ERP Deployments",
-    description: "Successfully deployed live ERP systems used for real-time hospital and campus operations and management",
+    title: "Live Government Portal",
+    description: "Built and deployed a live government-scale portal for DOTE, Tamil Nadu, serving 50,000+ statewide users with zero critical downtime.",
     icon: Star,
     color: "neon-purple",
   },
   {
     id: 3,
-    title: "Real-World Portfolio",
-    description: "Developed multiple full-stack and IoT-based projects with practical real-time implementation in production environments",
+    title: "Certified Campus ERP",
+    description: "Successfully designed and deployed a full-scale institutional ERP for Nandha Engineering College managing 1,000+ student records.",
     icon: Award,
     color: "neon-blue",
   },
   {
     id: 4,
-    title: "End-to-End Development",
-    description: "Hands-on experience in complete project lifecycle: design, development, and deployment of enterprise-grade applications",
+    title: "RBAC & Flow Optimization",
+    description: "Engineered multi-role role-based access control and backend flow logic, reducing client manual workload by ~60%.",
     icon: Star,
     color: "neon-purple",
   },
@@ -49,7 +49,7 @@ export default function Achievements() {
         </motion.div>
 
         {/* Achievements grid */}
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {achievements.map((achievement, idx) => {
             const Icon = achievement.icon;
             return (
