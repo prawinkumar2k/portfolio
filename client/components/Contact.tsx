@@ -4,14 +4,50 @@ import { useState } from "react";
 
 export default function Contact() {
   const [isLoading, setIsLoading] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+  const [statusMessage, setStatusMessage] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsLoading(true);
-    // Simulate form submission
-    setTimeout(() => {
+    setSubmitStatus("idle");
+    setStatusMessage("");
+
+    const formData = new FormData(e.currentTarget);
+    // Read the Web3Forms Access Key from environment variables or use a hardcoded placeholder
+    const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || "YOUR_WEB3FORMS_ACCESS_KEY";
+
+    if (accessKey === "YOUR_WEB3FORMS_ACCESS_KEY" || !accessKey) {
       setIsLoading(false);
-    }, 2000);
+      setSubmitStatus("error");
+      setStatusMessage("Web3Forms Access Key is not configured. Please add VITE_WEB3FORMS_ACCESS_KEY to your .env file.");
+      return;
+    }
+
+    formData.append("access_key", accessKey);
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData,
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setSubmitStatus("success");
+        setStatusMessage("Thank you! Your message has been sent successfully.");
+        e.currentTarget.reset();
+      } else {
+        setSubmitStatus("error");
+        setStatusMessage(data.message || "Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      setSubmitStatus("error");
+      setStatusMessage("Failed to send message. Please check your internet connection.");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -125,6 +161,8 @@ export default function Contact() {
             <div className="space-y-4">
               <motion.input
                 type="text"
+                name="name"
+                required
                 placeholder="Your Name"
                 className="w-full px-6 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-neon-blue/50 transition-colors"
                 initial={{ opacity: 0, y: 10 }}
@@ -134,6 +172,8 @@ export default function Contact() {
 
               <motion.input
                 type="email"
+                name="email"
+                required
                 placeholder="Your Email"
                 className="w-full px-6 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-neon-blue/50 transition-colors"
                 initial={{ opacity: 0, y: 10 }}
@@ -142,6 +182,8 @@ export default function Contact() {
               />
 
               <motion.textarea
+                name="message"
+                required
                 placeholder="Your Message"
                 rows={5}
                 className="w-full px-6 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-white/50 focus:outline-none focus:border-neon-blue/50 transition-colors resize-none"
@@ -150,6 +192,20 @@ export default function Contact() {
                 transition={{ delay: 0.3, duration: 0.6 }}
               />
             </div>
+
+            {submitStatus !== "idle" && (
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className={`p-4 rounded-lg text-sm font-semibold ${
+                  submitStatus === "success"
+                    ? "bg-emerald-500/10 text-emerald-400 border border-emerald-500/30"
+                    : "bg-red-500/10 text-red-400 border border-red-500/30"
+                }`}
+              >
+                {statusMessage}
+              </motion.div>
+            )}
 
             <motion.button
               type="submit"
