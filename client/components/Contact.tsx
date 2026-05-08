@@ -14,13 +14,12 @@ export default function Contact() {
     setStatusMessage("");
 
     const formData = new FormData(e.currentTarget);
-    // Read the Web3Forms Access Key from environment variables or use a hardcoded placeholder
-    const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || "YOUR_WEB3FORMS_ACCESS_KEY";
+    const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || "cf3ce871-5e6e-4ebd-8346-392e7fed001e";
 
-    if (accessKey === "YOUR_WEB3FORMS_ACCESS_KEY" || !accessKey) {
+    if (!accessKey) {
       setIsLoading(false);
       setSubmitStatus("error");
-      setStatusMessage("Web3Forms Access Key is not configured. Please add VITE_WEB3FORMS_ACCESS_KEY to your .env file.");
+      setStatusMessage("Web3Forms Access Key is not configured.");
       return;
     }
 
