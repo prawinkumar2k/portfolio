@@ -1,136 +1,218 @@
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef, useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { CheckCircle2, Code2, Server, Trophy, Users } from "lucide-react";
 
-const StatCard = ({ number, label, delay }: { number: number; label: string; delay: number }) => {
+const stats = [
+  { number: 10, suffix: "+", label: "Projects Completed", icon: Code2, color: "#0A66C2" },
+  { number: 25, suffix: "+", label: "Technologies", icon: Server, color: "#6366F1" },
+  { number: 50, suffix: "K+", label: "Users Served", icon: Users, color: "#38BDF8" },
+  { number: 3, suffix: "+", label: "Awards Won", icon: Trophy, color: "#F59E0B" },
+];
+
+const expertise = [
+  "MERN Stack Development",
+  "Enterprise Resource Planning Systems",
+  "Dedicated Server Setup & OS Configuration",
+  "Real-world Production Deployments",
+  "Relational & NoSQL Database Optimization",
+  "AI/IoT Integration",
+];
+
+const CountUp = ({ number, suffix }: { number: number; suffix: string }) => {
   const [count, setCount] = useState(0);
-  const counterRef = useRef<HTMLDivElement>(null);
-  const [inView, setInView] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+  const [started, setStarted] = useState(false);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(([entry]) => {
-      setInView(entry.isIntersecting);
-    });
-
-    if (counterRef.current) {
-      observer.observe(counterRef.current);
-    }
-
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting && !started) setStarted(true); },
+      { threshold: 0.5 }
+    );
+    if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
-  }, []);
+  }, [started]);
 
   useEffect(() => {
-    if (!inView) return;
-
-    let start = 0;
-    const end = number;
-    const duration = 2;
-    const increment = end / (duration * 60);
-
-    const interval = setInterval(() => {
-      start += increment;
-      if (start >= end) {
-        setCount(end);
-        clearInterval(interval);
-      } else {
-        setCount(Math.floor(start));
-      }
+    if (!started) return;
+    let frame = 0;
+    const totalFrames = 60;
+    const timer = setInterval(() => {
+      frame++;
+      setCount(Math.min(Math.round((frame / totalFrames) * number), number));
+      if (frame >= totalFrames) clearInterval(timer);
     }, 1000 / 60);
-
-    return () => clearInterval(interval);
-  }, [inView, number]);
+    return () => clearInterval(timer);
+  }, [started, number]);
 
   return (
-    <motion.div
-      ref={counterRef}
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ delay, duration: 0.6 }}
-      className="glass rounded-xl p-6 text-center"
-    >
-      <div className="text-4xl font-bold text-gradient mb-2">
-        {number === 50 ? `${count}K+` : `${count}+`}
-      </div>
-      <p className="text-white/70">{label}</p>
-    </motion.div>
+    <div ref={ref}>
+      {count}{suffix}
+    </div>
   );
 };
 
 export default function About() {
   return (
-    <section id="about" className="py-20 px-4 sm:px-6 lg:px-8 relative">
+    <section id="about" className="section-wrapper bg-white">
       <div className="max-w-6xl mx-auto">
         {/* Section header */}
         <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            About <span className="text-gradient">Me</span>
+          <div className="section-label">
+            <span className="w-8 h-px bg-[#0A66C2]" />
+            About Me
+            <span className="w-8 h-px bg-[#0A66C2]" />
+          </div>
+          <h2 className="text-4xl md:text-5xl font-bold text-[#0F172A] mb-4 font-display">
+            Building <span className="text-gradient-blue">Scalable Solutions</span>
           </h2>
-          <p className="text-white/60 max-w-2xl mx-auto text-lg">
-            A passionate Full Stack Developer with a focus on building scalable, real-world solutions
-          </p>
+          <div className="section-divider" />
         </motion.div>
 
-        {/* Content grid */}
-        <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
-          {/* Text content */}
+        {/* Two-column layout */}
+        <div className="grid lg:grid-cols-2 gap-16 items-center mb-16">
+          {/* Left: Profile visual */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
+            initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="flex justify-center lg:justify-start"
+          >
+            <div className="relative">
+              {/* Profile card */}
+              <div className="relative w-72 h-72 rounded-3xl overflow-hidden shadow-card-hover border border-[#E2E8F0]">
+                <div
+                  className="w-full h-full flex items-center justify-center text-white"
+                  style={{ background: "linear-gradient(135deg, #0A66C2 0%, #6366F1 100%)" }}
+                >
+                  <div className="text-center">
+                    <div className="text-7xl font-bold font-display mb-2">PK</div>
+                    <div className="text-sm font-medium opacity-90">Full Stack Developer</div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Floating badge - experience */}
+              <motion.div
+                className="absolute -bottom-4 -right-4 bg-white rounded-2xl p-4 shadow-card-hover border border-[#E2E8F0]"
+                animate={{ y: [0, -6, 0] }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+              >
+                <div className="text-xs text-[#64748B] font-medium mb-1">Current Role</div>
+                <div className="text-sm font-bold text-[#0F172A]">Software Developer</div>
+                <div className="text-xs text-[#0A66C2] font-medium">SearchFirst Technologies</div>
+              </motion.div>
+
+              {/* Floating badge - education */}
+              <motion.div
+                className="absolute -top-4 -left-4 bg-white rounded-2xl p-3 shadow-card-hover border border-[#E2E8F0]"
+                animate={{ y: [0, 6, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+              >
+                <div className="text-xs text-[#64748B] font-medium">Pursuing</div>
+                <div className="text-sm font-bold text-[#0F172A]">B.Tech AI & DS</div>
+              </motion.div>
+            </div>
+          </motion.div>
+
+          {/* Right: Bio */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
             className="space-y-6"
           >
-            <div className="space-y-4">
-              <h3 className="text-2xl font-bold text-white">Full Stack Developer</h3>
-              <p className="text-white/70">
-                I am a results-driven Full Stack Developer with hands-on experience designing, building, and deploying scalable web applications across government, healthcare, ERP, and SaaS domains. 
+            <div>
+              <h3 className="text-2xl font-bold text-[#0F172A] mb-3 font-display">
+                Full Stack Developer & ERP Specialist
+              </h3>
+              <p className="text-[#64748B] leading-relaxed mb-4">
+                I am a results-driven Full Stack Developer with hands-on experience designing,
+                building, and deploying scalable web applications across government, healthcare,
+                ERP, and SaaS domains.
               </p>
-              <p className="text-white/70">
-                Proficient in API Development, Cloud Deployment, and Agile Methodologies, I have expertise in Node.js, React.js, MySQL, MongoDB, and PHP. I am experienced in end-to-end software delivery—from system architecture and REST API design through database optimization to dedicated server configuration and production deployment.
+              <p className="text-[#64748B] leading-relaxed">
+                Proficient in API Development, Cloud Deployment, and Agile Methodologies with
+                expertise in Node.js, React.js, MySQL, MongoDB, and PHP. Experienced in
+                end-to-end software delivery from system architecture through production deployment.
               </p>
             </div>
 
-            <div className="space-y-3">
-              <h4 className="font-semibold text-white">Key Expertise:</h4>
-              <ul className="space-y-2">
-                {[
-                  "MERN Stack Development",
-                  "Enterprise Resource Planning Systems",
-                  "Dedicated Server Setup & OS Configuration",
-                  "Real-world Production Deployments",
-                  "Relational & NoSQL Database Optimization",
-                  "AI/IoT Integration",
-                ].map((item, idx) => (
+            <div>
+              <h4 className="font-semibold text-[#0F172A] mb-3">Key Expertise</h4>
+              <ul className="grid grid-cols-1 gap-2">
+                {expertise.map((item, idx) => (
                   <motion.li
                     key={item}
                     initial={{ opacity: 0, x: -10 }}
                     whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ delay: idx * 0.1 }}
-                    className="flex items-center gap-3 text-white/80"
+                    viewport={{ once: true }}
+                    transition={{ delay: idx * 0.07 }}
+                    className="flex items-center gap-3 text-[#475569] text-sm"
                   >
-                    <span className="w-2 h-2 rounded-full bg-neon-blue" />
+                    <CheckCircle2 className="w-4 h-4 text-[#0A66C2] flex-shrink-0" />
                     {item}
                   </motion.li>
                 ))}
               </ul>
             </div>
-          </motion.div>
 
-          {/* Stats */}
-          <motion.div
-            className="grid grid-cols-2 gap-4"
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <StatCard number={10} label="Projects Completed" delay={0} />
-            <StatCard number={25} label="Technologies Used" delay={0.1} />
-            <StatCard number={5} label="Live Deployments" delay={0.2} />
-            <StatCard number={50} label="End Users Served" delay={0.3} />
+            <div className="flex gap-3 pt-2">
+              <a
+                href="/PrawinKumar.N_Resume.pdf"
+                download
+                className="btn-primary text-sm"
+              >
+                Download Resume
+              </a>
+              <a
+                href="#contact"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+                }}
+                className="btn-secondary text-sm"
+              >
+                Get In Touch
+              </a>
+            </div>
           </motion.div>
+        </div>
+
+        {/* Stats row */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          {stats.map(({ number, suffix, label, icon: Icon, color }, idx) => (
+            <motion.div
+              key={label}
+              className="stat-card hover:shadow-card-hover transition-shadow duration-300"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: idx * 0.1, duration: 0.6 }}
+              whileHover={{ y: -3 }}
+            >
+              <div
+                className="w-10 h-10 rounded-xl flex items-center justify-center mx-auto mb-3"
+                style={{ background: `${color}15`, color }}
+              >
+                <Icon className="w-5 h-5" />
+              </div>
+              <div
+                className="text-3xl font-bold mb-1 font-display"
+                style={{ color }}
+              >
+                <CountUp number={number} suffix={suffix} />
+              </div>
+              <p className="text-[#64748B] text-sm">{label}</p>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

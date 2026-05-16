@@ -1,88 +1,119 @@
 import { motion } from "framer-motion";
-import { Trophy, Award, Star } from "lucide-react";
+import { Trophy, Star, Award, Zap } from "lucide-react";
 
 const achievements = [
   {
     id: 1,
     title: "Unique Project Award",
-    description: "Winner of the 'Unique Project Award' at Innovation Day for the IoT Smart Attendance System automating tracking for 200+ students.",
+    description:
+      "Winner at Innovation Day 2024 for the IoT Smart Attendance System automating tracking for 200+ students.",
     icon: Trophy,
-    color: "neon-blue",
+    color: "#D97706",
+    bg: "#FFFBEB",
+    border: "#FDE68A",
+    badge: "🏆 1st Place",
   },
   {
     id: 2,
-    title: "Live Government Portal",
-    description: "Built and deployed a live government-scale portal for DOTE, Tamil Nadu, serving 50,000+ statewide users with zero critical downtime.",
+    title: "Physical Server Owner — tnpoly.in",
+    description:
+      "Personally procured, configured, and operate the bare-metal production server for Tamil Nadu's official tnpoly.in portal — including OS install, firewall, IIS, SSL, and sole ongoing maintenance (zero critical outages).",
     icon: Star,
-    color: "neon-purple",
+    color: "#0A66C2",
+    bg: "#EFF6FF",
+    border: "#BFDBFE",
+    badge: "🖥️ Infra Owner",
   },
   {
     id: 3,
     title: "Certified Campus ERP",
-    description: "Successfully designed and deployed a full-scale institutional ERP for Nandha Engineering College managing 1,000+ student records.",
+    description:
+      "Designed and deployed a full-scale institutional ERP for Nandha Engineering College managing 1,000+ records.",
     icon: Award,
-    color: "neon-blue",
+    color: "#059669",
+    bg: "#ECFDF5",
+    border: "#A7F3D0",
+    badge: "Production Live",
   },
   {
     id: 4,
-    title: "RBAC & Flow Optimization",
-    description: "Engineered multi-role role-based access control and backend flow logic, reducing client manual workload by ~60%.",
-    icon: Star,
-    color: "neon-purple",
+    title: "60% Efficiency Gain",
+    description:
+      "Engineered multi-role RBAC and backend flow logic, reducing client manual administrative workload by ~60%.",
+    icon: Zap,
+    color: "#6366F1",
+    bg: "#F5F3FF",
+    border: "#DDD6FE",
+    badge: "Impact",
   },
 ];
 
 export default function Achievements() {
   return (
-    <section id="achievements" className="py-20 px-4 sm:px-6 lg:px-8 relative">
+    <section id="achievements" className="section-wrapper bg-white">
       <div className="max-w-6xl mx-auto">
         {/* Section header */}
         <motion.div
-          className="text-center mb-16"
+          className="text-center mb-12"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            Achievements & <span className="text-gradient">Highlights</span>
+          <div className="section-label">
+            <span className="w-8 h-px bg-[#0A66C2]" />
+            Highlights
+            <span className="w-8 h-px bg-[#0A66C2]" />
+          </div>
+          <h2 className="text-4xl md:text-5xl font-bold text-[#0F172A] mb-4 font-display">
+            Achievements &amp; <span className="text-gradient-blue">Impact</span>
           </h2>
+          <p className="text-[#64748B] max-w-2xl mx-auto">
+            Key milestones and measurable results from real-world projects
+          </p>
+          <div className="section-divider" />
         </motion.div>
 
         {/* Achievements grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {achievements.map((achievement, idx) => {
-            const Icon = achievement.icon;
-            return (
-              <motion.div
-                key={achievement.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: idx * 0.2, duration: 0.6 }}
-                className="group"
-              >
-                <motion.div
-                  className="glass rounded-xl p-8 h-full text-center cursor-pointer"
-                  whileHover={{
-                    y: -10,
-                    boxShadow: "0 20px 40px rgba(0, 217, 255, 0.2)",
-                  }}
-                >
-                  <motion.div
-                    className="inline-flex items-center justify-center w-16 h-16 rounded-lg bg-gradient-to-r from-neon-blue to-neon-purple mb-4 group-hover:scale-110 transition-transform"
-                    whileHover={{ rotate: 360 }}
-                    transition={{ duration: 0.6 }}
-                  >
-                    <Icon className="w-8 h-8 text-white" />
-                  </motion.div>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {achievements.map(({ id, title, description, icon: Icon, color, bg, border, badge }, idx) => (
+            <motion.div
+              key={id}
+              className="pro-card p-6 group relative overflow-hidden"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: idx * 0.1, duration: 0.6 }}
+              whileHover={{ y: -5, boxShadow: "0 16px 32px rgba(10,102,194,0.1)" }}
+            >
+              {/* Subtle top accent */}
+              <div
+                className="absolute top-0 left-0 right-0 h-0.5 rounded-t-2xl"
+                style={{ background: color }}
+              />
 
-                  <h3 className="text-xl font-bold text-white mb-3">
-                    {achievement.title}
-                  </h3>
-                  <p className="text-white/70">{achievement.description}</p>
-                </motion.div>
-              </motion.div>
-            );
-          })}
+              {/* Badge */}
+              <div className="mb-4">
+                <span
+                  className="inline-block px-2.5 py-1 rounded-full text-xs font-semibold"
+                  style={{ background: bg, color, border: `1px solid ${border}` }}
+                >
+                  {badge}
+                </span>
+              </div>
+
+              {/* Icon */}
+              <div
+                className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300"
+                style={{ background: bg, color }}
+              >
+                <Icon className="w-6 h-6" />
+              </div>
+
+              <h3 className="text-base font-bold text-[#0F172A] mb-2">{title}</h3>
+              <p className="text-[#64748B] text-sm leading-relaxed">{description}</p>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
