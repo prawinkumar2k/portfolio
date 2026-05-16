@@ -144,6 +144,13 @@ const certificates: Certificate[] = [
     image: "/certificates/photo_6154375745476694109_y.jpg",
     type: "achievement",
   },
+  {
+    id: 20,
+    title: "Web Development – Certificate of Exam",
+    issuer: "Qwik Test · Infotact Solutions (ISO 9001:2015)",
+    image: "/certificates/qwik_webdev_exam.jpg",
+    type: "online",
+  },
 ];
 
 const typeConfig = {
