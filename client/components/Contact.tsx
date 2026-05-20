@@ -87,31 +87,19 @@ export default function Contact() {
   ];
 
   return (
-    <section id="contact" className="section-wrapper" style={{ background: "#F8FAFC" }}>
-      <div className="max-w-6xl mx-auto">
-        {/* Section header */}
+    <section id="contact" className="py-3 px-4 sm:px-6">
+      <div className="max-w-4xl mx-auto">
         <motion.div
-          className="text-center mb-12"
+          className="bg-white rounded-xl border border-[#E0DED9] shadow-sm p-6 sm:p-8"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <div className="section-label">
-            <span className="w-8 h-px bg-[#0A66C2]" />
-            Contact
-            <span className="w-8 h-px bg-[#0A66C2]" />
-          </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-[#0F172A] mb-4 font-display">
-            Let's <span className="text-gradient-blue">Work Together</span>
-          </h2>
-          <p className="text-[#64748B] max-w-2xl mx-auto">
-            Have a project in mind or want to collaborate? I'd love to hear from you.
-          </p>
-          <div className="section-divider" />
-        </motion.div>
+          <h2 className="text-xl font-bold text-[#000000e6] mb-2">Let's Work Together</h2>
+          <p className="text-sm text-[#666666] mb-6">Have a project in mind or want to collaborate? I'd love to hear from you.</p>
 
-        <div className="grid lg:grid-cols-2 gap-10">
+          <div className="grid lg:grid-cols-2 gap-8">
           {/* Left: Contact info + Social */}
           <motion.div
             className="space-y-6"
@@ -283,6 +271,7 @@ export default function Contact() {
             </div>
           </motion.div>
         </div>
+        </motion.div>
       </div>
     </section>
   );

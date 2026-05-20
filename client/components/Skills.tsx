@@ -1,105 +1,67 @@
-import { motion } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
 
 interface Skill {
   name: string;
-  level: number;
   category: string;
-  icon: string;
 }
 
 const skills: Skill[] = [
   // Languages
-  { name: "JavaScript (ES6+)", level: 92, category: "Languages", icon: "JS" },
-  { name: "Python", level: 82, category: "Languages", icon: "Py" },
-  { name: "PHP", level: 85, category: "Languages", icon: "PHP" },
+  { name: "JavaScript (ES6+)", category: "Languages" },
+  { name: "TypeScript", category: "Languages" },
+  { name: "Python", category: "Languages" },
+  { name: "PHP", category: "Languages" },
 
   // Frontend
-  { name: "React.js (React 18 + Vite)", level: 92, category: "Frontend", icon: "⚛" },
-  { name: "HTML5 / CSS3", level: 95, category: "Frontend", icon: "🌐" },
-  { name: "Tailwind CSS", level: 90, category: "Frontend", icon: "🎨" },
-  { name: "Bootstrap", level: 85, category: "Frontend", icon: "🅱" },
+  { name: "React.js 18", category: "Frontend" },
+  { name: "Vite", category: "Frontend" },
+  { name: "HTML5 / CSS3", category: "Frontend" },
+  { name: "Tailwind CSS", category: "Frontend" },
+  { name: "Bootstrap", category: "Frontend" },
+  { name: "Framer Motion", category: "Frontend" },
 
   // Backend
-  { name: "Node.js", level: 90, category: "Backend", icon: "🟢" },
-  { name: "Express.js", level: 90, category: "Backend", icon: "EX" },
-  { name: "REST API Design & Development", level: 88, category: "Backend", icon: "🔌" },
-  { name: "PHP Backend", level: 82, category: "Backend", icon: "PHP" },
+  { name: "Node.js", category: "Backend" },
+  { name: "Express.js", category: "Backend" },
+  { name: "REST API Design", category: "Backend" },
+  { name: "JWT Auth & RBAC", category: "Backend" },
+  { name: "PHP Backend", category: "Backend" },
 
-  // Databases
-  { name: "MySQL", level: 88, category: "Database", icon: "🗄" },
-  { name: "MongoDB", level: 85, category: "Database", icon: "🍃" },
-  { name: "SQL Server", level: 80, category: "Database", icon: "DB" },
-  { name: "Sequelize ORM", level: 82, category: "Database", icon: "SQ" },
+  // Database
+  { name: "MySQL", category: "Database" },
+  { name: "MongoDB", category: "Database" },
+  { name: "SQL Server", category: "Database" },
+  { name: "Sequelize ORM", category: "Database" },
 
-  // Server & DevOps
-  { name: "Ubuntu Linux Server Administration", level: 88, category: "DevOps", icon: "🐧" },
-  { name: "Nginx (Reverse Proxy & Web Server)", level: 85, category: "DevOps", icon: "⚡" },
-  { name: "ufw Firewall & Network Security", level: 85, category: "DevOps", icon: "🔒" },
-  { name: "AWS EC2", level: 80, category: "DevOps", icon: "☁" },
-  { name: "Cloud & Physical Server Deployment", level: 88, category: "DevOps", icon: "🚀" },
-  { name: "SSL/TLS & Domain Configuration", level: 87, category: "DevOps", icon: "🔐" },
+  // DevOps & Infra
+  { name: "Ubuntu Linux Server", category: "DevOps" },
+  { name: "Nginx (Reverse Proxy)", category: "DevOps" },
+  { name: "ufw Firewall", category: "DevOps" },
+  { name: "PM2 Process Manager", category: "DevOps" },
+  { name: "SSL/TLS · Certbot", category: "DevOps" },
+  { name: "Bare-metal Deployment", category: "DevOps" },
+  { name: "Docker (Basic)", category: "DevOps" },
+  { name: "Azure (Learning)", category: "DevOps" },
+  { name: "Hostinger VPS", category: "DevOps" },
 
   // Tools
-  { name: "Git & GitHub", level: 90, category: "Tools", icon: "🐙" },
-  { name: "Postman", level: 88, category: "Tools", icon: "📮" },
-  { name: "System Design & RBAC", level: 85, category: "Tools", icon: "🏗" },
-  { name: "SDLC & Agile", level: 85, category: "Tools", icon: "📋" },
-  { name: "IoT Integration", level: 80, category: "Tools", icon: "📡" },
+  { name: "Git & GitHub", category: "Tools" },
+  { name: "Postman", category: "Tools" },
+  { name: "System Design & RBAC", category: "Tools" },
+  { name: "SDLC & Agile", category: "Tools" },
+  { name: "IoT Integration", category: "Tools" },
 ];
 
 const categories = ["All", "Languages", "Frontend", "Backend", "Database", "DevOps", "Tools"];
 
-const categoryColors: Record<string, { bg: string; text: string; bar: string }> = {
-  Languages: { bg: "#EFF6FF", text: "#0A66C2", bar: "linear-gradient(90deg, #0A66C2, #38BDF8)" },
-  Frontend: { bg: "#F0F9FF", text: "#0369A1", bar: "linear-gradient(90deg, #0369A1, #38BDF8)" },
-  Backend: { bg: "#F5F3FF", text: "#6366F1", bar: "linear-gradient(90deg, #6366F1, #818CF8)" },
-  Database: { bg: "#ECFDF5", text: "#059669", bar: "linear-gradient(90deg, #059669, #34D399)" },
-  DevOps: { bg: "#FFF7ED", text: "#EA580C", bar: "linear-gradient(90deg, #EA580C, #FB923C)" },
-  Tools: { bg: "#FDF4FF", text: "#9333EA", bar: "linear-gradient(90deg, #9333EA, #C084FC)" },
-};
-
-const SkillBar = ({ skill }: { skill: Skill }) => {
-  const ref = useRef<HTMLDivElement>(null);
-  const [animated, setAnimated] = useState(false);
-  const colors = categoryColors[skill.category] || categoryColors.Languages;
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) setAnimated(true); },
-      { threshold: 0.3 }
-    );
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, []);
-
-  return (
-    <div ref={ref} className="group">
-      <div className="flex justify-between items-center mb-1.5">
-        <div className="flex items-center gap-2">
-          <span
-            className="text-xs font-bold w-7 h-7 rounded-lg flex items-center justify-center"
-            style={{ background: colors.bg, color: colors.text }}
-          >
-            {skill.icon}
-          </span>
-          <span className="text-sm font-medium text-[#0F172A]">{skill.name}</span>
-        </div>
-        <span className="text-xs font-semibold" style={{ color: colors.text }}>
-          {skill.level}%
-        </span>
-      </div>
-      <div className="h-1.5 bg-[#F1F5F9] rounded-full overflow-hidden">
-        <motion.div
-          className="h-full rounded-full"
-          style={{ background: colors.bar }}
-          initial={{ width: 0 }}
-          animate={{ width: animated ? `${skill.level}%` : 0 }}
-          transition={{ duration: 1.2, ease: "easeOut", delay: 0.1 }}
-        />
-      </div>
-    </div>
-  );
+const categoryConfig: Record<string, { color: string; bg: string; border: string }> = {
+  Languages: { color: "#0A66C2", bg: "#EFF6FF", border: "#BFDBFE" },
+  Frontend:  { color: "#0369A1", bg: "#F0F9FF", border: "#BAE6FD" },
+  Backend:   { color: "#4338CA", bg: "#EEF2FF", border: "#C7D2FE" },
+  Database:  { color: "#059669", bg: "#ECFDF5", border: "#A7F3D0" },
+  DevOps:    { color: "#EA580C", bg: "#FFF7ED", border: "#FED7AA" },
+  Tools:     { color: "#7C3AED", bg: "#F5F3FF", border: "#DDD6FE" },
 };
 
 export default function Skills() {
@@ -107,78 +69,71 @@ export default function Skills() {
   const filtered = active === "All" ? skills : skills.filter((s) => s.category === active);
 
   return (
-    <section id="skills" className="section-wrapper" style={{ background: "#F8FAFC" }}>
-      <div className="max-w-6xl mx-auto">
-        {/* Section header */}
+    <section id="skills" className="py-3 px-4 sm:px-6">
+      <div className="max-w-4xl mx-auto">
         <motion.div
-          className="text-center mb-12"
+          className="bg-white rounded-xl border border-[#E0DED9] shadow-sm p-6 sm:p-8"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <div className="section-label">
-            <span className="w-8 h-px bg-[#0A66C2]" />
-            Technical Skills
-            <span className="w-8 h-px bg-[#0A66C2]" />
+          <h2 className="text-xl font-bold text-[#000000e6] mb-5">Skills &amp; Expertise</h2>
+
+          {/* Category tabs */}
+          <div className="flex flex-wrap gap-2 mb-6">
+            {categories.map((cat) => (
+              <motion.button
+                key={cat}
+                onClick={() => setActive(cat)}
+                className="px-3 py-1.5 rounded-full text-xs font-semibold transition-all duration-200"
+                style={
+                  active === cat
+                    ? { background: "#0A66C2", color: "#fff", border: "1.5px solid #0A66C2" }
+                    : { background: "white", color: "#666666", border: "1.5px solid #E0DED9" }
+                }
+                whileHover={{ scale: 1.04 }}
+                whileTap={{ scale: 0.96 }}
+                id={`skill-filter-${cat.toLowerCase().replace(/\s/g, "-")}`}
+              >
+                {cat}
+              </motion.button>
+            ))}
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-[#0F172A] mb-4 font-display">
-            My <span className="text-gradient-blue">Expertise</span>
-          </h2>
-          <p className="text-[#64748B] max-w-2xl mx-auto">
-            Expertise across modern web development technologies, cloud infrastructure, and IoT systems
-          </p>
-          <div className="section-divider" />
-        </motion.div>
 
-        {/* Category filters */}
-        <motion.div
-          className="flex flex-wrap justify-center gap-2 mb-10"
-          initial={{ opacity: 0, y: 15 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2, duration: 0.5 }}
-        >
-          {categories.map((cat) => (
-            <motion.button
-              key={cat}
-              onClick={() => setActive(cat)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
-                active === cat
-                  ? "text-white shadow-blue"
-                  : "bg-white text-[#64748B] border border-[#E2E8F0] hover:border-[#0A66C2]/30 hover:text-[#0A66C2]"
-              }`}
-              style={
-                active === cat
-                  ? { background: "linear-gradient(135deg, #0A66C2, #6366F1)" }
-                  : {}
-              }
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
-              id={`skill-filter-${cat.toLowerCase().replace(/\s/g, "-")}`}
-            >
-              {cat}
-            </motion.button>
-          ))}
-        </motion.div>
+          {/* Skill chips */}
+          <motion.div className="flex flex-wrap gap-2" layout>
+            <AnimatePresence mode="popLayout">
+              {filtered.map((skill) => {
+                const cfg = categoryConfig[skill.category] || categoryConfig.Languages;
+                return (
+                  <motion.span
+                    key={skill.name}
+                    layout
+                    initial={{ opacity: 0, scale: 0.85 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.85 }}
+                    transition={{ duration: 0.2 }}
+                    className="inline-flex items-center px-3.5 py-2 rounded-full text-sm font-medium cursor-default select-none transition-all duration-200 hover:shadow-sm"
+                    style={{ background: cfg.bg, color: cfg.color, border: `1.5px solid ${cfg.border}` }}
+                    whileHover={{ y: -1, scale: 1.03 }}
+                  >
+                    {skill.name}
+                  </motion.span>
+                );
+              })}
+            </AnimatePresence>
+          </motion.div>
 
-        {/* Skills grid */}
-        <motion.div
-          className="grid md:grid-cols-2 gap-6"
-          layout
-        >
-          {filtered.map((skill, idx) => (
-            <motion.div
-              key={`${skill.category}-${skill.name}`}
-              className="pro-card p-5 hover:border-[#0A66C2]/20"
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: idx * 0.04, duration: 0.4 }}
-              whileHover={{ y: -2 }}
-            >
-              <SkillBar skill={skill} />
-            </motion.div>
-          ))}
+          {/* Legend */}
+          <div className="mt-6 pt-5 border-t border-[#F3F2EF] flex flex-wrap gap-x-5 gap-y-2">
+            {Object.entries(categoryConfig).map(([cat, cfg]) => (
+              <span key={cat} className="flex items-center gap-1.5 text-xs text-[#666666]">
+                <span className="w-2.5 h-2.5 rounded-full flex-shrink-0" style={{ background: cfg.color }} />
+                {cat}
+              </span>
+            ))}
+          </div>
         </motion.div>
       </div>
     </section>

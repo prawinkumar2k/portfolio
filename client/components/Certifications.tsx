@@ -164,29 +164,19 @@ export default function Certifications() {
   const [selected, setSelected] = useState<Certificate | null>(null);
 
   return (
-    <section id="certifications" className="section-wrapper bg-white">
-      <div className="max-w-7xl mx-auto">
-        {/* Section header */}
+    <section id="certifications" className="py-3 px-4 sm:px-6">
+      <div className="max-w-4xl mx-auto">
         <motion.div
-          className="text-center mb-12"
+          className="bg-white rounded-xl border border-[#E0DED9] shadow-sm p-6 sm:p-8"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <div className="section-label">
-            <span className="w-8 h-px bg-[#0A66C2]" />
-            Credentials
-            <span className="w-8 h-px bg-[#0A66C2]" />
+          <div className="flex items-center justify-between mb-5">
+            <h2 className="text-xl font-bold text-[#000000e6]">Licenses &amp; Certifications</h2>
+            <span className="text-xs text-[#666666] font-medium">{certificates.length} credentials</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-[#0F172A] mb-4 font-display">
-            Certifications &amp; <span className="text-gradient-blue">Awards</span>
-          </h2>
-          <p className="text-[#64748B] max-w-2xl mx-auto">
-            Click any certificate to view in full — {certificates.length} credentials earned
-          </p>
-          <div className="section-divider" />
-        </motion.div>
 
         {/* Certificates grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
@@ -234,6 +224,7 @@ export default function Certifications() {
             );
           })}
         </div>
+        </motion.div>
       </div>
 
       {/* Lightbox Modal */}

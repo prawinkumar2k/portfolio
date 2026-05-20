@@ -11,16 +11,20 @@ import Footer from "@/components/Footer";
 
 export default function Index() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen" style={{ background: "#F3F2EF" }}>
       <Navbar />
+      {/* Hero spans full width then centers to LinkedIn profile width */}
       <Hero />
-      <About />
-      <Skills />
-      <Projects />
-      <Experience />
-      <Achievements />
-      <Certifications />
-      <Contact />
+      {/* LinkedIn-style feed: centered card column, pb for footer */}
+      <div className="pb-8">
+        <About />
+        <Skills />
+        <Experience />
+        <Projects />
+        <Achievements />
+        <Certifications />
+        <Contact />
+      </div>
       <Footer />
     </div>
   );

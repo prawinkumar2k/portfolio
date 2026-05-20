@@ -24,7 +24,7 @@ const projects: Project[] = [
     description:
       "Sole developer and infrastructure owner for tnpoly.in — Tamil Nadu's official polytechnic admissions portal serving 50,000+ students statewide. Personally handled bare-metal server procurement, Ubuntu Linux OS installation, ufw firewall configuration, Nginx reverse-proxy setup, SSL/TLS certificate binding, and application deployment from scratch. Built the full-stack application with 3-role RBAC, CCAvenue payment gateway, and server-side filtering logic — eliminating all paper-based workflows. Currently the sole person responsible for ongoing server maintenance, uptime monitoring, patches, and all infrastructure operations.",
     image: "/dote_pro.png",
-    tags: ["React 18 + Vite", "Node.js", "Express.js", "MySQL", "Sequelize ORM", "CCAvenue", "Ubuntu Server", "Linux", "Nginx", "ufw Firewall", "SSL/TLS"],
+    tags: ["React 18 + Vite", "Node.js", "Express.js", "MySQL", "Sequelize ORM", "CCAvenue", "Ubuntu Server", "Nginx", "PM2", "ufw Firewall", "SSL/Certbot"],
     category: ["Government", "Full Stack", "DevOps"],
     demoLink: "https://tnpoly.in",
     liveUrl: "tnpoly.in",
@@ -36,12 +36,12 @@ const projects: Project[] = [
     id: 2,
     title: "Campus ERP System — Nandha Engineering College",
     description:
-      "Collaborated as part of a development team to build and deploy a full-scale institutional ERP for Nandha Engineering College, managing 1,000+ student records, attendance tracking, academic reporting, and administrative workflows. Contributed to frontend UI, backend PHP logic, and MySQL database design across the full project lifecycle.",
+      "Full-scale institutional ERP managing 1,000+ student records, attendance tracking, and academic reporting — delivered under a certified 1-year commercial engagement. Built backend PHP logic, SQL Server database design, and Bootstrap frontend across the full project lifecycle.",
     image: "/sf_cms.png",
-    tags: ["HTML", "CSS", "JavaScript", "PHP", "MySQL"],
-    category: ["ERP", "Team Project"],
+    tags: ["PHP", "SQL Server", "JavaScript", "Bootstrap", "HTML5", "CSS3"],
+    category: ["ERP", "Full Stack"],
     demoLink: "https://searchfirst.in",
-    highlight: "1K+ Students",
+    highlight: "1K+ Students · Live",
     gradient: "from-[#6366F1] to-[#818CF8]",
   },
   {
@@ -254,79 +254,58 @@ export default function Projects() {
     : projects;
 
   return (
-    <section id="projects" className="section-wrapper bg-white">
-      <div className="max-w-7xl mx-auto">
-        {/* Section header */}
+    <section id="projects" className="py-3 px-4 sm:px-6">
+      <div className="max-w-4xl mx-auto">
         <motion.div
-          className="text-center mb-12"
+          className="bg-white rounded-xl border border-[#E0DED9] shadow-sm p-6 sm:p-8"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <div className="section-label">
-            <span className="w-8 h-px bg-[#0A66C2]" />
-            Featured Work
-            <span className="w-8 h-px bg-[#0A66C2]" />
+          <div className="flex items-center justify-between mb-5">
+            <h2 className="text-xl font-bold text-[#000000e6]">Featured Projects</h2>
+            <span className="text-xs text-[#666666] font-medium">{filteredProjects.length} projects</span>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-[#0F172A] mb-4 font-display">
-            Featured <span className="text-gradient-blue">Projects</span>
-          </h2>
-          <p className="text-[#64748B] max-w-2xl mx-auto">
-            Real-world production projects showcasing expertise in MERN, ERP, Healthcare, and IoT systems
-          </p>
-          <div className="section-divider" />
-        </motion.div>
 
-        {/* Filter buttons */}
-        <motion.div
-          className="flex flex-wrap justify-center gap-2 mb-10"
-          initial={{ opacity: 0, y: 15 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2 }}
-        >
-          <button
-            onClick={() => setActiveFilter(null)}
-            className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
-              activeFilter === null
-                ? "text-white shadow-blue"
-                : "bg-white text-[#64748B] border border-[#E2E8F0] hover:border-[#0A66C2]/30 hover:text-[#0A66C2]"
-            }`}
-            style={activeFilter === null ? { background: "linear-gradient(135deg, #0A66C2, #6366F1)" } : {}}
-            id="project-filter-all"
+          {/* Filter buttons */}
+          <motion.div
+            className="flex flex-wrap gap-2 mb-6"
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
           >
-            All Projects
-          </button>
-          {allCategories.map((category) => (
             <button
-              key={category}
-              onClick={() => setActiveFilter(category)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
-                activeFilter === category
-                  ? "text-white shadow-blue"
-                  : "bg-white text-[#64748B] border border-[#E2E8F0] hover:border-[#0A66C2]/30 hover:text-[#0A66C2]"
-              }`}
-              style={
-                activeFilter === category
-                  ? { background: "linear-gradient(135deg, #0A66C2, #6366F1)" }
-                  : {}
-              }
-              id={`project-filter-${category.toLowerCase().replace(/\s/g, "-")}`}
+              onClick={() => setActiveFilter(null)}
+              className="px-3 py-1.5 rounded-full text-xs font-semibold transition-all duration-200"
+              style={activeFilter === null ? { background: "#0A66C2", color: "#fff", border: "1.5px solid #0A66C2" } : { background: "white", color: "#666666", border: "1.5px solid #E0DED9" }}
+              id="project-filter-all"
             >
-              {category}
+              All
             </button>
-          ))}
-        </motion.div>
-
-        {/* Projects grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <AnimatePresence mode="popLayout">
-            {filteredProjects.map((project, idx) => (
-              <ProjectCard key={project.id} project={project} index={idx} />
+            {allCategories.map((category) => (
+              <button
+                key={category}
+                onClick={() => setActiveFilter(category)}
+                className="px-3 py-1.5 rounded-full text-xs font-semibold transition-all duration-200"
+                style={activeFilter === category ? { background: "#0A66C2", color: "#fff", border: "1.5px solid #0A66C2" } : { background: "white", color: "#666666", border: "1.5px solid #E0DED9" }}
+                id={`project-filter-${category.toLowerCase().replace(/\s/g, "-")}`}
+              >
+                {category}
+              </button>
             ))}
-          </AnimatePresence>
-        </div>
+          </motion.div>
+
+          {/* Projects grid */}
+          <div className="grid md:grid-cols-2 gap-4">
+            <AnimatePresence mode="popLayout">
+              {filteredProjects.map((project, idx) => (
+                <ProjectCard key={project.id} project={project} index={idx} />
+              ))}
+            </AnimatePresence>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

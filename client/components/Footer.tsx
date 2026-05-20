@@ -117,8 +117,8 @@ export default function Footer() {
               <p className="text-[#94A3B8] text-sm">Erode, Tamil Nadu, India</p>
             </div>
             <a
-              href="/PrawinKumar.N_Resume.pdf"
-              download
+              href="/PrawinKumar-Resume.pdf"
+              download="PrawinKumar-Resume.pdf"
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white transition-all duration-200"
               style={{ background: "linear-gradient(135deg, #0A66C2, #0956A8)", boxShadow: "0 4px 14px rgba(10,102,194,0.3)" }}
             >

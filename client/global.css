@@ -62,7 +62,8 @@
   }
 
   body {
-    @apply bg-[#F8FAFC] text-[#0F172A];
+    background: #F3F2EF;
+    color: #000000;
     font-family: "Inter", "Poppins", system-ui, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -112,7 +113,16 @@
 
   /* Professional card */
   .pro-card {
-    @apply bg-white rounded-2xl border border-[#E2E8F0] shadow-sm hover:shadow-lg transition-all duration-300;
+    @apply bg-white rounded-xl border border-[#E0DED9] shadow-sm hover:shadow-md transition-all duration-300;
+  }
+
+  /* LinkedIn section card wrapper */
+  .li-section {
+    @apply py-3 px-4 sm:px-6;
+  }
+
+  .li-card {
+    @apply bg-white rounded-xl border border-[#E0DED9] shadow-sm;
   }
 
   /* Badge pill */
@@ -156,9 +166,9 @@
     transform: translateY(-1px);
   }
 
-  /* Section wrapper */
+  /* Section wrapper — legacy large-padding sections */
   .section-wrapper {
-    @apply py-20 px-4 sm:px-6 lg:px-8;
+    @apply py-3 px-4 sm:px-6;
   }
 
   /* Section heading */
