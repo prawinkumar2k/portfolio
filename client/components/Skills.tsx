@@ -56,12 +56,12 @@ const skills: Skill[] = [
 const categories = ["All", "Languages", "Frontend", "Backend", "Database", "DevOps", "Tools"];
 
 const categoryConfig: Record<string, { color: string; bg: string; border: string }> = {
-  Languages: { color: "#0B1D3A", bg: "#EEF2F7", border: "#B0C4D8" },
-  Frontend:  { color: "#00B8A9", bg: "#E8F7F5", border: "#B2EBE8" },
-  Backend:   { color: "#1A3560", bg: "#E6EBF5", border: "#A0B0CC" },
-  Database:  { color: "#007A73", bg: "#E0F5F3", border: "#9DDAD6" },
-  DevOps:    { color: "#D4871A", bg: "#FEF3E2", border: "#F5C88A" },
-  Tools:     { color: "#3D5A80", bg: "#EEF2F7", border: "#B0C4D8" },
+  Languages: { color: "#1E1B4B", bg: "#F0EEF9", border: "#C4BEED" },
+  Frontend:  { color: "#7C3AED", bg: "#F3EFFE", border: "#DDD6FE" },
+  Backend:   { color: "#312E81", bg: "#EDE9FA", border: "#A0B0CC" },
+  Database:  { color: "#5B21B6", bg: "#EDE9FA", border: "#C4B5FD" },
+  DevOps:    { color: "#D97706", bg: "#FFFBEB", border: "#FDE68A" },
+  Tools:     { color: "#4C4484", bg: "#F0EEF9", border: "#C4BEED" },
 };
 
 export default function Skills() {
@@ -72,13 +72,13 @@ export default function Skills() {
     <section id="skills" className="py-3 px-4 sm:px-6">
       <div className="max-w-4xl mx-auto">
         <motion.div
-          className="bg-white rounded-xl border border-[#D8E3EE] shadow-sm p-6 sm:p-8"
+          className="bg-white rounded-xl border border-[#E2DFF5] shadow-sm p-6 sm:p-8"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-xl font-bold text-[#0B1D3A] mb-5">Skills &amp; Expertise</h2>
+          <h2 className="text-xl font-bold text-[#1E1B4B] mb-5">Skills &amp; Expertise</h2>
 
           {/* Category tabs */}
           <div className="flex flex-wrap gap-2 mb-6">
@@ -89,8 +89,8 @@ export default function Skills() {
                 className="px-3 py-1.5 rounded-full text-xs font-semibold transition-all duration-200"
                 style={
                   active === cat
-                    ? { background: "#00B8A9", color: "#fff", border: "1.5px solid #00B8A9" }
-                    : { background: "white", color: "#666666", border: "1.5px solid #D8E3EE" }
+                    ? { background: "#7C3AED", color: "#fff", border: "1.5px solid #7C3AED" }
+                    : { background: "white", color: "#666666", border: "1.5px solid #E2DFF5" }
                 }
                 whileHover={{ scale: 1.04 }}
                 whileTap={{ scale: 0.96 }}
@@ -126,7 +126,7 @@ export default function Skills() {
           </motion.div>
 
           {/* Legend */}
-          <div className="mt-6 pt-5 border-t border-[#EEF2F7] flex flex-wrap gap-x-5 gap-y-2">
+          <div className="mt-6 pt-5 border-t border-[#F0EEF9] flex flex-wrap gap-x-5 gap-y-2">
             {Object.entries(categoryConfig).map(([cat, cfg]) => (
               <span key={cat} className="flex items-center gap-1.5 text-xs text-[#666666]">
                 <span className="w-2.5 h-2.5 rounded-full flex-shrink-0" style={{ background: cfg.color }} />
@@ -139,5 +139,6 @@ export default function Skills() {
     </section>
   );
 }
+
 
 

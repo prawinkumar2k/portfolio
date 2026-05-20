@@ -33,9 +33,9 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-[#0B1D3A] text-white relative">
+    <footer className="bg-[#1E1B4B] text-white relative">
       {/* Top gradient accent */}
-      <div className="h-0.5 w-full" style={{ background: "linear-gradient(90deg, #00B8A9, #1A3560, #00D4C8)" }} />
+      <div className="h-0.5 w-full" style={{ background: "linear-gradient(90deg, #7C3AED, #312E81, #A855F7)" }} />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
         <div className="grid md:grid-cols-3 gap-12 mb-12">
@@ -49,13 +49,13 @@ export default function Footer() {
             <div className="flex items-center gap-2.5 mb-4">
               <div
                 className="w-9 h-9 rounded-xl flex items-center justify-center text-white text-sm font-bold"
-                style={{ background: "linear-gradient(135deg, #00B8A9, #1A3560)" }}
+                style={{ background: "linear-gradient(135deg, #7C3AED, #312E81)" }}
               >
                 PK
               </div>
               <span className="font-bold text-white text-lg">Prawin Kumar N</span>
             </div>
-            <p className="text-[#8FA5C0] text-sm leading-relaxed mb-4">
+            <p className="text-[#9E99C7] text-sm leading-relaxed mb-4">
               Full Stack Developer specializing in MERN Stack, ERP Systems, and AI-powered solutions.
               Building scalable applications that make a difference.
             </p>
@@ -67,7 +67,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className="w-9 h-9 rounded-lg bg-white/5 hover:bg-[#00B8A9] flex items-center justify-center text-[#8FA5C0] hover:text-white transition-all duration-200 border border-white/10"
+                  className="w-9 h-9 rounded-lg bg-white/5 hover:bg-[#7C3AED] flex items-center justify-center text-[#9E99C7] hover:text-white transition-all duration-200 border border-white/10"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -93,7 +93,7 @@ export default function Footer() {
                   key={link.label}
                   href={link.href}
                   onClick={handleScroll}
-                  className="text-[#8FA5C0] hover:text-[#00D4C8] text-sm transition-colors duration-200"
+                  className="text-[#9E99C7] hover:text-[#A855F7] text-sm transition-colors duration-200"
                 >
                   {link.label}
                 </a>
@@ -112,15 +112,15 @@ export default function Footer() {
               Get In Touch
             </h4>
             <div className="space-y-2 mb-6">
-              <p className="text-[#8FA5C0] text-sm">prawinkumar2k4@gmail.com</p>
-              <p className="text-[#8FA5C0] text-sm">+91 8807054164</p>
-              <p className="text-[#8FA5C0] text-sm">Erode, Tamil Nadu, India</p>
+              <p className="text-[#9E99C7] text-sm">prawinkumar2k4@gmail.com</p>
+              <p className="text-[#9E99C7] text-sm">+91 8807054164</p>
+              <p className="text-[#9E99C7] text-sm">Erode, Tamil Nadu, India</p>
             </div>
             <a
               href="/PrawinKumar-Resume.pdf"
               download="PrawinKumar-Resume.pdf"
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white transition-all duration-200"
-              style={{ background: "linear-gradient(135deg, #00B8A9, #009E91)", boxShadow: "0 4px 14px rgba(0,184,169,0.3)" }}
+              style={{ background: "linear-gradient(135deg, #7C3AED, #6D28D9)", boxShadow: "0 4px 14px rgba(124,58,237,0.3)" }}
             >
               Download Resume
             </a>
@@ -132,17 +132,17 @@ export default function Footer() {
 
         {/* Bottom */}
         <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-[#6B88A8] text-sm">
+          <p className="text-[#7B75B0] text-sm">
             © {currentYear} Prawin Kumar N. All rights reserved.
           </p>
-          <p className="text-[#6B88A8] text-sm">
+          <p className="text-[#7B75B0] text-sm">
             Built with React · Tailwind CSS · Framer Motion
           </p>
 
           {/* Back to top */}
           <motion.button
             onClick={scrollToTop}
-            className="flex items-center gap-2 px-4 py-2 rounded-xl bg-white/5 hover:bg-[#00B8A9] text-[#8FA5C0] hover:text-white text-sm transition-all duration-200 border border-white/10"
+            className="flex items-center gap-2 px-4 py-2 rounded-xl bg-white/5 hover:bg-[#7C3AED] text-[#9E99C7] hover:text-white text-sm transition-all duration-200 border border-white/10"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.97 }}
             aria-label="Back to top"
@@ -156,5 +156,6 @@ export default function Footer() {
     </footer>
   );
 }
+
 
 

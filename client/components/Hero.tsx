@@ -33,7 +33,7 @@ export default function Hero() {
   return (
     <section id="home" className="pt-16">
       {/* Cover banner */}
-      <div className="relative h-48 sm:h-60 overflow-hidden" style={{ background: "linear-gradient(135deg, #060F1E 0%, #0B1D3A 35%, #00B8A9 75%, #009E91 100%)" }}>
+      <div className="relative h-48 sm:h-60 overflow-hidden" style={{ background: "linear-gradient(135deg, #0F0B2D 0%, #1E1B4B 40%, #4C1D95 75%, #7C3AED 100%)" }}>
         {/* Geometric pattern */}
         <svg className="absolute inset-0 w-full h-full opacity-[0.10]" viewBox="0 0 1200 280" preserveAspectRatio="none">
           <line x1="0" y1="140" x2="1200" y2="40" stroke="white" strokeWidth="1" />
@@ -43,13 +43,13 @@ export default function Hero() {
           <circle cx="1120" cy="200" r="80" fill="none" stroke="white" strokeWidth="1" />
           <circle cx="600" cy="30" r="30" fill="none" stroke="white" strokeWidth="0.8" />
         </svg>
-        <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse at 15% 60%, rgba(245,166,35,0.18) 0%, transparent 55%), radial-gradient(ellipse at 85% 20%, rgba(0,184,169,0.20) 0%, transparent 50%)" }} />
+        <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse at 10% 65%, rgba(245,158,11,0.22) 0%, transparent 50%), radial-gradient(ellipse at 88% 15%, rgba(168,85,247,0.25) 0%, transparent 50%)" }} />
       </div>
 
       {/* Profile card */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
         <motion.div
-          className="bg-white rounded-b-2xl border border-t-0 border-[#D8E3EE] shadow-sm"
+          className="bg-white rounded-b-2xl border border-t-0 border-[#E2DFF5] shadow-sm"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -59,7 +59,7 @@ export default function Hero() {
             {/* Avatar */}
             <motion.div
               className="relative -mt-14 sm:-mt-16 w-28 h-28 sm:w-36 sm:h-36 rounded-full border-4 border-white shadow-xl flex-shrink-0"
-              style={{ background: "linear-gradient(135deg, #0B1D3A 0%, #00B8A9 100%)" }}
+              style={{ background: "linear-gradient(135deg, #1E1B4B 0%, #7C3AED 100%)" }}
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ delay: 0.15, duration: 0.5, type: "spring", bounce: 0.3 }}
@@ -83,7 +83,7 @@ export default function Hero() {
                 download="PrawinKumar-Resume.pdf"
                 id="hero-download-resume"
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold text-white transition-all duration-200 hover:opacity-90"
-                style={{ background: "linear-gradient(135deg, #00B8A9 0%, #009E91 100%)", boxShadow: "0 2px 8px rgba(0,184,169,0.35)" }}
+                style={{ background: "linear-gradient(135deg, #7C3AED 0%, #6D28D9 100%)", boxShadow: "0 2px 8px rgba(124,58,237,0.35)" }}
               >
                 <Download className="w-3.5 h-3.5" />
                 Download CV
@@ -92,7 +92,7 @@ export default function Hero() {
                 href="#contact"
                 id="hero-hire-me"
                 onClick={(e) => { e.preventDefault(); document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" }); }}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold text-[#00B8A9] border border-[#00B8A9] bg-white hover:bg-[#E8F7F5] transition-all duration-200"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold text-[#7C3AED] border border-[#7C3AED] bg-white hover:bg-[#F3EFFE] transition-all duration-200"
               >
                 <Briefcase className="w-3.5 h-3.5" />
                 Hire Me
@@ -108,7 +108,7 @@ export default function Hero() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className="w-9 h-9 rounded-full bg-white border border-[#D8E3EE] flex items-center justify-center text-[#666] hover:text-[#00B8A9] hover:border-[#00B8A9] transition-all duration-200"
+                  className="w-9 h-9 rounded-full bg-white border border-[#E2DFF5] flex items-center justify-center text-[#666] hover:text-[#7C3AED] hover:border-[#7C3AED] transition-all duration-200"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -125,35 +125,35 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.5 }}
           >
-            <h1 className="text-2xl sm:text-3xl font-bold text-[#0B1D3A] mb-1 font-display">
+            <h1 className="text-2xl sm:text-3xl font-bold text-[#1E1B4B] mb-1 font-display">
               Prawin Kumar N
             </h1>
 
             {/* Typewriter headline */}
-            <p className="text-base sm:text-lg font-semibold text-[#00B8A9] mb-3 flex items-center gap-1">
+            <p className="text-base sm:text-lg font-semibold text-[#7C3AED] mb-3 flex items-center gap-1">
               <span>{displayed}</span>
-              <span className="w-0.5 h-5 bg-[#00B8A9] animate-pulse inline-block align-middle" />
+              <span className="w-0.5 h-5 bg-[#7C3AED] animate-pulse inline-block align-middle" />
             </p>
 
             {/* Meta row */}
             <div className="flex flex-wrap gap-x-5 gap-y-1.5 text-sm text-[#666666] mb-4">
               <span className="flex items-center gap-1.5">
-                <MapPin className="w-3.5 h-3.5 text-[#00B8A9]" />
+                <MapPin className="w-3.5 h-3.5 text-[#7C3AED]" />
                 Erode, Tamil Nadu, India
               </span>
               <span className="flex items-center gap-1.5">
-                <Building2 className="w-3.5 h-3.5 text-[#00B8A9]" />
+                <Building2 className="w-3.5 h-3.5 text-[#7C3AED]" />
                 SearchFirst Technologies
               </span>
               <span className="flex items-center gap-1.5">
-                <GraduationCap className="w-3.5 h-3.5 text-[#00B8A9]" />
+                <GraduationCap className="w-3.5 h-3.5 text-[#7C3AED]" />
                 B.Tech AI &amp; DS · Nandha Engineering College
               </span>
             </div>
 
             {/* Social-proof badges */}
             <div className="flex flex-wrap items-center gap-2">
-              <span className="flex items-center gap-1.5 text-sm font-semibold text-[#00B8A9] cursor-pointer hover:underline">
+              <span className="flex items-center gap-1.5 text-sm font-semibold text-[#7C3AED] cursor-pointer hover:underline">
                 <Users className="w-4 h-4" />
                 500+ connections
               </span>
@@ -164,7 +164,7 @@ export default function Hero() {
               <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold" style={{ background: "#FEF9C3", color: "#854D0E", border: "1px solid #FDE68A" }}>
                 🏆 3x Award Winner
               </span>
-              <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold" style={{ background: "#E8F7F5", color: "#00B8A9", border: "1px solid #B2EBE8" }}>
+              <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold" style={{ background: "#F3EFFE", color: "#7C3AED", border: "1px solid #DDD6FE" }}>
                 50K+ Users Served
               </span>
             </div>
@@ -179,14 +179,14 @@ export default function Hero() {
           transition={{ delay: 0.55, duration: 0.5 }}
         >
           {[
-            { num: "50K+", label: "Users Served",      color: "#00B8A9" },
-            { num: "10+",  label: "Projects Shipped",  color: "#0B1D3A" },
-            { num: "20+",  label: "Certifications",    color: "#007A73" },
-            { num: "3+",   label: "Awards Won",        color: "#F5A623" },
+            { num: "50K+", label: "Users Served",      color: "#7C3AED" },
+            { num: "10+",  label: "Projects Shipped",  color: "#1E1B4B" },
+            { num: "20+",  label: "Certifications",    color: "#5B21B6" },
+            { num: "3+",   label: "Awards Won",        color: "#F59E0B" },
           ].map(({ num, label, color }, i) => (
             <motion.div
               key={label}
-              className="bg-white rounded-xl border border-[#D8E3EE] p-4 text-center hover:shadow-md transition-all duration-200 cursor-default"
+              className="bg-white rounded-xl border border-[#E2DFF5] p-4 text-center hover:shadow-md transition-all duration-200 cursor-default"
               whileHover={{ y: -2 }}
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -201,5 +201,6 @@ export default function Hero() {
     </section>
   );
 }
+
 
 

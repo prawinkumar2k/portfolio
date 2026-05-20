@@ -8,7 +8,7 @@ const achievements = [
     description:
       "Winner at Innovation Day 2024 for the IoT Smart Attendance System automating tracking for 200+ students.",
     icon: Trophy,
-    color: "#F5A623",
+    color: "#F59E0B",
     bg: "#FFFBEB",
     border: "#FDE68A",
     badge: "🏆 1st Place",
@@ -19,9 +19,9 @@ const achievements = [
     description:
       "Personally procured, configured, and operate the bare-metal production server for Tamil Nadu's official tnpoly.in portal — including OS install, firewall, IIS, SSL, and sole ongoing maintenance (zero critical outages).",
     icon: Star,
-    color: "#00B8A9",
-    bg: "#E8F7F5",
-    border: "#B2EBE8",
+    color: "#7C3AED",
+    bg: "#F3EFFE",
+    border: "#DDD6FE",
     badge: "🖥️ Infra Owner",
   },
   {
@@ -30,7 +30,7 @@ const achievements = [
     description:
       "Designed and deployed a full-scale institutional ERP for Nandha Engineering College managing 1,000+ records.",
     icon: Award,
-    color: "#007A73",
+    color: "#5B21B6",
     bg: "#ECFDF5",
     border: "#A7F3D0",
     badge: "Production Live",
@@ -41,7 +41,7 @@ const achievements = [
     description:
       "Engineered multi-role RBAC and backend flow logic, reducing client manual administrative workload by ~60%.",
     icon: Zap,
-    color: "#1A3560",
+    color: "#312E81",
     bg: "#F5F3FF",
     border: "#DDD6FE",
     badge: "Impact",
@@ -61,14 +61,14 @@ export default function Achievements() {
           transition={{ duration: 0.6 }}
         >
           <div className="section-label">
-            <span className="w-8 h-px bg-[#00B8A9]" />
+            <span className="w-8 h-px bg-[#7C3AED]" />
             Highlights
-            <span className="w-8 h-px bg-[#00B8A9]" />
+            <span className="w-8 h-px bg-[#7C3AED]" />
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-[#0B1D3A] mb-4 font-display">
+          <h2 className="text-4xl md:text-5xl font-bold text-[#1E1B4B] mb-4 font-display">
             Achievements &amp; <span className="text-gradient-blue">Impact</span>
           </h2>
-          <p className="text-[#6B88A8] max-w-2xl mx-auto">
+          <p className="text-[#7B75B0] max-w-2xl mx-auto">
             Key milestones and measurable results from real-world projects
           </p>
           <div className="section-divider" />
@@ -84,7 +84,7 @@ export default function Achievements() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1, duration: 0.6 }}
-              whileHover={{ y: -5, boxShadow: "0 16px 32px rgba(0,184,169,0.1)" }}
+              whileHover={{ y: -5, boxShadow: "0 16px 32px rgba(124,58,237,0.1)" }}
             >
               {/* Subtle top accent */}
               <div
@@ -110,8 +110,8 @@ export default function Achievements() {
                 <Icon className="w-6 h-6" />
               </div>
 
-              <h3 className="text-base font-bold text-[#0B1D3A] mb-2">{title}</h3>
-              <p className="text-[#6B88A8] text-sm leading-relaxed">{description}</p>
+              <h3 className="text-base font-bold text-[#1E1B4B] mb-2">{title}</h3>
+              <p className="text-[#7B75B0] text-sm leading-relaxed">{description}</p>
             </motion.div>
           ))}
         </div>
@@ -119,5 +119,6 @@ export default function Achievements() {
     </section>
   );
 }
+
 
 

@@ -21,7 +21,7 @@ const timeline: TimelineItem[] = [
     title: "Software Developer · ERP & Infrastructure Engineer",
     company: "SearchFirst Technologies",
     companyInitials: "SF",
-    companyColor: "#00B8A9",
+    companyColor: "#7C3AED",
     period: "Jan 2025 – Present",
     location: "Erode, Tamil Nadu · Full-time",
     type: "work",
@@ -39,7 +39,7 @@ const timeline: TimelineItem[] = [
     title: "Web Developer Intern",
     company: "SHENai Private Software Solutions",
     companyInitials: "SH",
-    companyColor: "#1A3560",
+    companyColor: "#312E81",
     period: "Jun 2024 – Dec 2024",
     location: "Erode, Tamil Nadu · Internship",
     type: "work",
@@ -54,7 +54,7 @@ const timeline: TimelineItem[] = [
     title: "Campus ERP Developer — Commercial Engagement",
     company: "Nandha Engineering College",
     companyInitials: "NE",
-    companyColor: "#007A73",
+    companyColor: "#5B21B6",
     period: "Jan 2025 – Present",
     location: "Erode, Tamil Nadu · 1-Year Commercial Contract",
     type: "work",
@@ -69,7 +69,7 @@ const timeline: TimelineItem[] = [
     title: "Full Stack Developer (Personal & Open Source)",
     company: "GitHub · Remote",
     companyInitials: "GH",
-    companyColor: "#0B1D3A",
+    companyColor: "#1E1B4B",
     period: "2023 – Present",
     location: "Remote · Freelance",
     type: "project",
@@ -83,7 +83,7 @@ const timeline: TimelineItem[] = [
     title: "B.Tech – Artificial Intelligence & Data Science",
     company: "Nandha Engineering College · Anna University",
     companyInitials: "AU",
-    companyColor: "#F5A623",
+    companyColor: "#F59E0B",
     period: "2023 – Present",
     location: "Erode, Tamil Nadu",
     type: "education",
@@ -107,15 +107,15 @@ export default function Experience() {
     <section id="experience" className="py-3 px-4 sm:px-6">
       <div className="max-w-4xl mx-auto">
         <motion.div
-          className="bg-white rounded-xl border border-[#D8E3EE] shadow-sm p-6 sm:p-8"
+          className="bg-white rounded-xl border border-[#E2DFF5] shadow-sm p-6 sm:p-8"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-xl font-bold text-[#0B1D3A] mb-6">Experience &amp; Education</h2>
+          <h2 className="text-xl font-bold text-[#1E1B4B] mb-6">Experience &amp; Education</h2>
 
-          <div className="space-y-0 divide-y divide-[#EEF2F7]">
+          <div className="space-y-0 divide-y divide-[#F0EEF9]">
             {timeline.map((item, idx) => {
               const Icon = typeIcon[item.type];
               return (
@@ -142,8 +142,8 @@ export default function Experience() {
                     {/* Header */}
                     <div className="flex flex-wrap items-start justify-between gap-2 mb-1.5">
                       <div>
-                        <h3 className="text-[15px] font-semibold text-[#0B1D3A] leading-snug">{item.title}</h3>
-                        <p className="text-sm font-medium text-[#00B8A9] mt-0.5">{item.company}</p>
+                        <h3 className="text-[15px] font-semibold text-[#1E1B4B] leading-snug">{item.title}</h3>
+                        <p className="text-sm font-medium text-[#7C3AED] mt-0.5">{item.company}</p>
                         <p className="text-xs text-[#666666] mt-0.5 flex items-center gap-2">
                           <span>{item.period}</span>
                           <span className="text-[#ccc]">·</span>
@@ -153,9 +153,9 @@ export default function Experience() {
                       <span
                         className="px-2.5 py-1 rounded-full text-[10px] font-semibold flex items-center gap-1 flex-shrink-0 mt-0.5"
                         style={{
-                          background: item.type === "work" ? "#E8F7F5" : item.type === "education" ? "#FFFBEB" : "#F5F3FF",
-                          color: item.type === "work" ? "#00B8A9" : item.type === "education" ? "#F5A623" : "#1A3560",
-                          border: item.type === "work" ? "1px solid #B2EBE8" : item.type === "education" ? "1px solid #FDE68A" : "1px solid #C7D2FE",
+                          background: item.type === "work" ? "#F3EFFE" : item.type === "education" ? "#FFFBEB" : "#F5F3FF",
+                          color: item.type === "work" ? "#7C3AED" : item.type === "education" ? "#F59E0B" : "#312E81",
+                          border: item.type === "work" ? "1px solid #DDD6FE" : item.type === "education" ? "1px solid #FDE68A" : "1px solid #C7D2FE",
                         }}
                       >
                         <Icon className="w-3 h-3" />
@@ -166,8 +166,8 @@ export default function Experience() {
                     {/* Bullets */}
                     <ul className="space-y-1.5 mb-3">
                       {item.bullets.map((bullet, bIdx) => (
-                        <li key={bIdx} className="flex gap-2 text-sm text-[#3D5A80] leading-relaxed">
-                          <span className="w-1 h-1 rounded-full bg-[#00B8A9] mt-2 flex-shrink-0" />
+                        <li key={bIdx} className="flex gap-2 text-sm text-[#4C4484] leading-relaxed">
+                          <span className="w-1 h-1 rounded-full bg-[#7C3AED] mt-2 flex-shrink-0" />
                           {bullet}
                         </li>
                       ))}
@@ -179,7 +179,7 @@ export default function Experience() {
                         <span
                           key={tech}
                           className="px-2.5 py-1 rounded-full text-[11px] font-medium"
-                          style={{ background: "#EEF2F7", color: "#444444", border: "1px solid #D8E3EE" }}
+                          style={{ background: "#F0EEF9", color: "#444444", border: "1px solid #E2DFF5" }}
                         >
                           {tech}
                         </span>
@@ -195,5 +195,6 @@ export default function Experience() {
     </section>
   );
 }
+
 
 
