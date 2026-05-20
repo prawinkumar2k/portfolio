@@ -47,21 +47,21 @@ export default function Contact() {
       label: "Email",
       value: "prawinkumar2k4@gmail.com",
       href: "mailto:prawinkumar2k4@gmail.com",
-      color: "#0A66C2",
+      color: "#00B8A9",
     },
     {
       Icon: Phone,
       label: "Phone",
       value: "+91 8807054164",
       href: "tel:+918807054164",
-      color: "#059669",
+      color: "#007A73",
     },
     {
       Icon: MapPin,
       label: "Location",
       value: "Erode, Tamil Nadu, India",
       href: "#",
-      color: "#6366F1",
+      color: "#1A3560",
     },
   ];
 
@@ -90,13 +90,13 @@ export default function Contact() {
     <section id="contact" className="py-3 px-4 sm:px-6">
       <div className="max-w-4xl mx-auto">
         <motion.div
-          className="bg-white rounded-xl border border-[#E0DED9] shadow-sm p-6 sm:p-8"
+          className="bg-white rounded-xl border border-[#D8E3EE] shadow-sm p-6 sm:p-8"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-xl font-bold text-[#000000e6] mb-2">Let's Work Together</h2>
+          <h2 className="text-xl font-bold text-[#0B1D3A] mb-2">Let's Work Together</h2>
           <p className="text-sm text-[#666666] mb-6">Have a project in mind or want to collaborate? I'd love to hear from you.</p>
 
           <div className="grid lg:grid-cols-2 gap-8">
@@ -110,7 +110,7 @@ export default function Contact() {
           >
             {/* Info card */}
             <div className="pro-card p-8">
-              <h3 className="text-xl font-bold text-[#0F172A] mb-6">Contact Information</h3>
+              <h3 className="text-xl font-bold text-[#0B1D3A] mb-6">Contact Information</h3>
               <div className="space-y-4">
                 {contactInfo.map(({ Icon, label, value, href, color }, idx) => (
                   <motion.a
@@ -129,8 +129,8 @@ export default function Contact() {
                       <Icon className="w-5 h-5" />
                     </div>
                     <div>
-                      <p className="text-xs font-semibold text-[#94A3B8] uppercase tracking-wide">{label}</p>
-                      <p className="text-sm font-medium text-[#0F172A] group-hover:text-[#0A66C2] transition-colors">
+                      <p className="text-xs font-semibold text-[#8FA5C0] uppercase tracking-wide">{label}</p>
+                      <p className="text-sm font-medium text-[#0B1D3A] group-hover:text-[#00B8A9] transition-colors">
                         {value}
                       </p>
                     </div>
@@ -141,7 +141,7 @@ export default function Contact() {
 
             {/* Social card */}
             <div className="pro-card p-6">
-              <h4 className="text-sm font-semibold text-[#64748B] uppercase tracking-wide mb-4">
+              <h4 className="text-sm font-semibold text-[#6B88A8] uppercase tracking-wide mb-4">
                 Connect with me
               </h4>
               <div className="space-y-3">
@@ -151,15 +151,15 @@ export default function Contact() {
                     href={href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-3 p-3 rounded-xl hover:bg-[#F8FAFC] border border-transparent hover:border-[#E2E8F0] transition-all duration-200 group"
+                    className="flex items-center gap-3 p-3 rounded-xl hover:bg-[#F8FAFC] border border-transparent hover:border-[#D8E3EE] transition-all duration-200 group"
                     whileHover={{ x: 4 }}
                   >
-                    <div className="w-9 h-9 rounded-lg bg-[#F1F5F9] flex items-center justify-center text-[#475569] group-hover:bg-[#0A66C2] group-hover:text-white transition-colors">
+                    <div className="w-9 h-9 rounded-lg bg-[#F0F4F9] flex items-center justify-center text-[#3D5A80] group-hover:bg-[#00B8A9] group-hover:text-white transition-colors">
                       <Icon className="w-4 h-4" />
                     </div>
                     <div>
-                      <div className="text-sm font-semibold text-[#0F172A]">{label}</div>
-                      <div className="text-xs text-[#64748B]">{handle}</div>
+                      <div className="text-sm font-semibold text-[#0B1D3A]">{label}</div>
+                      <div className="text-xs text-[#6B88A8]">{handle}</div>
                     </div>
                   </motion.a>
                 ))}
@@ -175,10 +175,10 @@ export default function Contact() {
             transition={{ duration: 0.7 }}
           >
             <div className="pro-card p-8">
-              <h3 className="text-xl font-bold text-[#0F172A] mb-6">Send a Message</h3>
+              <h3 className="text-xl font-bold text-[#0B1D3A] mb-6">Send a Message</h3>
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-[#475569] mb-1.5" htmlFor="contact-name">
+                  <label className="block text-sm font-medium text-[#3D5A80] mb-1.5" htmlFor="contact-name">
                     Your Name
                   </label>
                   <input
@@ -192,7 +192,7 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-[#475569] mb-1.5" htmlFor="contact-email">
+                  <label className="block text-sm font-medium text-[#3D5A80] mb-1.5" htmlFor="contact-email">
                     Email Address
                   </label>
                   <input
@@ -206,7 +206,7 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-[#475569] mb-1.5" htmlFor="contact-subject">
+                  <label className="block text-sm font-medium text-[#3D5A80] mb-1.5" htmlFor="contact-subject">
                     Subject
                   </label>
                   <input
@@ -219,7 +219,7 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-[#475569] mb-1.5" htmlFor="contact-message">
+                  <label className="block text-sm font-medium text-[#3D5A80] mb-1.5" htmlFor="contact-message">
                     Message
                   </label>
                   <textarea
@@ -276,3 +276,5 @@ export default function Contact() {
     </section>
   );
 }
+
+

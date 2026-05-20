@@ -154,10 +154,10 @@ const certificates: Certificate[] = [
 ];
 
 const typeConfig = {
-  internship: { label: "Internship", color: "#0A66C2", bg: "#EFF6FF" },
-  achievement: { label: "Achievement", color: "#D97706", bg: "#FFFBEB" },
-  online: { label: "Online Course", color: "#059669", bg: "#ECFDF5" },
-  hackathon: { label: "Hackathon", color: "#6366F1", bg: "#F5F3FF" },
+  internship: { label: "Internship", color: "#00B8A9", bg: "#E8F7F5" },
+  achievement: { label: "Achievement", color: "#F5A623", bg: "#FFFBEB" },
+  online: { label: "Online Course", color: "#007A73", bg: "#ECFDF5" },
+  hackathon: { label: "Hackathon", color: "#1A3560", bg: "#F5F3FF" },
 };
 
 export default function Certifications() {
@@ -167,14 +167,14 @@ export default function Certifications() {
     <section id="certifications" className="py-3 px-4 sm:px-6">
       <div className="max-w-4xl mx-auto">
         <motion.div
-          className="bg-white rounded-xl border border-[#E0DED9] shadow-sm p-6 sm:p-8"
+          className="bg-white rounded-xl border border-[#D8E3EE] shadow-sm p-6 sm:p-8"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
           <div className="flex items-center justify-between mb-5">
-            <h2 className="text-xl font-bold text-[#000000e6]">Licenses &amp; Certifications</h2>
+            <h2 className="text-xl font-bold text-[#0B1D3A]">Licenses &amp; Certifications</h2>
             <span className="text-xs text-[#666666] font-medium">{certificates.length} credentials</span>
           </div>
 
@@ -185,12 +185,12 @@ export default function Certifications() {
             return (
               <motion.div
                 key={cert.id}
-                className="pro-card overflow-hidden cursor-pointer group hover:border-[#0A66C2]/20"
+                className="pro-card overflow-hidden cursor-pointer group hover:border-[#00B8A9]/20"
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true, amount: 0.1 }}
                 transition={{ delay: (idx % 10) * 0.04, duration: 0.4 }}
-                whileHover={{ y: -4, boxShadow: "0 12px 28px rgba(10,102,194,0.12)" }}
+                whileHover={{ y: -4, boxShadow: "0 12px 28px rgba(0,184,169,0.12)" }}
                 onClick={() => setSelected(cert)}
                 id={`cert-card-${cert.id}`}
               >
@@ -202,8 +202,8 @@ export default function Certifications() {
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-400"
                   />
                   {/* Hover overlay */}
-                  <div className="absolute inset-0 bg-[#0A66C2]/0 group-hover:bg-[#0A66C2]/10 transition-colors duration-200 flex items-center justify-center">
-                    <ZoomIn className="w-7 h-7 text-[#0A66C2] opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+                  <div className="absolute inset-0 bg-[#00B8A9]/0 group-hover:bg-[#00B8A9]/10 transition-colors duration-200 flex items-center justify-center">
+                    <ZoomIn className="w-7 h-7 text-[#00B8A9] opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
                   </div>
                 </div>
 
@@ -215,10 +215,10 @@ export default function Certifications() {
                   >
                     {config.label}
                   </span>
-                  <h3 className="text-xs font-semibold text-[#0F172A] leading-snug line-clamp-2 mb-1">
+                  <h3 className="text-xs font-semibold text-[#0B1D3A] leading-snug line-clamp-2 mb-1">
                     {cert.title}
                   </h3>
-                  <p className="text-[#64748B] text-[10px] line-clamp-1">{cert.issuer}</p>
+                  <p className="text-[#6B88A8] text-[10px] line-clamp-1">{cert.issuer}</p>
                 </div>
               </motion.div>
             );
@@ -238,11 +238,11 @@ export default function Certifications() {
             onClick={() => setSelected(null)}
           >
             {/* Backdrop */}
-            <div className="absolute inset-0 bg-[#0F172A]/60 backdrop-blur-sm" />
+            <div className="absolute inset-0 bg-[#0B1D3A]/60 backdrop-blur-sm" />
 
             {/* Modal */}
             <motion.div
-              className="relative z-10 max-w-2xl w-full bg-white rounded-2xl overflow-hidden shadow-2xl border border-[#E2E8F0]"
+              className="relative z-10 max-w-2xl w-full bg-white rounded-2xl overflow-hidden shadow-2xl border border-[#D8E3EE]"
               initial={{ scale: 0.9, opacity: 0, y: 20 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.9, opacity: 0, y: 20 }}
@@ -251,7 +251,7 @@ export default function Certifications() {
             >
               {/* Close button */}
               <button
-                className="absolute top-3 right-3 z-20 p-2 bg-white/90 hover:bg-[#FEF2F2] rounded-full border border-[#E2E8F0] text-[#64748B] hover:text-red-500 transition-colors shadow-sm"
+                className="absolute top-3 right-3 z-20 p-2 bg-white/90 hover:bg-[#FEF2F2] rounded-full border border-[#D8E3EE] text-[#6B88A8] hover:text-red-500 transition-colors shadow-sm"
                 onClick={() => setSelected(null)}
                 aria-label="Close"
               >
@@ -266,7 +266,7 @@ export default function Certifications() {
               />
 
               {/* Caption */}
-              <div className="p-5 border-t border-[#F1F5F9]">
+              <div className="p-5 border-t border-[#F0F4F9]">
                 <div className="flex items-start gap-3">
                   <div
                     className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0"
@@ -278,8 +278,8 @@ export default function Certifications() {
                     <Award className="w-4 h-4" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-[#0F172A] text-base mb-0.5">{selected.title}</h3>
-                    <p className="text-[#0A66C2] text-sm">{selected.issuer}</p>
+                    <h3 className="font-bold text-[#0B1D3A] text-base mb-0.5">{selected.title}</h3>
+                    <p className="text-[#00B8A9] text-sm">{selected.issuer}</p>
                   </div>
                 </div>
               </div>
@@ -290,3 +290,5 @@ export default function Certifications() {
     </section>
   );
 }
+
+

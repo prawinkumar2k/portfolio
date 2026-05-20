@@ -30,7 +30,7 @@ const projects: Project[] = [
     liveUrl: "tnpoly.in",
     highlight: "50K+ Users · Live",
     infraBadge: "🖥️ Physical Server Owner",
-    gradient: "from-[#0A66C2] to-[#38BDF8]",
+    gradient: "from-[#00B8A9] to-[#00D4C8]",
   },
   {
     id: 2,
@@ -42,7 +42,7 @@ const projects: Project[] = [
     category: ["ERP", "Full Stack"],
     demoLink: "https://searchfirst.in",
     highlight: "1K+ Students · Live",
-    gradient: "from-[#6366F1] to-[#818CF8]",
+    gradient: "from-[#1A3560] to-[#818CF8]",
   },
   {
     id: 3,
@@ -54,7 +54,7 @@ const projects: Project[] = [
     category: ["Healthcare", "Full Stack"],
     demoLink: "http://72.61.229.231",
     highlight: "70% Efficiency Gain",
-    gradient: "from-[#059669] to-[#34D399]",
+    gradient: "from-[#007A73] to-[#34D399]",
   },
   {
     id: 4,
@@ -92,7 +92,7 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.95 }}
       transition={{ delay: index * 0.08, duration: 0.5 }}
-      whileHover={{ y: -6, boxShadow: "0 20px 40px rgba(10, 102, 194, 0.12)" }}
+      whileHover={{ y: -6, boxShadow: "0 20px 40px rgba(0, 184, 169, 0.12)" }}
       onHoverStart={() => setHovered(true)}
       onHoverEnd={() => setHovered(false)}
       layout
@@ -126,7 +126,7 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
               href={project.githubLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 px-3 py-1.5 bg-white/90 rounded-lg text-xs font-semibold text-[#0F172A] hover:bg-white transition-colors"
+              className="flex items-center gap-1.5 px-3 py-1.5 bg-white/90 rounded-lg text-xs font-semibold text-[#0B1D3A] hover:bg-white transition-colors"
               onClick={(e) => e.stopPropagation()}
             >
               <Github className="w-3.5 h-3.5" />
@@ -138,7 +138,7 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
               href={project.demoLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 px-3 py-1.5 bg-[#0A66C2] rounded-lg text-xs font-semibold text-white hover:bg-[#0956A8] transition-colors"
+              className="flex items-center gap-1.5 px-3 py-1.5 bg-[#00B8A9] rounded-lg text-xs font-semibold text-white hover:bg-[#009E91] transition-colors"
               onClick={(e) => e.stopPropagation()}
             >
               <ExternalLink className="w-3.5 h-3.5" />
@@ -151,7 +151,7 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
         {project.highlight && (
           <div
             className="absolute top-3 right-3 px-2.5 py-1 rounded-full text-white text-xs font-semibold shadow-sm"
-            style={{ background: "linear-gradient(135deg, #0A66C2, #6366F1)" }}
+            style={{ background: "linear-gradient(135deg, #00B8A9, #1A3560)" }}
           >
             {project.highlight}
           </div>
@@ -179,7 +179,7 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
           ))}
         </div>
 
-        <h3 className="text-base font-bold text-[#0F172A] mb-2 leading-snug group-hover:text-[#0A66C2] transition-colors">
+        <h3 className="text-base font-bold text-[#0B1D3A] mb-2 leading-snug group-hover:text-[#00B8A9] transition-colors">
           {project.title}
         </h3>
 
@@ -201,7 +201,7 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
           </a>
         )}
 
-        <p className="text-[#64748B] text-sm leading-relaxed flex-1 mb-4">
+        <p className="text-[#6B88A8] text-sm leading-relaxed flex-1 mb-4">
           {project.description}
         </p>
 
@@ -215,13 +215,13 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
         </div>
 
         {/* Action links */}
-        <div className="flex gap-2 mt-auto pt-3 border-t border-[#F1F5F9]">
+        <div className="flex gap-2 mt-auto pt-3 border-t border-[#F0F4F9]">
           {project.githubLink && (
             <a
               href={project.githubLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 text-xs font-medium text-[#64748B] hover:text-[#0A66C2] transition-colors"
+              className="flex items-center gap-1.5 text-xs font-medium text-[#6B88A8] hover:text-[#00B8A9] transition-colors"
             >
               <Github className="w-3.5 h-3.5" />
               Source Code
@@ -232,7 +232,7 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
               href={project.demoLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 text-xs font-medium text-[#0A66C2] hover:text-[#0956A8] ml-auto transition-colors"
+              className="flex items-center gap-1.5 text-xs font-medium text-[#00B8A9] hover:text-[#009E91] ml-auto transition-colors"
             >
               {project.liveUrl ? (
                 <><Globe className="w-3.5 h-3.5" /> {project.liveUrl}</>
@@ -257,14 +257,14 @@ export default function Projects() {
     <section id="projects" className="py-3 px-4 sm:px-6">
       <div className="max-w-4xl mx-auto">
         <motion.div
-          className="bg-white rounded-xl border border-[#E0DED9] shadow-sm p-6 sm:p-8"
+          className="bg-white rounded-xl border border-[#D8E3EE] shadow-sm p-6 sm:p-8"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
           <div className="flex items-center justify-between mb-5">
-            <h2 className="text-xl font-bold text-[#000000e6]">Featured Projects</h2>
+            <h2 className="text-xl font-bold text-[#0B1D3A]">Featured Projects</h2>
             <span className="text-xs text-[#666666] font-medium">{filteredProjects.length} projects</span>
           </div>
 
@@ -279,7 +279,7 @@ export default function Projects() {
             <button
               onClick={() => setActiveFilter(null)}
               className="px-3 py-1.5 rounded-full text-xs font-semibold transition-all duration-200"
-              style={activeFilter === null ? { background: "#0A66C2", color: "#fff", border: "1.5px solid #0A66C2" } : { background: "white", color: "#666666", border: "1.5px solid #E0DED9" }}
+              style={activeFilter === null ? { background: "#00B8A9", color: "#fff", border: "1.5px solid #00B8A9" } : { background: "white", color: "#666666", border: "1.5px solid #D8E3EE" }}
               id="project-filter-all"
             >
               All
@@ -289,7 +289,7 @@ export default function Projects() {
                 key={category}
                 onClick={() => setActiveFilter(category)}
                 className="px-3 py-1.5 rounded-full text-xs font-semibold transition-all duration-200"
-                style={activeFilter === category ? { background: "#0A66C2", color: "#fff", border: "1.5px solid #0A66C2" } : { background: "white", color: "#666666", border: "1.5px solid #E0DED9" }}
+                style={activeFilter === category ? { background: "#00B8A9", color: "#fff", border: "1.5px solid #00B8A9" } : { background: "white", color: "#666666", border: "1.5px solid #D8E3EE" }}
                 id={`project-filter-${category.toLowerCase().replace(/\s/g, "-")}`}
               >
                 {category}
@@ -310,3 +310,5 @@ export default function Projects() {
     </section>
   );
 }
+
+

@@ -3,10 +3,10 @@ import { useEffect, useRef, useState } from "react";
 import { CheckCircle2, Code2, Server, Trophy, Users } from "lucide-react";
 
 const stats = [
-  { number: 10, suffix: "+", label: "Projects Completed", icon: Code2, color: "#0A66C2" },
-  { number: 25, suffix: "+", label: "Technologies", icon: Server, color: "#4338CA" },
-  { number: 50, suffix: "K+", label: "Users Served", icon: Users, color: "#059669" },
-  { number: 3, suffix: "+", label: "Awards Won", icon: Trophy, color: "#D97706" },
+  { number: 10, suffix: "+",  label: "Projects Completed", icon: Code2,  color: "#00B8A9" },
+  { number: 25, suffix: "+",  label: "Technologies",       icon: Server, color: "#0B1D3A" },
+  { number: 50, suffix: "K+", label: "Users Served",       icon: Users,  color: "#007A73" },
+  { number: 3,  suffix: "+",  label: "Awards Won",         icon: Trophy, color: "#F5A623" },
 ];
 
 const expertise = [
@@ -51,34 +51,34 @@ export default function About() {
 
         {/* About card — LinkedIn style */}
         <motion.div
-          className="bg-white rounded-xl border border-[#E0DED9] shadow-sm p-6 sm:p-8"
+          className="bg-white rounded-xl border border-[#D8E3EE] shadow-sm p-6 sm:p-8"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-xl font-bold text-[#000000e6] mb-4">About</h2>
-          <div className="space-y-3 text-[#000000b3] text-sm leading-relaxed">
+          <h2 className="text-xl font-bold text-[#0B1D3A] mb-4">About</h2>
+          <div className="space-y-3 text-[#3D5A80] text-sm leading-relaxed">
             <p>
-              Results-driven <strong className="text-[#000000e6]">Full Stack Developer</strong> with 1+ year of professional experience
+              Results-driven <strong className="text-[#0B1D3A]">Full Stack Developer</strong> with 1+ year of professional experience
               building and deploying scalable web applications across government, healthcare, ERP, and SaaS domains.
               Proven track record delivering production-grade systems serving 50,000+ end users with 99.9% uptime.
             </p>
             <p>
-              Deep expertise in <strong className="text-[#000000e6]">MERN Stack (MongoDB, Express.js, React.js, Node.js)</strong>,
+              Deep expertise in <strong className="text-[#0B1D3A]">MERN Stack (MongoDB, Express.js, React.js, Node.js)</strong>,
               REST API development, MySQL/MongoDB optimization, and end-to-end server infrastructure management —
               including bare-metal server setup from OS installation, PM2, Nginx, and Certbot SSL to production.
             </p>
             <p>
-              Currently the <strong className="text-[#000000e6]">sole developer and infrastructure owner</strong> for
+              Currently the <strong className="text-[#0B1D3A]">sole developer and infrastructure owner</strong> for
               tnpoly.in — Tamil Nadu Government's official polytechnic admissions portal serving 50,000+ students.
               Adept at multi-role RBAC systems, third-party payment gateway integrations, and Agile delivery.
             </p>
           </div>
 
           {/* Key expertise chips */}
-          <div className="mt-5 pt-5 border-t border-[#F3F2EF]">
-            <h4 className="text-sm font-semibold text-[#000000e6] mb-3">Key Expertise</h4>
+          <div className="mt-5 pt-5 border-t border-[#D8E3EE]">
+            <h4 className="text-sm font-semibold text-[#0B1D3A] mb-3">Key Expertise</h4>
             <div className="flex flex-wrap gap-2">
               {expertise.map((item, idx) => (
                 <motion.span
@@ -88,7 +88,7 @@ export default function About() {
                   viewport={{ once: true }}
                   transition={{ delay: idx * 0.06, duration: 0.3 }}
                   className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium"
-                  style={{ background: "#EFF6FF", color: "#0A66C2", border: "1px solid #BFDBFE" }}
+                  style={{ background: "#E8F7F5", color: "#00B8A9", border: "1px solid #B2EBE8" }}
                 >
                   <CheckCircle2 className="w-3 h-3 flex-shrink-0" />
                   {item}
@@ -103,14 +103,14 @@ export default function About() {
               href="/PrawinKumar-Resume.pdf"
               download="PrawinKumar-Resume.pdf"
               className="inline-flex items-center gap-2 px-5 py-2 rounded-full text-sm font-semibold text-white transition-all duration-200 hover:opacity-90"
-              style={{ background: "linear-gradient(135deg, #0A66C2, #0956A8)", boxShadow: "0 2px 8px rgba(10,102,194,0.3)" }}
+              style={{ background: "linear-gradient(135deg, #00B8A9, #009E91)", boxShadow: "0 2px 8px rgba(0,184,169,0.3)" }}
             >
               Download Resume
             </a>
             <a
               href="#contact"
               onClick={(e) => { e.preventDefault(); document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" }); }}
-              className="inline-flex items-center gap-2 px-5 py-2 rounded-full text-sm font-semibold text-[#0A66C2] border border-[#0A66C2] bg-white hover:bg-[#EFF6FF] transition-all duration-200"
+              className="inline-flex items-center gap-2 px-5 py-2 rounded-full text-sm font-semibold text-[#00B8A9] border border-[#00B8A9] bg-white hover:bg-[#E8F7F5] transition-all duration-200"
             >
               Get In Touch
             </a>
@@ -122,7 +122,7 @@ export default function About() {
           {stats.map(({ number, suffix, label, icon: Icon, color }, idx) => (
             <motion.div
               key={label}
-              className="bg-white rounded-xl border border-[#E0DED9] shadow-sm p-5 text-center hover:shadow-md transition-all duration-200"
+              className="bg-white rounded-xl border border-[#D8E3EE] shadow-sm p-5 text-center hover:shadow-md transition-all duration-200"
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -144,3 +144,5 @@ export default function About() {
     </section>
   );
 }
+
+
