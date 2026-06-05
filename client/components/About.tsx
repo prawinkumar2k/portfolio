@@ -60,19 +60,14 @@ export default function About() {
           <h2 className="text-xl font-bold text-[#1E1B4B] mb-4">About</h2>
           <div className="space-y-3 text-[#4C4484] text-sm leading-relaxed">
             <p>
-              Results-driven <strong className="text-[#1E1B4B]">Full Stack Developer</strong> with 1+ year of professional experience
-              building and deploying scalable web applications across government, healthcare, ERP, and SaaS domains.
-              Proven track record delivering production-grade systems serving 50,000+ end users with 99.9% uptime.
+              Results-driven <strong className="text-[#1E1B4B]">Software Development Engineer and Full Stack Developer</strong> with 2 years of hands-on experience building and deploying production-grade government portals, enterprise ERP systems, SaaS platforms, and IoT solutions — while pursuing B.Tech in AI and Data Science.
             </p>
             <p>
-              Deep expertise in <strong className="text-[#1E1B4B]">MERN Stack (MongoDB, Express.js, React.js, Node.js)</strong>,
-              REST API development, MySQL/MongoDB optimization, and end-to-end server infrastructure management —
-              including bare-metal server setup from OS installation, PM2, Nginx, and Certbot SSL to production.
+              Co-founded a registered Private Limited IT company (<strong className="text-[#1E1B4B]">SearchFirst Technologies Pvt. Ltd.</strong>) and secured external investor funding to build SaaS ERP products for the education sector. Led the ERP development team at Nandha Engineering College and is a 3x Innovation Day 1st Prize winner.
             </p>
             <p>
               Currently the <strong className="text-[#1E1B4B]">sole developer and infrastructure owner</strong> for
-              tnpoly.in — Tamil Nadu Government's official polytechnic admissions portal serving 50,000+ students.
-              Adept at multi-role RBAC systems, third-party payment gateway integrations, and Agile delivery.
+              tnpoly.in — Tamil Nadu Government's official polytechnic admissions portal serving 50,000+ students with 99.9% uptime — with complete ownership from architecture to live server deployment.
             </p>
           </div>
 

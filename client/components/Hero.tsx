@@ -3,10 +3,10 @@ import { Github, Linkedin, Mail, Download, MapPin, Building2, GraduationCap, Che
 import { useEffect, useState } from "react";
 
 const roles = [
+  "Software Development Engineer",
   "Full Stack Developer",
-  "MERN Stack Expert",
-  "ERP Systems Developer",
-  "AI Enthusiast",
+  "MERN Stack Engineer",
+  "Backend Engineer",
 ];
 
 export default function Hero() {
@@ -139,11 +139,11 @@ export default function Hero() {
             <div className="flex flex-wrap gap-x-5 gap-y-1.5 text-sm text-[#666666] mb-4">
               <span className="flex items-center gap-1.5">
                 <MapPin className="w-3.5 h-3.5 text-[#7C3AED]" />
-                Erode, Tamil Nadu, India
+                Perundurai, Tamil Nadu, India
               </span>
               <span className="flex items-center gap-1.5">
                 <Building2 className="w-3.5 h-3.5 text-[#7C3AED]" />
-                SearchFirst Technologies
+                SearchFirst Technologies Pvt. Ltd.
               </span>
               <span className="flex items-center gap-1.5">
                 <GraduationCap className="w-3.5 h-3.5 text-[#7C3AED]" />
@@ -166,6 +166,9 @@ export default function Hero() {
               </span>
               <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold" style={{ background: "#F3EFFE", color: "#7C3AED", border: "1px solid #DDD6FE" }}>
                 50K+ Users Served
+              </span>
+              <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold" style={{ background: "#F0FDFA", color: "#0D9488", border: "1px solid #CCFBF1" }}>
+                🚀 Co-Founded (Funded)
               </span>
             </div>
           </motion.div>

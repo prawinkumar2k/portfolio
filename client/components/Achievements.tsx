@@ -4,47 +4,47 @@ import { Trophy, Star, Award, Zap } from "lucide-react";
 const achievements = [
   {
     id: 1,
-    title: "Unique Project Award",
+    title: "3x Innovation Day 1st Prize",
     description:
-      "Winner at Innovation Day 2024 for the IoT Smart Attendance System automating tracking for 200+ students.",
+      "Won 1st Prize consecutively (2024 & 2025) for AI-Based Autonomous Smart Car, and 1st Prize (2025) for Image Caption Project at Nandha Innovation Day.",
     icon: Trophy,
     color: "#F59E0B",
     bg: "#FFFBEB",
     border: "#FDE68A",
-    badge: "🏆 1st Place",
+    badge: "🏆 3x 1st Place",
   },
   {
     id: 2,
-    title: "Physical Server Owner — tnpoly.in",
+    title: "Co-Founded Registered IT Firm",
     description:
-      "Personally procured, configured, and operate the bare-metal production server for Tamil Nadu's official tnpoly.in portal — including OS install, firewall, IIS, SSL, and sole ongoing maintenance (zero critical outages).",
+      "Co-founded SearchFirst Technologies Pvt. Ltd. and secured INR 25 Lakh in external investor funding for education-sector SaaS ERP product development.",
     icon: Star,
     color: "#7C3AED",
     bg: "#F3EFFE",
     border: "#DDD6FE",
-    badge: "🖥️ Infra Owner",
+    badge: "🚀 Co-Founder",
   },
   {
     id: 3,
-    title: "Certified Campus ERP",
+    title: "Tamil Nadu Govt DOTE Portal",
     description:
-      "Designed and deployed a full-scale institutional ERP for Nandha Engineering College managing 1,000+ records.",
+      "Successfully delivered the tnpoly.in admissions portal serving 50,000+ students statewide with 99.9% uptime and full infrastructure ownership.",
     icon: Award,
     color: "#5B21B6",
     bg: "#ECFDF5",
     border: "#A7F3D0",
-    badge: "Production Live",
+    badge: "🖥️ 50K+ Users Served",
   },
   {
     id: 4,
-    title: "60% Efficiency Gain",
+    title: "60% Admin Workload Reduction",
     description:
-      "Engineered multi-role RBAC and backend flow logic, reducing client manual administrative workload by ~60%.",
+      "Engineered 3-tier RBAC and server-side gender/hostel filtering, cutting administrative workloads by 60% and eliminating manual screening.",
     icon: Zap,
     color: "#312E81",
     bg: "#F5F3FF",
     border: "#DDD6FE",
-    badge: "Impact",
+    badge: "⚡ 60% Workload Cut",
   },
 ];
 
