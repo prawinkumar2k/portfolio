@@ -287,17 +287,17 @@ export default function Hero() {
                 <Users className="w-4 h-4" />
                 500+ connections
               </span>
-              <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold" style={{ background: "#DCFCE7", color: "#15803D", border: "1px solid #BBF7D0" }}>
+              <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold" style={{ background: "rgba(21, 128, 61, 0.15)", color: "#4ADE80", border: "1px solid rgba(21, 128, 61, 0.3)" }}>
                 <CheckCircle className="w-3 h-3" />
                 Open to Work
               </span>
-              <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold" style={{ background: "#FEF3C7", color: "#78350F", border: "1px solid #FDE68A" }}>
+              <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold" style={{ background: "rgba(245, 158, 11, 0.15)", color: "#FDE68A", border: "1px solid rgba(245, 158, 11, 0.3)" }}>
                 🏆 3x Award Winner
               </span>
-              <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold" style={{ background: "#F3EFFE", color: "#7C3AED", border: "1px solid #DDD6FE" }}>
+              <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold" style={{ background: "rgba(124, 58, 237, 0.15)", color: "#C4BEED", border: "1px solid rgba(124, 58, 237, 0.3)" }}>
                 50K+ Users Served
               </span>
-              <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold" style={{ background: "#F0FDFA", color: "#0D9488", border: "1px solid #CCFBF1" }}>
+              <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold" style={{ background: "rgba(13, 148, 136, 0.15)", color: "#5EEAD4", border: "1px solid rgba(13, 148, 136, 0.3)" }}>
                 🚀 Co-Founded (Funded)
               </span>
             </div>
