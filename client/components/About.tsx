@@ -51,29 +51,29 @@ export default function About() {
 
         {/* About card — LinkedIn style */}
         <motion.div
-          className="bg-white rounded-xl border border-[#E2DFF5] shadow-sm p-6 sm:p-8"
+          className="bg-[#150B2D]/60 backdrop-blur-2xl border-white/10 rounded-xl border border-white/10 shadow-sm p-6 sm:p-8"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-xl font-bold text-[#1E1B4B] mb-4">About</h2>
-          <div className="space-y-3 text-[#4C4484] text-sm leading-relaxed">
+          <h2 className="text-xl font-bold text-white mb-4">About</h2>
+          <div className="space-y-3 text-[#C4BEED] text-sm leading-relaxed">
             <p>
-              Results-driven <strong className="text-[#1E1B4B]">Software Development Engineer and Full Stack Developer</strong> with 2 years of hands-on experience building and deploying production-grade government portals, enterprise ERP systems, SaaS platforms, and IoT solutions — while pursuing B.Tech in AI and Data Science.
+              Results-driven <strong className="text-white">Software Development Engineer and Full Stack Developer</strong> with 2 years of hands-on experience building and deploying production-grade government portals, enterprise ERP systems, SaaS platforms, and IoT solutions — while pursuing B.Tech in AI and Data Science.
             </p>
             <p>
-              Co-founded a registered Private Limited IT company (<strong className="text-[#1E1B4B]">SearchFirst Technologies Pvt. Ltd.</strong>) and secured external investor funding to build SaaS ERP products for the education sector. Led the ERP development team at Nandha Engineering College and is a 3x Innovation Day 1st Prize winner.
+              Co-founded a registered Private Limited IT company (<strong className="text-white">SearchFirst Technologies Pvt. Ltd.</strong>) and secured external investor funding to build SaaS ERP products for the education sector. Led the ERP development team at Nandha Engineering College and is a 3x Innovation Day 1st Prize winner.
             </p>
             <p>
-              Currently the <strong className="text-[#1E1B4B]">sole developer and infrastructure owner</strong> for
+              Currently the <strong className="text-white">sole developer and infrastructure owner</strong> for
               tnpoly.in — Tamil Nadu Government's official polytechnic admissions portal serving 50,000+ students with 99.9% uptime — with complete ownership from architecture to live server deployment.
             </p>
           </div>
 
           {/* Key expertise chips */}
-          <div className="mt-5 pt-5 border-t border-[#E2DFF5]">
-            <h4 className="text-sm font-semibold text-[#1E1B4B] mb-3">Key Expertise</h4>
+          <div className="mt-5 pt-5 border-t border-white/10">
+            <h4 className="text-sm font-semibold text-white mb-3">Key Expertise</h4>
             <div className="flex flex-wrap gap-2">
               {expertise.map((item, idx) => (
                 <motion.span
@@ -83,7 +83,7 @@ export default function About() {
                   viewport={{ once: true }}
                   transition={{ delay: idx * 0.06, duration: 0.3 }}
                   className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium"
-                  style={{ background: "#F3EFFE", color: "#7C3AED", border: "1px solid #DDD6FE" }}
+                  style={{ background: "rgba(255,255,255,0.05)", color: "#E2DFF5", border: "1px solid rgba(255,255,255,0.15)" }}
                 >
                   <CheckCircle2 className="w-3 h-3 flex-shrink-0" />
                   {item}
@@ -105,7 +105,7 @@ export default function About() {
             <a
               href="#contact"
               onClick={(e) => { e.preventDefault(); document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" }); }}
-              className="inline-flex items-center gap-2 px-5 py-2 rounded-full text-sm font-semibold text-[#7C3AED] border border-[#7C3AED] bg-white hover:bg-[#F3EFFE] transition-all duration-200"
+              className="inline-flex items-center gap-2 px-5 py-2 rounded-full text-sm font-semibold text-[#7C3AED] border border-[#7C3AED] bg-[#150B2D]/60 backdrop-blur-2xl border-white/10 hover:bg-[#F3EFFE] transition-all duration-200"
             >
               Get In Touch
             </a>
@@ -117,7 +117,7 @@ export default function About() {
           {stats.map(({ number, suffix, label, icon: Icon, color }, idx) => (
             <motion.div
               key={label}
-              className="bg-white rounded-xl border border-[#E2DFF5] shadow-sm p-5 text-center hover:shadow-md transition-all duration-200"
+              className="bg-[#150B2D]/60 backdrop-blur-2xl border-white/10 rounded-xl border border-white/10 shadow-sm p-5 text-center hover:shadow-md transition-all duration-200"
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -130,7 +130,7 @@ export default function About() {
               <div className="text-2xl font-bold font-display mb-0.5" style={{ color }}>
                 <CountUp number={number} suffix={suffix} />
               </div>
-              <p className="text-xs text-[#666666] font-medium leading-tight">{label}</p>
+              <p className="text-xs text-[#C4BEED] font-medium leading-tight">{label}</p>
             </motion.div>
           ))}
         </div>

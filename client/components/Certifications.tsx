@@ -167,15 +167,15 @@ export default function Certifications() {
     <section id="certifications" className="py-3 px-4 sm:px-6">
       <div className="max-w-4xl mx-auto">
         <motion.div
-          className="bg-white rounded-xl border border-[#E2DFF5] shadow-sm p-6 sm:p-8"
+          className="bg-[#150B2D]/60 backdrop-blur-2xl border-white/10 rounded-xl border border-white/10 shadow-sm p-6 sm:p-8"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
           <div className="flex items-center justify-between mb-5">
-            <h2 className="text-xl font-bold text-[#1E1B4B]">Licenses &amp; Certifications</h2>
-            <span className="text-xs text-[#666666] font-medium">{certificates.length} credentials</span>
+            <h2 className="text-xl font-bold text-white">Licenses &amp; Certifications</h2>
+            <span className="text-xs text-[#C4BEED] font-medium">{certificates.length} credentials</span>
           </div>
 
         {/* Certificates grid */}
@@ -215,10 +215,10 @@ export default function Certifications() {
                   >
                     {config.label}
                   </span>
-                  <h3 className="text-xs font-semibold text-[#1E1B4B] leading-snug line-clamp-2 mb-1">
+                  <h3 className="text-xs font-semibold text-white leading-snug line-clamp-2 mb-1">
                     {cert.title}
                   </h3>
-                  <p className="text-[#7B75B0] text-[10px] line-clamp-1">{cert.issuer}</p>
+                  <p className="text-[#C4BEED] text-[10px] line-clamp-1">{cert.issuer}</p>
                 </div>
               </motion.div>
             );
@@ -242,7 +242,7 @@ export default function Certifications() {
 
             {/* Modal */}
             <motion.div
-              className="relative z-10 max-w-2xl w-full bg-white rounded-2xl overflow-hidden shadow-2xl border border-[#E2DFF5]"
+              className="relative z-10 max-w-2xl w-full bg-[#150B2D]/60 backdrop-blur-2xl border-white/10 rounded-2xl overflow-hidden shadow-2xl border border-white/10"
               initial={{ scale: 0.9, opacity: 0, y: 20 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.9, opacity: 0, y: 20 }}
@@ -251,7 +251,7 @@ export default function Certifications() {
             >
               {/* Close button */}
               <button
-                className="absolute top-3 right-3 z-20 p-2 bg-white/90 hover:bg-[#FEF2F2] rounded-full border border-[#E2DFF5] text-[#7B75B0] hover:text-red-500 transition-colors shadow-sm"
+                className="absolute top-3 right-3 z-20 p-2 bg-[#150B2D]/60 backdrop-blur-2xl border-white/10/90 hover:bg-[#FEF2F2] rounded-full border border-white/10 text-[#4D4880] hover:text-red-500 transition-colors shadow-sm"
                 onClick={() => setSelected(null)}
                 aria-label="Close"
               >
@@ -278,7 +278,7 @@ export default function Certifications() {
                     <Award className="w-4 h-4" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-[#1E1B4B] text-base mb-0.5">{selected.title}</h3>
+                    <h3 className="font-bold text-white text-base mb-0.5">{selected.title}</h3>
                     <p className="text-[#7C3AED] text-sm">{selected.issuer}</p>
                   </div>
                 </div>

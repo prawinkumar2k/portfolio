@@ -78,7 +78,7 @@ export default function Navbar() {
               >
                 PK
               </div>
-              <span className="font-semibold text-[#1E1B4B] hidden sm:block text-sm">
+              <span className="font-semibold text-white hidden sm:block text-sm">
                 Prawin Kumar N
               </span>
             </motion.a>
@@ -95,8 +95,8 @@ export default function Navbar() {
                     onClick={handleScroll}
                     className={`relative px-3 py-1.5 text-sm font-medium rounded-lg transition-all duration-200 ${
                       isActive
-                        ? "text-[#7C3AED] bg-blue-50"
-                        : "text-[#7B75B0] hover:text-[#1E1B4B] hover:bg-slate-50"
+                        ? "text-[#6D28D9] bg-violet-50"
+                        : "text-[#4D4880] hover:text-white hover:bg-slate-50"
                     }`}
                     whileHover={{ scale: 1.02 }}
                   >
@@ -104,7 +104,7 @@ export default function Navbar() {
                     {isActive && (
                       <motion.div
                         layoutId="activeNav"
-                        className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-0.5 rounded-full bg-[#7C3AED]"
+                        className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-0.5 rounded-full bg-[#6D28D9]"
                       />
                     )}
                   </motion.a>
@@ -129,7 +129,7 @@ export default function Navbar() {
             <div className="lg:hidden">
               <motion.button
                 onClick={() => setIsOpen(!isOpen)}
-                className="p-2 rounded-lg text-[#7B75B0] hover:bg-slate-100 transition-colors"
+                className="p-2 rounded-lg text-[#4D4880] hover:bg-slate-100 transition-colors"
                 whileTap={{ scale: 0.95 }}
                 aria-label="Toggle menu"
               >
@@ -141,7 +141,7 @@ export default function Navbar() {
 
         {/* Mobile Navigation */}
         <motion.div
-          className="lg:hidden overflow-hidden border-t border-[#E2DFF5] bg-white/95 backdrop-blur-xl"
+          className="lg:hidden overflow-hidden border-t border-white/10 bg-[#150B2D]/60 backdrop-blur-2xl border-white/10/95 backdrop-blur-xl"
           initial={false}
           animate={{ height: isOpen ? "auto" : 0 }}
           transition={{ duration: 0.25, ease: "easeInOut" }}
@@ -152,7 +152,7 @@ export default function Navbar() {
                 key={item.label}
                 href={item.href}
                 onClick={handleScroll}
-                className="block px-4 py-2.5 rounded-xl text-sm font-medium text-[#4C4484] hover:text-[#7C3AED] hover:bg-blue-50 transition-colors"
+                className="block px-4 py-2.5 rounded-xl text-sm font-medium text-[#3A3275] hover:text-[#6D28D9] hover:bg-violet-50 transition-colors"
                 whileHover={{ x: 4 }}
               >
                 {item.label}

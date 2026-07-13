@@ -55,7 +55,7 @@ export default function Footer() {
               </div>
               <span className="font-bold text-white text-lg">Prawin Kumar N</span>
             </div>
-            <p className="text-[#9E99C7] text-sm leading-relaxed mb-4">
+            <p className="text-[#B8B5DA] text-sm leading-relaxed mb-4">
               Full Stack Developer specializing in MERN Stack, ERP Systems, and AI-powered solutions.
               Building scalable applications that make a difference.
             </p>
@@ -67,7 +67,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className="w-9 h-9 rounded-lg bg-white/5 hover:bg-[#7C3AED] flex items-center justify-center text-[#9E99C7] hover:text-white transition-all duration-200 border border-white/10"
+                  className="w-9 h-9 rounded-lg bg-[#150B2D]/60 backdrop-blur-2xl border-white/10/5 hover:bg-[#6D28D9] flex items-center justify-center text-[#B8B5DA] hover:text-white transition-all duration-200 border border-white/10"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -93,7 +93,7 @@ export default function Footer() {
                   key={link.label}
                   href={link.href}
                   onClick={handleScroll}
-                  className="text-[#9E99C7] hover:text-[#A855F7] text-sm transition-colors duration-200"
+                  className="text-[#B8B5DA] hover:text-[#C4A8FF] text-sm transition-colors duration-200"
                 >
                   {link.label}
                 </a>
@@ -112,9 +112,9 @@ export default function Footer() {
               Get In Touch
             </h4>
             <div className="space-y-2 mb-6">
-              <p className="text-[#9E99C7] text-sm">prawinkumar2k4@gmail.com</p>
-              <p className="text-[#9E99C7] text-sm">+91 8807054164</p>
-              <p className="text-[#9E99C7] text-sm">Erode, Tamil Nadu, India</p>
+              <p className="text-[#B8B5DA] text-sm">prawinkumar2k4@gmail.com</p>
+              <p className="text-[#B8B5DA] text-sm">+91 8807054164</p>
+              <p className="text-[#B8B5DA] text-sm">Erode, Tamil Nadu, India</p>
             </div>
             <a
               href="/PrawinKumar-Resume.pdf"
@@ -128,21 +128,21 @@ export default function Footer() {
         </div>
 
         {/* Divider */}
-        <div className="h-px bg-white/10 mb-8" />
+        <div className="h-px bg-[#150B2D]/60 backdrop-blur-2xl border-white/10/10 mb-8" />
 
         {/* Bottom */}
         <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-[#7B75B0] text-sm">
+          <p className="text-[#A8A4D0] text-sm">
             © {currentYear} Prawin Kumar N. All rights reserved.
           </p>
-          <p className="text-[#7B75B0] text-sm">
+          <p className="text-[#A8A4D0] text-sm">
             Built with React · Tailwind CSS · Framer Motion
           </p>
 
           {/* Back to top */}
           <motion.button
             onClick={scrollToTop}
-            className="flex items-center gap-2 px-4 py-2 rounded-xl bg-white/5 hover:bg-[#7C3AED] text-[#9E99C7] hover:text-white text-sm transition-all duration-200 border border-white/10"
+            className="flex items-center gap-2 px-4 py-2 rounded-xl bg-[#150B2D]/60 backdrop-blur-2xl border-white/10/5 hover:bg-[#6D28D9] text-[#B8B5DA] hover:text-white text-sm transition-all duration-200 border border-white/10"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.97 }}
             aria-label="Back to top"

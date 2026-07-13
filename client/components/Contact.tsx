@@ -90,14 +90,14 @@ export default function Contact() {
     <section id="contact" className="py-3 px-4 sm:px-6">
       <div className="max-w-4xl mx-auto">
         <motion.div
-          className="bg-white rounded-xl border border-[#E2DFF5] shadow-sm p-6 sm:p-8"
+          className="bg-[#150B2D]/60 backdrop-blur-2xl border-white/10 rounded-xl border border-white/10 shadow-sm p-6 sm:p-8"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-xl font-bold text-[#1E1B4B] mb-2">Let's Work Together</h2>
-          <p className="text-sm text-[#666666] mb-6">Have a project in mind or want to collaborate? I'd love to hear from you.</p>
+          <h2 className="text-xl font-bold text-white mb-2">Let's Work Together</h2>
+          <p className="text-sm text-[#C4BEED] mb-6">Have a project in mind or want to collaborate? I'd love to hear from you.</p>
 
           <div className="grid lg:grid-cols-2 gap-8">
           {/* Left: Contact info + Social */}
@@ -110,7 +110,7 @@ export default function Contact() {
           >
             {/* Info card */}
             <div className="pro-card p-8">
-              <h3 className="text-xl font-bold text-[#1E1B4B] mb-6">Contact Information</h3>
+              <h3 className="text-xl font-bold text-white mb-6">Contact Information</h3>
               <div className="space-y-4">
                 {contactInfo.map(({ Icon, label, value, href, color }, idx) => (
                   <motion.a
@@ -129,8 +129,8 @@ export default function Contact() {
                       <Icon className="w-5 h-5" />
                     </div>
                     <div>
-                      <p className="text-xs font-semibold text-[#9E99C7] uppercase tracking-wide">{label}</p>
-                      <p className="text-sm font-medium text-[#1E1B4B] group-hover:text-[#7C3AED] transition-colors">
+                      <p className="text-xs font-semibold text-[#C4BEED] uppercase tracking-wide">{label}</p>
+                      <p className="text-sm font-medium text-white group-hover:text-[#7C3AED] transition-colors">
                         {value}
                       </p>
                     </div>
@@ -141,7 +141,7 @@ export default function Contact() {
 
             {/* Social card */}
             <div className="pro-card p-6">
-              <h4 className="text-sm font-semibold text-[#7B75B0] uppercase tracking-wide mb-4">
+              <h4 className="text-sm font-semibold text-[#A855F7] uppercase tracking-wide mb-4">
                 Connect with me
               </h4>
               <div className="space-y-3">
@@ -151,15 +151,15 @@ export default function Contact() {
                     href={href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-3 p-3 rounded-xl hover:bg-[#F8FAFC] border border-transparent hover:border-[#E2DFF5] transition-all duration-200 group"
+                    className="flex items-center gap-3 p-3 rounded-xl hover:bg-[#F8FAFC] border border-transparent hover:border-white/10 transition-all duration-200 group"
                     whileHover={{ x: 4 }}
                   >
-                    <div className="w-9 h-9 rounded-lg bg-[#F5F3FC] flex items-center justify-center text-[#4C4484] group-hover:bg-[#7C3AED] group-hover:text-white transition-colors">
+                    <div className="w-9 h-9 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-[#E2DFF5] group-hover:bg-[#6D28D9] group-hover:text-white transition-colors">
                       <Icon className="w-4 h-4" />
                     </div>
                     <div>
-                      <div className="text-sm font-semibold text-[#1E1B4B]">{label}</div>
-                      <div className="text-xs text-[#7B75B0]">{handle}</div>
+                      <div className="text-sm font-semibold text-white">{label}</div>
+                      <div className="text-xs text-[#C4BEED]">{handle}</div>
                     </div>
                   </motion.a>
                 ))}
@@ -175,10 +175,10 @@ export default function Contact() {
             transition={{ duration: 0.7 }}
           >
             <div className="pro-card p-8">
-              <h3 className="text-xl font-bold text-[#1E1B4B] mb-6">Send a Message</h3>
+              <h3 className="text-xl font-bold text-white mb-6">Send a Message</h3>
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-[#4C4484] mb-1.5" htmlFor="contact-name">
+                  <label className="block text-sm font-medium text-[#C4BEED] mb-1.5" htmlFor="contact-name">
                     Your Name
                   </label>
                   <input
@@ -192,7 +192,7 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-[#4C4484] mb-1.5" htmlFor="contact-email">
+                  <label className="block text-sm font-medium text-[#C4BEED] mb-1.5" htmlFor="contact-email">
                     Email Address
                   </label>
                   <input
@@ -206,7 +206,7 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-[#4C4484] mb-1.5" htmlFor="contact-subject">
+                  <label className="block text-sm font-medium text-[#C4BEED] mb-1.5" htmlFor="contact-subject">
                     Subject
                   </label>
                   <input
@@ -219,7 +219,7 @@ export default function Contact() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-[#4C4484] mb-1.5" htmlFor="contact-message">
+                  <label className="block text-sm font-medium text-[#C4BEED] mb-1.5" htmlFor="contact-message">
                     Message
                   </label>
                   <textarea

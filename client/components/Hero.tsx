@@ -163,7 +163,7 @@ export default function Hero() {
       {/* Profile card */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
         <motion.div
-          className="bg-white rounded-b-2xl border border-t-0 border-[#E2DFF5] shadow-sm"
+          className="bg-[#150B2D]/60 backdrop-blur-2xl border-white/10 rounded-b-2xl border border-t-0 border-white/10 shadow-sm"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -172,7 +172,7 @@ export default function Hero() {
           <div className="px-5 sm:px-8 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3">
             {/* Avatar */}
             <motion.div
-              className="relative -mt-14 sm:-mt-16 w-28 h-28 sm:w-36 sm:h-36 rounded-full p-1 bg-white shadow-xl flex-shrink-0"
+              className="relative -mt-14 sm:-mt-16 w-28 h-28 sm:w-36 sm:h-36 rounded-full p-1 bg-[#150B2D]/60 backdrop-blur-2xl border-white/10 shadow-xl flex-shrink-0"
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ delay: 0.15, duration: 0.5, type: "spring", bounce: 0.3 }}
@@ -222,7 +222,7 @@ export default function Hero() {
                 href="#contact"
                 id="hero-hire-me"
                 onClick={(e) => { e.preventDefault(); document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" }); }}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold text-[#7C3AED] border border-[#7C3AED] bg-white hover:bg-[#F3EFFE] transition-all duration-200"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold text-[#7C3AED] border border-[#7C3AED] bg-[#150B2D]/60 backdrop-blur-2xl border-white/10 hover:bg-[#F3EFFE] transition-all duration-200"
               >
                 <Briefcase className="w-3.5 h-3.5" />
                 Hire Me
@@ -238,7 +238,7 @@ export default function Hero() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className="w-9 h-9 rounded-full bg-white border border-[#E2DFF5] flex items-center justify-center text-[#666] hover:text-[#7C3AED] hover:border-[#7C3AED] transition-all duration-200"
+                  className="w-9 h-9 rounded-full bg-[#150B2D]/60 backdrop-blur-2xl border-white/10 border border-white/10 flex items-center justify-center text-[#4D4880] hover:text-[#6D28D9] hover:border-[#6D28D9] transition-all duration-200"
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.95 }}
                 >
@@ -255,7 +255,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.5 }}
           >
-            <h1 className="text-2xl sm:text-3xl font-bold text-[#1E1B4B] mb-1 font-display">
+            <h1 className="text-2xl sm:text-3xl font-bold text-white mb-1 font-display">
               Prawin Kumar N
             </h1>
 
@@ -266,7 +266,7 @@ export default function Hero() {
             </p>
 
             {/* Meta row */}
-            <div className="flex flex-wrap gap-x-5 gap-y-1.5 text-sm text-[#666666] mb-4">
+            <div className="flex flex-wrap gap-x-5 gap-y-1.5 text-sm text-[#C4BEED] mb-4">
               <span className="flex items-center gap-1.5">
                 <MapPin className="w-3.5 h-3.5 text-[#7C3AED]" />
                 Perundurai, Tamil Nadu, India
@@ -291,7 +291,7 @@ export default function Hero() {
                 <CheckCircle className="w-3 h-3" />
                 Open to Work
               </span>
-              <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold" style={{ background: "#FEF9C3", color: "#854D0E", border: "1px solid #FDE68A" }}>
+              <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold" style={{ background: "#FEF3C7", color: "#78350F", border: "1px solid #FDE68A" }}>
                 🏆 3x Award Winner
               </span>
               <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold" style={{ background: "#F3EFFE", color: "#7C3AED", border: "1px solid #DDD6FE" }}>
@@ -319,14 +319,14 @@ export default function Hero() {
           ].map(({ num, label, color }, i) => (
             <motion.div
               key={label}
-              className="bg-white rounded-xl border border-[#E2DFF5] p-4 text-center hover:shadow-md transition-all duration-200 cursor-default"
+              className="bg-[#150B2D]/60 backdrop-blur-2xl border-white/10 rounded-xl border border-white/10 p-4 text-center hover:shadow-md transition-all duration-200 cursor-default"
               whileHover={{ y: -2 }}
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6 + i * 0.07, duration: 0.4 }}
             >
               <div className="text-2xl font-bold font-display mb-0.5" style={{ color }}>{num}</div>
-              <div className="text-xs text-[#666666] font-medium">{label}</div>
+              <div className="text-xs text-[#C4BEED] font-medium">{label}</div>
             </motion.div>
           ))}
         </motion.div>

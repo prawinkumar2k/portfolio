@@ -109,15 +109,15 @@ export default function Experience() {
     <section id="experience" className="py-3 px-4 sm:px-6">
       <div className="max-w-4xl mx-auto">
         <motion.div
-          className="bg-white rounded-xl border border-[#E2DFF5] shadow-sm p-6 sm:p-8"
+          className="bg-[#150B2D]/60 backdrop-blur-2xl border-white/10 rounded-xl border border-white/10 shadow-sm p-6 sm:p-8"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-xl font-bold text-[#1E1B4B] mb-6">Experience &amp; Education</h2>
+          <h2 className="text-xl font-bold text-white mb-6">Experience &amp; Education</h2>
 
-          <div className="space-y-0 divide-y divide-[#F0EEF9]">
+          <div className="space-y-0 divide-y divide-white/10">
             {timeline.map((item, idx) => {
               const Icon = typeIcon[item.type];
               return (
@@ -144,9 +144,9 @@ export default function Experience() {
                     {/* Header */}
                     <div className="flex flex-wrap items-start justify-between gap-2 mb-1.5">
                       <div>
-                        <h3 className="text-[15px] font-semibold text-[#1E1B4B] leading-snug">{item.title}</h3>
+                        <h3 className="text-[15px] font-semibold text-white leading-snug">{item.title}</h3>
                         <p className="text-sm font-medium text-[#7C3AED] mt-0.5">{item.company}</p>
-                        <p className="text-xs text-[#666666] mt-0.5 flex items-center gap-2">
+                        <p className="text-xs text-[#C4BEED] mt-0.5 flex items-center gap-2">
                           <span>{item.period}</span>
                           <span className="text-[#ccc]">·</span>
                           <span>{item.location}</span>
@@ -155,9 +155,9 @@ export default function Experience() {
                       <span
                         className="px-2.5 py-1 rounded-full text-[10px] font-semibold flex items-center gap-1 flex-shrink-0 mt-0.5"
                         style={{
-                          background: item.type === "work" ? "#F3EFFE" : item.type === "education" ? "#FFFBEB" : "#F5F3FF",
-                          color: item.type === "work" ? "#7C3AED" : item.type === "education" ? "#F59E0B" : "#312E81",
-                          border: item.type === "work" ? "1px solid #DDD6FE" : item.type === "education" ? "1px solid #FDE68A" : "1px solid #C7D2FE",
+                          background: item.type === "work" ? "rgba(124,58,237,0.15)" : item.type === "education" ? "rgba(245,158,11,0.15)" : "rgba(49,46,129,0.15)",
+                          color: item.type === "work" ? "#C4BEED" : item.type === "education" ? "#FDE68A" : "#C7D2FE",
+                          border: item.type === "work" ? "1px solid rgba(124,58,237,0.3)" : item.type === "education" ? "1px solid rgba(245,158,11,0.3)" : "1px solid rgba(49,46,129,0.3)",
                         }}
                       >
                         <Icon className="w-3 h-3" />
@@ -168,7 +168,7 @@ export default function Experience() {
                     {/* Bullets */}
                     <ul className="space-y-1.5 mb-3">
                       {item.bullets.map((bullet, bIdx) => (
-                        <li key={bIdx} className="flex gap-2 text-sm text-[#4C4484] leading-relaxed">
+                        <li key={bIdx} className="flex gap-2 text-sm text-[#C4BEED] leading-relaxed">
                           <span className="w-1 h-1 rounded-full bg-[#7C3AED] mt-2 flex-shrink-0" />
                           {bullet}
                         </li>
@@ -181,7 +181,7 @@ export default function Experience() {
                         <span
                           key={tech}
                           className="px-2.5 py-1 rounded-full text-[11px] font-medium"
-                          style={{ background: "#F0EEF9", color: "#444444", border: "1px solid #E2DFF5" }}
+                          style={{ background: "rgba(255,255,255,0.05)", color: "#E2DFF5", border: "1px solid rgba(255,255,255,0.1)" }}
                         >
                           {tech}
                         </span>

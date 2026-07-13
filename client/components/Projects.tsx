@@ -1,6 +1,7 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { ExternalLink, Github, ArrowRight, Server, Globe } from "lucide-react";
-import { useState } from "react";
+import { ExternalLink, Github, ArrowRight, Server, Globe, ChevronLeft, ChevronRight } from "lucide-react";
+import { useState, useCallback } from "react";
+import useEmblaCarousel from "embla-carousel-react";
 
 interface Project {
   id: number;
@@ -97,7 +98,7 @@ const projects: Project[] = [
     tags: ["Arduino", "RFID", "PHP", "SQL Server", "IoT"],
     category: ["IoT"],
     highlight: "100% Automated Tracking",
-    gradient: "from-[#4C4484] to-[#7B75B0]",
+    gradient: "from-[#2D2A5E] to-[#4D4880]",
   },
 ];
 
@@ -147,7 +148,7 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
               href={project.githubLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 px-3 py-1.5 bg-white/90 rounded-lg text-xs font-semibold text-[#1E1B4B] hover:bg-white transition-colors"
+              className="flex items-center gap-1.5 px-3 py-1.5 bg-[#150B2D]/60 backdrop-blur-2xl border-white/10/90 rounded-lg text-xs font-semibold text-white hover:bg-[#150B2D]/60 backdrop-blur-2xl border-white/10 transition-colors"
               onClick={(e) => e.stopPropagation()}
             >
               <Github className="w-3.5 h-3.5" />
@@ -200,7 +201,7 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
           ))}
         </div>
 
-        <h3 className="text-base font-bold text-[#1E1B4B] mb-2 leading-snug group-hover:text-[#7C3AED] transition-colors">
+        <h3 className="text-base font-bold text-white mb-2 leading-snug group-hover:text-[#7C3AED] transition-colors">
           {project.title}
         </h3>
 
@@ -222,7 +223,7 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
           </a>
         )}
 
-        <p className="text-[#7B75B0] text-sm leading-relaxed flex-1 mb-4">
+        <p className="text-[#C4BEED] text-sm leading-relaxed flex-1 mb-4">
           {project.description}
         </p>
 
@@ -242,7 +243,7 @@ const ProjectCard = ({ project, index }: { project: Project; index: number }) =>
               href={project.githubLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 text-xs font-medium text-[#7B75B0] hover:text-[#7C3AED] transition-colors"
+              className="flex items-center gap-1.5 text-xs font-medium text-[#C4BEED] hover:text-[#6D28D9] transition-colors"
             >
               <Github className="w-3.5 h-3.5" />
               Source Code
@@ -274,19 +275,34 @@ export default function Projects() {
     ? projects.filter((p) => p.category.includes(activeFilter))
     : projects;
 
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    align: "start",
+    loop: false,
+    containScroll: "trimSnaps",
+    dragFree: true,
+  });
+
+  const scrollPrev = useCallback(() => {
+    if (emblaApi) emblaApi.scrollPrev();
+  }, [emblaApi]);
+
+  const scrollNext = useCallback(() => {
+    if (emblaApi) emblaApi.scrollNext();
+  }, [emblaApi]);
+
   return (
     <section id="projects" className="py-3 px-4 sm:px-6">
       <div className="max-w-4xl mx-auto">
         <motion.div
-          className="bg-white rounded-xl border border-[#E2DFF5] shadow-sm p-6 sm:p-8"
+          className="bg-[#150B2D]/60 backdrop-blur-2xl border-white/10 rounded-xl border border-white/10 shadow-sm p-6 sm:p-8"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
           <div className="flex items-center justify-between mb-5">
-            <h2 className="text-xl font-bold text-[#1E1B4B]">Featured Projects</h2>
-            <span className="text-xs text-[#666666] font-medium">{filteredProjects.length} projects</span>
+            <h2 className="text-xl font-bold text-white">Featured Projects</h2>
+            <span className="text-xs text-[#C4BEED] font-medium">{filteredProjects.length} projects</span>
           </div>
 
           {/* Filter buttons */}
@@ -300,7 +316,7 @@ export default function Projects() {
             <button
               onClick={() => setActiveFilter(null)}
               className="px-3 py-1.5 rounded-full text-xs font-semibold transition-all duration-200"
-              style={activeFilter === null ? { background: "#7C3AED", color: "#fff", border: "1.5px solid #7C3AED" } : { background: "white", color: "#666666", border: "1.5px solid #E2DFF5" }}
+              style={activeFilter === null ? { background: "#6D28D9", color: "#fff", border: "1.5px solid #6D28D9" } : { background: "rgba(255,255,255,0.05)", color: "#E2DFF5", border: "1.5px solid rgba(255,255,255,0.1)" }}
               id="project-filter-all"
             >
               All
@@ -310,7 +326,7 @@ export default function Projects() {
                 key={category}
                 onClick={() => setActiveFilter(category)}
                 className="px-3 py-1.5 rounded-full text-xs font-semibold transition-all duration-200"
-                style={activeFilter === category ? { background: "#7C3AED", color: "#fff", border: "1.5px solid #7C3AED" } : { background: "white", color: "#666666", border: "1.5px solid #E2DFF5" }}
+                style={activeFilter === category ? { background: "#6D28D9", color: "#fff", border: "1.5px solid #6D28D9" } : { background: "rgba(255,255,255,0.05)", color: "#E2DFF5", border: "1.5px solid rgba(255,255,255,0.1)" }}
                 id={`project-filter-${category.toLowerCase().replace(/\s/g, "-")}`}
               >
                 {category}
@@ -318,13 +334,33 @@ export default function Projects() {
             ))}
           </motion.div>
 
-          {/* Projects grid */}
-          <div className="grid md:grid-cols-2 gap-4">
-            <AnimatePresence mode="popLayout">
-              {filteredProjects.map((project, idx) => (
-                <ProjectCard key={project.id} project={project} index={idx} />
-              ))}
-            </AnimatePresence>
+          {/* Projects Carousel */}
+          <div className="relative group/carousel">
+            <div className="overflow-hidden cursor-grab active:cursor-grabbing" ref={emblaRef}>
+              <div className="flex gap-4">
+                <AnimatePresence mode="popLayout">
+                  {filteredProjects.map((project, idx) => (
+                    <div key={project.id} className="flex-[0_0_100%] md:flex-[0_0_calc(50%-0.5rem)] min-w-0">
+                      <ProjectCard project={project} index={idx} />
+                    </div>
+                  ))}
+                </AnimatePresence>
+              </div>
+            </div>
+
+            {/* Navigation Buttons */}
+            <button
+              onClick={scrollPrev}
+              className="absolute top-1/2 -left-3 sm:-left-4 -translate-y-1/2 w-8 h-8 rounded-full bg-[#1E1B4B] border border-white/20 flex items-center justify-center text-white shadow-[0_0_15px_rgba(124,58,237,0.3)] z-10 hover:bg-[#6D28D9] hover:scale-110 transition-all opacity-0 group-hover/carousel:opacity-100 disabled:opacity-0"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+            <button
+              onClick={scrollNext}
+              className="absolute top-1/2 -right-3 sm:-right-4 -translate-y-1/2 w-8 h-8 rounded-full bg-[#1E1B4B] border border-white/20 flex items-center justify-center text-white shadow-[0_0_15px_rgba(124,58,237,0.3)] z-10 hover:bg-[#6D28D9] hover:scale-110 transition-all opacity-0 group-hover/carousel:opacity-100 disabled:opacity-0"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
           </div>
         </motion.div>
       </div>
