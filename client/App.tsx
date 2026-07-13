@@ -9,6 +9,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import CursorGlow from "./components/CursorGlow";
+import CommandMenu from "./components/CommandMenu";
 
 const queryClient = new QueryClient();
 
@@ -18,6 +19,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <CursorGlow />
+      <CommandMenu />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />

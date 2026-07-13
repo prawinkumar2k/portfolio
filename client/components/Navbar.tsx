@@ -95,8 +95,8 @@ export default function Navbar() {
                     onClick={handleScroll}
                     className={`relative px-3 py-1.5 text-sm font-medium rounded-lg transition-all duration-200 ${
                       isActive
-                        ? "text-[#6D28D9] bg-violet-50"
-                        : "text-[#4D4880] hover:text-white hover:bg-slate-50"
+                        ? "text-[#A855F7] bg-white/10"
+                        : "text-[#C4BEED] hover:text-white hover:bg-white/5"
                     }`}
                     whileHover={{ scale: 1.02 }}
                   >
@@ -112,8 +112,15 @@ export default function Navbar() {
               })}
             </div>
 
-            {/* CTA Button */}
+            {/* CTA Buttons */}
             <div className="hidden lg:flex items-center gap-3">
+              <button 
+                onClick={() => document.dispatchEvent(new KeyboardEvent('keydown', { key: 'k', metaKey: true }))}
+                className="hidden xl:flex items-center gap-2 px-3 py-1.5 rounded-lg border border-white/10 bg-white/5 text-[#C4BEED] text-xs font-medium hover:bg-white/10 hover:text-white transition-all"
+              >
+                <span>Search</span>
+                <kbd className="px-1.5 py-0.5 rounded-md bg-black/30 border border-white/10 text-[10px]">⌘K</kbd>
+              </button>
               <motion.a
                 href="#contact"
                 onClick={handleScroll}
@@ -152,7 +159,7 @@ export default function Navbar() {
                 key={item.label}
                 href={item.href}
                 onClick={handleScroll}
-                className="block px-4 py-2.5 rounded-xl text-sm font-medium text-[#3A3275] hover:text-[#6D28D9] hover:bg-violet-50 transition-colors"
+                className="block px-4 py-2.5 rounded-xl text-sm font-medium text-[#C4BEED] hover:text-white hover:bg-white/10 transition-colors"
                 whileHover={{ x: 4 }}
               >
                 {item.label}
