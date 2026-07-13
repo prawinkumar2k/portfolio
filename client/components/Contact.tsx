@@ -151,7 +151,7 @@ export default function Contact() {
                     href={href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-3 p-3 rounded-xl hover:bg-[#F8FAFC] border border-transparent hover:border-white/10 transition-all duration-200 group"
+                    className="flex items-center gap-3 p-3 rounded-xl hover:bg-white/5 border border-transparent hover:border-white/10 transition-all duration-200 group"
                     whileHover={{ x: 4 }}
                   >
                     <div className="w-9 h-9 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-[#E2DFF5] group-hover:bg-[#6D28D9] group-hover:text-white transition-colors">
@@ -239,8 +239,8 @@ export default function Contact() {
                     animate={{ opacity: 1, y: 0 }}
                     className={`p-4 rounded-xl text-sm font-medium ${
                       submitStatus === "success"
-                        ? "bg-green-50 text-green-700 border border-green-200"
-                        : "bg-red-50 text-red-700 border border-red-200"
+                        ? "bg-green-500/10 text-green-400 border border-green-500/20"
+                        : "bg-red-500/10 text-red-400 border border-red-500/20"
                     }`}
                   >
                     {statusMessage}
