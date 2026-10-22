@@ -1,5 +1,16 @@
 import "./global.css";
 
+// Suppress noisy browser extension runtime errors (e.g. WireframeIt) from polluting console
+if (typeof window !== "undefined") {
+  window.addEventListener("unhandledrejection", (event) => {
+    const msg = event.reason?.message || String(event.reason || "");
+    if (msg.includes("Could not establish connection") || msg.includes("Receiving end does not exist")) {
+      event.preventDefault();
+      event.stopPropagation();
+    }
+  });
+}
+
 import { Toaster } from "@/components/ui/toaster";
 import { createRoot } from "react-dom/client";
 import { Toaster as Sonner } from "@/components/ui/sonner";
