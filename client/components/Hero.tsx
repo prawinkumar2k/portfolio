@@ -1,26 +1,43 @@
 import { motion } from "framer-motion";
-import { Github, Linkedin, Mail, Download, MapPin, Building2, GraduationCap, CheckCircle, Users, Briefcase } from "lucide-react";
+import { Github, Linkedin, Mail, Download, MapPin, Building2, GraduationCap, CheckCircle, Users, Briefcase, Sparkles, ArrowRight, Code2 } from "lucide-react";
 import { useEffect, useState } from "react";
 import TechParticles3D from "./TechParticles3D";
 
 const roles = [
   "Software Development Engineer",
   "Full Stack Developer",
-  "MERN Stack Engineer",
-  "Backend Engineer",
+  "MERN Stack Specialist",
+  "Cloud & DevOps Engineer",
 ];
 
 const floatingVariants: any = {
   animate: (i: number) => ({
     y: [0, -10, 0],
-    rotate: [0, 5, -5, 0],
+    rotate: [0, 4, -4, 0],
     transition: {
-      duration: 4 + i * 0.7,
+      duration: 4 + i * 0.8,
       repeat: Infinity,
       ease: "easeInOut"
     }
   })
 };
+
+const marqueeTech = [
+  { name: "React 18", color: "#0284C7" },
+  { name: "Node.js", color: "#16A34A" },
+  { name: "TypeScript", color: "#2563EB" },
+  { name: "Express.js", color: "#475569" },
+  { name: "MySQL", color: "#0284C7" },
+  { name: "MongoDB", color: "#16A34A" },
+  { name: "Tailwind CSS", color: "#06B6D4" },
+  { name: "Docker", color: "#0284C7" },
+  { name: "Nginx", color: "#15803D" },
+  { name: "PM2", color: "#7C3AED" },
+  { name: "Python", color: "#CA8A04" },
+  { name: "Linux / Ubuntu", color: "#EA580C" },
+  { name: "REST APIs", color: "#6366F1" },
+  { name: "Git & GitHub", color: "#334155" },
+];
 
 export default function Hero() {
   const [roleIndex, setRoleIndex] = useState(0);
@@ -31,11 +48,11 @@ export default function Hero() {
     const current = roles[roleIndex];
     let timeout: ReturnType<typeof setTimeout>;
     if (!isDeleting && displayed.length < current.length) {
-      timeout = setTimeout(() => setDisplayed(current.slice(0, displayed.length + 1)), 80);
+      timeout = setTimeout(() => setDisplayed(current.slice(0, displayed.length + 1)), 75);
     } else if (!isDeleting && displayed.length === current.length) {
-      timeout = setTimeout(() => setIsDeleting(true), 2500);
+      timeout = setTimeout(() => setIsDeleting(true), 2400);
     } else if (isDeleting && displayed.length > 0) {
-      timeout = setTimeout(() => setDisplayed(current.slice(0, displayed.length - 1)), 40);
+      timeout = setTimeout(() => setDisplayed(current.slice(0, displayed.length - 1)), 35);
     } else {
       setIsDeleting(false);
       setRoleIndex((prev) => (prev + 1) % roles.length);
@@ -44,296 +61,312 @@ export default function Hero() {
   }, [displayed, isDeleting, roleIndex]);
 
   return (
-    <section id="home" className="pt-16">
-      {/* CSS Styles injection for premium animations */}
-      <style dangerouslySetInnerHTML={{__html: `
-        @keyframes cyberGridMove {
-          0% { background-position: 0 0; }
-          100% { background-position: 0 40px; }
-        }
-        .cyber-grid {
-          background-image: 
-            linear-gradient(to right, rgba(139, 92, 246, 0.08) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(139, 92, 246, 0.08) 1px, transparent 1px);
-          background-size: 40px 40px;
-          animation: cyberGridMove 12s linear infinite;
-        }
-        .neon-text {
-          font-family: 'Syne', sans-serif;
-          font-weight: 800;
-          letter-spacing: 0.15em;
-          color: #ffffff;
-          text-shadow: 
-            0 0 7px rgba(139, 92, 246, 0.9),
-            0 0 15px rgba(139, 92, 246, 0.6),
-            0 0 30px rgba(139, 92, 246, 0.4),
-            0 0 50px rgba(56, 189, 248, 0.3);
-        }
-        .neon-glow-green {
-          filter: drop-shadow(0 0 6px rgba(16, 185, 129, 0.85)) drop-shadow(0 0 12px rgba(16, 185, 129, 0.4));
-        }
-        .neon-glow-blue {
-          filter: drop-shadow(0 0 6px rgba(14, 165, 233, 0.85)) drop-shadow(0 0 12px rgba(14, 165, 233, 0.4));
-        }
-        .neon-glow-yellow {
-          filter: drop-shadow(0 0 6px rgba(234, 179, 8, 0.85)) drop-shadow(0 0 12px rgba(234, 179, 8, 0.4));
-        }
-      `}} />
-
-      {/* Cover banner */}
-      <div className="relative h-56 sm:h-72 overflow-hidden flex items-center justify-center" style={{ background: "linear-gradient(135deg, #09051c 0%, #0c0827 40%, #170d38 75%, #251253 100%)" }}>
+    <section id="home" className="pt-16 sm:pt-20">
+      {/* Dynamic Cover Banner */}
+      <div className="relative h-60 sm:h-72 overflow-hidden flex items-center justify-center border-b border-slate-200/80 dark:border-white/10 bg-gradient-to-br from-indigo-50/90 via-purple-50/70 to-slate-100 dark:from-[#09051c] dark:via-[#0c0827] dark:to-[#170d38]">
         
         {/* 3D WebGL Particles Background */}
         <TechParticles3D />
 
-        {/* Animated Cyber Grid Overlay */}
-        <div className="absolute inset-0 cyber-grid pointer-events-none z-0" />
+        {/* Ambient Grid Pattern */}
+        <div className="absolute inset-0 bg-grid-pattern pointer-events-none opacity-60 dark:opacity-40 z-0" />
         
-        {/* Futuristic glowing dust/glow circles */}
-        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(circle at 50% 50%, rgba(124, 58, 237, 0.18) 0%, transparent 60%), radial-gradient(circle at 20% 80%, rgba(56, 189, 248, 0.12) 0%, transparent 50%)" }} />
+        {/* Soft radial glow */}
+        <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_50%_50%,rgba(99,102,241,0.12)_0%,transparent_60%)] dark:bg-[radial-gradient(circle_at_50%_50%,rgba(124,58,237,0.2)_0%,transparent_60%)]" />
 
-        {/* Neon glowing center name */}
+        {/* Center Name Display */}
         <div className="relative z-10 flex flex-col items-center select-none text-center px-4">
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold text-indigo-700 dark:text-purple-300 bg-indigo-100/80 dark:bg-purple-950/50 border border-indigo-200/80 dark:border-purple-800/40 mb-2.5 backdrop-blur-md shadow-sm"
+          >
+            <Sparkles className="w-3.5 h-3.5 text-indigo-500 animate-pulse" />
+            <span>PORTFOLIO 2026</span>
+          </motion.div>
+
           <motion.h1 
-            className="text-4xl sm:text-6xl uppercase tracking-widest neon-text font-black font-display"
-            initial={{ scale: 0.9, opacity: 0 }}
+            className="text-4xl sm:text-6xl uppercase tracking-widest font-black font-display text-slate-900 dark:text-white drop-shadow-sm"
+            initial={{ scale: 0.92, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
           >
             PRAWIN KUMAR
           </motion.h1>
+          
           <motion.div 
-            className="h-[1.5px] w-28 sm:w-36 mt-2 bg-gradient-to-r from-transparent via-[#a855f7] to-transparent shadow-[0_0_8px_rgba(168,85,247,0.8)]"
+            className="h-[2px] w-32 sm:w-44 mt-2.5 bg-gradient-to-r from-transparent via-indigo-500 to-transparent shadow-sm"
             initial={{ width: 0 }}
             animate={{ width: "100%" }}
-            transition={{ delay: 0.3, duration: 1 }}
+            transition={{ delay: 0.3, duration: 0.9 }}
           />
         </div>
 
-        {/* Floating tech icons */}
+        {/* Floating tech badges */}
         {/* 1. Node.js (Top Left) */}
         <motion.div 
-          className="absolute left-[7%] top-[15%] z-10 hidden sm:block select-none"
+          className="absolute left-[6%] top-[16%] z-10 hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/90 dark:bg-[#150B2D]/90 border border-slate-200/80 dark:border-white/10 shadow-md backdrop-blur-md select-none"
           custom={0}
           variants={floatingVariants}
           animate="animate"
         >
-          <svg className="w-9 h-9 text-[#10B981] neon-glow-green" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 2L3 7.2v9.6L12 22l9-5.2V7.2L12 2zm1 14.8c-2.3 0-4.1-1.8-4.1-4.1s1.8-4.1 4.1-4.1c1.2 0 2.2.5 3 1.3l-1.3 1.3c-.5-.5-1.1-.8-1.7-.8-1.4 0-2.6 1.2-2.6 2.6s1.2 2.6 2.6 2.6c.9 0 1.7-.5 2.2-1.2H13v-1.7h3.5v4.5h-1.2c-.7.8-1.6 1.3-2.3 1.3z" />
-          </svg>
+          <div className="w-2.5 h-2.5 rounded-full bg-emerald-500" />
+          <span className="text-xs font-bold text-slate-800 dark:text-slate-200">Node.js</span>
         </motion.div>
 
         {/* 2. Docker (Bottom Left) */}
         <motion.div 
-          className="absolute left-[15%] bottom-[15%] z-10 select-none"
+          className="absolute left-[12%] bottom-[16%] z-10 hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/90 dark:bg-[#150B2D]/90 border border-slate-200/80 dark:border-white/10 shadow-md backdrop-blur-md select-none"
           custom={1}
           variants={floatingVariants}
           animate="animate"
         >
-          <svg className="w-9 h-9 text-[#0EA5E9] neon-glow-blue" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M13.983 8.871h-1.996V6.885h1.996v1.986zm-2.495 0H9.492V6.885h1.996v1.986zm-2.495 0H6.997V6.885h1.996v1.986zm-2.496 0H4.501V6.885h1.996v1.986zm7.486-2.495h-1.996V4.39h1.996v1.986zm-2.495 0H9.492V4.39h1.996v1.986zm8.257 6.136c-.499-.3-1.127-.47-1.776-.47h-.587v-1.996h-1.996v1.996H12.01v-1.996H10.01v1.996H8.01v-1.996H6.01v1.996H4.501c-1.328 0-2.495.962-2.495 2.495v1.272c0 2.915 2.128 5.253 4.99 5.253h9.98c2.862 0 4.99-2.338 4.99-5.253V13.8c0-.495-.297-.993-.728-1.288z" />
-          </svg>
+          <div className="w-2.5 h-2.5 rounded-full bg-sky-500" />
+          <span className="text-xs font-bold text-slate-800 dark:text-slate-200">Docker</span>
         </motion.div>
 
-        {/* 3. Kubernetes (Top Right) */}
+        {/* 3. React (Top Right) */}
         <motion.div 
-          className="absolute right-[15%] top-[15%] z-10 select-none"
+          className="absolute right-[12%] top-[16%] z-10 hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/90 dark:bg-[#150B2D]/90 border border-slate-200/80 dark:border-white/10 shadow-md backdrop-blur-md select-none"
           custom={2}
           variants={floatingVariants}
           animate="animate"
         >
-          <svg className="w-9 h-9 text-[#326ce5] neon-glow-blue" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12.015 0L3.109 4.316l2.128 9.388 6.778 4.148 6.778-4.148 2.128-9.388L12.015 0zm0 3.256l6.096 2.951-1.458 6.43-4.638 2.839-4.638-2.839-1.458-6.43 6.096-2.951z" />
-          </svg>
+          <div className="w-2.5 h-2.5 rounded-full bg-indigo-500" />
+          <span className="text-xs font-bold text-slate-800 dark:text-slate-200">React 18</span>
         </motion.div>
 
         {/* 4. Python (Bottom Right) */}
         <motion.div 
-          className="absolute right-[7%] bottom-[15%] z-10 hidden sm:block select-none"
+          className="absolute right-[6%] bottom-[16%] z-10 hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/90 dark:bg-[#150B2D]/90 border border-slate-200/80 dark:border-white/10 shadow-md backdrop-blur-md select-none"
           custom={3}
           variants={floatingVariants}
           animate="animate"
         >
-          <svg className="w-9 h-9 text-[#EAB308] neon-glow-yellow" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12.015 2.015c-2.756 0-2.587 1.196-2.587 1.196v1.198h2.613v.373H6.848s-1.83 0-1.83 1.83v2.871c0 1.83 1.636 1.83 1.636 1.83h.971V10.15c0-1.28 1.127-2.39 2.39-2.39h3.765s1.209.027 1.209-1.18V3.818c0-1.208-1.209-1.803-1.209-1.803s-.998-.018-2.775-.018zm3.262 5.011c.414 0 .748.334.748.748s-.334.748-.748.748a.749.749 0 0 1-.748-.748c0-.414.334-.748.748-.748zM12.01 22.01c2.756 0 2.587-1.196 2.587-1.196v-1.198h-2.613v-.373h5.193s1.83 0 1.83-1.83V14.54c0-1.83-1.636-1.83-1.636-1.83h-.971V13.88c0 1.28-1.127 2.39-2.39 2.39H10.26s-1.209-.027-1.209 1.18v2.762c0 1.208 1.209 1.803 1.209 1.803s.998.018 2.775.018zm-3.262-5.011a.749.749 0 0 1 .748-.748c.414 0 .748.334.748.748s-.334.748-.748.748a.749.749 0 0 1-.748-.748z" />
-          </svg>
+          <div className="w-2.5 h-2.5 rounded-full bg-amber-500" />
+          <span className="text-xs font-bold text-slate-800 dark:text-slate-200">Python</span>
         </motion.div>
       </div>
 
-      {/* Profile card */}
+      {/* Profile Card Container */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
         <motion.div
-          className="bg-[#150B2D]/60 backdrop-blur-2xl border-white/10 rounded-b-2xl border border-t-0 border-white/10 shadow-sm"
+          className="pro-card rounded-t-none border-t-0 p-0 overflow-hidden"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          {/* Avatar + Actions */}
-          <div className="px-5 sm:px-8 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3">
-            {/* Avatar */}
+          {/* Avatar + Actions Row */}
+          <div className="px-5 sm:px-8 pt-4 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+            
+            {/* Avatar with spinning open to work ring */}
             <motion.div
-              className="relative -mt-14 sm:-mt-16 w-28 h-28 sm:w-36 sm:h-36 rounded-full p-1 bg-[#150B2D]/60 backdrop-blur-2xl border-white/10 shadow-xl flex-shrink-0"
+              className="relative -mt-16 sm:-mt-20 w-28 h-28 sm:w-36 sm:h-36 rounded-full p-1 bg-white dark:bg-[#150B2D] shadow-xl flex-shrink-0"
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ delay: 0.15, duration: 0.5, type: "spring", bounce: 0.3 }}
             >
-              {/* Spinning #OPENTOWORK dashed ring */}
-              <div className="absolute inset-0 rounded-full border-2 border-dashed border-[#15803D] animate-[spin_25s_linear_infinite] z-10 p-0.5" />
+              {/* Spinning OpenToWork dashed ring */}
+              <div className="absolute inset-0 rounded-full border-2 border-dashed border-emerald-500 animate-[spin_25s_linear_infinite] z-10 p-0.5" />
               
               <div 
-                className="w-full h-full rounded-full flex items-center justify-center relative overflow-hidden z-20"
-                style={{ background: "linear-gradient(135deg, #1E1B4B 0%, #7C3AED 100%)" }}
+                className="w-full h-full rounded-full flex items-center justify-center relative overflow-hidden z-20 shadow-inner"
+                style={{ background: "linear-gradient(135deg, #4338CA 0%, #7C3AED 50%, #6D28D9 100%)" }}
               >
                 {/* Tech grid overlay inside avatar */}
-                <div className="absolute inset-0 opacity-20 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:8px_8px]" />
+                <div className="absolute inset-0 opacity-20 bg-[linear-gradient(to_right,#ffffff20_1px,transparent_1px),linear-gradient(to_bottom,#ffffff20_1px,transparent_1px)] bg-[size:8px_8px]" />
                 
-                <span className="text-3xl sm:text-5xl font-bold text-white font-display select-none z-10 drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)]">
+                <span className="text-3xl sm:text-5xl font-black text-white font-display select-none z-10 drop-shadow-md">
                   PK
                 </span>
                 
-                {/* #OPENTOWORK Badge Overlay */}
-                <div className="absolute -bottom-0.5 left-1/2 transform -translate-x-1/2 bg-[#15803D] text-[7px] sm:text-[9px] text-white font-extrabold px-1.5 py-0.5 rounded-full whitespace-nowrap tracking-wider shadow-md border border-emerald-400 uppercase z-30 animate-pulse">
+                {/* #OPENTOWORK badge */}
+                <div className="absolute -bottom-0.5 left-1/2 transform -translate-x-1/2 bg-emerald-600 text-[8px] sm:text-[9px] text-white font-extrabold px-2 py-0.5 rounded-full whitespace-nowrap tracking-wider shadow-md border border-emerald-300 uppercase z-30 animate-pulse">
                   #OPENTOWORK
                 </div>
               </div>
               
-              {/* Online dot */}
-              <div className="absolute bottom-1 right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-white z-40" />
+              {/* Online indicator dot */}
+              <div className="absolute bottom-1 right-1 w-4 h-4 bg-emerald-500 rounded-full border-2 border-white dark:border-[#150B2D] z-40 shadow-sm" />
             </motion.div>
 
-            {/* CTA buttons */}
+            {/* CTA action buttons */}
             <motion.div
-              className="flex flex-wrap gap-2 pb-4"
+              className="flex flex-wrap items-center gap-2 pb-2"
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.5 }}
+              transition={{ delay: 0.35, duration: 0.5 }}
             >
               <a
                 href="/PrawinKumar-Resume.pdf"
                 download="PrawinKumar-Resume.pdf"
                 id="hero-download-resume"
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold text-white transition-all duration-200 hover:opacity-90"
-                style={{ background: "linear-gradient(135deg, #7C3AED 0%, #6D28D9 100%)", boxShadow: "0 2px 8px rgba(124,58,237,0.35)" }}
+                className="btn-primary text-xs sm:text-sm px-4 py-2"
               >
                 <Download className="w-3.5 h-3.5" />
-                Download CV
+                <span>Download CV</span>
               </a>
+
               <a
                 href="#contact"
                 id="hero-hire-me"
-                onClick={(e) => { e.preventDefault(); document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" }); }}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold text-[#7C3AED] border border-[#7C3AED] bg-[#150B2D]/60 backdrop-blur-2xl border-white/10 hover:bg-[#F3EFFE] transition-all duration-200"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+                }}
+                className="btn-secondary text-xs sm:text-sm px-4 py-2"
               >
-                <Briefcase className="w-3.5 h-3.5" />
-                Hire Me
+                <Briefcase className="w-3.5 h-3.5 text-indigo-600 dark:text-purple-400" />
+                <span>Hire Me</span>
               </a>
-              {[
-                { Icon: Github, href: "https://github.com/prawinkumar2k", label: "GitHub" },
-                { Icon: Linkedin, href: "https://linkedin.com/in/prawinkumar-n", label: "LinkedIn" },
-                { Icon: Mail, href: "mailto:prawinkumar2k4@gmail.com", label: "Email" },
-              ].map(({ Icon, href, label }) => (
-                <motion.a
-                  key={label}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={label}
-                  className="w-9 h-9 rounded-full bg-[#150B2D]/60 backdrop-blur-2xl border-white/10 border border-white/10 flex items-center justify-center text-[#4D4880] hover:text-[#6D28D9] hover:border-[#6D28D9] transition-all duration-200"
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <Icon className="w-4 h-4" />
-                </motion.a>
-              ))}
+
+              {/* Social icons */}
+              <div className="flex items-center gap-1.5 ml-1">
+                {[
+                  { Icon: Github, href: "https://github.com/prawinkumar2k", label: "GitHub" },
+                  { Icon: Linkedin, href: "https://linkedin.com/in/prawinkumar-n", label: "LinkedIn" },
+                  { Icon: Mail, href: "mailto:prawinkumar2k4@gmail.com", label: "Email" },
+                ].map(({ Icon, href, label }) => (
+                  <motion.a
+                    key={label}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={label}
+                    className="w-9 h-9 rounded-xl bg-slate-100 hover:bg-slate-200/80 dark:bg-white/5 dark:hover:bg-white/10 border border-slate-200 dark:border-white/10 flex items-center justify-center text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-purple-300 transition-all shadow-sm"
+                    whileHover={{ scale: 1.1, y: -2 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <Icon className="w-4 h-4" />
+                  </motion.a>
+                ))}
+              </div>
             </motion.div>
           </div>
 
-          {/* Profile info */}
+          {/* Profile Details */}
           <motion.div
-            className="px-5 sm:px-8 pb-6 mt-1"
+            className="px-5 sm:px-8 pb-6 pt-3"
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.5 }}
           >
-            <h1 className="text-2xl sm:text-3xl font-bold text-white mb-1 font-display">
-              Prawin Kumar N
-            </h1>
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 mb-1">
+              <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white font-display tracking-tight">
+                Prawin Kumar N
+              </h1>
+              <span className="text-xs font-semibold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/50 border border-emerald-200 dark:border-emerald-800/60 px-2.5 py-0.5 rounded-full w-fit">
+                ⚡ Available for Full-Time / SDE Roles
+              </span>
+            </div>
 
             {/* Typewriter headline */}
-            <p className="text-base sm:text-lg font-semibold text-[#7C3AED] mb-3 flex items-center gap-1">
+            <p className="text-base sm:text-lg font-bold text-indigo-600 dark:text-purple-400 mb-3 flex items-center gap-1.5">
               <span>{displayed}</span>
-              <span className="w-0.5 h-5 bg-[#7C3AED] animate-pulse inline-block align-middle" />
+              <span className="w-0.5 h-5 bg-indigo-600 dark:bg-purple-400 animate-pulse inline-block" />
             </p>
 
-            {/* Meta row */}
-            <div className="flex flex-wrap gap-x-5 gap-y-1.5 text-sm text-[#C4BEED] mb-4">
+            {/* Meta Row */}
+            <div className="flex flex-wrap gap-x-5 gap-y-2 text-xs sm:text-sm text-slate-600 dark:text-slate-300 mb-4 font-medium">
               <span className="flex items-center gap-1.5">
-                <MapPin className="w-3.5 h-3.5 text-[#7C3AED]" />
+                <MapPin className="w-4 h-4 text-indigo-600 dark:text-purple-400 flex-shrink-0" />
                 Perundurai, Tamil Nadu, India
               </span>
               <span className="flex items-center gap-1.5">
-                <Building2 className="w-3.5 h-3.5 text-[#7C3AED]" />
-                SearchFirst Technologies Pvt. Ltd.
+                <Building2 className="w-4 h-4 text-indigo-600 dark:text-purple-400 flex-shrink-0" />
+                SearchFirst Technologies Pvt. Ltd. (Co-Founder)
               </span>
               <span className="flex items-center gap-1.5">
-                <GraduationCap className="w-3.5 h-3.5 text-[#7C3AED]" />
+                <GraduationCap className="w-4 h-4 text-indigo-600 dark:text-purple-400 flex-shrink-0" />
                 B.Tech AI &amp; DS · Nandha Engineering College
               </span>
             </div>
 
             {/* Social-proof badges */}
             <div className="flex flex-wrap items-center gap-2">
-              <span className="flex items-center gap-1.5 text-sm font-semibold text-[#7C3AED] cursor-pointer hover:underline">
-                <Users className="w-4 h-4" />
-                500+ connections
+              <span className="flex items-center gap-1.5 text-xs font-semibold text-indigo-600 dark:text-purple-400 bg-indigo-50 dark:bg-indigo-950/40 border border-indigo-200 dark:border-indigo-800 px-2.5 py-1 rounded-full cursor-pointer hover:underline">
+                <Users className="w-3.5 h-3.5" />
+                500+ Connections
               </span>
-              <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold" style={{ background: "rgba(21, 128, 61, 0.15)", color: "#4ADE80", border: "1px solid rgba(21, 128, 61, 0.3)" }}>
-                <CheckCircle className="w-3 h-3" />
+              <span className="badge-green">
+                <CheckCircle className="w-3.5 h-3.5" />
                 Open to Work
               </span>
-              <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold" style={{ background: "rgba(245, 158, 11, 0.15)", color: "#FDE68A", border: "1px solid rgba(245, 158, 11, 0.3)" }}>
-                🏆 3x Award Winner
+              <span className="badge-amber">
+                🏆 3x Innovation 1st Prize
               </span>
-              <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold" style={{ background: "rgba(124, 58, 237, 0.15)", color: "#C4BEED", border: "1px solid rgba(124, 58, 237, 0.3)" }}>
-                50K+ Users Served
+              <span className="badge-blue">
+                🚀 50K+ Users Served
               </span>
-              <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold" style={{ background: "rgba(13, 148, 136, 0.15)", color: "#5EEAD4", border: "1px solid rgba(13, 148, 136, 0.3)" }}>
-                🚀 Co-Founded (Funded)
+              <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-purple-50 text-purple-700 border border-purple-200 dark:bg-purple-950/40 dark:text-purple-300 dark:border-purple-800">
+                💼 Co-Founded (Funded)
               </span>
             </div>
           </motion.div>
         </motion.div>
 
-        {/* Stats row */}
+        {/* Stats Row Bento */}
         <motion.div
-          className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-3 pb-3"
+          className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-3 pb-2"
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.55, duration: 0.5 }}
+          transition={{ delay: 0.5, duration: 0.5 }}
         >
           {[
-            { num: "50K+", label: "Users Served",      color: "#7C3AED" },
-            { num: "10+",  label: "Projects Shipped",  color: "#1E1B4B" },
-            { num: "20+",  label: "Certifications",    color: "#5B21B6" },
-            { num: "3+",   label: "Awards Won",        color: "#F59E0B" },
-          ].map(({ num, label, color }, i) => (
+            { num: "50K+", label: "Users Served in Prod", color: "#4F46E5", darkColor: "#818CF8" },
+            { num: "10+",  label: "Projects Shipped",    color: "#059669", darkColor: "#34D399" },
+            { num: "20+",  label: "Certifications",      color: "#7C3AED", darkColor: "#A78BFA" },
+            { num: "3+",   label: "Hackathon Awards",    color: "#D97706", darkColor: "#FBBF24" },
+          ].map(({ num, label, color, darkColor }, i) => (
             <motion.div
               key={label}
-              className="bg-[#150B2D]/60 backdrop-blur-2xl border-white/10 rounded-xl border border-white/10 p-4 text-center hover:shadow-md transition-all duration-200 cursor-default"
-              whileHover={{ y: -2 }}
+              className="pro-card p-4 text-center cursor-default transition-all duration-300"
+              whileHover={{ y: -3, scale: 1.02 }}
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 + i * 0.07, duration: 0.4 }}
+              transition={{ delay: 0.55 + i * 0.06, duration: 0.4 }}
             >
-              <div className="text-2xl font-bold font-display mb-0.5" style={{ color }}>{num}</div>
-              <div className="text-xs text-[#C4BEED] font-medium">{label}</div>
+              <div 
+                className="text-2xl sm:text-3xl font-black font-display mb-0.5"
+                style={{ color }}
+              >
+                {num}
+              </div>
+              <div className="text-xs text-slate-600 dark:text-slate-300 font-semibold">{label}</div>
             </motion.div>
           ))}
+        </motion.div>
+
+        {/* Tech Stack Infinite Marquee */}
+        <motion.div
+          className="mt-3 pro-card py-3 px-4 overflow-hidden relative"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.65, duration: 0.5 }}
+        >
+          <div className="flex items-center gap-3">
+            <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider flex-shrink-0 flex items-center gap-1.5">
+              <Code2 className="w-3.5 h-3.5 text-indigo-500" />
+              Core Tech:
+            </span>
+            
+            <div className="overflow-hidden relative flex-1">
+              <div className="animate-marquee flex items-center gap-3">
+                {[...marqueeTech, ...marqueeTech].map((tech, idx) => (
+                  <span
+                    key={`${tech.name}-${idx}`}
+                    className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-700 dark:text-slate-200 whitespace-nowrap shadow-sm hover:scale-105 transition-transform"
+                  >
+                    <span className="w-2 h-2 rounded-full" style={{ backgroundColor: tech.color }} />
+                    {tech.name}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
         </motion.div>
       </div>
     </section>
   );
 }
-
-
-

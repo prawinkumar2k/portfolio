@@ -9,12 +9,12 @@ export default function CursorGlow() {
   const cursorY = useMotionValue(-100);
   
   // Spring config for smooth magnetic feel
-  const springConfig = { damping: 25, stiffness: 250, mass: 0.5 };
+  const springConfig = { damping: 28, stiffness: 280, mass: 0.4 };
   const cursorXSpring = useSpring(cursorX, springConfig);
   const cursorYSpring = useSpring(cursorY, springConfig);
 
   useEffect(() => {
-    // Check if device is touch-based (don't show cursor glow on mobile)
+    // Check if device is touch-based (don't show cursor glow on mobile/touch)
     if (window.matchMedia("(pointer: coarse)").matches) return;
     setIsVisible(true);
 
@@ -25,13 +25,12 @@ export default function CursorGlow() {
 
     const handleMouseOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
-      // Check if hovering over a clickable element
       const isClickable = 
-        window.getComputedStyle(target).cursor === 'pointer' || 
-        target.tagName.toLowerCase() === 'a' ||
-        target.tagName.toLowerCase() === 'button' ||
-        target.closest('a') !== null ||
-        target.closest('button') !== null;
+        window.getComputedStyle(target).cursor === "pointer" || 
+        target.tagName.toLowerCase() === "a" ||
+        target.tagName.toLowerCase() === "button" ||
+        target.closest("a") !== null ||
+        target.closest("button") !== null;
         
       setIsPointer(isClickable);
     };
@@ -51,18 +50,18 @@ export default function CursorGlow() {
     <>
       {/* Outer Magnetic Ring */}
       <motion.div
-        className="fixed top-0 left-0 w-8 h-8 rounded-full border border-[#A855F7]/60 pointer-events-none z-[100] flex items-center justify-center mix-blend-screen"
+        className="fixed top-0 left-0 w-8 h-8 rounded-full border border-indigo-500/40 dark:border-purple-400/60 pointer-events-none z-[100] flex items-center justify-center transition-colors shadow-sm"
         style={{
           x: cursorXSpring,
           y: cursorYSpring,
           scale: isPointer ? 1.6 : 1,
-          backgroundColor: isPointer ? "rgba(168, 85, 247, 0.15)" : "transparent",
+          backgroundColor: isPointer ? "rgba(99, 102, 241, 0.12)" : "transparent",
         }}
         transition={{ scale: { type: "spring", stiffness: 300, damping: 20 } }}
       />
       {/* Inner precise dot */}
       <motion.div
-        className="fixed top-0 left-0 w-1.5 h-1.5 bg-[#A855F7] rounded-full pointer-events-none z-[100] mix-blend-screen shadow-[0_0_8px_rgba(168,85,247,0.8)]"
+        className="fixed top-0 left-0 w-1.5 h-1.5 bg-indigo-600 dark:bg-purple-400 rounded-full pointer-events-none z-[100] shadow-[0_0_8px_rgba(99,102,241,0.6)]"
         style={{
           x: cursorX,
           y: cursorY,
@@ -74,6 +73,3 @@ export default function CursorGlow() {
     </>
   );
 }
-
-
-

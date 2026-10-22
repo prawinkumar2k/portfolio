@@ -1,12 +1,12 @@
 import { motion } from "framer-motion";
-import { Github, Linkedin, Mail, ArrowUp } from "lucide-react";
+import { Github, Linkedin, Mail, ArrowUp, Heart } from "lucide-react";
 
 const navLinks = [
   { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
   { label: "Skills", href: "#skills" },
-  { label: "Projects", href: "#projects" },
   { label: "Experience", href: "#experience" },
+  { label: "Projects", href: "#projects" },
   { label: "Certifications", href: "#certifications" },
   { label: "Contact", href: "#contact" },
 ];
@@ -33,31 +33,21 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-[#1E1B4B] text-white relative">
-      {/* Top gradient accent */}
-      <div className="h-0.5 w-full" style={{ background: "linear-gradient(90deg, #7C3AED, #312E81, #A855F7)" }} />
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
-        <div className="grid md:grid-cols-3 gap-12 mb-12">
-          {/* Brand */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <div className="flex items-center gap-2.5 mb-4">
-              <div
-                className="w-9 h-9 rounded-xl flex items-center justify-center text-white text-sm font-bold"
-                style={{ background: "linear-gradient(135deg, #7C3AED, #312E81)" }}
-              >
+    <footer className="bg-slate-100/80 dark:bg-[#0B0720] border-t border-slate-200/80 dark:border-white/10 transition-colors duration-300 relative">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-12">
+        <div className="grid md:grid-cols-3 gap-8 mb-10">
+          {/* Brand Column */}
+          <div>
+            <div className="flex items-center gap-2.5 mb-3">
+              <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-indigo-600 to-purple-600 flex items-center justify-center text-white text-xs font-black shadow-sm">
                 PK
               </div>
-              <span className="font-bold text-white text-lg">Prawin Kumar N</span>
+              <span className="font-bold text-slate-900 dark:text-white text-base">
+                Prawin Kumar N
+              </span>
             </div>
-            <p className="text-[#B8B5DA] text-sm leading-relaxed mb-4">
-              Full Stack Developer specializing in MERN Stack, ERP Systems, and AI-powered solutions.
-              Building scalable applications that make a difference.
+            <p className="text-slate-600 dark:text-slate-400 text-xs sm:text-sm leading-relaxed mb-4 max-w-sm">
+              Software Development Engineer &amp; Full Stack Developer. Dedicated to architecting reliable, production-ready systems and high-throughput platforms.
             </p>
             <div className="flex gap-2">
               {socialLinks.map(({ Icon, href, label }) => (
@@ -67,95 +57,74 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className="w-9 h-9 rounded-lg bg-[#150B2D]/60 backdrop-blur-2xl border-white/10/5 hover:bg-[#6D28D9] flex items-center justify-center text-[#B8B5DA] hover:text-white transition-all duration-200 border border-white/10"
-                  whileHover={{ scale: 1.1 }}
+                  className="w-8 h-8 rounded-xl bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-purple-400 hover:border-indigo-300 transition-colors shadow-sm"
+                  whileHover={{ scale: 1.1, y: -2 }}
                   whileTap={{ scale: 0.95 }}
                 >
                   <Icon className="w-4 h-4" />
                 </motion.a>
               ))}
             </div>
-          </motion.div>
+          </div>
 
           {/* Quick Links */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1, duration: 0.6 }}
-          >
-            <h4 className="font-semibold text-white mb-5 text-sm uppercase tracking-widest">
-              Navigation
+          <div>
+            <h4 className="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider mb-4">
+              Quick Navigation
             </h4>
-            <div className="grid grid-cols-2 gap-x-4 gap-y-2">
+            <div className="grid grid-cols-2 gap-2 text-xs font-medium">
               {navLinks.map((link) => (
                 <a
                   key={link.label}
                   href={link.href}
                   onClick={handleScroll}
-                  className="text-[#B8B5DA] hover:text-[#C4A8FF] text-sm transition-colors duration-200"
+                  className="text-slate-600 dark:text-slate-400 hover:text-indigo-600 dark:hover:text-purple-400 transition-colors py-1"
                 >
                   {link.label}
                 </a>
               ))}
             </div>
-          </motion.div>
+          </div>
 
-          {/* Contact & CTA */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2, duration: 0.6 }}
-          >
-            <h4 className="font-semibold text-white mb-5 text-sm uppercase tracking-widest">
-              Get In Touch
+          {/* Contact Details */}
+          <div>
+            <h4 className="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider mb-4">
+              Direct Inquiries
             </h4>
-            <div className="space-y-2 mb-6">
-              <p className="text-[#B8B5DA] text-sm">prawinkumar2k4@gmail.com</p>
-              <p className="text-[#B8B5DA] text-sm">+91 8807054164</p>
-              <p className="text-[#B8B5DA] text-sm">Erode, Tamil Nadu, India</p>
+            <div className="space-y-1.5 text-xs text-slate-600 dark:text-slate-400 mb-4 font-medium">
+              <p>prawinkumar2k4@gmail.com</p>
+              <p>+91 8807054164</p>
+              <p>Tamil Nadu, India</p>
             </div>
             <a
               href="/PrawinKumar-Resume.pdf"
               download="PrawinKumar-Resume.pdf"
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white transition-all duration-200"
-              style={{ background: "linear-gradient(135deg, #7C3AED, #6D28D9)", boxShadow: "0 4px 14px rgba(124,58,237,0.3)" }}
+              className="btn-primary text-xs py-2 px-4"
             >
               Download Resume
             </a>
-          </motion.div>
+          </div>
         </div>
 
-        {/* Divider */}
-        <div className="h-px bg-[#150B2D]/60 backdrop-blur-2xl border-white/10/10 mb-8" />
+        {/* Bottom Bar */}
+        <div className="pt-6 border-t border-slate-200 dark:border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500 font-medium">
+          <p>© {currentYear} Prawin Kumar N. All rights reserved.</p>
+          
+          <div className="flex items-center gap-1">
+            <span>Built with React 18, Tailwind CSS &amp; Framer Motion</span>
+          </div>
 
-        {/* Bottom */}
-        <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-[#A8A4D0] text-sm">
-            © {currentYear} Prawin Kumar N. All rights reserved.
-          </p>
-          <p className="text-[#A8A4D0] text-sm">
-            Built with React · Tailwind CSS · Framer Motion
-          </p>
-
-          {/* Back to top */}
           <motion.button
             onClick={scrollToTop}
-            className="flex items-center gap-2 px-4 py-2 rounded-xl bg-[#150B2D]/60 backdrop-blur-2xl border-white/10/5 hover:bg-[#6D28D9] text-[#B8B5DA] hover:text-white text-sm transition-all duration-200 border border-white/10"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-700 dark:text-slate-200 hover:text-indigo-600 dark:hover:text-purple-400 hover:border-indigo-300 transition-all shadow-sm"
             whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.97 }}
-            aria-label="Back to top"
-            id="footer-back-to-top"
+            whileTap={{ scale: 0.95 }}
           >
-            <ArrowUp className="w-4 h-4" />
-            Back to top
+            <ArrowUp className="w-3.5 h-3.5" />
+            <span>Top</span>
           </motion.button>
         </div>
       </div>
     </footer>
   );
 }
-
-
-

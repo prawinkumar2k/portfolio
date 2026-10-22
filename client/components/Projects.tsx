@@ -1,7 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { ExternalLink, Github, ArrowRight, Server, Globe, ChevronLeft, ChevronRight } from "lucide-react";
-import { useState, useCallback } from "react";
-import useEmblaCarousel from "embla-carousel-react";
+import { ExternalLink, Github, ArrowRight, Server, Globe, Sparkles, CheckCircle2 } from "lucide-react";
+import { useState } from "react";
 
 interface Project {
   id: number;
@@ -29,32 +28,33 @@ const projects: Project[] = [
     category: ["Government", "Full Stack", "DevOps"],
     demoLink: "https://tnpoly.in",
     liveUrl: "tnpoly.in",
-    highlight: "50K+ Users · Live",
-    infraBadge: "🖥️ Dedicated Server Owner",
-    gradient: "from-[#7C3AED] to-[#A855F7]",
+    highlight: "50K+ Students · 99.9% Uptime",
+    infraBadge: "🖥️ Bare-Metal Server Owner",
+    gradient: "from-indigo-600 to-purple-600",
   },
   {
     id: 2,
     title: "Multi-Tenant SaaS ERP Platform",
     description:
       "Investor-funded SaaS ERP platform built for the education sector. Features modular architecture covering academic management, examination automation, HR/payroll, LMS, NAAC/PCI compliance, library, and finance modules. Developed under secured product development funding.",
-    image: "/placeholder.svg",
+    image: "/sf_cms.png",
     tags: ["MERN Stack", "Node.js", "Express.js", "MongoDB", "React.js", "MySQL", "Tailwind CSS", "JWT", "Docker"],
-    category: ["ERP", "Full Stack", "MERN"],
-    highlight: "Funding Secured",
-    gradient: "from-[#D97706] to-[#F59E0B]",
+    category: ["ERP", "Full Stack"],
+    highlight: "Funding Secured (INR 25L)",
+    gradient: "from-amber-500 to-orange-500",
   },
   {
     id: 3,
     title: "Campus ERP — Nandha Engineering College",
     description:
-      "Institutional ERP for managing attendance, academics, and fee management serving 1,000+ students. Cuts administrative workload by 50%. Delivered under a certified 1-year commercial engagement.",
+      "Institutional ERP for managing attendance, academics, and fee management serving 1,000+ students. Cuts administrative workload by 50%. Delivered under a certified 1-year commercial engagement with Anna University affiliated institution.",
     image: "/sf_cms.png",
-    tags: ["PHP", "SQL Server", "JavaScript", "Bootstrap", "HTML5", "CSS3"],
+    tags: ["PHP", "SQL Server", "JavaScript", "Bootstrap 5", "HTML5", "CSS3"],
     category: ["ERP", "Full Stack"],
     demoLink: "https://searchfirst.in",
+    liveUrl: "searchfirst.in",
     highlight: "1K+ Students · Live",
-    gradient: "from-[#312E81] to-[#818CF8]",
+    gradient: "from-blue-600 to-indigo-600",
   },
   {
     id: 4,
@@ -65,7 +65,7 @@ const projects: Project[] = [
     tags: ["Arduino", "ESP32", "RFID", "Deep Learning (CNN)", "OpenCV", "Python"],
     category: ["AI / ML", "IoT"],
     highlight: "🏆 1st Prize '24 & '25",
-    gradient: "from-[#9333EA] to-[#C084FC]",
+    gradient: "from-purple-600 to-pink-600",
   },
   {
     id: 5,
@@ -74,9 +74,9 @@ const projects: Project[] = [
       "Production-deployed 3-role HRMS (Admin, HR, Employee) with salary processing APIs for 100+ employees. Redesigned MongoDB schema and indexing to reduce query response times by 35%.",
     image: "/payroll_pro.png",
     tags: ["Node.js", "Express.js", "MongoDB", "React.js", "Tailwind CSS", "JWT", "RBAC"],
-    category: ["ERP", "MERN"],
+    category: ["ERP", "Full Stack"],
     highlight: "35% Query Optimization",
-    gradient: "from-[#EA580C] to-[#FB923C]",
+    gradient: "from-orange-500 to-rose-500",
   },
   {
     id: 6,
@@ -85,9 +85,9 @@ const projects: Project[] = [
       "Comprehensive healthcare platform managing patient records, appointments, and billing with role-based clinical dashboards. Reduced manual data entry by 70%.",
     image: "/hms_pro.png",
     tags: ["React.js", "Node.js", "Express.js", "MySQL", "Bootstrap"],
-    category: ["Healthcare", "Full Stack"],
+    category: ["Full Stack"],
     highlight: "70% Manual Entry Cut",
-    gradient: "from-[#5B21B6] to-[#34D399]",
+    gradient: "from-emerald-600 to-teal-600",
   },
   {
     id: 7,
@@ -98,275 +98,202 @@ const projects: Project[] = [
     tags: ["Arduino", "RFID", "PHP", "SQL Server", "IoT"],
     category: ["IoT"],
     highlight: "100% Automated Tracking",
-    gradient: "from-[#2D2A5E] to-[#4D4880]",
+    gradient: "from-slate-700 to-slate-900",
   },
 ];
 
-const allCategories = Array.from(new Set(projects.flatMap((p) => p.category)));
-
-const ProjectCard = ({ project, index }: { project: Project; index: number }) => {
-  const [hovered, setHovered] = useState(false);
-
-  return (
-    <motion.div
-      className="pro-card overflow-hidden flex flex-col h-full group cursor-pointer"
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, scale: 0.95 }}
-      transition={{ delay: index * 0.08, duration: 0.5 }}
-      whileHover={{ y: -6, boxShadow: "0 20px 40px rgba(124, 58, 237, 0.12)" }}
-      onHoverStart={() => setHovered(true)}
-      onHoverEnd={() => setHovered(false)}
-      layout
-    >
-      {/* Image / Banner area */}
-      <div className="relative h-44 overflow-hidden">
-        <img
-          src={project.image}
-          alt={project.title}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-          onError={(e) => {
-            // Fallback gradient if image fails
-            (e.target as HTMLImageElement).style.display = "none";
-          }}
-        />
-        {/* Gradient overlay with fallback */}
-        <div
-          className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-90 flex items-center justify-center`}
-          style={{ display: "none" }}
-          id={`project-fallback-${project.id}`}
-        />
-        {/* Top overlay on hover */}
-        <motion.div
-          className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-4 gap-2"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: hovered ? 1 : 0 }}
-          transition={{ duration: 0.2 }}
-        >
-          {project.githubLink && (
-            <a
-              href={project.githubLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1.5 px-3 py-1.5 bg-[#150B2D]/60 backdrop-blur-2xl border-white/10/90 rounded-lg text-xs font-semibold text-white hover:bg-[#150B2D]/60 backdrop-blur-2xl border-white/10 transition-colors"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <Github className="w-3.5 h-3.5" />
-              Code
-            </a>
-          )}
-          {project.demoLink && (
-            <a
-              href={project.demoLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1.5 px-3 py-1.5 bg-[#7C3AED] rounded-lg text-xs font-semibold text-white hover:bg-[#6D28D9] transition-colors"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <ExternalLink className="w-3.5 h-3.5" />
-              Live Demo
-            </a>
-          )}
-        </motion.div>
-
-        {/* Highlight badge */}
-        {project.highlight && (
-          <div
-            className="absolute top-3 right-3 px-2.5 py-1 rounded-full text-white text-xs font-semibold shadow-sm"
-            style={{ background: "linear-gradient(135deg, #7C3AED, #312E81)" }}
-          >
-            {project.highlight}
-          </div>
-        )}
-        {/* Infra ownership badge */}
-        {project.infraBadge && (
-          <div
-            className="absolute top-3 left-3 flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-white text-xs font-semibold shadow-sm"
-            style={{ background: "rgba(15, 23, 42, 0.82)", backdropFilter: "blur(6px)" }}
-          >
-            <Server className="w-3 h-3 flex-shrink-0" />
-            {project.infraBadge}
-          </div>
-        )}
-      </div>
-
-      {/* Content */}
-      <div className="p-5 flex-1 flex flex-col">
-        {/* Categories */}
-        <div className="flex flex-wrap gap-1.5 mb-3">
-          {project.category.map((cat) => (
-            <span key={cat} className="badge-blue text-xs">
-              {cat}
-            </span>
-          ))}
-        </div>
-
-        <h3 className="text-base font-bold text-white mb-2 leading-snug group-hover:text-[#7C3AED] transition-colors">
-          {project.title}
-        </h3>
-
-        {/* Live URL chip */}
-        {project.liveUrl && (
-          <a
-            href={project.demoLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 self-start mb-3 px-2.5 py-1 rounded-full text-[10px] font-semibold transition-colors"
-            style={{ background: "#DCFCE7", color: "#15803D", border: "1px solid #BBF7D0" }}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <span className="relative flex h-1.5 w-1.5">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
-              <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-green-500" />
-            </span>
-            Live: {project.liveUrl}
-          </a>
-        )}
-
-        <p className="text-[#C4BEED] text-sm leading-relaxed flex-1 mb-4">
-          {project.description}
-        </p>
-
-        {/* Tech tags */}
-        <div className="flex flex-wrap gap-1.5 mb-4">
-          {project.tags.map((tag) => (
-            <span key={tag} className="tech-tag">
-              {tag}
-            </span>
-          ))}
-        </div>
-
-        {/* Action links */}
-        <div className="flex gap-2 mt-auto pt-3 border-t border-[#F5F3FC]">
-          {project.githubLink && (
-            <a
-              href={project.githubLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1.5 text-xs font-medium text-[#C4BEED] hover:text-[#6D28D9] transition-colors"
-            >
-              <Github className="w-3.5 h-3.5" />
-              Source Code
-            </a>
-          )}
-          {project.demoLink && (
-            <a
-              href={project.demoLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1.5 text-xs font-medium text-[#7C3AED] hover:text-[#6D28D9] ml-auto transition-colors"
-            >
-              {project.liveUrl ? (
-                <><Globe className="w-3.5 h-3.5" /> {project.liveUrl}</>
-              ) : (
-                <>View Live <ArrowRight className="w-3.5 h-3.5" /></>
-              )}
-            </a>
-          )}
-        </div>
-      </div>
-    </motion.div>
-  );
-};
+const categories = ["All", "Government", "ERP", "Full Stack", "DevOps", "AI / ML", "IoT"];
 
 export default function Projects() {
-  const [activeFilter, setActiveFilter] = useState<string | null>(null);
-  const filteredProjects = activeFilter
-    ? projects.filter((p) => p.category.includes(activeFilter))
-    : projects;
+  const [activeCategory, setActiveCategory] = useState("All");
 
-  const [emblaRef, emblaApi] = useEmblaCarousel({
-    align: "start",
-    loop: false,
-    containScroll: "trimSnaps",
-    dragFree: true,
-  });
-
-  const scrollPrev = useCallback(() => {
-    if (emblaApi) emblaApi.scrollPrev();
-  }, [emblaApi]);
-
-  const scrollNext = useCallback(() => {
-    if (emblaApi) emblaApi.scrollNext();
-  }, [emblaApi]);
+  const filteredProjects = activeCategory === "All"
+    ? projects
+    : projects.filter((p) => p.category.includes(activeCategory));
 
   return (
-    <section id="projects" className="py-3 px-4 sm:px-6">
+    <section id="projects" className="py-4 px-4 sm:px-6">
       <div className="max-w-4xl mx-auto">
         <motion.div
-          className="bg-[#150B2D]/60 backdrop-blur-2xl border-white/10 rounded-xl border border-white/10 shadow-sm p-6 sm:p-8"
+          className="pro-card p-6 sm:p-8"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.5 }}
         >
-          <div className="flex items-center justify-between mb-5">
-            <h2 className="text-xl font-bold text-white">Featured Projects</h2>
-            <span className="text-xs text-[#C4BEED] font-medium">{filteredProjects.length} projects</span>
-          </div>
-
-          {/* Filter buttons */}
-          <motion.div
-            className="flex flex-wrap gap-2 mb-6"
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-          >
-            <button
-              onClick={() => setActiveFilter(null)}
-              className="px-3 py-1.5 rounded-full text-xs font-semibold transition-all duration-200"
-              style={activeFilter === null ? { background: "#6D28D9", color: "#fff", border: "1.5px solid #6D28D9" } : { background: "rgba(255,255,255,0.05)", color: "#E2DFF5", border: "1.5px solid rgba(255,255,255,0.1)" }}
-              id="project-filter-all"
-            >
-              All
-            </button>
-            {allCategories.map((category) => (
-              <button
-                key={category}
-                onClick={() => setActiveFilter(category)}
-                className="px-3 py-1.5 rounded-full text-xs font-semibold transition-all duration-200"
-                style={activeFilter === category ? { background: "#6D28D9", color: "#fff", border: "1.5px solid #6D28D9" } : { background: "rgba(255,255,255,0.05)", color: "#E2DFF5", border: "1.5px solid rgba(255,255,255,0.1)" }}
-                id={`project-filter-${category.toLowerCase().replace(/\s/g, "-")}`}
-              >
-                {category}
-              </button>
-            ))}
-          </motion.div>
-
-          {/* Projects Carousel */}
-          <div className="relative group/carousel">
-            <div className="overflow-hidden cursor-grab active:cursor-grabbing" ref={emblaRef}>
-              <div className="flex gap-4">
-                <AnimatePresence mode="popLayout">
-                  {filteredProjects.map((project, idx) => (
-                    <div key={project.id} className="flex-[0_0_100%] md:flex-[0_0_calc(50%-0.5rem)] min-w-0">
-                      <ProjectCard project={project} index={idx} />
-                    </div>
-                  ))}
-                </AnimatePresence>
-              </div>
+          {/* Section Header */}
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6">
+            <div>
+              <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                <Sparkles className="w-5 h-5 text-indigo-600 dark:text-purple-400" />
+                <span>Featured Projects &amp; Deployments</span>
+              </h2>
+              <p className="text-xs sm:text-sm text-slate-500 font-medium mt-1">
+                Real-world web portals, government systems, and production platforms
+              </p>
             </div>
-
-            {/* Navigation Buttons */}
-            <button
-              onClick={scrollPrev}
-              className="absolute top-1/2 -left-3 sm:-left-4 -translate-y-1/2 w-8 h-8 rounded-full bg-[#1E1B4B] border border-white/20 flex items-center justify-center text-white shadow-[0_0_15px_rgba(124,58,237,0.3)] z-10 hover:bg-[#6D28D9] hover:scale-110 transition-all opacity-0 group-hover/carousel:opacity-100 disabled:opacity-0"
-            >
-              <ChevronLeft className="w-5 h-5" />
-            </button>
-            <button
-              onClick={scrollNext}
-              className="absolute top-1/2 -right-3 sm:-right-4 -translate-y-1/2 w-8 h-8 rounded-full bg-[#1E1B4B] border border-white/20 flex items-center justify-center text-white shadow-[0_0_15px_rgba(124,58,237,0.3)] z-10 hover:bg-[#6D28D9] hover:scale-110 transition-all opacity-0 group-hover/carousel:opacity-100 disabled:opacity-0"
-            >
-              <ChevronRight className="w-5 h-5" />
-            </button>
+            <span className="text-xs font-semibold text-indigo-600 dark:text-purple-400 bg-indigo-50 dark:bg-indigo-950/40 border border-indigo-200 dark:border-indigo-800 px-3 py-1 rounded-full w-fit">
+              50K+ Users Live
+            </span>
           </div>
+
+          {/* Filter Tabs */}
+          <div className="flex flex-wrap gap-2 mb-6 p-1.5 bg-slate-100/80 dark:bg-white/5 border border-slate-200/60 dark:border-white/10 rounded-2xl w-fit">
+            {categories.map((cat) => {
+              const isSelected = activeCategory === cat;
+              return (
+                <button
+                  key={cat}
+                  onClick={() => setActiveCategory(cat)}
+                  className={`relative px-4 py-1.5 rounded-xl text-xs font-semibold transition-colors duration-200 ${
+                    isSelected
+                      ? "text-white"
+                      : "text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white"
+                  }`}
+                  id={`project-filter-${cat.toLowerCase().replace(/[^a-z0-9]/g, "-")}`}
+                >
+                  {isSelected && (
+                    <motion.div
+                      layoutId="activeProjectTab"
+                      className="absolute inset-0 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-xl shadow-sm"
+                      transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                    />
+                  )}
+                  <span className="relative z-10">{cat}</span>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Projects Grid */}
+          <motion.div className="grid sm:grid-cols-2 gap-4" layout>
+            <AnimatePresence mode="popLayout">
+              {filteredProjects.map((project, idx) => (
+                <motion.div
+                  key={project.id}
+                  layout
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ duration: 0.3 }}
+                  whileHover={{ y: -4 }}
+                  className="bg-slate-50/80 dark:bg-white/5 border border-slate-200/80 dark:border-white/10 rounded-2xl overflow-hidden flex flex-col group hover:shadow-lg hover:border-indigo-300 dark:hover:border-purple-400 transition-all duration-300"
+                >
+                  {/* Banner / Image Area */}
+                  <div className="relative h-44 overflow-hidden bg-slate-200 dark:bg-slate-800">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      onError={(e) => {
+                        // Fallback elegant gradient if image not found
+                        const target = e.target as HTMLImageElement;
+                        target.style.display = "none";
+                      }}
+                    />
+                    
+                    {/* Fallback gradient banner background */}
+                    <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-20 -z-10`} />
+
+                    {/* Highlight Badge */}
+                    {project.highlight && (
+                      <div className="absolute top-3 right-3 px-2.5 py-1 rounded-full text-white text-[11px] font-bold shadow-md bg-slate-900/85 backdrop-blur-md border border-white/20">
+                        {project.highlight}
+                      </div>
+                    )}
+
+                    {/* Dedicated Server Badge */}
+                    {project.infraBadge && (
+                      <div className="absolute top-3 left-3 flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-white text-[11px] font-bold shadow-md bg-indigo-900/85 backdrop-blur-md border border-indigo-400/30">
+                        <Server className="w-3.5 h-3.5 text-indigo-300" />
+                        <span>{project.infraBadge}</span>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Card Content */}
+                  <div className="p-5 flex-1 flex flex-col">
+                    {/* Category tags */}
+                    <div className="flex flex-wrap gap-1.5 mb-2.5">
+                      {project.category.map((cat) => (
+                        <span key={cat} className="badge-blue text-[10px] py-0.5 px-2">
+                          {cat}
+                        </span>
+                      ))}
+                    </div>
+
+                    <h3 className="text-base font-bold text-slate-900 dark:text-white mb-2 leading-snug group-hover:text-indigo-600 dark:group-hover:text-purple-400 transition-colors">
+                      {project.title}
+                    </h3>
+
+                    {/* Live URL Pill */}
+                    {project.liveUrl && (
+                      <a
+                        href={project.demoLink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 self-start mb-2.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 dark:bg-emerald-950/40 dark:text-emerald-400 dark:border-emerald-800 hover:bg-emerald-100 transition-colors"
+                      >
+                        <span className="relative flex h-2 w-2">
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                          <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+                        </span>
+                        <span>Live: {project.liveUrl}</span>
+                      </a>
+                    )}
+
+                    <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed flex-1 mb-4">
+                      {project.description}
+                    </p>
+
+                    {/* Tech Pills */}
+                    <div className="flex flex-wrap gap-1 mb-4">
+                      {project.tags.slice(0, 6).map((tag) => (
+                        <span key={tag} className="tech-tag text-[10px] py-0.5 px-2">
+                          {tag}
+                        </span>
+                      ))}
+                      {project.tags.length > 6 && (
+                        <span className="text-[10px] text-slate-400 self-center font-medium">
+                          +{project.tags.length - 6} more
+                        </span>
+                      )}
+                    </div>
+
+                    {/* Actions */}
+                    <div className="flex items-center gap-2 mt-auto pt-3 border-t border-slate-200/80 dark:border-white/10">
+                      {project.githubLink && (
+                        <a
+                          href={project.githubLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-purple-400 transition-colors"
+                        >
+                          <Github className="w-3.5 h-3.5" />
+                          <span>Code</span>
+                        </a>
+                      )}
+
+                      {project.demoLink && (
+                        <a
+                          href={project.demoLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 text-xs font-bold text-indigo-600 dark:text-purple-400 hover:text-indigo-700 dark:hover:text-purple-300 ml-auto transition-colors"
+                        >
+                          <Globe className="w-3.5 h-3.5" />
+                          <span>Visit Live</span>
+                          <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </motion.div>
         </motion.div>
       </div>
     </section>
   );
 }
-
-
-

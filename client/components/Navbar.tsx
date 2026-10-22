@@ -1,13 +1,14 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Sun, Moon, Search, Sparkles } from "lucide-react";
+import { useTheme } from "@/lib/theme";
 
 const navItems = [
   { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
   { label: "Skills", href: "#skills" },
-  { label: "Projects", href: "#projects" },
   { label: "Experience", href: "#experience" },
+  { label: "Projects", href: "#projects" },
   { label: "Certifications", href: "#certifications" },
   { label: "Contact", href: "#contact" },
 ];
@@ -16,6 +17,8 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
+  const { theme, toggleTheme } = useTheme();
+
   const { scrollYProgress } = useScroll();
   const progressWidth = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
@@ -27,7 +30,7 @@ export default function Navbar() {
       const sections = navItems.map((item) => item.href.slice(1));
       for (const section of [...sections].reverse()) {
         const el = document.getElementById(section);
-        if (el && window.scrollY >= el.offsetTop - 100) {
+        if (el && window.scrollY >= el.offsetTop - 140) {
           setActiveSection(section);
           break;
         }
@@ -49,7 +52,7 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Scroll progress bar */}
+      {/* Dynamic top scroll progress bar */}
       <motion.div
         className="scroll-progress"
         style={{ width: progressWidth }}
@@ -57,34 +60,38 @@ export default function Navbar() {
 
       <motion.nav
         className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-          scrolled ? "navbar-glass shadow-sm" : "bg-transparent"
+          scrolled ? "navbar-glass" : "bg-transparent"
         }`}
         initial={{ y: -80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <div className="flex justify-between items-center h-16 sm:h-18">
             {/* Logo */}
             <motion.a
               href="#home"
               onClick={handleScroll}
-              className="flex items-center gap-2 flex-shrink-0"
-              whileHover={{ scale: 1.03 }}
+              className="flex items-center gap-2.5 flex-shrink-0 group cursor-pointer"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
             >
-              <div
-                className="w-9 h-9 rounded-xl flex items-center justify-center text-white text-sm font-bold shadow-blue"
-                style={{ background: "linear-gradient(135deg, #7C3AED 0%, #6D28D9 100%)" }}
-              >
-                PK
+              <div className="relative w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-indigo-600 to-purple-600 flex items-center justify-center text-white text-sm font-extrabold shadow-md shadow-indigo-500/20 group-hover:shadow-indigo-500/40 transition-shadow">
+                <span>PK</span>
+                <span className="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-emerald-400 border-2 border-white dark:border-[#09051C]" />
               </div>
-              <span className="font-semibold text-white hidden sm:block text-sm">
-                Prawin Kumar N
-              </span>
+              <div className="flex flex-col">
+                <span className="font-bold text-slate-900 dark:text-white text-sm tracking-tight leading-tight group-hover:text-indigo-600 dark:group-hover:text-purple-400 transition-colors">
+                  Prawin Kumar N
+                </span>
+                <span className="text-[10px] text-slate-500 dark:text-purple-300/70 font-medium">
+                  Full Stack Engineer
+                </span>
+              </div>
             </motion.a>
 
             {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center gap-1">
+            <div className="hidden lg:flex items-center gap-1 bg-slate-100/70 dark:bg-white/5 border border-slate-200/60 dark:border-white/10 px-2 py-1.5 rounded-full backdrop-blur-md">
               {navItems.map((item) => {
                 const sectionId = item.href.slice(1);
                 const isActive = activeSection === sectionId;
@@ -93,50 +100,88 @@ export default function Navbar() {
                     key={item.label}
                     href={item.href}
                     onClick={handleScroll}
-                    className={`relative px-3 py-1.5 text-sm font-medium rounded-lg transition-all duration-200 ${
+                    className={`relative px-3.5 py-1 text-xs font-semibold rounded-full transition-all duration-200 ${
                       isActive
-                        ? "text-[#A855F7] bg-white/10"
-                        : "text-[#C4BEED] hover:text-white hover:bg-white/5"
+                        ? "text-white"
+                        : "text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/50 dark:hover:bg-white/10"
                     }`}
-                    whileHover={{ scale: 1.02 }}
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.97 }}
                   >
-                    {item.label}
                     {isActive && (
                       <motion.div
-                        layoutId="activeNav"
-                        className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4 h-0.5 rounded-full bg-[#6D28D9]"
+                        layoutId="activeNavPill"
+                        className="absolute inset-0 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full shadow-sm"
+                        transition={{ type: "spring", stiffness: 380, damping: 30 }}
                       />
                     )}
+                    <span className="relative z-10">{item.label}</span>
                   </motion.a>
                 );
               })}
             </div>
 
-            {/* CTA Buttons */}
-            <div className="hidden lg:flex items-center gap-3">
-              <button 
-                onClick={() => document.dispatchEvent(new KeyboardEvent('keydown', { key: 'k', metaKey: true }))}
-                className="hidden xl:flex items-center gap-2 px-3 py-1.5 rounded-lg border border-white/10 bg-white/5 text-[#C4BEED] text-xs font-medium hover:bg-white/10 hover:text-white transition-all"
+            {/* CTA Buttons & Theme Toggle */}
+            <div className="hidden sm:flex items-center gap-2">
+              {/* Quick Search Button */}
+              <button
+                onClick={() =>
+                  document.dispatchEvent(
+                    new KeyboardEvent("keydown", { key: "k", metaKey: true })
+                  )
+                }
+                className="flex items-center gap-2 px-3 py-1.5 rounded-xl border border-slate-200 dark:border-white/10 bg-white/60 dark:bg-white/5 text-slate-600 dark:text-slate-300 text-xs font-medium hover:border-indigo-300 dark:hover:border-white/20 transition-all shadow-sm"
+                title="Search (⌘K)"
               >
+                <Search className="w-3.5 h-3.5 text-slate-400" />
                 <span>Search</span>
-                <kbd className="px-1.5 py-0.5 rounded-md bg-black/30 border border-white/10 text-[10px]">⌘K</kbd>
+                <kbd className="px-1.5 py-0.5 rounded-md bg-slate-100 dark:bg-white/10 border border-slate-200 dark:border-white/15 text-[10px] text-slate-500 dark:text-slate-300">
+                  ⌘K
+                </kbd>
               </button>
+
+              {/* Theme Toggle Button */}
+              <motion.button
+                onClick={toggleTheme}
+                aria-label="Toggle theme"
+                className="w-9 h-9 rounded-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 flex items-center justify-center text-slate-700 dark:text-amber-300 hover:border-indigo-300 dark:hover:border-white/20 shadow-sm transition-all"
+                whileHover={{ scale: 1.08 }}
+                whileTap={{ scale: 0.92 }}
+              >
+                {theme === "dark" ? (
+                  <Sun className="w-4 h-4 text-amber-400 animate-spin-slow" />
+                ) : (
+                  <Moon className="w-4 h-4 text-indigo-600" />
+                )}
+              </motion.button>
+
+              {/* Hire Me CTA */}
               <motion.a
                 href="#contact"
                 onClick={handleScroll}
-                className="btn-primary text-sm"
+                className="btn-primary text-xs sm:text-sm px-4 py-2 sm:px-5 sm:py-2"
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
               >
-                Hire Me
+                <Sparkles className="w-3.5 h-3.5" />
+                <span>Hire Me</span>
               </motion.a>
             </div>
 
-            {/* Mobile menu button */}
-            <div className="lg:hidden">
+            {/* Mobile Controls */}
+            <div className="flex sm:hidden items-center gap-2">
+              <motion.button
+                onClick={toggleTheme}
+                aria-label="Toggle theme"
+                className="p-2 rounded-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 text-slate-700 dark:text-amber-400"
+                whileTap={{ scale: 0.9 }}
+              >
+                {theme === "dark" ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+              </motion.button>
+
               <motion.button
                 onClick={() => setIsOpen(!isOpen)}
-                className="p-2 rounded-lg text-[#4D4880] hover:bg-slate-100 transition-colors"
+                className="p-2 rounded-xl border border-slate-200 dark:border-white/10 bg-white dark:bg-white/5 text-slate-700 dark:text-white"
                 whileTap={{ scale: 0.95 }}
                 aria-label="Toggle menu"
               >
@@ -146,32 +191,33 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Mobile Navigation */}
+        {/* Mobile Navigation Drawer */}
         <motion.div
-          className="lg:hidden overflow-hidden border-t border-white/10 bg-[#150B2D]/60 backdrop-blur-2xl border-white/10/95 backdrop-blur-xl"
+          className="lg:hidden overflow-hidden border-t border-slate-200/80 dark:border-white/10 bg-white/95 dark:bg-[#0F0B2D]/95 backdrop-blur-2xl shadow-xl"
           initial={false}
           animate={{ height: isOpen ? "auto" : 0 }}
           transition={{ duration: 0.25, ease: "easeInOut" }}
         >
-          <div className="px-4 py-3 space-y-1">
+          <div className="px-5 py-4 space-y-1">
             {navItems.map((item) => (
               <motion.a
                 key={item.label}
                 href={item.href}
                 onClick={handleScroll}
-                className="block px-4 py-2.5 rounded-xl text-sm font-medium text-[#C4BEED] hover:text-white hover:bg-white/10 transition-colors"
+                className="block px-4 py-2.5 rounded-xl text-sm font-semibold text-slate-700 dark:text-slate-200 hover:text-indigo-600 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/10 transition-colors"
                 whileHover={{ x: 4 }}
               >
                 {item.label}
               </motion.a>
             ))}
-            <div className="pt-2 pb-1">
+            <div className="pt-3 pb-1">
               <a
                 href="#contact"
                 onClick={handleScroll}
-                className="btn-primary w-full justify-center text-sm"
+                className="btn-primary w-full justify-center text-sm py-2.5"
               >
-                Hire Me
+                <Sparkles className="w-4 h-4" />
+                <span>Hire Me</span>
               </a>
             </div>
           </div>
@@ -180,6 +226,3 @@ export default function Navbar() {
     </>
   );
 }
-
-
-

@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import { X, ZoomIn, Award, ExternalLink } from "lucide-react";
+import { X, ZoomIn, Award, Sparkles } from "lucide-react";
 
 interface Certificate {
   id: number;
@@ -118,14 +118,14 @@ const certificates: Certificate[] = [
   },
   {
     id: 11,
-    title: "Innovation Day '26 – Automated Pani Puri Dispensing Machine",
+    title: "Innovation Day '26 – Automated Dispensing Machine",
     issuer: "Nandha Educational Institutions",
     image: "/certificates/photo_6154375745476694101_y.jpg",
     type: "achievement",
   },
   {
     id: 13,
-    title: "Python Programming Quiz – Certificate of Participation",
+    title: "Python Programming Quiz – Participation",
     issuer: "CodeAlpha · September 2024",
     image: "/certificates/photo_6154375745476694104_x.jpg",
     type: "online",
@@ -154,134 +154,178 @@ const certificates: Certificate[] = [
 ];
 
 const typeConfig = {
-  internship: { label: "Internship", color: "#7C3AED", bg: "#F3EFFE" },
-  achievement: { label: "Achievement", color: "#F59E0B", bg: "#FFFBEB" },
-  online: { label: "Online Course", color: "#5B21B6", bg: "#ECFDF5" },
-  hackathon: { label: "Hackathon", color: "#312E81", bg: "#F5F3FF" },
+  internship: { label: "Internship", color: "#4F46E5", bg: "#EEF2FF" },
+  achievement: { label: "Achievement", color: "#D97706", bg: "#FEF3C7" },
+  online: { label: "Certification", color: "#059669", bg: "#ECFDF5" },
+  hackathon: { label: "Hackathon", color: "#7C3AED", bg: "#F3E8FF" },
 };
 
 export default function Certifications() {
   const [selected, setSelected] = useState<Certificate | null>(null);
+  const [activeFilter, setActiveFilter] = useState<string>("All");
+
+  const filteredCerts = activeFilter === "All"
+    ? certificates
+    : certificates.filter((c) => c.type === activeFilter);
 
   return (
-    <section id="certifications" className="py-3 px-4 sm:px-6">
+    <section id="certifications" className="py-4 px-4 sm:px-6">
       <div className="max-w-4xl mx-auto">
         <motion.div
-          className="bg-[#150B2D]/60 backdrop-blur-2xl border-white/10 rounded-xl border border-white/10 shadow-sm p-6 sm:p-8"
+          className="pro-card p-6 sm:p-8"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.5 }}
         >
-          <div className="flex items-center justify-between mb-5">
-            <h2 className="text-xl font-bold text-white">Licenses &amp; Certifications</h2>
-            <span className="text-xs text-[#C4BEED] font-medium">{certificates.length} credentials</span>
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6">
+            <div>
+              <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                <Award className="w-5 h-5 text-indigo-600 dark:text-purple-400" />
+                <span>Licenses &amp; Certifications</span>
+              </h2>
+              <p className="text-xs sm:text-sm text-slate-500 font-medium mt-1">
+                Verified credentials, hackathon victories, and technical honors
+              </p>
+            </div>
+            <span className="text-xs font-semibold text-indigo-600 dark:text-purple-400 bg-indigo-50 dark:bg-indigo-950/40 border border-indigo-200 dark:border-indigo-800 px-3 py-1 rounded-full w-fit">
+              {certificates.length} Verified Credentials
+            </span>
           </div>
 
-        {/* Certificates grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-          {certificates.map((cert, idx) => {
-            const config = typeConfig[cert.type];
-            return (
-              <motion.div
-                key={cert.id}
-                className="pro-card overflow-hidden cursor-pointer group hover:border-[#7C3AED]/20"
-                initial={{ opacity: 0, scale: 0.95 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true, amount: 0.1 }}
-                transition={{ delay: (idx % 10) * 0.04, duration: 0.4 }}
-                whileHover={{ y: -4, boxShadow: "0 12px 28px rgba(124,58,237,0.12)" }}
-                onClick={() => setSelected(cert)}
-                id={`cert-card-${cert.id}`}
-              >
-                {/* Image */}
-                <div className="relative aspect-[4/3] bg-[#F8FAFC] overflow-hidden">
-                  <img
-                    src={cert.image}
-                    alt={cert.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-400"
-                  />
-                  {/* Hover overlay */}
-                  <div className="absolute inset-0 bg-[#7C3AED]/0 group-hover:bg-[#7C3AED]/10 transition-colors duration-200 flex items-center justify-center">
-                    <ZoomIn className="w-7 h-7 text-[#7C3AED] opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
-                  </div>
-                </div>
+          {/* Filter Pills */}
+          <div className="flex flex-wrap gap-2 mb-6 p-1.5 bg-slate-100/80 dark:bg-white/5 border border-slate-200/60 dark:border-white/10 rounded-2xl w-fit">
+            {[
+              { id: "All", label: "All" },
+              { id: "internship", label: "Internships" },
+              { id: "achievement", label: "Achievements" },
+              { id: "hackathon", label: "Hackathons" },
+              { id: "online", label: "Certifications" },
+            ].map(({ id, label }) => {
+              const isSelected = activeFilter === id;
+              return (
+                <button
+                  key={id}
+                  onClick={() => setActiveFilter(id)}
+                  className={`relative px-4 py-1.5 rounded-xl text-xs font-semibold transition-colors duration-200 ${
+                    isSelected
+                      ? "text-white"
+                      : "text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white"
+                  }`}
+                >
+                  {isSelected && (
+                    <motion.div
+                      layoutId="activeCertTab"
+                      className="absolute inset-0 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-xl shadow-sm"
+                      transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                    />
+                  )}
+                  <span className="relative z-10">{label}</span>
+                </button>
+              );
+            })}
+          </div>
 
-                {/* Content */}
-                <div className="p-3">
-                  <span
-                    className="inline-block px-2 py-0.5 rounded-full text-[10px] font-semibold mb-2"
-                    style={{ background: config.bg, color: config.color }}
+          {/* Certificates Grid */}
+          <motion.div 
+            className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-4"
+            layout
+          >
+            <AnimatePresence mode="popLayout">
+              {filteredCerts.map((cert) => {
+                const config = typeConfig[cert.type];
+                return (
+                  <motion.div
+                    key={cert.id}
+                    layout
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.9 }}
+                    transition={{ duration: 0.25 }}
+                    whileHover={{ y: -4 }}
+                    className="bg-slate-50/90 dark:bg-white/5 border border-slate-200/80 dark:border-white/10 rounded-2xl overflow-hidden cursor-pointer group hover:border-indigo-300 dark:hover:border-purple-400 hover:shadow-md transition-all duration-300 flex flex-col"
+                    onClick={() => setSelected(cert)}
+                    id={`cert-card-${cert.id}`}
                   >
-                    {config.label}
-                  </span>
-                  <h3 className="text-xs font-semibold text-white leading-snug line-clamp-2 mb-1">
-                    {cert.title}
-                  </h3>
-                  <p className="text-[#C4BEED] text-[10px] line-clamp-1">{cert.issuer}</p>
-                </div>
-              </motion.div>
-            );
-          })}
-        </div>
+                    {/* Thumbnail */}
+                    <div className="relative aspect-[4/3] bg-slate-100 dark:bg-slate-800 overflow-hidden">
+                      <img
+                        src={cert.image}
+                        alt={cert.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                      <div className="absolute inset-0 bg-indigo-900/0 group-hover:bg-indigo-900/30 transition-colors duration-200 flex items-center justify-center">
+                        <ZoomIn className="w-6 h-6 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-200 drop-shadow-md" />
+                      </div>
+                    </div>
+
+                    {/* Meta */}
+                    <div className="p-3 flex-1 flex flex-col justify-between">
+                      <div>
+                        <span
+                          className="inline-block px-2 py-0.5 rounded-full text-[10px] font-bold mb-1.5"
+                          style={{ backgroundColor: config.bg, color: config.color }}
+                        >
+                          {config.label}
+                        </span>
+                        <h3 className="text-xs font-bold text-slate-900 dark:text-white leading-snug line-clamp-2 mb-1">
+                          {cert.title}
+                        </h3>
+                      </div>
+                      <p className="text-[11px] text-slate-500 line-clamp-1 mt-1 font-medium">
+                        {cert.issuer}
+                      </p>
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </AnimatePresence>
+          </motion.div>
         </motion.div>
       </div>
 
-      {/* Lightbox Modal */}
+      {/* Lightbox Zoom Modal */}
       <AnimatePresence>
         {selected && (
           <motion.div
-            className="fixed inset-0 z-50 flex items-center justify-center p-4"
+            className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-900/70 backdrop-blur-md"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setSelected(null)}
           >
-            {/* Backdrop */}
-            <div className="absolute inset-0 bg-[#1E1B4B]/60 backdrop-blur-sm" />
-
-            {/* Modal */}
             <motion.div
-              className="relative z-10 max-w-2xl w-full bg-[#150B2D]/60 backdrop-blur-2xl border-white/10 rounded-2xl overflow-hidden shadow-2xl border border-white/10"
-              initial={{ scale: 0.9, opacity: 0, y: 20 }}
+              className="relative max-w-2xl w-full bg-white dark:bg-[#150B2D] rounded-2xl overflow-hidden shadow-2xl border border-slate-200 dark:border-white/10"
+              initial={{ scale: 0.9, opacity: 0, y: 15 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.9, opacity: 0, y: 20 }}
-              transition={{ duration: 0.25, ease: "easeOut" }}
+              exit={{ scale: 0.9, opacity: 0, y: 15 }}
+              transition={{ duration: 0.2 }}
               onClick={(e) => e.stopPropagation()}
             >
-              {/* Close button */}
+              {/* Close Button */}
               <button
-                className="absolute top-3 right-3 z-20 p-2 bg-[#150B2D]/60 backdrop-blur-2xl border-white/10/90 hover:bg-[#FEF2F2] rounded-full border border-white/10 text-[#4D4880] hover:text-red-500 transition-colors shadow-sm"
+                className="absolute top-3 right-3 z-20 p-2 bg-white/90 dark:bg-black/60 rounded-full border border-slate-200 dark:border-white/20 text-slate-600 dark:text-white hover:text-red-500 shadow-md transition-colors"
                 onClick={() => setSelected(null)}
                 aria-label="Close"
               >
                 <X className="w-4 h-4" />
               </button>
 
-              {/* Full image */}
-              <img
-                src={selected.image}
-                alt={selected.title}
-                className="w-full object-contain max-h-[65vh]"
-              />
+              <div className="bg-slate-100 dark:bg-black flex items-center justify-center p-2">
+                <img
+                  src={selected.image}
+                  alt={selected.title}
+                  className="w-full object-contain max-h-[70vh] rounded-lg"
+                />
+              </div>
 
-              {/* Caption */}
-              <div className="p-5 border-t border-[#F5F3FC]">
-                <div className="flex items-start gap-3">
-                  <div
-                    className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0"
-                    style={{
-                      background: typeConfig[selected.type].bg,
-                      color: typeConfig[selected.type].color,
-                    }}
-                  >
-                    <Award className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-white text-base mb-0.5">{selected.title}</h3>
-                    <p className="text-[#7C3AED] text-sm">{selected.issuer}</p>
-                  </div>
-                </div>
+              <div className="p-5 border-t border-slate-200 dark:border-white/10">
+                <h3 className="font-bold text-slate-900 dark:text-white text-base mb-0.5">
+                  {selected.title}
+                </h3>
+                <p className="text-sm font-semibold text-indigo-600 dark:text-purple-400">
+                  {selected.issuer}
+                </p>
               </div>
             </motion.div>
           </motion.div>
@@ -290,6 +334,3 @@ export default function Certifications() {
     </section>
   );
 }
-
-
-
