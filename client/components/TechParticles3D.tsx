@@ -78,12 +78,13 @@ function WaveGrid() {
     if (!mesh.current) return;
     const time = state.clock.getElapsedTime();
     const positionAttr = mesh.current.geometry.attributes.position;
+    const array = positionAttr.array as Float32Array;
     
     for (let i = 0; i < count; i++) {
-      const x = positionAttr.getX(i);
-      const z = positionAttr.getZ(i);
-      const y = Math.sin(x * 0.2 + time * 1.2) * Math.cos(z * 0.2 + time * 1.2) * 0.5 - 1.5;
-      positionAttr.setY(i, y);
+      const idx = i * 3;
+      const x = array[idx];
+      const z = array[idx + 2];
+      array[idx + 1] = Math.sin(x * 0.2 + time * 1.2) * Math.cos(z * 0.2 + time * 1.2) * 0.5 - 1.5;
     }
     positionAttr.needsUpdate = true;
     mesh.current.rotation.y = Math.sin(time * 0.05) * 0.1;
@@ -109,7 +110,7 @@ function WaveGrid() {
   );
 }
 
-function FloatingNodes({ count = 40 }) {
+function FloatingNodes({ count = 35 }) {
   const mesh = useRef<THREE.Points>(null);
   
   const [positions, velocities] = useMemo(() => {
@@ -128,22 +129,24 @@ function FloatingNodes({ count = 40 }) {
     return [pos, vels];
   }, [count]);
 
-  useFrame((state) => {
+  useFrame(() => {
     if (!mesh.current) return;
     const positionAttr = mesh.current.geometry.attributes.position;
+    const array = positionAttr.array as Float32Array;
     
     for (let i = 0; i < count; i++) {
-      let x = positionAttr.getX(i) + velocities[i].x;
-      let y = positionAttr.getY(i) + velocities[i].y;
-      let z = positionAttr.getZ(i) + velocities[i].z;
+      const idx = i * 3;
+      let x = array[idx] + velocities[i].x;
+      let y = array[idx + 1] + velocities[i].y;
+      let z = array[idx + 2] + velocities[i].z;
       
       if (Math.abs(x) > 7.5) velocities[i].x *= -1;
       if (Math.abs(y) > 3) velocities[i].y *= -1;
       if (Math.abs(z) > 4) velocities[i].z *= -1;
       
-      positionAttr.setX(i, x);
-      positionAttr.setY(i, y);
-      positionAttr.setZ(i, z);
+      array[idx] = x;
+      array[idx + 1] = y;
+      array[idx + 2] = z;
     }
     positionAttr.needsUpdate = true;
   });
@@ -193,14 +196,18 @@ export default function TechParticles3D() {
   }
 
   return (
-    <div className="absolute inset-0 z-0">
-      <Canvas camera={{ position: [0, 0, 5], fov: 55 }}>
+    <div className="absolute inset-0 z-0 pointer-events-none">
+      <Canvas 
+        dpr={[1, 1.5]}
+        gl={{ powerPreference: "high-performance", antialias: false, alpha: true }}
+        camera={{ position: [0, 0, 5], fov: 55 }}
+      >
         <ambientLight intensity={1.5} />
         <pointLight position={[10, 10, 10]} intensity={1} color="#a855f7" />
         <CameraController />
         <AbstractCore />
         <WaveGrid />
-        <FloatingNodes count={45} />
+        <FloatingNodes count={35} />
       </Canvas>
     </div>
   );

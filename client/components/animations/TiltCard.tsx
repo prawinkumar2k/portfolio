@@ -14,18 +14,27 @@ export function TiltCard({
   ...props
 }: TiltCardProps) {
   const ref = useRef<HTMLDivElement>(null);
+  const rectRef = useRef<DOMRect | null>(null);
 
   const x = useSpring(0, { stiffness: 300, damping: 30 });
   const y = useSpring(0, { stiffness: 300, damping: 30 });
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!ref.current) return;
-    const rect = ref.current.getBoundingClientRect();
-    const width = rect.width;
-    const height = rect.height;
+  const handleMouseEnter = () => {
+    if (ref.current) {
+      rectRef.current = ref.current.getBoundingClientRect();
+    }
+  };
 
-    const mouseX = e.clientX - rect.left;
-    const mouseY = e.clientY - rect.top;
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!rectRef.current && ref.current) {
+      rectRef.current = ref.current.getBoundingClientRect();
+    }
+    if (!rectRef.current) return;
+    const width = rectRef.current.width;
+    const height = rectRef.current.height;
+
+    const mouseX = e.clientX - rectRef.current.left;
+    const mouseY = e.clientY - rectRef.current.top;
 
     const xPct = mouseX / width - 0.5;
     const yPct = mouseY / height - 0.5;
@@ -37,6 +46,7 @@ export function TiltCard({
   const handleMouseLeave = () => {
     x.set(0);
     y.set(0);
+    rectRef.current = null;
   };
 
   return (

@@ -14,22 +14,28 @@ export function SpotlightCard({
   ...props
 }: SpotlightCardProps) {
   const divRef = useRef<HTMLDivElement>(null);
-  const [isFocused, setIsFocused] = useState(false);
+  const rectRef = useRef<DOMRect | null>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [opacity, setOpacity] = useState(0);
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!divRef.current) return;
-    const rect = divRef.current.getBoundingClientRect();
-    setPosition({ x: e.clientX - rect.left, y: e.clientY - rect.top });
+  const handleMouseEnter = () => {
+    if (divRef.current) {
+      rectRef.current = divRef.current.getBoundingClientRect();
+    }
+    setOpacity(1);
   };
 
-  const handleMouseEnter = () => {
-    setOpacity(1);
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!rectRef.current && divRef.current) {
+      rectRef.current = divRef.current.getBoundingClientRect();
+    }
+    if (!rectRef.current) return;
+    setPosition({ x: e.clientX - rectRef.current.left, y: e.clientY - rectRef.current.top });
   };
 
   const handleMouseLeave = () => {
     setOpacity(0);
+    rectRef.current = null;
   };
 
   return (
