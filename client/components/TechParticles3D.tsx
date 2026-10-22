@@ -172,43 +172,50 @@ function FloatingNodes({ count = 35 }) {
 }
 
 export default function TechParticles3D() {
-  const [hasWebGL, setHasWebGL] = useState(true);
+  const [mounted, setMounted] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    try {
-      const canvas = document.createElement("canvas");
-      const support = !!(
-        window.WebGLRenderingContext &&
-        (canvas.getContext("webgl") || canvas.getContext("experimental-webgl"))
-      );
-      setHasWebGL(support);
-    } catch {
-      setHasWebGL(false);
+    // Mount WebGL smoothly after initial browser paint
+    const timer = setTimeout(() => {
+      setMounted(true);
+    }, 50);
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      { threshold: 0.05 }
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
     }
+
+    return () => {
+      clearTimeout(timer);
+      observer.disconnect();
+    };
   }, []);
 
-  if (!hasWebGL) {
-    return (
-      <div className="absolute inset-0 pointer-events-none opacity-20">
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
-      </div>
-    );
-  }
-
   return (
-    <div className="absolute inset-0 z-0 pointer-events-none">
-      <Canvas 
-        dpr={[1, 1.5]}
-        gl={{ powerPreference: "high-performance", antialias: false, alpha: true }}
-        camera={{ position: [0, 0, 5], fov: 55 }}
-      >
-        <ambientLight intensity={1.5} />
-        <pointLight position={[10, 10, 10]} intensity={1} color="#a855f7" />
-        <CameraController />
-        <AbstractCore />
-        <WaveGrid />
-        <FloatingNodes count={35} />
-      </Canvas>
+    <div ref={containerRef} className="absolute inset-0 z-0 pointer-events-none">
+      {mounted && (
+        <Canvas 
+          frameloop={isVisible ? "always" : "never"}
+          dpr={[1, 1.5]}
+          gl={{ powerPreference: "high-performance", antialias: false, alpha: true }}
+          camera={{ position: [0, 0, 5], fov: 55 }}
+        >
+          <ambientLight intensity={1.5} />
+          <pointLight position={[10, 10, 10]} intensity={1} color="#a855f7" />
+          <CameraController />
+          <AbstractCore />
+          <WaveGrid />
+          <FloatingNodes count={35} />
+        </Canvas>
+      )}
     </div>
   );
 }
