@@ -169,32 +169,23 @@ export default function Certifications() {
     : certificates.filter((c) => c.type === activeFilter);
 
   return (
-    <section id="certifications" className="py-4 px-4 sm:px-6">
-      <div className="max-w-4xl mx-auto">
-        <motion.div
-          className="pro-card p-6 sm:p-8"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-        >
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6">
-            <div>
-              <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
-                <Award className="w-5 h-5 text-indigo-600 dark:text-purple-400" />
-                <span>Licenses &amp; Certifications</span>
-              </h2>
-              <p className="text-xs sm:text-sm text-slate-500 font-medium mt-1">
-                Verified credentials, hackathon victories, and technical honors
-              </p>
+    <section id="certifications" className="py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto space-y-8">
+        
+        {/* Section Header */}
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-slate-200/80 dark:border-white/10 pb-6">
+          <div>
+            <div className="section-label">
+              <Sparkles className="w-4 h-4" />
+              <span>Verified Qualifications</span>
             </div>
-            <span className="text-xs font-semibold text-indigo-600 dark:text-purple-400 bg-indigo-50 dark:bg-indigo-950/40 border border-indigo-200 dark:border-indigo-800 px-3 py-1 rounded-full w-fit">
-              {certificates.length} Verified Credentials
-            </span>
+            <h2 className="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white font-display tracking-tight">
+              Licenses &amp; Certifications
+            </h2>
           </div>
 
           {/* Filter Pills */}
-          <div className="flex flex-wrap gap-2 mb-6 p-1.5 bg-slate-100/80 dark:bg-white/5 border border-slate-200/60 dark:border-white/10 rounded-2xl w-fit">
+          <div className="flex flex-wrap gap-1.5 p-1.5 bg-slate-100/90 dark:bg-white/5 border border-slate-200/80 dark:border-white/10 rounded-2xl">
             {[
               { id: "All", label: "All" },
               { id: "internship", label: "Internships" },
@@ -207,7 +198,7 @@ export default function Certifications() {
                 <button
                   key={id}
                   onClick={() => setActiveFilter(id)}
-                  className={`relative px-4 py-1.5 rounded-xl text-xs font-semibold transition-colors duration-200 ${
+                  className={`relative px-3.5 py-1.5 rounded-xl text-xs font-bold transition-colors duration-200 ${
                     isSelected
                       ? "text-white"
                       : "text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white"
@@ -215,7 +206,7 @@ export default function Certifications() {
                 >
                   {isSelected && (
                     <motion.div
-                      layoutId="activeCertTab"
+                      layoutId="activeCertPill"
                       className="absolute inset-0 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-xl shadow-sm"
                       transition={{ type: "spring", stiffness: 400, damping: 30 }}
                     />
@@ -225,62 +216,62 @@ export default function Certifications() {
               );
             })}
           </div>
+        </div>
 
-          {/* Certificates Grid */}
-          <motion.div 
-            className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 sm:gap-4"
-            layout
-          >
-            <AnimatePresence mode="popLayout">
-              {filteredCerts.map((cert) => {
-                const config = typeConfig[cert.type];
-                return (
-                  <motion.div
-                    key={cert.id}
-                    layout
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.9 }}
-                    transition={{ duration: 0.25 }}
-                    whileHover={{ y: -4 }}
-                    className="bg-slate-50/90 dark:bg-white/5 border border-slate-200/80 dark:border-white/10 rounded-2xl overflow-hidden cursor-pointer group hover:border-indigo-300 dark:hover:border-purple-400 hover:shadow-md transition-all duration-300 flex flex-col"
-                    onClick={() => setSelected(cert)}
-                    id={`cert-card-${cert.id}`}
-                  >
-                    {/* Thumbnail */}
-                    <div className="relative aspect-[4/3] bg-slate-100 dark:bg-slate-800 overflow-hidden">
-                      <img
-                        src={cert.image}
-                        alt={cert.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                      />
-                      <div className="absolute inset-0 bg-indigo-900/0 group-hover:bg-indigo-900/30 transition-colors duration-200 flex items-center justify-center">
-                        <ZoomIn className="w-6 h-6 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-200 drop-shadow-md" />
-                      </div>
+        {/* Certificates Grid */}
+        <motion.div 
+          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4"
+          layout
+        >
+          <AnimatePresence mode="popLayout">
+            {filteredCerts.map((cert) => {
+              const config = typeConfig[cert.type];
+              return (
+                <motion.div
+                  key={cert.id}
+                  layout
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{ duration: 0.25 }}
+                  whileHover={{ y: -4 }}
+                  className="pro-card overflow-hidden cursor-pointer group hover:border-indigo-300 dark:hover:border-purple-400 flex flex-col justify-between"
+                  onClick={() => setSelected(cert)}
+                  id={`cert-card-${cert.id}`}
+                >
+                  {/* Thumbnail */}
+                  <div className="relative aspect-[4/3] bg-slate-100 dark:bg-slate-800 overflow-hidden">
+                    <img
+                      src={cert.image}
+                      alt={cert.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                    <div className="absolute inset-0 bg-indigo-900/0 group-hover:bg-indigo-900/30 transition-colors duration-200 flex items-center justify-center">
+                      <ZoomIn className="w-6 h-6 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-200 drop-shadow-md" />
                     </div>
+                  </div>
 
-                    {/* Meta */}
-                    <div className="p-3 flex-1 flex flex-col justify-between">
-                      <div>
-                        <span
-                          className="inline-block px-2 py-0.5 rounded-full text-[10px] font-bold mb-1.5"
-                          style={{ backgroundColor: config.bg, color: config.color }}
-                        >
-                          {config.label}
-                        </span>
-                        <h3 className="text-xs font-bold text-slate-900 dark:text-white leading-snug line-clamp-2 mb-1">
-                          {cert.title}
-                        </h3>
-                      </div>
-                      <p className="text-[11px] text-slate-500 line-clamp-1 mt-1 font-medium">
-                        {cert.issuer}
-                      </p>
+                  {/* Meta */}
+                  <div className="p-3.5 flex-1 flex flex-col justify-between">
+                    <div>
+                      <span
+                        className="inline-block px-2 py-0.5 rounded-full text-[10px] font-bold mb-1.5"
+                        style={{ backgroundColor: config.bg, color: config.color }}
+                      >
+                        {config.label}
+                      </span>
+                      <h3 className="text-xs font-bold text-slate-900 dark:text-white leading-snug line-clamp-2 mb-1">
+                        {cert.title}
+                      </h3>
                     </div>
-                  </motion.div>
-                );
-              })}
-            </AnimatePresence>
-          </motion.div>
+                    <p className="text-[11px] text-slate-500 line-clamp-1 mt-1 font-medium">
+                      {cert.issuer}
+                    </p>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </AnimatePresence>
         </motion.div>
       </div>
 

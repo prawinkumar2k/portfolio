@@ -7,8 +7,8 @@ const navItems = [
   { label: "Home", href: "#home" },
   { label: "About", href: "#about" },
   { label: "Skills", href: "#skills" },
-  { label: "Experience", href: "#experience" },
   { label: "Projects", href: "#projects" },
+  { label: "Experience", href: "#experience" },
   { label: "Certifications", href: "#certifications" },
   { label: "Contact", href: "#contact" },
 ];
@@ -52,7 +52,7 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Dynamic top scroll progress bar */}
+      {/* Top scroll progress bar */}
       <motion.div
         className="scroll-progress"
         style={{ width: progressWidth }}
@@ -66,32 +66,36 @@ export default function Navbar() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
       >
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <div className="flex justify-between items-center h-16 sm:h-18">
-            {/* Logo */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16 sm:h-20">
+            {/* Logo with User's Photo */}
             <motion.a
               href="#home"
               onClick={handleScroll}
-              className="flex items-center gap-2.5 flex-shrink-0 group cursor-pointer"
+              className="flex items-center gap-3 flex-shrink-0 group cursor-pointer"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
-              <div className="relative w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-indigo-600 to-purple-600 flex items-center justify-center text-white text-sm font-extrabold shadow-md shadow-indigo-500/20 group-hover:shadow-indigo-500/40 transition-shadow">
-                <span>PK</span>
-                <span className="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-emerald-400 border-2 border-white dark:border-[#09051C]" />
+              <div className="relative w-9 h-9 sm:w-11 sm:h-11 rounded-2xl overflow-hidden border-2 border-indigo-600/30 dark:border-purple-400/30 shadow-md group-hover:border-indigo-600 transition-colors">
+                <img
+                  src="/profile.jpg"
+                  alt="Prawin Kumar N"
+                  className="w-full h-full object-cover object-top"
+                />
+                <span className="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-emerald-500 border-2 border-white dark:border-[#09051C]" />
               </div>
               <div className="flex flex-col">
-                <span className="font-bold text-slate-900 dark:text-white text-sm tracking-tight leading-tight group-hover:text-indigo-600 dark:group-hover:text-purple-400 transition-colors">
+                <span className="font-extrabold text-slate-900 dark:text-white text-sm sm:text-base tracking-tight leading-tight group-hover:text-indigo-600 dark:group-hover:text-purple-400 transition-colors">
                   Prawin Kumar N
                 </span>
-                <span className="text-[10px] text-slate-500 dark:text-purple-300/70 font-medium">
-                  Full Stack Engineer
+                <span className="text-[11px] text-slate-500 dark:text-slate-400 font-semibold">
+                  Software Development Engineer
                 </span>
               </div>
             </motion.a>
 
             {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center gap-1 bg-slate-100/70 dark:bg-white/5 border border-slate-200/60 dark:border-white/10 px-2 py-1.5 rounded-full backdrop-blur-md">
+            <div className="hidden lg:flex items-center gap-1 bg-slate-100/80 dark:bg-white/5 border border-slate-200/80 dark:border-white/10 px-2 py-1.5 rounded-full backdrop-blur-md">
               {navItems.map((item) => {
                 const sectionId = item.href.slice(1);
                 const isActive = activeSection === sectionId;
@@ -100,7 +104,7 @@ export default function Navbar() {
                     key={item.label}
                     href={item.href}
                     onClick={handleScroll}
-                    className={`relative px-3.5 py-1 text-xs font-semibold rounded-full transition-all duration-200 ${
+                    className={`relative px-4 py-1 text-xs font-bold rounded-full transition-all duration-200 ${
                       isActive
                         ? "text-white"
                         : "text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/50 dark:hover:bg-white/10"
@@ -122,7 +126,7 @@ export default function Navbar() {
             </div>
 
             {/* CTA Buttons & Theme Toggle */}
-            <div className="hidden sm:flex items-center gap-2">
+            <div className="hidden sm:flex items-center gap-2.5">
               {/* Quick Search Button */}
               <button
                 onClick={() =>
@@ -130,7 +134,7 @@ export default function Navbar() {
                     new KeyboardEvent("keydown", { key: "k", metaKey: true })
                   )
                 }
-                className="flex items-center gap-2 px-3 py-1.5 rounded-xl border border-slate-200 dark:border-white/10 bg-white/60 dark:bg-white/5 text-slate-600 dark:text-slate-300 text-xs font-medium hover:border-indigo-300 dark:hover:border-white/20 transition-all shadow-sm"
+                className="flex items-center gap-2 px-3 py-1.5 rounded-xl border border-slate-200 dark:border-white/10 bg-white/80 dark:bg-white/5 text-slate-600 dark:text-slate-300 text-xs font-medium hover:border-indigo-300 dark:hover:border-white/20 transition-all shadow-sm"
                 title="Search (⌘K)"
               >
                 <Search className="w-3.5 h-3.5 text-slate-400" />

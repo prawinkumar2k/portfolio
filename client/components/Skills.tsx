@@ -1,167 +1,132 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import { Layers, CheckCircle2 } from "lucide-react";
+import { Layers, Server, Code, Database, Cpu, Terminal, Sparkles, CheckCircle2 } from "lucide-react";
 
-interface Skill {
+interface SkillCategory {
   name: string;
-  category: string;
+  icon: any;
+  color: string;
+  skills: string[];
 }
 
-const skills: Skill[] = [
-  // Languages
-  { name: "JavaScript (ES6+)", category: "Languages" },
-  { name: "TypeScript", category: "Languages" },
-  { name: "Python", category: "Languages" },
-  { name: "PHP", category: "Languages" },
-  { name: "SQL", category: "Languages" },
-
-  // Frontend
-  { name: "React 18", category: "Frontend" },
-  { name: "Vite", category: "Frontend" },
-  { name: "Tailwind CSS", category: "Frontend" },
-  { name: "HTML5 / CSS3", category: "Frontend" },
-  { name: "Bootstrap 5", category: "Frontend" },
-  { name: "Framer Motion", category: "Frontend" },
-  { name: "Three.js / R3F", category: "Frontend" },
-
-  // Backend
-  { name: "Node.js", category: "Backend" },
-  { name: "Express.js", category: "Backend" },
-  { name: "REST API Design", category: "Backend" },
-  { name: "JWT Auth & RBAC", category: "Backend" },
-  { name: "Payment Gateways (CCAvenue)", category: "Backend" },
-  { name: "PHP Backend", category: "Backend" },
-
-  // Database
-  { name: "MySQL", category: "Database" },
-  { name: "MongoDB", category: "Database" },
-  { name: "SQL Server", category: "Database" },
-  { name: "Sequelize ORM", category: "Database" },
-  { name: "Mongoose", category: "Database" },
-
-  // DevOps & Cloud
-  { name: "Ubuntu Linux Server", category: "DevOps" },
-  { name: "Nginx Reverse Proxy", category: "DevOps" },
-  { name: "PM2 Process Manager", category: "DevOps" },
-  { name: "UFW Firewall", category: "DevOps" },
-  { name: "SSL/TLS (Certbot)", category: "DevOps" },
-  { name: "Bare-Metal VPS Setup", category: "DevOps" },
-  { name: "Docker Basics", category: "DevOps" },
-  { name: "Hostinger VPS", category: "DevOps" },
-
-  // Tools
-  { name: "Git & GitHub", category: "Tools" },
-  { name: "Postman", category: "Tools" },
-  { name: "System Design & RBAC", category: "Tools" },
-  { name: "SDLC & Agile", category: "Tools" },
-  { name: "IoT & Hardware Integration", category: "Tools" },
+const skillCategories: SkillCategory[] = [
+  {
+    name: "Backend & Systems",
+    icon: Server,
+    color: "#4F46E5",
+    skills: ["Node.js", "Express.js", "RESTful APIs", "JWT Auth & RBAC", "CCAvenue Payment Gateway", "PHP Backend", "Sequelize ORM", "Microservices Architecture"],
+  },
+  {
+    name: "Frontend & UI Engineering",
+    icon: Code,
+    color: "#059669",
+    skills: ["React 18", "Vite", "TypeScript", "Tailwind CSS", "HTML5 / CSS3", "Bootstrap 5", "Framer Motion", "Three.js & R3F"],
+  },
+  {
+    name: "DevOps & Cloud Infrastructure",
+    icon: Terminal,
+    color: "#D97706",
+    skills: ["Ubuntu Linux Server", "Nginx (Reverse Proxy)", "PM2 Process Manager", "UFW Firewall", "SSL/TLS (Certbot)", "Bare-Metal VPS Setup", "Docker (Basics)", "Hostinger VPS"],
+  },
+  {
+    name: "Databases & Storage",
+    icon: Database,
+    color: "#7C3AED",
+    skills: ["MySQL", "MongoDB", "SQL Server", "Database Indexing", "Query Optimization", "Mongoose", "Schema Design"],
+  },
+  {
+    name: "Languages & AI/IoT",
+    icon: Cpu,
+    color: "#0284C7",
+    skills: ["JavaScript (ES6+)", "TypeScript", "Python", "Deep Learning (CNN)", "OpenCV", "Arduino & ESP32", "RFID Integration", "Git & GitHub"],
+  },
 ];
 
-const categories = ["All", "Languages", "Frontend", "Backend", "Database", "DevOps", "Tools"];
-
-const categoryStyles: Record<string, { lightBg: string; text: string; border: string; darkBg: string }> = {
-  Languages: { lightBg: "#EEF2FF", text: "#4338CA", border: "#C7D2FE", darkBg: "rgba(99,102,241,0.15)" },
-  Frontend:  { lightBg: "#F0FDF4", text: "#15803D", border: "#BBF7D0", darkBg: "rgba(22,163,74,0.15)" },
-  Backend:   { lightBg: "#FAF5FF", text: "#7E22CE", border: "#E9D5FF", darkBg: "rgba(168,85,247,0.15)" },
-  Database:  { lightBg: "#F0F9FF", text: "#0369A1", border: "#BAE6FD", darkBg: "rgba(14,165,233,0.15)" },
-  DevOps:    { lightBg: "#FFFBEB", text: "#B45309", border: "#FDE68A", darkBg: "rgba(245,158,11,0.15)" },
-  Tools:     { lightBg: "#F8FAFC", text: "#334155", border: "#CBD5E1", darkBg: "rgba(255,255,255,0.08)" },
-};
-
 export default function Skills() {
-  const [active, setActive] = useState("All");
-  const filtered = active === "All" ? skills : skills.filter((s) => s.category === active);
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const filteredCategories = skillCategories.map((cat) => ({
+    ...cat,
+    skills: cat.skills.filter((s) =>
+      s.toLowerCase().includes(searchQuery.toLowerCase())
+    ),
+  })).filter((cat) => cat.skills.length > 0);
 
   return (
-    <section id="skills" className="py-4 px-4 sm:px-6">
-      <div className="max-w-4xl mx-auto">
-        <motion.div
-          className="pro-card p-6 sm:p-8"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-        >
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6">
-            <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
-              <Layers className="w-5 h-5 text-indigo-600 dark:text-purple-400" />
-              <span>Skills &amp; Technologies</span>
+    <section id="skills" className="py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto space-y-8">
+        
+        {/* Section Header */}
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-slate-200/80 dark:border-white/10 pb-6">
+          <div>
+            <div className="section-label">
+              <Sparkles className="w-4 h-4" />
+              <span>Full Stack Arsenal</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white font-display tracking-tight">
+              Skills, Tools &amp; Technologies
             </h2>
-            <span className="text-xs text-slate-500 font-medium">
-              Showing {filtered.length} technical competencies
-            </span>
           </div>
 
-          {/* Category Tabs */}
-          <div className="flex flex-wrap gap-2 mb-6 p-1.5 bg-slate-100/80 dark:bg-white/5 border border-slate-200/60 dark:border-white/10 rounded-2xl w-fit">
-            {categories.map((cat) => {
-              const isSelected = active === cat;
-              return (
-                <button
-                  key={cat}
-                  onClick={() => setActive(cat)}
-                  className={`relative px-4 py-1.5 rounded-xl text-xs font-semibold transition-colors duration-200 ${
-                    isSelected
-                      ? "text-white"
-                      : "text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white"
-                  }`}
-                  id={`skill-filter-${cat.toLowerCase()}`}
-                >
-                  {isSelected && (
-                    <motion.div
-                      layoutId="activeSkillTab"
-                      className="absolute inset-0 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-xl shadow-sm"
-                      transition={{ type: "spring", stiffness: 400, damping: 30 }}
-                    />
-                  )}
-                  <span className="relative z-10">{cat}</span>
-                </button>
-              );
-            })}
+          {/* Quick Search Input */}
+          <div className="w-full sm:w-72">
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Search skills (e.g. Node, React, Ubuntu)..."
+              className="w-full px-4 py-2 rounded-xl text-xs sm:text-sm bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 focus:outline-none focus:border-indigo-500 shadow-sm"
+            />
           </div>
+        </div>
 
-          {/* Skill Pills Grid */}
-          <motion.div className="flex flex-wrap gap-2.5 min-h-[140px]" layout>
-            <AnimatePresence mode="popLayout">
-              {filtered.map((skill) => {
-                const style = categoryStyles[skill.category] || categoryStyles.Languages;
-                return (
-                  <motion.div
-                    key={skill.name}
-                    layout
-                    initial={{ opacity: 0, scale: 0.85 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.85 }}
-                    transition={{ duration: 0.2 }}
-                    whileHover={{ y: -2, scale: 1.04 }}
-                    className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold cursor-default select-none shadow-sm transition-all duration-200 border"
-                    style={{
-                      backgroundColor: style.lightBg,
-                      color: style.text,
-                      borderColor: style.border,
-                    }}
+        {/* Bento Grid of Skill Categories */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {filteredCategories.map((cat, idx) => (
+            <motion.div
+              key={cat.name}
+              className="pro-card p-6 flex flex-col justify-between group hover:border-indigo-300 dark:hover:border-purple-400 transition-all duration-300"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: idx * 0.07, duration: 0.4 }}
+              whileHover={{ y: -4 }}
+            >
+              <div>
+                <div className="flex items-center gap-3 mb-4">
+                  <div
+                    className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 shadow-sm transition-transform duration-300 group-hover:scale-110"
+                    style={{ backgroundColor: `${cat.color}15`, color: cat.color }}
                   >
-                    <CheckCircle2 className="w-3.5 h-3.5 opacity-70" />
-                    <span>{skill.name}</span>
-                  </motion.div>
-                );
-              })}
-            </AnimatePresence>
-          </motion.div>
+                    <cat.icon className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <h3 className="text-base font-bold text-slate-900 dark:text-white">
+                      {cat.name}
+                    </h3>
+                    <div className="text-[11px] text-slate-500 font-medium">
+                      {cat.skills.length} core competencies
+                    </div>
+                  </div>
+                </div>
 
-          {/* Legend Row */}
-          <div className="mt-8 pt-5 border-t border-slate-200 dark:border-white/10 flex flex-wrap gap-x-5 gap-y-2">
-            {Object.entries(categoryStyles).map(([cat, style]) => (
-              <span key={cat} className="flex items-center gap-1.5 text-xs text-slate-500 font-medium">
-                <span
-                  className="w-2.5 h-2.5 rounded-full flex-shrink-0"
-                  style={{ backgroundColor: style.text }}
-                />
-                {cat}
-              </span>
-            ))}
-          </div>
-        </motion.div>
+                {/* Skill Pills */}
+                <div className="flex flex-wrap gap-2 pt-2">
+                  {cat.skills.map((skill) => (
+                    <span
+                      key={skill}
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-slate-100/90 dark:bg-white/5 border border-slate-200/80 dark:border-white/10 text-slate-800 dark:text-slate-200 hover:border-indigo-300 dark:hover:border-purple-400 transition-colors shadow-sm cursor-default"
+                    >
+                      <CheckCircle2 className="w-3.5 h-3.5 opacity-60 text-indigo-600 dark:text-purple-400" />
+                      <span>{skill}</span>
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
       </div>
     </section>
   );

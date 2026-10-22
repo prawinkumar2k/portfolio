@@ -1,26 +1,14 @@
 import { motion } from "framer-motion";
-import { Github, Linkedin, Mail, Download, MapPin, Building2, GraduationCap, CheckCircle, Users, Briefcase, Sparkles, ArrowRight, Code2 } from "lucide-react";
+import { Github, Linkedin, Mail, Download, MapPin, Building2, GraduationCap, CheckCircle, Users, Briefcase, Sparkles, ArrowRight, Code2, Server, Award, ChevronDown } from "lucide-react";
 import { useEffect, useState } from "react";
 import TechParticles3D from "./TechParticles3D";
 
 const roles = [
   "Software Development Engineer",
-  "Full Stack Developer",
+  "Full Stack Architect",
   "MERN Stack Specialist",
   "Cloud & DevOps Engineer",
 ];
-
-const floatingVariants: any = {
-  animate: (i: number) => ({
-    y: [0, -10, 0],
-    rotate: [0, 4, -4, 0],
-    transition: {
-      duration: 4 + i * 0.8,
-      repeat: Infinity,
-      ease: "easeInOut"
-    }
-  })
-};
 
 const marqueeTech = [
   { name: "React 18", color: "#0284C7" },
@@ -30,11 +18,11 @@ const marqueeTech = [
   { name: "MySQL", color: "#0284C7" },
   { name: "MongoDB", color: "#16A34A" },
   { name: "Tailwind CSS", color: "#06B6D4" },
+  { name: "Ubuntu Linux", color: "#EA580C" },
+  { name: "Nginx Reverse Proxy", color: "#15803D" },
+  { name: "PM2 Process Manager", color: "#7C3AED" },
   { name: "Docker", color: "#0284C7" },
-  { name: "Nginx", color: "#15803D" },
-  { name: "PM2", color: "#7C3AED" },
   { name: "Python", color: "#CA8A04" },
-  { name: "Linux / Ubuntu", color: "#EA580C" },
   { name: "REST APIs", color: "#6366F1" },
   { name: "Git & GitHub", color: "#334155" },
 ];
@@ -61,167 +49,136 @@ export default function Hero() {
   }, [displayed, isDeleting, roleIndex]);
 
   return (
-    <section id="home" className="pt-16 sm:pt-20">
-      {/* Dynamic Cover Banner */}
-      <div className="relative h-60 sm:h-72 overflow-hidden flex items-center justify-center border-b border-slate-200/80 dark:border-white/10 bg-gradient-to-br from-indigo-50/90 via-purple-50/70 to-slate-100 dark:from-[#09051c] dark:via-[#0c0827] dark:to-[#170d38]">
-        
-        {/* 3D WebGL Particles Background */}
+    <section id="home" className="pt-24 sm:pt-28 pb-12 relative overflow-hidden">
+      {/* Dynamic 3D WebGL Background overlay */}
+      <div className="absolute inset-0 pointer-events-none opacity-40 dark:opacity-30 z-0">
         <TechParticles3D />
-
-        {/* Ambient Grid Pattern */}
-        <div className="absolute inset-0 bg-grid-pattern pointer-events-none opacity-60 dark:opacity-40 z-0" />
-        
-        {/* Soft radial glow */}
-        <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_50%_50%,rgba(99,102,241,0.12)_0%,transparent_60%)] dark:bg-[radial-gradient(circle_at_50%_50%,rgba(124,58,237,0.2)_0%,transparent_60%)]" />
-
-        {/* Center Name Display */}
-        <div className="relative z-10 flex flex-col items-center select-none text-center px-4">
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold text-indigo-700 dark:text-purple-300 bg-indigo-100/80 dark:bg-purple-950/50 border border-indigo-200/80 dark:border-purple-800/40 mb-2.5 backdrop-blur-md shadow-sm"
-          >
-            <Sparkles className="w-3.5 h-3.5 text-indigo-500 animate-pulse" />
-            <span>PORTFOLIO 2026</span>
-          </motion.div>
-
-          <motion.h1 
-            className="text-4xl sm:text-6xl uppercase tracking-widest font-black font-display text-slate-900 dark:text-white drop-shadow-sm"
-            initial={{ scale: 0.92, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
-          >
-            PRAWIN KUMAR
-          </motion.h1>
-          
-          <motion.div 
-            className="h-[2px] w-32 sm:w-44 mt-2.5 bg-gradient-to-r from-transparent via-indigo-500 to-transparent shadow-sm"
-            initial={{ width: 0 }}
-            animate={{ width: "100%" }}
-            transition={{ delay: 0.3, duration: 0.9 }}
-          />
-        </div>
-
-        {/* Floating tech badges */}
-        {/* 1. Node.js (Top Left) */}
-        <motion.div 
-          className="absolute left-[6%] top-[16%] z-10 hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/90 dark:bg-[#150B2D]/90 border border-slate-200/80 dark:border-white/10 shadow-md backdrop-blur-md select-none"
-          custom={0}
-          variants={floatingVariants}
-          animate="animate"
-        >
-          <div className="w-2.5 h-2.5 rounded-full bg-emerald-500" />
-          <span className="text-xs font-bold text-slate-800 dark:text-slate-200">Node.js</span>
-        </motion.div>
-
-        {/* 2. Docker (Bottom Left) */}
-        <motion.div 
-          className="absolute left-[12%] bottom-[16%] z-10 hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/90 dark:bg-[#150B2D]/90 border border-slate-200/80 dark:border-white/10 shadow-md backdrop-blur-md select-none"
-          custom={1}
-          variants={floatingVariants}
-          animate="animate"
-        >
-          <div className="w-2.5 h-2.5 rounded-full bg-sky-500" />
-          <span className="text-xs font-bold text-slate-800 dark:text-slate-200">Docker</span>
-        </motion.div>
-
-        {/* 3. React (Top Right) */}
-        <motion.div 
-          className="absolute right-[12%] top-[16%] z-10 hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/90 dark:bg-[#150B2D]/90 border border-slate-200/80 dark:border-white/10 shadow-md backdrop-blur-md select-none"
-          custom={2}
-          variants={floatingVariants}
-          animate="animate"
-        >
-          <div className="w-2.5 h-2.5 rounded-full bg-indigo-500" />
-          <span className="text-xs font-bold text-slate-800 dark:text-slate-200">React 18</span>
-        </motion.div>
-
-        {/* 4. Python (Bottom Right) */}
-        <motion.div 
-          className="absolute right-[6%] bottom-[16%] z-10 hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/90 dark:bg-[#150B2D]/90 border border-slate-200/80 dark:border-white/10 shadow-md backdrop-blur-md select-none"
-          custom={3}
-          variants={floatingVariants}
-          animate="animate"
-        >
-          <div className="w-2.5 h-2.5 rounded-full bg-amber-500" />
-          <span className="text-xs font-bold text-slate-800 dark:text-slate-200">Python</span>
-        </motion.div>
       </div>
 
-      {/* Profile Card Container */}
-      <div className="max-w-4xl mx-auto px-4 sm:px-6">
-        <motion.div
-          className="pro-card rounded-t-none border-t-0 p-0 overflow-hidden"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          {/* Avatar + Actions Row */}
-          <div className="px-5 sm:px-8 pt-4 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
-            
-            {/* Avatar with spinning open to work ring */}
-            <motion.div
-              className="relative -mt-16 sm:-mt-20 w-28 h-28 sm:w-36 sm:h-36 rounded-full p-1 bg-white dark:bg-[#150B2D] shadow-xl flex-shrink-0"
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ delay: 0.15, duration: 0.5, type: "spring", bounce: 0.3 }}
-            >
-              {/* Spinning OpenToWork dashed ring */}
-              <div className="absolute inset-0 rounded-full border-2 border-dashed border-emerald-500 animate-[spin_25s_linear_infinite] z-10 p-0.5" />
-              
-              <div 
-                className="w-full h-full rounded-full flex items-center justify-center relative overflow-hidden z-20 shadow-inner"
-                style={{ background: "linear-gradient(135deg, #4338CA 0%, #7C3AED 50%, #6D28D9 100%)" }}
-              >
-                {/* Tech grid overlay inside avatar */}
-                <div className="absolute inset-0 opacity-20 bg-[linear-gradient(to_right,#ffffff20_1px,transparent_1px),linear-gradient(to_bottom,#ffffff20_1px,transparent_1px)] bg-[size:8px_8px]" />
-                
-                <span className="text-3xl sm:text-5xl font-black text-white font-display select-none z-10 drop-shadow-md">
-                  PK
-                </span>
-                
-                {/* #OPENTOWORK badge */}
-                <div className="absolute -bottom-0.5 left-1/2 transform -translate-x-1/2 bg-emerald-600 text-[8px] sm:text-[9px] text-white font-extrabold px-2 py-0.5 rounded-full whitespace-nowrap tracking-wider shadow-md border border-emerald-300 uppercase z-30 animate-pulse">
-                  #OPENTOWORK
-                </div>
-              </div>
-              
-              {/* Online indicator dot */}
-              <div className="absolute bottom-1 right-1 w-4 h-4 bg-emerald-500 rounded-full border-2 border-white dark:border-[#150B2D] z-40 shadow-sm" />
-            </motion.div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Split Screen Hero: Left Info, Right Portrait */}
+        <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          
+          {/* Left Column (7 cols) */}
+          <motion.div
+            className="lg:col-span-7 space-y-6"
+            initial={{ opacity: 0, y: 25 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          >
+            {/* Status availability pill */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 shadow-sm backdrop-blur-md">
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
+              </span>
+              <span className="text-slate-800 dark:text-slate-200">
+                Available for SDE &amp; Full-Stack Roles
+              </span>
+              <span className="text-slate-300 dark:text-white/20">|</span>
+              <span className="text-indigo-600 dark:text-purple-400 font-semibold">Immediate Joiner</span>
+            </div>
 
-            {/* CTA action buttons */}
-            <motion.div
-              className="flex flex-wrap items-center gap-2 pb-2"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.35, duration: 0.5 }}
-            >
+            {/* Main Greeting & Headline */}
+            <div>
+              <div className="flex items-center gap-2 mb-2">
+                <span className="text-lg font-bold text-slate-500 dark:text-slate-400">
+                  Hello, I'm
+                </span>
+                <span className="text-xl">👋</span>
+              </div>
+              <h1 className="text-4xl sm:text-6xl font-black text-slate-900 dark:text-white font-display tracking-tight leading-[1.1] mb-3">
+                Prawin Kumar <span className="text-indigo-600 dark:text-purple-400">N</span>
+              </h1>
+              <div className="text-xl sm:text-2xl lg:text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-purple-600 to-sky-500 dark:from-indigo-400 dark:via-purple-300 dark:to-sky-300 min-h-[40px] flex items-center">
+                <span>{displayed}</span>
+                <span className="w-0.5 h-6 sm:h-8 bg-indigo-600 dark:bg-purple-400 animate-pulse ml-1 inline-block" />
+              </div>
+            </div>
+
+            {/* Punchy Executive Summary */}
+            <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed font-normal max-w-2xl">
+              Co-Founder at <strong className="text-slate-900 dark:text-white font-semibold">SearchFirst Technologies</strong> (Seed Funded) and sole developer &amp; infrastructure owner for the Tamil Nadu Government DOTE Admissions Portal (<a href="https://tnpoly.in" target="_blank" rel="noopener noreferrer" className="text-indigo-600 dark:text-purple-400 font-semibold hover:underline">tnpoly.in</a>) serving <strong className="text-slate-900 dark:text-white font-semibold">50,000+ students</strong> statewide with 99.9% uptime.
+            </p>
+
+            {/* Meta Row: Location, Company, Education */}
+            <div className="flex flex-wrap gap-x-5 gap-y-2 text-xs sm:text-sm text-slate-600 dark:text-slate-300 font-medium">
+              <span className="flex items-center gap-1.5">
+                <MapPin className="w-4 h-4 text-indigo-600 dark:text-purple-400 flex-shrink-0" />
+                Tamil Nadu, India
+              </span>
+              <span className="flex items-center gap-1.5">
+                <Building2 className="w-4 h-4 text-indigo-600 dark:text-purple-400 flex-shrink-0" />
+                SearchFirst Technologies Pvt. Ltd.
+              </span>
+              <span className="flex items-center gap-1.5">
+                <GraduationCap className="w-4 h-4 text-indigo-600 dark:text-purple-400 flex-shrink-0" />
+                B.Tech AI &amp; DS · Nandha Engineering College
+              </span>
+            </div>
+
+            {/* Quick Proof Metrics Bento */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
+              {[
+                { number: "50K+", label: "Users in Production", color: "#4F46E5" },
+                { number: "99.9%", label: "Live System Uptime", color: "#059669" },
+                { number: "3x", label: "Innovation 1st Prize", color: "#D97706" },
+                { number: "INR 25L", label: "Seed Funding Raised", color: "#7C3AED" },
+              ].map((stat) => (
+                <div
+                  key={stat.label}
+                  className="bg-white/80 dark:bg-white/5 border border-slate-200/80 dark:border-white/10 rounded-2xl p-3 text-center shadow-sm hover:border-indigo-300 dark:hover:border-purple-400 transition-colors"
+                >
+                  <div
+                    className="text-xl sm:text-2xl font-black font-display"
+                    style={{ color: stat.color }}
+                  >
+                    {stat.number}
+                  </div>
+                  <div className="text-[11px] font-semibold text-slate-500 leading-tight mt-0.5">
+                    {stat.label}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Action Buttons & Socials */}
+            <div className="flex flex-wrap items-center gap-3 pt-2">
+              <a
+                href="#projects"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
+                }}
+                className="btn-primary text-sm px-5 py-3 shadow-md"
+              >
+                <span>View Projects</span>
+                <ArrowRight className="w-4 h-4" />
+              </a>
+
               <a
                 href="/PrawinKumar-Resume.pdf"
                 download="PrawinKumar-Resume.pdf"
                 id="hero-download-resume"
-                className="btn-primary text-xs sm:text-sm px-4 py-2"
+                className="btn-secondary text-sm px-5 py-3 shadow-sm"
               >
-                <Download className="w-3.5 h-3.5" />
+                <Download className="w-4 h-4 text-indigo-600 dark:text-purple-400" />
                 <span>Download CV</span>
               </a>
 
               <a
                 href="#contact"
-                id="hero-hire-me"
                 onClick={(e) => {
                   e.preventDefault();
                   document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
                 }}
-                className="btn-secondary text-xs sm:text-sm px-4 py-2"
+                className="btn-secondary text-sm px-4 py-3 shadow-sm"
               >
-                <Briefcase className="w-3.5 h-3.5 text-indigo-600 dark:text-purple-400" />
+                <Briefcase className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
                 <span>Hire Me</span>
               </a>
 
-              {/* Social icons */}
+              {/* Social Channels */}
               <div className="flex items-center gap-1.5 ml-1">
                 {[
                   { Icon: Github, href: "https://github.com/prawinkumar2k", label: "GitHub" },
@@ -234,121 +191,118 @@ export default function Hero() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={label}
-                    className="w-9 h-9 rounded-xl bg-slate-100 hover:bg-slate-200/80 dark:bg-white/5 dark:hover:bg-white/10 border border-slate-200 dark:border-white/10 flex items-center justify-center text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-purple-300 transition-all shadow-sm"
-                    whileHover={{ scale: 1.1, y: -2 }}
+                    className="w-10 h-10 rounded-xl bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 flex items-center justify-center text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-purple-300 hover:border-indigo-300 shadow-sm transition-all"
+                    whileHover={{ scale: 1.08, y: -2 }}
                     whileTap={{ scale: 0.95 }}
                   >
                     <Icon className="w-4 h-4" />
                   </motion.a>
                 ))}
               </div>
-            </motion.div>
-          </div>
-
-          {/* Profile Details */}
-          <motion.div
-            className="px-5 sm:px-8 pb-6 pt-3"
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.5 }}
-          >
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 mb-1">
-              <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white font-display tracking-tight">
-                Prawin Kumar N
-              </h1>
-              <span className="text-xs font-semibold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/50 border border-emerald-200 dark:border-emerald-800/60 px-2.5 py-0.5 rounded-full w-fit">
-                ⚡ Available for Full-Time / SDE Roles
-              </span>
-            </div>
-
-            {/* Typewriter headline */}
-            <p className="text-base sm:text-lg font-bold text-indigo-600 dark:text-purple-400 mb-3 flex items-center gap-1.5">
-              <span>{displayed}</span>
-              <span className="w-0.5 h-5 bg-indigo-600 dark:bg-purple-400 animate-pulse inline-block" />
-            </p>
-
-            {/* Meta Row */}
-            <div className="flex flex-wrap gap-x-5 gap-y-2 text-xs sm:text-sm text-slate-600 dark:text-slate-300 mb-4 font-medium">
-              <span className="flex items-center gap-1.5">
-                <MapPin className="w-4 h-4 text-indigo-600 dark:text-purple-400 flex-shrink-0" />
-                Perundurai, Tamil Nadu, India
-              </span>
-              <span className="flex items-center gap-1.5">
-                <Building2 className="w-4 h-4 text-indigo-600 dark:text-purple-400 flex-shrink-0" />
-                SearchFirst Technologies Pvt. Ltd. (Co-Founder)
-              </span>
-              <span className="flex items-center gap-1.5">
-                <GraduationCap className="w-4 h-4 text-indigo-600 dark:text-purple-400 flex-shrink-0" />
-                B.Tech AI &amp; DS · Nandha Engineering College
-              </span>
-            </div>
-
-            {/* Social-proof badges */}
-            <div className="flex flex-wrap items-center gap-2">
-              <span className="flex items-center gap-1.5 text-xs font-semibold text-indigo-600 dark:text-purple-400 bg-indigo-50 dark:bg-indigo-950/40 border border-indigo-200 dark:border-indigo-800 px-2.5 py-1 rounded-full cursor-pointer hover:underline">
-                <Users className="w-3.5 h-3.5" />
-                500+ Connections
-              </span>
-              <span className="badge-green">
-                <CheckCircle className="w-3.5 h-3.5" />
-                Open to Work
-              </span>
-              <span className="badge-amber">
-                🏆 3x Innovation 1st Prize
-              </span>
-              <span className="badge-blue">
-                🚀 50K+ Users Served
-              </span>
-              <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-purple-50 text-purple-700 border border-purple-200 dark:bg-purple-950/40 dark:text-purple-300 dark:border-purple-800">
-                💼 Co-Founded (Funded)
-              </span>
             </div>
           </motion.div>
-        </motion.div>
 
-        {/* Stats Row Bento */}
-        <motion.div
-          className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-3 pb-2"
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5, duration: 0.5 }}
-        >
-          {[
-            { num: "50K+", label: "Users Served in Prod", color: "#4F46E5", darkColor: "#818CF8" },
-            { num: "10+",  label: "Projects Shipped",    color: "#059669", darkColor: "#34D399" },
-            { num: "20+",  label: "Certifications",      color: "#7C3AED", darkColor: "#A78BFA" },
-            { num: "3+",   label: "Hackathon Awards",    color: "#D97706", darkColor: "#FBBF24" },
-          ].map(({ num, label, color, darkColor }, i) => (
-            <motion.div
-              key={label}
-              className="pro-card p-4 text-center cursor-default transition-all duration-300"
-              whileHover={{ y: -3, scale: 1.02 }}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.55 + i * 0.06, duration: 0.4 }}
-            >
-              <div 
-                className="text-2xl sm:text-3xl font-black font-display mb-0.5"
-                style={{ color }}
-              >
-                {num}
+          {/* Right Column (5 cols): Real Portrait Hero Card */}
+          <motion.div
+            className="lg:col-span-5 relative flex justify-center"
+            initial={{ opacity: 0, scale: 0.92 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.15 }}
+          >
+            {/* Ambient Background Aura */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-indigo-500/20 via-purple-500/20 to-sky-500/20 rounded-3xl blur-2xl -z-10" />
+
+            {/* Main Portrait Card Container */}
+            <div className="relative w-full max-w-[380px] sm:max-w-[420px]">
+              
+              {/* Profile Image Frame */}
+              <div className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-indigo-500/10 via-purple-500/10 to-slate-200 dark:to-slate-800 p-2 border-2 border-white dark:border-white/10 shadow-2xl backdrop-blur-xl">
+                <div className="relative rounded-2xl overflow-hidden aspect-[4/5] bg-slate-100 dark:bg-slate-900">
+                  <img
+                    src="/profile.jpg"
+                    alt="Prawin Kumar N"
+                    className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700"
+                  />
+                  
+                  {/* Subtle Gradient Vignette at bottom */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent pointer-events-none" />
+
+                  {/* Bottom Portrait Caption */}
+                  <div className="absolute bottom-4 left-4 right-4 text-white">
+                    <div className="text-lg font-black font-display drop-shadow-md">
+                      Prawin Kumar N
+                    </div>
+                    <div className="text-xs text-indigo-300 font-semibold drop-shadow-sm flex items-center gap-1.5">
+                      <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                      Software Development Engineer · Co-Founder
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div className="text-xs text-slate-600 dark:text-slate-300 font-semibold">{label}</div>
-            </motion.div>
-          ))}
-        </motion.div>
 
-        {/* Tech Stack Infinite Marquee */}
-        <motion.div
-          className="mt-3 pro-card py-3 px-4 overflow-hidden relative"
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.65, duration: 0.5 }}
-        >
-          <div className="flex items-center gap-3">
-            <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider flex-shrink-0 flex items-center gap-1.5">
-              <Code2 className="w-3.5 h-3.5 text-indigo-500" />
-              Core Tech:
+              {/* Floating Glass Pill 1: Top Right (Production Scale) */}
+              <motion.div
+                className="absolute -top-3 -right-3 sm:-right-5 bg-white/95 dark:bg-[#150B2D]/95 border border-slate-200/90 dark:border-white/15 rounded-2xl p-3 shadow-xl backdrop-blur-xl flex items-center gap-2.5 z-20"
+                animate={{ y: [0, -6, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              >
+                <div className="w-8 h-8 rounded-xl bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-purple-400 flex items-center justify-center font-bold text-sm shadow-sm">
+                  <Server className="w-4 h-4" />
+                </div>
+                <div>
+                  <div className="text-[11px] font-bold text-slate-800 dark:text-white">
+                    tnpoly.in
+                  </div>
+                  <div className="text-[10px] text-emerald-600 dark:text-emerald-400 font-bold flex items-center gap-1">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                    50K+ Live Users
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Floating Glass Pill 2: Bottom Left (Innovation Award) */}
+              <motion.div
+                className="absolute -bottom-3 -left-3 sm:-left-5 bg-white/95 dark:bg-[#150B2D]/95 border border-slate-200/90 dark:border-white/15 rounded-2xl p-3 shadow-xl backdrop-blur-xl flex items-center gap-2.5 z-20"
+                animate={{ y: [0, 6, 0] }}
+                transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
+              >
+                <div className="w-8 h-8 rounded-xl bg-amber-50 dark:bg-amber-950/60 text-amber-600 dark:text-amber-400 flex items-center justify-center font-bold text-sm shadow-sm">
+                  <Award className="w-4 h-4" />
+                </div>
+                <div>
+                  <div className="text-[11px] font-bold text-slate-800 dark:text-white">
+                    3x 1st Prize Winner
+                  </div>
+                  <div className="text-[10px] text-slate-500 font-semibold">
+                    Nandha Innovation Day
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Floating Glass Pill 3: Startup Funding */}
+              <motion.div
+                className="absolute top-1/2 -right-4 sm:-right-8 bg-white/95 dark:bg-[#150B2D]/95 border border-slate-200/90 dark:border-white/15 rounded-2xl p-2.5 shadow-xl backdrop-blur-xl hidden sm:flex items-center gap-2 z-20"
+                animate={{ y: [0, -5, 0] }}
+                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+              >
+                <div className="w-7 h-7 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold text-xs shadow-sm">
+                  🚀
+                </div>
+                <div className="text-[10px] font-bold text-slate-800 dark:text-white">
+                  INR 25L Funded
+                </div>
+              </motion.div>
+            </div>
+          </motion.div>
+
+        </div>
+
+        {/* Full-Width Core Tech Infinite Marquee */}
+        <div className="mt-14 pro-card py-3.5 px-4 overflow-hidden relative shadow-sm">
+          <div className="flex items-center gap-4">
+            <span className="text-xs font-black text-slate-500 uppercase tracking-widest flex-shrink-0 flex items-center gap-1.5">
+              <Code2 className="w-4 h-4 text-indigo-600 dark:text-purple-400" />
+              <span>Core Stack:</span>
             </span>
             
             <div className="overflow-hidden relative flex-1">
@@ -356,16 +310,17 @@ export default function Hero() {
                 {[...marqueeTech, ...marqueeTech].map((tech, idx) => (
                   <span
                     key={`${tech.name}-${idx}`}
-                    className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 dark:bg-white/5 border border-slate-200 dark:border-white/10 text-slate-700 dark:text-slate-200 whitespace-nowrap shadow-sm hover:scale-105 transition-transform"
+                    className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold bg-slate-100/90 dark:bg-white/5 border border-slate-200/80 dark:border-white/10 text-slate-700 dark:text-slate-200 whitespace-nowrap shadow-sm hover:scale-105 transition-transform cursor-default"
                   >
-                    <span className="w-2 h-2 rounded-full" style={{ backgroundColor: tech.color }} />
+                    <span className="w-2 h-2 rounded-full shadow-sm" style={{ backgroundColor: tech.color }} />
                     {tech.name}
                   </span>
                 ))}
               </div>
             </div>
           </div>
-        </motion.div>
+        </div>
+
       </div>
     </section>
   );

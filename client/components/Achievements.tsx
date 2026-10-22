@@ -42,58 +42,54 @@ const achievements = [
 
 export default function Achievements() {
   return (
-    <section id="achievements" className="py-4 px-4 sm:px-6">
-      <div className="max-w-4xl mx-auto">
-        <motion.div
-          className="pro-card p-6 sm:p-8"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-        >
-          <div className="flex items-center justify-between mb-6">
-            <div>
-              <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
-                <Trophy className="w-5 h-5 text-amber-500" />
-                <span>Key Achievements &amp; Impact</span>
-              </h2>
-              <p className="text-xs sm:text-sm text-slate-500 font-medium mt-1">
-                Major milestones, hackathons, and high-impact deliveries
-              </p>
+    <section id="achievements" className="py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto space-y-8">
+        
+        {/* Section Header */}
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-slate-200/80 dark:border-white/10 pb-6">
+          <div>
+            <div className="section-label">
+              <Sparkles className="w-4 h-4" />
+              <span>Recognitions &amp; Impact</span>
             </div>
-            <span className="text-xs font-semibold text-amber-700 bg-amber-50 border border-amber-200 dark:bg-amber-950/40 dark:text-amber-300 dark:border-amber-800 px-3 py-1 rounded-full">
-              Award-Winning
-            </span>
+            <h2 className="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white font-display tracking-tight">
+              Honors, Awards &amp; Milestones
+            </h2>
           </div>
+          <span className="text-xs font-bold text-amber-700 bg-amber-50 border border-amber-200 dark:bg-amber-950/40 dark:text-amber-300 dark:border-amber-800 px-3 py-1.5 rounded-full w-fit">
+            3x First Prize Winner
+          </span>
+        </div>
 
-          {/* Achievements Grid */}
-          <div className="grid sm:grid-cols-2 gap-4">
-            {achievements.map(({ id, title, description, icon: Icon, color, badge }, idx) => (
-              <motion.div
-                key={id}
-                className="bg-slate-50/80 dark:bg-white/5 border border-slate-200/80 dark:border-white/10 rounded-2xl p-5 hover:border-indigo-300 dark:hover:border-purple-400 transition-all duration-300 hover:shadow-md relative overflow-hidden group"
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.08, duration: 0.4 }}
-                whileHover={{ y: -3 }}
-              >
-                {/* Subtle top accent bar */}
-                <div
-                  className="absolute top-0 left-0 right-0 h-1"
-                  style={{ backgroundColor: color }}
-                />
+        {/* Achievements Grid */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {achievements.map(({ id, title, description, icon: Icon, color, badge }, idx) => (
+            <motion.div
+              key={id}
+              className="pro-card p-6 flex flex-col justify-between relative overflow-hidden group hover:border-indigo-300 dark:hover:border-purple-400 transition-all duration-300"
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: idx * 0.08, duration: 0.4 }}
+              whileHover={{ y: -5 }}
+            >
+              {/* Top Accent Bar */}
+              <div
+                className="absolute top-0 left-0 right-0 h-1"
+                style={{ backgroundColor: color }}
+              />
 
-                <div className="flex items-center justify-between mb-3">
+              <div>
+                <div className="flex items-center justify-between mb-4">
                   <div
-                    className="w-10 h-10 rounded-xl flex items-center justify-center transition-transform duration-300 group-hover:scale-110 shadow-sm"
+                    className="w-11 h-11 rounded-2xl flex items-center justify-center transition-transform duration-300 group-hover:scale-110 shadow-sm"
                     style={{ backgroundColor: `${color}15`, color }}
                   >
                     <Icon className="w-5 h-5" />
                   </div>
 
                   <span
-                    className="text-xs font-bold px-2.5 py-0.5 rounded-full"
+                    className="text-xs font-bold px-2.5 py-1 rounded-full"
                     style={{
                       backgroundColor: `${color}15`,
                       color: color,
@@ -103,16 +99,17 @@ export default function Achievements() {
                   </span>
                 </div>
 
-                <h3 className="text-base font-bold text-slate-900 dark:text-white mb-1.5 group-hover:text-indigo-600 dark:group-hover:text-purple-400 transition-colors">
+                <h3 className="text-base font-bold text-slate-900 dark:text-white mb-2 group-hover:text-indigo-600 dark:group-hover:text-purple-400 transition-colors">
                   {title}
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
                   {description}
                 </p>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
       </div>
     </section>
   );

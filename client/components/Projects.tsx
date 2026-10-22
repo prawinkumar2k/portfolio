@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
-import { ExternalLink, Github, ArrowRight, Server, Globe, Sparkles, CheckCircle2 } from "lucide-react";
+import { ExternalLink, Github, ArrowRight, Server, Globe, Sparkles } from "lucide-react";
 import { useState } from "react";
 
 interface Project {
@@ -112,40 +112,30 @@ export default function Projects() {
     : projects.filter((p) => p.category.includes(activeCategory));
 
   return (
-    <section id="projects" className="py-4 px-4 sm:px-6">
-      <div className="max-w-4xl mx-auto">
-        <motion.div
-          className="pro-card p-6 sm:p-8"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-        >
-          {/* Section Header */}
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6">
-            <div>
-              <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
-                <Sparkles className="w-5 h-5 text-indigo-600 dark:text-purple-400" />
-                <span>Featured Projects &amp; Deployments</span>
-              </h2>
-              <p className="text-xs sm:text-sm text-slate-500 font-medium mt-1">
-                Real-world web portals, government systems, and production platforms
-              </p>
+    <section id="projects" className="py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto space-y-8">
+        
+        {/* Section Header */}
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-slate-200/80 dark:border-white/10 pb-6">
+          <div>
+            <div className="section-label">
+              <Sparkles className="w-4 h-4" />
+              <span>Production Deployments</span>
             </div>
-            <span className="text-xs font-semibold text-indigo-600 dark:text-purple-400 bg-indigo-50 dark:bg-indigo-950/40 border border-indigo-200 dark:border-indigo-800 px-3 py-1 rounded-full w-fit">
-              50K+ Users Live
-            </span>
+            <h2 className="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white font-display tracking-tight">
+              Featured Work &amp; Architectures
+            </h2>
           </div>
 
-          {/* Filter Tabs */}
-          <div className="flex flex-wrap gap-2 mb-6 p-1.5 bg-slate-100/80 dark:bg-white/5 border border-slate-200/60 dark:border-white/10 rounded-2xl w-fit">
+          {/* Filter Pills */}
+          <div className="flex flex-wrap gap-1.5 p-1.5 bg-slate-100/90 dark:bg-white/5 border border-slate-200/80 dark:border-white/10 rounded-2xl">
             {categories.map((cat) => {
               const isSelected = activeCategory === cat;
               return (
                 <button
                   key={cat}
                   onClick={() => setActiveCategory(cat)}
-                  className={`relative px-4 py-1.5 rounded-xl text-xs font-semibold transition-colors duration-200 ${
+                  className={`relative px-3.5 py-1.5 rounded-xl text-xs font-bold transition-colors duration-200 ${
                     isSelected
                       ? "text-white"
                       : "text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white"
@@ -154,7 +144,7 @@ export default function Projects() {
                 >
                   {isSelected && (
                     <motion.div
-                      layoutId="activeProjectTab"
+                      layoutId="activeProjectPill"
                       className="absolute inset-0 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-xl shadow-sm"
                       transition={{ type: "spring", stiffness: 400, damping: 30 }}
                     />
@@ -164,56 +154,57 @@ export default function Projects() {
               );
             })}
           </div>
+        </div>
 
-          {/* Projects Grid */}
-          <motion.div className="grid sm:grid-cols-2 gap-4" layout>
-            <AnimatePresence mode="popLayout">
-              {filteredProjects.map((project, idx) => (
-                <motion.div
-                  key={project.id}
-                  layout
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.3 }}
-                  whileHover={{ y: -4 }}
-                  className="bg-slate-50/80 dark:bg-white/5 border border-slate-200/80 dark:border-white/10 rounded-2xl overflow-hidden flex flex-col group hover:shadow-lg hover:border-indigo-300 dark:hover:border-purple-400 transition-all duration-300"
-                >
-                  {/* Banner / Image Area */}
-                  <div className="relative h-44 overflow-hidden bg-slate-200 dark:bg-slate-800">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                      onError={(e) => {
-                        // Fallback elegant gradient if image not found
-                        const target = e.target as HTMLImageElement;
-                        target.style.display = "none";
-                      }}
-                    />
-                    
-                    {/* Fallback gradient banner background */}
-                    <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-20 -z-10`} />
+        {/* Projects Grid (Responsive 3-col / 2-col) */}
+        <motion.div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" layout>
+          <AnimatePresence mode="popLayout">
+            {filteredProjects.map((project) => (
+              <motion.div
+                key={project.id}
+                layout
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.3 }}
+                whileHover={{ y: -6 }}
+                className="pro-card overflow-hidden flex flex-col group cursor-pointer"
+              >
+                {/* Banner / Image Area */}
+                <div className="relative h-48 overflow-hidden bg-slate-200 dark:bg-slate-800">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-108"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.style.display = "none";
+                    }}
+                  />
+                  
+                  {/* Fallback gradient banner background */}
+                  <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-20 -z-10`} />
 
-                    {/* Highlight Badge */}
-                    {project.highlight && (
-                      <div className="absolute top-3 right-3 px-2.5 py-1 rounded-full text-white text-[11px] font-bold shadow-md bg-slate-900/85 backdrop-blur-md border border-white/20">
-                        {project.highlight}
-                      </div>
-                    )}
+                  {/* Highlight Badge */}
+                  {project.highlight && (
+                    <div className="absolute top-3 right-3 px-2.5 py-1 rounded-full text-white text-[11px] font-bold shadow-md bg-slate-950/85 backdrop-blur-md border border-white/20">
+                      {project.highlight}
+                    </div>
+                  )}
 
-                    {/* Dedicated Server Badge */}
-                    {project.infraBadge && (
-                      <div className="absolute top-3 left-3 flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-white text-[11px] font-bold shadow-md bg-indigo-900/85 backdrop-blur-md border border-indigo-400/30">
-                        <Server className="w-3.5 h-3.5 text-indigo-300" />
-                        <span>{project.infraBadge}</span>
-                      </div>
-                    )}
-                  </div>
+                  {/* Dedicated Server Badge */}
+                  {project.infraBadge && (
+                    <div className="absolute top-3 left-3 flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-white text-[11px] font-bold shadow-md bg-indigo-950/85 backdrop-blur-md border border-indigo-400/30">
+                      <Server className="w-3.5 h-3.5 text-indigo-300" />
+                      <span>{project.infraBadge}</span>
+                    </div>
+                  )}
+                </div>
 
-                  {/* Card Content */}
-                  <div className="p-5 flex-1 flex flex-col">
-                    {/* Category tags */}
+                {/* Card Content */}
+                <div className="p-5 sm:p-6 flex-1 flex flex-col justify-between">
+                  <div>
+                    {/* Category Tags */}
                     <div className="flex flex-wrap gap-1.5 mb-2.5">
                       {project.category.map((cat) => (
                         <span key={cat} className="badge-blue text-[10px] py-0.5 px-2">
@@ -222,7 +213,7 @@ export default function Projects() {
                       ))}
                     </div>
 
-                    <h3 className="text-base font-bold text-slate-900 dark:text-white mb-2 leading-snug group-hover:text-indigo-600 dark:group-hover:text-purple-400 transition-colors">
+                    <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white mb-2 leading-snug group-hover:text-indigo-600 dark:group-hover:text-purple-400 transition-colors">
                       {project.title}
                     </h3>
 
@@ -232,7 +223,7 @@ export default function Projects() {
                         href={project.demoLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 self-start mb-2.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 dark:bg-emerald-950/40 dark:text-emerald-400 dark:border-emerald-800 hover:bg-emerald-100 transition-colors"
+                        className="inline-flex items-center gap-1.5 self-start mb-3 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 dark:bg-emerald-950/40 dark:text-emerald-400 dark:border-emerald-800 hover:bg-emerald-100 transition-colors"
                       >
                         <span className="relative flex h-2 w-2">
                           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
@@ -242,27 +233,29 @@ export default function Projects() {
                       </a>
                     )}
 
-                    <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed flex-1 mb-4">
+                    <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-4 line-clamp-4">
                       {project.description}
                     </p>
+                  </div>
 
+                  <div>
                     {/* Tech Pills */}
                     <div className="flex flex-wrap gap-1 mb-4">
-                      {project.tags.slice(0, 6).map((tag) => (
+                      {project.tags.slice(0, 5).map((tag) => (
                         <span key={tag} className="tech-tag text-[10px] py-0.5 px-2">
                           {tag}
                         </span>
                       ))}
-                      {project.tags.length > 6 && (
+                      {project.tags.length > 5 && (
                         <span className="text-[10px] text-slate-400 self-center font-medium">
-                          +{project.tags.length - 6} more
+                          +{project.tags.length - 5}
                         </span>
                       )}
                     </div>
 
                     {/* Actions */}
-                    <div className="flex items-center gap-2 mt-auto pt-3 border-t border-slate-200/80 dark:border-white/10">
-                      {project.githubLink && (
+                    <div className="flex items-center justify-between pt-3 border-t border-slate-200/80 dark:border-white/10">
+                      {project.githubLink ? (
                         <a
                           href={project.githubLink}
                           target="_blank"
@@ -272,6 +265,8 @@ export default function Projects() {
                           <Github className="w-3.5 h-3.5" />
                           <span>Code</span>
                         </a>
+                      ) : (
+                        <span className="text-[11px] text-slate-400 font-medium">Production</span>
                       )}
 
                       {project.demoLink && (
@@ -288,11 +283,12 @@ export default function Projects() {
                       )}
                     </div>
                   </div>
-                </motion.div>
-              ))}
-            </AnimatePresence>
-          </motion.div>
+                </div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
         </motion.div>
+
       </div>
     </section>
   );

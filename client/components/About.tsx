@@ -1,21 +1,19 @@
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-import { CheckCircle2, Code2, Server, Trophy, Users, Download, Mail, Sparkles } from "lucide-react";
+import { CheckCircle2, Code2, Server, Trophy, Users, Download, Mail, Sparkles, ShieldCheck, Rocket, Database, Cpu } from "lucide-react";
 
 const stats = [
-  { number: 10, suffix: "+",  label: "Projects Completed", icon: Code2,  color: "#4F46E5" },
-  { number: 25, suffix: "+",  label: "Technologies Mastered", icon: Server, color: "#059669" },
-  { number: 50, suffix: "K+", label: "Users Served Live",   icon: Users,  color: "#7C3AED" },
-  { number: 3,  suffix: "+",  label: "Innovation Awards",   icon: Trophy, color: "#D97706" },
+  { number: 10, suffix: "+",  label: "Production Projects", icon: Code2,  color: "#4F46E5" },
+  { number: 50, suffix: "K+", label: "Statewide Users Served", icon: Users,  color: "#059669" },
+  { number: 3,  suffix: "x",  label: "Innovation 1st Prizes", icon: Trophy, color: "#D97706" },
+  { number: 25, suffix: "L",  label: "INR Investor Funding", icon: Rocket, color: "#7C3AED" },
 ];
 
-const expertise = [
-  "MERN Stack & Full-Stack Architecture",
-  "Enterprise Resource Planning (ERP) Systems",
-  "Dedicated Ubuntu Linux Server & OS Setup",
-  "Nginx Reverse Proxy, PM2 & SSL Automation",
-  "Relational & NoSQL Database Optimization",
-  "AI & Machine Learning / IoT Solutions",
+const coreCompetencies = [
+  { title: "Full Stack Architecture", desc: "React 18, Vite, Node.js, Express, REST APIs, and scalable modular codebases.", icon: Code2 },
+  { title: "Production Infrastructure", desc: "Sole owner of dedicated Ubuntu servers, Nginx reverse proxy, PM2, UFW, and SSL.", icon: Server },
+  { title: "Database Engineering", desc: "MySQL, MongoDB, SQL Server, and Sequelize ORM schema optimization.", icon: Database },
+  { title: "AI & IoT Integration", desc: "Deep Learning (CNN), OpenCV, Python, ESP32, and automated hardware pipelines.", icon: Cpu },
 ];
 
 const CountUp = ({ number, suffix }: { number: number; suffix: string }) => {
@@ -49,114 +47,141 @@ const CountUp = ({ number, suffix }: { number: number; suffix: string }) => {
 
 export default function About() {
   return (
-    <section id="about" className="py-4 px-4 sm:px-6">
-      <div className="max-w-4xl mx-auto space-y-4">
+    <section id="about" className="py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto space-y-6">
 
-        {/* About Main Card */}
-        <motion.div
-          className="pro-card p-6 sm:p-8"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-        >
-          <div className="flex items-center justify-between mb-4">
-            <h2 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
-              <Sparkles className="w-5 h-5 text-indigo-600 dark:text-purple-400" />
-              <span>About Me</span>
-            </h2>
-            <span className="text-xs font-semibold text-indigo-600 dark:text-purple-400 bg-indigo-50 dark:bg-indigo-950/40 border border-indigo-200 dark:border-indigo-800 px-3 py-1 rounded-full">
-              Full Stack &amp; DevOps
-            </span>
-          </div>
-
-          <div className="space-y-3.5 text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
-            <p>
-              I am a results-driven <strong className="text-slate-900 dark:text-white font-semibold">Software Development Engineer and Full Stack Developer</strong> with 2+ years of hands-on experience building and deploying production-grade government portals, enterprise ERP platforms, and AI/IoT solutions — currently pursuing B.Tech in Artificial Intelligence &amp; Data Science at Nandha Engineering College.
-            </p>
-            <p>
-              I co-founded <strong className="text-slate-900 dark:text-white font-semibold">SearchFirst Technologies Pvt. Ltd.</strong> (government-registered Private Limited IT company) and secured external investor seed funding to engineer scalable SaaS ERP software for educational institutions. I also led the ERP development team at Nandha Engineering College and am a consecutive 3x Innovation Day 1st Prize winner.
-            </p>
-            <p>
-              Currently, I am the <strong className="text-slate-900 dark:text-white font-semibold">sole developer and infrastructure owner</strong> for <a href="https://tnpoly.in" target="_blank" rel="noopener noreferrer" className="text-indigo-600 dark:text-purple-400 font-semibold hover:underline">tnpoly.in</a> — the Tamil Nadu Government's official polytechnic admissions portal serving <strong className="text-slate-900 dark:text-white font-semibold">50,000+ students statewide</strong> with 99.9% uptime, complete ownership from bare-metal server deployment to live production monitoring.
-            </p>
-          </div>
-
-          {/* Key expertise chips */}
-          <div className="mt-6 pt-5 border-t border-slate-200 dark:border-white/10">
-            <h3 className="text-xs font-bold text-slate-500 uppercase tracking-wider mb-3">
-              Core Technical Strengths
-            </h3>
-            <div className="flex flex-wrap gap-2">
-              {expertise.map((item, idx) => (
-                <motion.span
-                  key={item}
-                  initial={{ opacity: 0, scale: 0.92 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: idx * 0.05, duration: 0.3 }}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-slate-100 dark:bg-white/5 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-white/10 hover:border-indigo-300 dark:hover:border-purple-400 transition-colors shadow-sm"
-                >
-                  <CheckCircle2 className="w-3.5 h-3.5 text-indigo-600 dark:text-purple-400 flex-shrink-0" />
-                  {item}
-                </motion.span>
-              ))}
+        {/* Section Header */}
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-slate-200/80 dark:border-white/10 pb-6">
+          <div>
+            <div className="section-label">
+              <Sparkles className="w-4 h-4" />
+              <span>Background &amp; Philosophy</span>
             </div>
+            <h2 className="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white font-display tracking-tight">
+              Engineering with Impact &amp; Scalability
+            </h2>
           </div>
+          <p className="text-sm text-slate-500 font-medium max-w-md">
+            Bridging technical depth, dedicated server infrastructure, and product entrepreneurship to solve mission-critical problems.
+          </p>
+        </div>
 
-          {/* Action buttons */}
-          <div className="mt-6 flex gap-3 flex-wrap items-center">
-            <a
-              href="/PrawinKumar-Resume.pdf"
-              download="PrawinKumar-Resume.pdf"
-              className="btn-primary text-xs sm:text-sm px-5 py-2.5"
-            >
-              <Download className="w-4 h-4" />
-              <span>Download Resume</span>
-            </a>
-            <a
-              href="#contact"
-              onClick={(e) => {
-                e.preventDefault();
-                document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
-              }}
-              className="btn-secondary text-xs sm:text-sm px-5 py-2.5"
-            >
-              <Mail className="w-4 h-4 text-indigo-600 dark:text-purple-400" />
-              <span>Get In Touch</span>
-            </a>
-          </div>
-        </motion.div>
+        {/* Bento Grid */}
+        <div className="grid lg:grid-cols-12 gap-6">
 
-        {/* Stats Row Bento */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-          {stats.map(({ number, suffix, label, icon: Icon, color }, idx) => (
+          {/* Main Story Card (7 cols) */}
+          <motion.div
+            className="lg:col-span-7 pro-card p-6 sm:p-8 flex flex-col justify-between"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <div className="space-y-4 text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold text-indigo-700 dark:text-purple-300 bg-indigo-50 dark:bg-purple-950/40 border border-indigo-200 dark:border-purple-800">
+                <ShieldCheck className="w-3.5 h-3.5" />
+                <span>Full Stack Engineer &amp; Infrastructure Owner</span>
+              </div>
+
+              <p>
+                I am a passionate <strong className="text-slate-900 dark:text-white font-semibold">Software Development Engineer</strong> with 2+ years of hands-on experience building and deploying production-grade government portals, enterprise ERP platforms, and AI/IoT solutions — currently pursuing B.Tech in Artificial Intelligence &amp; Data Science at Nandha Engineering College.
+              </p>
+
+              <p>
+                As Co-Founder at <strong className="text-slate-900 dark:text-white font-semibold">SearchFirst Technologies Pvt. Ltd.</strong>, I led product engineering and secured external investor seed funding to design and deploy modern SaaS ERP systems for higher education institutions.
+              </p>
+
+              <p>
+                I am the <strong className="text-slate-900 dark:text-white font-semibold">sole developer and infrastructure owner</strong> for <a href="https://tnpoly.in" target="_blank" rel="noopener noreferrer" className="text-indigo-600 dark:text-purple-400 font-bold hover:underline">tnpoly.in</a> — Tamil Nadu Government's official polytechnic admissions portal serving <strong className="text-slate-900 dark:text-white font-semibold">50,000+ students statewide</strong> with 99.9% uptime, 40% latency reduction, and complete bare-metal server management.
+              </p>
+            </div>
+
+            {/* Quick Actions */}
+            <div className="mt-8 pt-6 border-t border-slate-200/80 dark:border-white/10 flex flex-wrap gap-3 items-center">
+              <a
+                href="/PrawinKumar-Resume.pdf"
+                download="PrawinKumar-Resume.pdf"
+                className="btn-primary text-xs sm:text-sm px-5 py-2.5"
+              >
+                <Download className="w-4 h-4" />
+                <span>Download Resume</span>
+              </a>
+              <a
+                href="#contact"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+                }}
+                className="btn-secondary text-xs sm:text-sm px-5 py-2.5"
+              >
+                <Mail className="w-4 h-4 text-indigo-600 dark:text-purple-400" />
+                <span>Get In Touch</span>
+              </a>
+            </div>
+          </motion.div>
+
+          {/* Right Column Bento Cards (5 cols) */}
+          <div className="lg:col-span-5 space-y-6 flex flex-col justify-between">
+            
+            {/* Core Competencies Bento Card */}
             <motion.div
-              key={label}
-              className="pro-card p-5 text-center cursor-default"
-              initial={{ opacity: 0, y: 16 }}
+              className="pro-card p-6"
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: idx * 0.08, duration: 0.4 }}
-              whileHover={{ y: -3, scale: 1.02 }}
+              transition={{ duration: 0.5, delay: 0.1 }}
             >
-              <div 
-                className="w-10 h-10 rounded-xl flex items-center justify-center mx-auto mb-2.5 shadow-sm"
-                style={{ background: `${color}15`, color }}
-              >
-                <Icon className="w-5 h-5" />
+              <h3 className="text-base font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+                <Sparkles className="w-4 h-4 text-indigo-600 dark:text-purple-400" />
+                <span>Technical Domains</span>
+              </h3>
+              
+              <div className="space-y-3">
+                {coreCompetencies.map((comp) => (
+                  <div key={comp.title} className="flex items-start gap-3 p-2.5 rounded-xl bg-slate-50 dark:bg-white/5 border border-slate-200/60 dark:border-white/10">
+                    <div className="w-8 h-8 rounded-lg bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-purple-400 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <comp.icon className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <h4 className="text-xs font-bold text-slate-900 dark:text-white leading-tight">
+                        {comp.title}
+                      </h4>
+                      <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-normal mt-0.5">
+                        {comp.desc}
+                      </p>
+                    </div>
+                  </div>
+                ))}
               </div>
-              <div 
-                className="text-2xl sm:text-3xl font-black font-display mb-0.5"
-                style={{ color }}
-              >
-                <CountUp number={number} suffix={suffix} />
-              </div>
-              <p className="text-xs text-slate-600 dark:text-slate-300 font-semibold leading-tight">
-                {label}
-              </p>
             </motion.div>
-          ))}
+
+            {/* Numbers Bento Card */}
+            <motion.div
+              className="grid grid-cols-2 gap-3"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
+              {stats.map((s) => (
+                <div
+                  key={s.label}
+                  className="pro-card p-4 text-center cursor-default hover:border-indigo-300 dark:hover:border-purple-400 transition-colors"
+                >
+                  <div
+                    className="text-2xl sm:text-3xl font-black font-display mb-0.5"
+                    style={{ color: s.color }}
+                  >
+                    <CountUp number={s.number} suffix={s.suffix} />
+                  </div>
+                  <div className="text-[11px] font-semibold text-slate-500 leading-tight">
+                    {s.label}
+                  </div>
+                </div>
+              ))}
+            </motion.div>
+
+          </div>
         </div>
 
       </div>
