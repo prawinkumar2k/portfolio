@@ -98,22 +98,22 @@ export default function Hero() {
 
             {/* Punchy Executive Summary */}
             <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed font-normal max-w-2xl">
-              Full Stack Developer at <strong className="text-slate-900 dark:text-white font-semibold">Dealpost Private Limited</strong> and sole developer &amp; infrastructure owner for the Tamil Nadu Government DOTE Admissions Portal (<a href="https://tnpoly.in" target="_blank" rel="noopener noreferrer" className="text-indigo-600 dark:text-purple-400 font-semibold hover:underline">tnpoly.in</a>) serving <strong className="text-slate-900 dark:text-white font-semibold">50,000+ students</strong> statewide with 99.9% uptime.
+              Versatile <strong className="text-slate-900 dark:text-white font-semibold">Full Stack Developer &amp; Software Development Engineer</strong> specializing in scalable web architectures, modern React &amp; Node.js applications, robust database design, and high-performance production systems serving tens of thousands of active users.
             </p>
 
-            {/* Meta Row: Location, Company, Education */}
+            {/* Meta Row: Location, Specialization, Education */}
             <div className="flex flex-wrap gap-x-5 gap-y-2 text-xs sm:text-sm text-slate-600 dark:text-slate-300 font-medium">
               <span className="flex items-center gap-1.5">
                 <MapPin className="w-4 h-4 text-indigo-600 dark:text-purple-400 flex-shrink-0" />
-                Coimbatore / Erode, Tamil Nadu
+                Tamil Nadu, India
               </span>
               <span className="flex items-center gap-1.5">
-                <Building2 className="w-4 h-4 text-indigo-600 dark:text-purple-400 flex-shrink-0" />
-                Dealpost Private Limited
+                <Code2 className="w-4 h-4 text-indigo-600 dark:text-purple-400 flex-shrink-0" />
+                Full Stack &amp; Scalable Systems
               </span>
               <span className="flex items-center gap-1.5">
                 <GraduationCap className="w-4 h-4 text-indigo-600 dark:text-purple-400 flex-shrink-0" />
-                B.Tech AI &amp; DS · Nandha Engineering College
+                B.Tech AI &amp; DS (2023–2027)
               </span>
             </div>
 
@@ -249,11 +249,11 @@ export default function Hero() {
                 </div>
                 <div>
                   <div className="text-[11px] font-bold text-slate-800 dark:text-white">
-                    tnpoly.in
+                    Production Systems
                   </div>
                   <div className="text-[10px] text-emerald-600 dark:text-emerald-400 font-bold flex items-center gap-1">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                    50K+ Live Users
+                    50K+ Users Scaled
                   </div>
                 </div>
               </motion.div>

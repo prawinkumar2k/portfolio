@@ -80,19 +80,19 @@ export default function About() {
             <div className="space-y-4 text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold text-indigo-700 dark:text-purple-300 bg-indigo-50 dark:bg-purple-950/40 border border-indigo-200 dark:border-purple-800">
                 <ShieldCheck className="w-3.5 h-3.5" />
-                <span>Full Stack Developer &amp; Infrastructure Owner</span>
+                <span>Full Stack Developer &amp; Systems Engineer</span>
               </div>
 
               <p>
-                I am a results-driven <strong className="text-slate-900 dark:text-white font-semibold">Full Stack Developer &amp; Software Development Engineer</strong> with 2+ years of hands-on production experience building government admission portals, enterprise SaaS ERP systems, and modern client web platforms — currently pursuing B.Tech in Artificial Intelligence &amp; Data Science at Nandha Engineering College.
+                I am a results-driven <strong className="text-slate-900 dark:text-white font-semibold">Full Stack Developer &amp; Software Development Engineer</strong> with 2+ years of hands-on production experience building high-traffic web applications, multi-tenant enterprise ERP platforms, and responsive client software — currently pursuing B.Tech in Artificial Intelligence &amp; Data Science at Nandha Engineering College.
               </p>
 
               <p>
-                Currently, I work as a <strong className="text-slate-900 dark:text-white font-semibold">Full Stack Developer at Dealpost Private Limited</strong> (Coimbatore), delivering client digital proposals, website builds, hosting/domain management, and full-stack platforms (e.g. hotel booking &amp; operations in React/TypeScript, Express, MongoDB, and production client platforms like <a href="https://karikalam.in" target="_blank" rel="noopener noreferrer" className="text-indigo-600 dark:text-purple-400 font-semibold hover:underline">karikalam.in</a>).
+                My expertise spans modern frontend architecture in <strong className="text-slate-900 dark:text-white font-semibold">React 18 and TypeScript</strong>, resilient backend micro-services with <strong className="text-slate-900 dark:text-white font-semibold">Node.js, Express, MySQL, and MongoDB</strong>, as well as Linux server deployment, Nginx reverse proxy configuration, PM2 process management, and database query optimization.
               </p>
 
               <p>
-                Previously at SearchFirst Technologies, I was the <strong className="text-slate-900 dark:text-white font-semibold">sole developer and infrastructure owner</strong> for <a href="https://tnpoly.in" target="_blank" rel="noopener noreferrer" className="text-indigo-600 dark:text-purple-400 font-bold hover:underline">tnpoly.in</a> — the Tamil Nadu Government's official polytechnic admissions portal serving <strong className="text-slate-900 dark:text-white font-semibold">50,000+ students statewide</strong> with 99.9% uptime, 40% latency reduction, and complete bare-metal server management.
+                Across my commercial engineering engagements, I have delivered production systems serving over <strong className="text-slate-900 dark:text-white font-semibold">50,000+ active users</strong> with 99.9% uptime, reduced organizational administrative workloads by up to 60%, and won multiple consecutive innovation awards for hardware-software integration.
               </p>
             </div>
 
