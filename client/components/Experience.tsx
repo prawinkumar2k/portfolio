@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Briefcase, GraduationCap, Building2, MapPin, Calendar, CheckCircle2, Sparkles, Server } from "lucide-react";
+import { Briefcase, GraduationCap, Building2, MapPin, Calendar, CheckCircle2, Sparkles } from "lucide-react";
 
 interface TimelineItem {
   id: number;
@@ -19,50 +19,64 @@ interface TimelineItem {
 const timeline: TimelineItem[] = [
   {
     id: 1,
-    title: "Lead Software Development Engineer",
-    company: "SearchFirst Technologies Pvt. Ltd.",
-    companyInitials: "SF",
-    companyColor: "#6366F1",
-    period: "Jan 2025 – Present",
-    location: "Erode, Tamil Nadu · Full-Time / Active",
-    type: "work",
-    badge: "🏛️ Govt Portal &amp; Sole Infra Owner",
+    title: "Full Stack Developer",
+    company: "Dealpost Private Limited",
+    companyInitials: "DP",
+    companyColor: "#059669",
+    period: "Jul 2026 – Present",
+    location: "Coimbatore, Tamil Nadu · Full-Time Active",
+    badge: "🟢 Active Production Platforms",
     bullets: [
-      "Led core engineering for enterprise SaaS ERP platforms and government web portals, architecting scalable backend APIs and high-throughput databases.",
-      "Sole developer of Tamil Nadu Govt DOTE Admissions Portal (tnpoly.in) — Node.js, Express.js, MySQL REST APIs serving 50,000+ students statewide with 40% latency reduction and 99.9% uptime.",
-      "Full server lifecycle management: Ubuntu Linux installation, Nginx reverse proxy, PM2 process management, UFW firewall, and automated SSL/TLS certificates.",
-      "Engineered 3-tier RBAC with server-side gender and hostel-based college filtering — reduced admin workload by 60% and eliminated manual eligibility screening.",
-      "Integrated CCAvenue payment gateway across 100+ institutions enabling automated, fully digital fee collection.",
-      "Optimized RESTful APIs and database schemas across 5+ production applications with 35–40% query execution time improvements.",
+      "Deliver client digital proposals, custom website builds, and end-to-end hosting/domain management across multiple active enterprise accounts.",
+      "Registered domains, migrated client projects to live production VPS servers, and completed technical SEO setups (e.g. karikalam.in).",
+      "Engineered full-stack hotel booking and operations platform (React 18 / TypeScript, Express.js, MongoDB) as part of a client digital-transformation engagement.",
+      "Own ongoing maintenance, security updates, and performance monitoring for client web platforms, collaborating directly on deliverables.",
     ],
-    technologies: ["React 18", "Node.js", "Express.js", "MySQL", "Sequelize ORM", "CCAvenue", "Ubuntu Server", "Nginx", "PM2", "UFW", "Docker", "MongoDB"],
+    technologies: ["React 18", "TypeScript", "Node.js", "Express.js", "MongoDB", "Hostinger VPS", "Nginx", "SEO", "Tailwind CSS"],
   },
   {
     id: 2,
+    title: "Software Development Engineer",
+    company: "SearchFirst Technologies Pvt. Ltd.",
+    companyInitials: "SF",
+    companyColor: "#6366F1",
+    period: "Jan 2025 – Jun 2026",
+    location: "Erode, Tamil Nadu · Full-Time / Active Semesters",
+    badge: "🏛️ Govt Portal Sole Developer &amp; Infra Owner",
+    bullets: [
+      "Sole developer and infrastructure owner for the Tamil Nadu Govt. DOTE Admissions Portal (tnpoly.in) — Node.js, Express.js, MySQL REST APIs serving 50,000+ students statewide with 40% latency reduction and 99.9% uptime.",
+      "Full server lifecycle management: Ubuntu Linux installation, Nginx reverse proxy, PM2 process management, UFW firewall, and automated SSL/TLS certificates.",
+      "Engineered 3-tier RBAC with server-side gender and hostel-based college filtering — reduced admin workload by 60% and eliminated 100% of manual eligibility screening.",
+      "Integrated CCAvenue payment gateway across 100+ institutions enabling automated, fully digital fee collection statewide.",
+      "Optimised RESTful APIs and database schemas across 5+ production applications with 35–40% query execution time improvements.",
+      "Developed SaaS ERP modules for pharmacy colleges, schools, and engineering institutions (academics, examinations, HR/payroll, LMS, NAAC/PCI compliance).",
+    ],
+    technologies: ["React 18", "Node.js", "Express.js", "MySQL", "Sequelize ORM", "CCAvenue", "Ubuntu Server", "Nginx", "PM2", "UFW", "Docker"],
+  },
+  {
+    id: 3,
     title: "Software Developer — ERP Development Team Lead",
     company: "Nandha Engineering College",
     companyInitials: "NE",
     companyColor: "#7C3AED",
     period: "Jan 2025 – Jan 2026",
-    location: "Erode, Tamil Nadu · Certified Engagement",
-    type: "work",
+    location: "Erode, Tamil Nadu · Certified Commercial Engagement",
     badge: "🏛️ 1-Year Certified Commercial Engagement",
     bullets: [
-      "Led development and maintenance of Institutional Campus ERP (PHP, SQL Server, JavaScript, Bootstrap) serving 1,000+ students — attendance, academics, fee management, and reporting modules.",
-      "Mentored junior developers on full-stack architecture, database design patterns, and deployment best practices.",
+      "Led development and maintenance of Campus ERP (PHP, SQL Server, JavaScript, Bootstrap) serving 1,000+ students — attendance, academics, fee management, and reporting modules.",
+      "Managed team of junior developers, mentoring on full-stack architecture, database design patterns, and deployment best practices.",
       "Cut administrative paperwork by 50% through automated reporting and digital submission pipelines.",
     ],
     technologies: ["PHP", "SQL Server", "JavaScript", "Bootstrap 5", "HTML5", "CSS3", "Git"],
   },
   {
-    id: 3,
+    id: 4,
     title: "Web Development with AI Intern",
     company: "SHENai Private Software Solutions",
     companyInitials: "SH",
-    companyColor: "#059669",
+    companyColor: "#0284C7",
     period: "Jun 2025 – Jul 2025",
     location: "Erode, Tamil Nadu · Internship",
-    type: "work",
     badge: "🤖 AI Web Solutions",
     bullets: [
       "Built and deployed AI-integrated web applications; contributed to production releases within tight deadlines.",
@@ -71,14 +85,13 @@ const timeline: TimelineItem[] = [
     technologies: ["AI/ML", "React.js", "Node.js", "Python", "JavaScript", "Vite"],
   },
   {
-    id: 4,
+    id: 5,
     title: "UI/UX Design Intern",
     company: "SHENai Private Software Solutions",
     companyInitials: "SH",
     companyColor: "#D97706",
     period: "Aug 2024 – Sep 2024",
     location: "Erode, Tamil Nadu · Internship",
-    type: "work",
     badge: "🎨 30% Responsiveness Boost",
     bullets: [
       "Designed and prototyped 3+ client-facing UI modules — improved user interface responsiveness and usability by 30%.",
@@ -87,21 +100,21 @@ const timeline: TimelineItem[] = [
     technologies: ["UI/UX Design", "Figma", "Bootstrap", "HTML5", "CSS3", "Design Systems"],
   },
   {
-    id: 5,
+    id: 6,
     title: "B.Tech – Artificial Intelligence & Data Science",
     company: "Nandha Engineering College (Anna University Affiliated)",
     companyInitials: "NE",
-    companyColor: "#0284C7",
+    companyColor: "#4F46E5",
     period: "2023 – 2027 (Final Year)",
-    location: "Erode, Tamil Nadu · CGPA: 7.1",
+    location: "Erode, Tamil Nadu · NAAC A+ | CGPA: 7.1 (Sem 1–5)",
     type: "education",
     badge: "🏆 3x Innovation Day 1st Prize Winner",
     bullets: [
       "Specialized in Deep Learning, Computer Vision, Machine Learning, IoT, Database Design, OS, and Advanced Coding.",
       "Won 1st Prize consecutively (2024 & 2025) for AI-Based Autonomous Smart Car, and 1st Prize (2025) for Image Captioning.",
-      "Architected and deployed production web portals with 99.9% uptime, managing full bare-metal server infrastructure.",
+      "TCS iON NQT (IT) Certified with 55.87% Programming (Java) and 51.84% Advanced Quant/Reasoning.",
     ],
-    technologies: ["Deep Learning", "Computer Vision", "Machine Learning", "TensorFlow", "OpenCV", "Python", "Arduino", "ESP32"],
+    technologies: ["Deep Learning", "Computer Vision", "Machine Learning", "TensorFlow", "OpenCV", "Python", "Arduino", "ESP32", "Java"],
   },
 ];
 
@@ -115,14 +128,14 @@ export default function Experience() {
           <div>
             <div className="section-label">
               <Sparkles className="w-4 h-4" />
-              <span>Career Journey</span>
+              <span>Career Track Record</span>
             </div>
             <h2 className="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white font-display tracking-tight">
-              Experience &amp; Leadership
+              Work Experience &amp; Leadership
             </h2>
           </div>
           <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800 px-3 py-1.5 rounded-full w-fit">
-            2+ Years Production Architecture
+            Active at Dealpost · 2+ Years Production Architecture
           </span>
         </div>
 
@@ -142,10 +155,10 @@ export default function Experience() {
                 className="absolute -left-6 sm:-left-10 top-1.5 w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center text-white text-xs font-bold shadow-md border-2 border-white dark:border-[#09051C]"
                 style={{ backgroundColor: item.companyColor }}
               >
-                {item.type === "work" ? (
-                  <Briefcase className="w-3.5 h-3.5 text-white" />
-                ) : (
+                {item.type === "education" ? (
                   <GraduationCap className="w-3.5 h-3.5 text-white" />
+                ) : (
+                  <Briefcase className="w-3.5 h-3.5 text-white" />
                 )}
               </div>
 

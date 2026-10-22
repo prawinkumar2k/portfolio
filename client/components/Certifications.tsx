@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import { X, ZoomIn, Award, Sparkles } from "lucide-react";
+import { X, ZoomIn, Award, Sparkles, FileText, CheckCircle2, ExternalLink, Download } from "lucide-react";
 
 interface Certificate {
   id: number;
@@ -215,6 +215,81 @@ export default function Certifications() {
                 </button>
               );
             })}
+          </div>
+        </div>
+
+        {/* TCS iON NQT Highlight Banner */}
+        <div className="pro-card p-6 sm:p-8 bg-gradient-to-br from-indigo-50/90 via-white to-purple-50/70 dark:from-[#1E1145]/80 dark:via-[#150B2D]/90 dark:to-indigo-950/40 border-2 border-indigo-200/90 dark:border-indigo-500/30 rounded-3xl relative overflow-hidden shadow-lg">
+          <div className="absolute top-0 right-0 w-80 h-80 bg-gradient-to-br from-indigo-400/10 to-purple-400/10 rounded-full blur-3xl pointer-events-none" />
+
+          <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+            <div className="space-y-3 max-w-2xl">
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-indigo-600 text-white shadow-sm">
+                  <Award className="w-3.5 h-3.5" />
+                  TCS iON National Qualifier Test (NQT - IT)
+                </span>
+                <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800 dark:bg-emerald-950/60 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-700">
+                  <CheckCircle2 className="w-3.5 h-3.5" />
+                  Verified Qualification
+                </span>
+                <span className="text-xs text-slate-500 font-mono">
+                  Roll: 22071682477
+                </span>
+              </div>
+
+              <div>
+                <h3 className="text-xl sm:text-2xl font-black text-slate-900 dark:text-white font-display">
+                  TCS iON NQT — Information Technology &amp; Advanced Coding
+                </h3>
+                <p className="text-sm text-slate-600 dark:text-slate-300 mt-1 leading-relaxed">
+                  Certified by Tata Consultancy Services (TCS iON) on <strong>September 11, 2026</strong>. Validated core competencies in <strong>Java Hands-on Programming (55.87%)</strong>, Advanced Information Technology (60.74%), Cognitive Skills (Verbal, Reasoning, Numerical), and Professional Workplace Psychometrics.
+                </p>
+              </div>
+
+              {/* Score Badges */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-1">
+                <div className="bg-white/90 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-xl p-2.5 text-center">
+                  <div className="text-lg font-black text-indigo-600 dark:text-indigo-400 font-display">1673.24</div>
+                  <div className="text-[11px] font-bold text-slate-500">Total Score / 3000</div>
+                </div>
+                <div className="bg-white/90 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-xl p-2.5 text-center">
+                  <div className="text-lg font-black text-emerald-600 dark:text-emerald-400 font-display">55.87%</div>
+                  <div className="text-[11px] font-bold text-slate-500">Java Coding</div>
+                </div>
+                <div className="bg-white/90 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-xl p-2.5 text-center">
+                  <div className="text-lg font-black text-purple-600 dark:text-purple-400 font-display">60.74%</div>
+                  <div className="text-[11px] font-bold text-slate-500">IT Subject Score</div>
+                </div>
+                <div className="bg-white/90 dark:bg-white/5 border border-slate-200 dark:border-white/10 rounded-xl p-2.5 text-center">
+                  <div className="text-lg font-black text-amber-600 dark:text-amber-400 font-display">50.80%</div>
+                  <div className="text-[11px] font-bold text-slate-500">Cognitive Skills</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Document Action Buttons */}
+            <div className="flex flex-col sm:flex-row lg:flex-col gap-3 min-w-[220px]">
+              <a
+                href="/TCS-NQT-Scorecard.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary text-xs sm:text-sm py-3 px-4 justify-center shadow-md flex items-center gap-2"
+              >
+                <Download className="w-4 h-4" />
+                <span>Download TCS Scorecard</span>
+              </a>
+
+              <a
+                href="/TCS-NQT-Psychometric-Report.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-secondary text-xs sm:text-sm py-2.5 px-4 justify-center shadow-sm flex items-center gap-2"
+              >
+                <FileText className="w-4 h-4 text-purple-600 dark:text-purple-400" />
+                <span>Psychometric Report</span>
+              </a>
+            </div>
           </div>
         </div>
 

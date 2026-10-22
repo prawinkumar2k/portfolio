@@ -1,19 +1,19 @@
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-import { CheckCircle2, Code2, Server, Trophy, Users, Download, Mail, Sparkles, ShieldCheck, Rocket, Database, Cpu } from "lucide-react";
+import { CheckCircle2, Code2, Server, Trophy, Users, Download, Mail, Sparkles, ShieldCheck, Database, Cpu, FileCheck } from "lucide-react";
 
 const stats = [
-  { number: 10, suffix: "+",  label: "Production Projects", icon: Code2,  color: "#4F46E5" },
+  { number: 10, suffix: "+",  label: "Production Platforms", icon: Code2,  color: "#4F46E5" },
   { number: 50, suffix: "K+", label: "Statewide Users Served", icon: Users,  color: "#059669" },
   { number: 3,  suffix: "x",  label: "Innovation 1st Prizes", icon: Trophy, color: "#D97706" },
-  { number: 40, suffix: "%",  label: "API Latency Reduction", icon: Rocket, color: "#7C3AED" },
+  { number: 99.9, suffix: "%", label: "Production System Uptime", icon: Server, color: "#7C3AED" },
 ];
 
 const coreCompetencies = [
-  { title: "Full Stack Architecture", desc: "React 18, Vite, Node.js, Express, REST APIs, and scalable modular codebases.", icon: Code2 },
-  { title: "Production Infrastructure", desc: "Sole owner of dedicated Ubuntu servers, Nginx reverse proxy, PM2, UFW, and SSL.", icon: Server },
-  { title: "Database Engineering", desc: "MySQL, MongoDB, SQL Server, and Sequelize ORM schema optimization.", icon: Database },
-  { title: "AI & IoT Integration", desc: "Deep Learning (CNN), OpenCV, Python, ESP32, and automated hardware pipelines.", icon: Cpu },
+  { title: "Full Stack Web Engineering", desc: "React 18, TypeScript, Node.js, Express, REST APIs, and client digital transformation.", icon: Code2 },
+  { title: "Production Infrastructure & DevOps", desc: "Sole owner of dedicated Ubuntu servers, Nginx reverse proxy, PM2, UFW, and SSL.", icon: Server },
+  { title: "Database Systems & Tuning", desc: "MySQL, MongoDB (Certified), SQL Server, indexing, and query performance optimization.", icon: Database },
+  { title: "AI, Deep Learning & IoT", desc: "Deep Learning (CNN), OpenCV, Python, Arduino, ESP32, and hardware integration.", icon: Cpu },
 ];
 
 const CountUp = ({ number, suffix }: { number: number; suffix: string }) => {
@@ -58,11 +58,11 @@ export default function About() {
               <span>Background &amp; Philosophy</span>
             </div>
             <h2 className="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white font-display tracking-tight">
-              Engineering with Impact &amp; Scalability
+              Engineering with Scalability &amp; Precision
             </h2>
           </div>
           <p className="text-sm text-slate-500 font-medium max-w-md">
-            Bridging technical depth, dedicated server infrastructure, and product entrepreneurship to solve mission-critical problems.
+            Delivering high-reliability software, production government portals, and modern client platforms across Tamil Nadu.
           </p>
         </div>
 
@@ -80,19 +80,19 @@ export default function About() {
             <div className="space-y-4 text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold text-indigo-700 dark:text-purple-300 bg-indigo-50 dark:bg-purple-950/40 border border-indigo-200 dark:border-purple-800">
                 <ShieldCheck className="w-3.5 h-3.5" />
-                <span>Full Stack Engineer &amp; Infrastructure Owner</span>
+                <span>Full Stack Developer &amp; Infrastructure Owner</span>
               </div>
 
               <p>
-                I am a passionate <strong className="text-slate-900 dark:text-white font-semibold">Software Development Engineer</strong> with 2+ years of hands-on experience building and deploying production-grade government portals, enterprise ERP platforms, and AI/IoT solutions — currently pursuing B.Tech in Artificial Intelligence &amp; Data Science at Nandha Engineering College.
+                I am a results-driven <strong className="text-slate-900 dark:text-white font-semibold">Full Stack Developer &amp; Software Development Engineer</strong> with 2+ years of hands-on production experience building government admission portals, enterprise SaaS ERP systems, and modern client web platforms — currently pursuing B.Tech in Artificial Intelligence &amp; Data Science at Nandha Engineering College.
               </p>
 
               <p>
-                At <strong className="text-slate-900 dark:text-white font-semibold">SearchFirst Technologies Pvt. Ltd.</strong>, I led product engineering to design, build, and deploy modern, high-throughput SaaS ERP systems and academic portals for higher education institutions.
+                Currently, I work as a <strong className="text-slate-900 dark:text-white font-semibold">Full Stack Developer at Dealpost Private Limited</strong> (Coimbatore), delivering client digital proposals, website builds, hosting/domain management, and full-stack platforms (e.g. hotel booking &amp; operations in React/TypeScript, Express, MongoDB, and production client platforms like <a href="https://karikalam.in" target="_blank" rel="noopener noreferrer" className="text-indigo-600 dark:text-purple-400 font-semibold hover:underline">karikalam.in</a>).
               </p>
 
               <p>
-                I am the <strong className="text-slate-900 dark:text-white font-semibold">sole developer and infrastructure owner</strong> for <a href="https://tnpoly.in" target="_blank" rel="noopener noreferrer" className="text-indigo-600 dark:text-purple-400 font-bold hover:underline">tnpoly.in</a> — Tamil Nadu Government's official polytechnic admissions portal serving <strong className="text-slate-900 dark:text-white font-semibold">50,000+ students statewide</strong> with 99.9% uptime, 40% latency reduction, and complete bare-metal server management.
+                Previously at SearchFirst Technologies, I was the <strong className="text-slate-900 dark:text-white font-semibold">sole developer and infrastructure owner</strong> for <a href="https://tnpoly.in" target="_blank" rel="noopener noreferrer" className="text-indigo-600 dark:text-purple-400 font-bold hover:underline">tnpoly.in</a> — the Tamil Nadu Government's official polytechnic admissions portal serving <strong className="text-slate-900 dark:text-white font-semibold">50,000+ students statewide</strong> with 99.9% uptime, 40% latency reduction, and complete bare-metal server management.
               </p>
             </div>
 
@@ -107,12 +107,21 @@ export default function About() {
                 <span>Download Resume</span>
               </a>
               <a
+                href="/TCS-NQT-Scorecard.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-secondary text-xs sm:text-sm px-5 py-2.5"
+              >
+                <FileCheck className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+                <span>View TCS NQT Scorecard</span>
+              </a>
+              <a
                 href="#contact"
                 onClick={(e) => {
                   e.preventDefault();
                   document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
                 }}
-                className="btn-secondary text-xs sm:text-sm px-5 py-2.5"
+                className="btn-secondary text-xs sm:text-sm px-4 py-2.5"
               >
                 <Mail className="w-4 h-4 text-indigo-600 dark:text-purple-400" />
                 <span>Get In Touch</span>

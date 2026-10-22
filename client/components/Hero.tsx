@@ -1,26 +1,26 @@
 import { motion } from "framer-motion";
-import { Github, Linkedin, Mail, Download, MapPin, Building2, GraduationCap, CheckCircle, Users, Briefcase, Sparkles, ArrowRight, Code2, Server, Award, ChevronDown } from "lucide-react";
+import { Github, Linkedin, Mail, Download, MapPin, Building2, GraduationCap, CheckCircle, Users, Briefcase, Sparkles, ArrowRight, Code2, Server, Award, FileCheck } from "lucide-react";
 import { useEffect, useState } from "react";
 import TechParticles3D from "./TechParticles3D";
 
 const roles = [
+  "Full Stack Developer",
   "Software Development Engineer",
-  "Full Stack Architect",
   "MERN Stack Specialist",
   "Cloud & DevOps Engineer",
 ];
 
 const marqueeTech = [
   { name: "React 18", color: "#0284C7" },
-  { name: "Node.js", color: "#16A34A" },
   { name: "TypeScript", color: "#2563EB" },
+  { name: "Node.js", color: "#16A34A" },
   { name: "Express.js", color: "#475569" },
-  { name: "MySQL", color: "#0284C7" },
   { name: "MongoDB", color: "#16A34A" },
+  { name: "MySQL", color: "#0284C7" },
   { name: "Tailwind CSS", color: "#06B6D4" },
   { name: "Ubuntu Linux", color: "#EA580C" },
   { name: "Nginx Reverse Proxy", color: "#15803D" },
-  { name: "PM2 Process Manager", color: "#7C3AED" },
+  { name: "PM2", color: "#7C3AED" },
   { name: "Docker", color: "#0284C7" },
   { name: "Python", color: "#CA8A04" },
   { name: "REST APIs", color: "#6366F1" },
@@ -73,10 +73,10 @@ export default function Hero() {
                 <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
               </span>
               <span className="text-slate-800 dark:text-slate-200">
-                Available for SDE &amp; Full-Stack Roles
+                Full Stack Developer &amp; SDE
               </span>
               <span className="text-slate-300 dark:text-white/20">|</span>
-              <span className="text-indigo-600 dark:text-purple-400 font-semibold">Immediate Joiner</span>
+              <span className="text-emerald-600 dark:text-emerald-400 font-semibold">TCS NQT Certified</span>
             </div>
 
             {/* Main Greeting & Headline */}
@@ -98,18 +98,18 @@ export default function Hero() {
 
             {/* Punchy Executive Summary */}
             <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed font-normal max-w-2xl">
-              Lead Software Development Engineer at <strong className="text-slate-900 dark:text-white font-semibold">SearchFirst Technologies</strong> and sole developer &amp; infrastructure owner for the Tamil Nadu Government DOTE Admissions Portal (<a href="https://tnpoly.in" target="_blank" rel="noopener noreferrer" className="text-indigo-600 dark:text-purple-400 font-semibold hover:underline">tnpoly.in</a>) serving <strong className="text-slate-900 dark:text-white font-semibold">50,000+ students</strong> statewide with 99.9% uptime.
+              Full Stack Developer at <strong className="text-slate-900 dark:text-white font-semibold">Dealpost Private Limited</strong> and sole developer &amp; infrastructure owner for the Tamil Nadu Government DOTE Admissions Portal (<a href="https://tnpoly.in" target="_blank" rel="noopener noreferrer" className="text-indigo-600 dark:text-purple-400 font-semibold hover:underline">tnpoly.in</a>) serving <strong className="text-slate-900 dark:text-white font-semibold">50,000+ students</strong> statewide with 99.9% uptime.
             </p>
 
             {/* Meta Row: Location, Company, Education */}
             <div className="flex flex-wrap gap-x-5 gap-y-2 text-xs sm:text-sm text-slate-600 dark:text-slate-300 font-medium">
               <span className="flex items-center gap-1.5">
                 <MapPin className="w-4 h-4 text-indigo-600 dark:text-purple-400 flex-shrink-0" />
-                Tamil Nadu, India
+                Coimbatore / Erode, Tamil Nadu
               </span>
               <span className="flex items-center gap-1.5">
                 <Building2 className="w-4 h-4 text-indigo-600 dark:text-purple-400 flex-shrink-0" />
-                SearchFirst Technologies Pvt. Ltd.
+                Dealpost Private Limited
               </span>
               <span className="flex items-center gap-1.5">
                 <GraduationCap className="w-4 h-4 text-indigo-600 dark:text-purple-400 flex-shrink-0" />
@@ -123,14 +123,14 @@ export default function Hero() {
                 { number: "50K+", label: "Users in Production", color: "#4F46E5" },
                 { number: "99.9%", label: "Live System Uptime", color: "#059669" },
                 { number: "3x", label: "Innovation 1st Prize", color: "#D97706" },
-                { number: "100+", label: "Colleges Integrated", color: "#7C3AED" },
+                { number: "TCS iON", label: "NQT IT Certified (Java)", color: "#7C3AED" },
               ].map((stat) => (
                 <div
                   key={stat.label}
                   className="bg-white/80 dark:bg-white/5 border border-slate-200/80 dark:border-white/10 rounded-2xl p-3 text-center shadow-sm hover:border-indigo-300 dark:hover:border-purple-400 transition-colors"
                 >
                   <div
-                    className="text-xl sm:text-2xl font-black font-display"
+                    className="text-lg sm:text-xl font-black font-display"
                     style={{ color: stat.color }}
                   >
                     {stat.number}
@@ -163,19 +163,17 @@ export default function Hero() {
                 className="btn-secondary text-sm px-5 py-3 shadow-sm"
               >
                 <Download className="w-4 h-4 text-indigo-600 dark:text-purple-400" />
-                <span>Download CV</span>
+                <span>Download Resume</span>
               </a>
 
               <a
-                href="#contact"
-                onClick={(e) => {
-                  e.preventDefault();
-                  document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
-                }}
+                href="/TCS-NQT-Scorecard.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="btn-secondary text-sm px-4 py-3 shadow-sm"
               >
-                <Briefcase className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
-                <span>Hire Me</span>
+                <FileCheck className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+                <span>TCS NQT Scorecard</span>
               </a>
 
               {/* Social Channels */}
@@ -234,7 +232,7 @@ export default function Hero() {
                     </div>
                     <div className="text-xs text-indigo-300 font-semibold drop-shadow-sm flex items-center gap-1.5">
                       <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                      Software Development Engineer · Full Stack Architect
+                      Full Stack Developer · Software Engineer
                     </div>
                   </div>
                 </div>
@@ -279,17 +277,17 @@ export default function Hero() {
                 </div>
               </motion.div>
 
-              {/* Floating Glass Pill 3: Full Stack Architect */}
+              {/* Floating Glass Pill 3: TCS NQT Certified */}
               <motion.div
                 className="absolute top-1/2 -right-4 sm:-right-8 bg-white/95 dark:bg-[#150B2D]/95 border border-slate-200/90 dark:border-white/15 rounded-2xl p-2.5 shadow-xl backdrop-blur-xl hidden sm:flex items-center gap-2 z-20"
                 animate={{ y: [0, -5, 0] }}
                 transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
               >
-                <div className="w-7 h-7 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center font-bold text-xs shadow-sm">
-                  ⚡
+                <div className="w-7 h-7 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold text-xs shadow-sm">
+                  ✓
                 </div>
                 <div className="text-[10px] font-bold text-slate-800 dark:text-white">
-                  Full Stack Architect
+                  TCS NQT IT Certified
                 </div>
               </motion.div>
             </div>

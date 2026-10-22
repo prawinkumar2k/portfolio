@@ -1,6 +1,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useState, useEffect } from "react";
-import { Menu, X, Sun, Moon, Search, Sparkles } from "lucide-react";
+import { Menu, X, Sun, Moon, Search, Sparkles, Download } from "lucide-react";
 import { useTheme } from "@/lib/theme";
 
 const navItems = [
@@ -159,6 +159,17 @@ export default function Navbar() {
                 )}
               </motion.button>
 
+              {/* Resume Download CTA */}
+              <a
+                href="/PrawinKumar-Resume.pdf"
+                download="PrawinKumar-Resume.pdf"
+                className="btn-secondary text-xs sm:text-sm px-3.5 py-2 hidden md:inline-flex items-center gap-1.5 shadow-sm"
+                title="Download Resume"
+              >
+                <Download className="w-3.5 h-3.5 text-indigo-600 dark:text-purple-400" />
+                <span>Resume</span>
+              </a>
+
               {/* Hire Me CTA */}
               <motion.a
                 href="#contact"
@@ -214,7 +225,15 @@ export default function Navbar() {
                 {item.label}
               </motion.a>
             ))}
-            <div className="pt-3 pb-1">
+            <div className="pt-3 pb-1 grid grid-cols-2 gap-2">
+              <a
+                href="/PrawinKumar-Resume.pdf"
+                download="PrawinKumar-Resume.pdf"
+                className="btn-secondary w-full justify-center text-sm py-2.5 flex items-center gap-1.5"
+              >
+                <Download className="w-4 h-4 text-indigo-600 dark:text-purple-400" />
+                <span>Resume</span>
+              </a>
               <a
                 href="#contact"
                 onClick={handleScroll}

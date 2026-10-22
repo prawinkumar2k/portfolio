@@ -100,6 +100,30 @@ const projects: Project[] = [
     highlight: "100% Automated Tracking",
     gradient: "from-slate-700 to-slate-900",
   },
+  {
+    id: 8,
+    title: "Karikalam Real Estate & Property Platform",
+    description:
+      "Commercial real estate marketplace and listing engine engineered at Dealpost Private Limited. Built with high-performance responsive UI, dynamic property search filters, agent contact workflows, and optimized database indexing.",
+    image: "/sf_cms.png",
+    tags: ["React 18", "Node.js", "Express.js", "MySQL", "Tailwind CSS", "REST APIs"],
+    category: ["Full Stack"],
+    demoLink: "https://karikalam.in",
+    liveUrl: "karikalam.in",
+    highlight: "Commercial Client · Dealpost",
+    gradient: "from-teal-600 to-emerald-600",
+  },
+  {
+    id: 9,
+    title: "Hotel Booking & Hospitality Platform",
+    description:
+      "End-to-end hotel operations and reservation engine built at Dealpost Private Limited. Features dynamic room inventory, automated guest booking, billing, check-in workflows, and multi-role administrative controls.",
+    image: "/payroll_pro.png",
+    tags: ["React.js", "Node.js", "Express.js", "MongoDB", "Tailwind CSS", "JWT"],
+    category: ["Full Stack", "ERP"],
+    highlight: "Hospitality & Reservation Engine",
+    gradient: "from-sky-600 to-blue-600",
+  },
 ];
 
 const categories = ["All", "Government", "ERP", "Full Stack", "DevOps", "AI / ML", "IoT"];
