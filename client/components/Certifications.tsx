@@ -1,6 +1,8 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { X, ZoomIn, Award, Sparkles, FileText, CheckCircle2, ExternalLink, Download } from "lucide-react";
+import { BorderBeam } from "./animations/BorderBeam";
+import { SpotlightCard } from "./animations/SpotlightCard";
 
 interface Certificate {
   id: number;
@@ -220,6 +222,7 @@ export default function Certifications() {
 
         {/* TCS iON NQT Highlight Banner */}
         <div className="pro-card p-6 sm:p-8 bg-gradient-to-br from-indigo-50/90 via-white to-purple-50/70 dark:from-[#1E1145]/80 dark:via-[#150B2D]/90 dark:to-indigo-950/40 border-2 border-indigo-200/90 dark:border-indigo-500/30 rounded-3xl relative overflow-hidden shadow-lg">
+          <BorderBeam size={280} duration={9} colorFrom="#10B981" colorTo="#6366F1" />
           <div className="absolute top-0 right-0 w-80 h-80 bg-gradient-to-br from-indigo-400/10 to-purple-400/10 rounded-full blur-3xl pointer-events-none" />
 
           <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">

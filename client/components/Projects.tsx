@@ -1,6 +1,9 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { ExternalLink, Github, ArrowRight, Server, Globe, Sparkles } from "lucide-react";
 import { useState } from "react";
+import { SpotlightCard } from "./animations/SpotlightCard";
+import { BorderBeam } from "./animations/BorderBeam";
+import { TiltCard } from "./animations/TiltCard";
 
 interface Project {
   id: number;
@@ -191,123 +194,131 @@ export default function Projects() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.3 }}
-                whileHover={{ y: -6 }}
-                className="pro-card overflow-hidden flex flex-col group cursor-pointer"
+                className="h-full"
               >
-                {/* Banner / Image Area */}
-                <div className="relative h-48 overflow-hidden bg-slate-200 dark:bg-slate-800">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-108"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.style.display = "none";
-                    }}
-                  />
-                  
-                  {/* Fallback gradient banner background */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-20 -z-10`} />
-
-                  {/* Highlight Badge */}
-                  {project.highlight && (
-                    <div className="absolute top-3 right-3 px-2.5 py-1 rounded-full text-white text-[11px] font-bold shadow-md bg-slate-950/85 backdrop-blur-md border border-white/20">
-                      {project.highlight}
-                    </div>
-                  )}
-
-                  {/* Dedicated Server Badge */}
-                  {project.infraBadge && (
-                    <div className="absolute top-3 left-3 flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-white text-[11px] font-bold shadow-md bg-indigo-950/85 backdrop-blur-md border border-indigo-400/30">
-                      <Server className="w-3.5 h-3.5 text-indigo-300" />
-                      <span>{project.infraBadge}</span>
-                    </div>
-                  )}
-                </div>
-
-                {/* Card Content */}
-                <div className="p-5 sm:p-6 flex-1 flex flex-col justify-between">
-                  <div>
-                    {/* Category Tags */}
-                    <div className="flex flex-wrap gap-1.5 mb-2.5">
-                      {project.category.map((cat) => (
-                        <span key={cat} className="badge-blue text-[10px] py-0.5 px-2">
-                          {cat}
-                        </span>
-                      ))}
-                    </div>
-
-                    <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white mb-2 leading-snug group-hover:text-indigo-600 dark:group-hover:text-purple-400 transition-colors">
-                      {project.title}
-                    </h3>
-
-                    {/* Live URL Pill */}
-                    {project.liveUrl && (
-                      <a
-                        href={project.demoLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 self-start mb-3 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 dark:bg-emerald-950/40 dark:text-emerald-400 dark:border-emerald-800 hover:bg-emerald-100 transition-colors"
-                      >
-                        <span className="relative flex h-2 w-2">
-                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                          <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
-                        </span>
-                        <span>Live: {project.liveUrl}</span>
-                      </a>
+                <TiltCard maxTilt={5} className="h-full">
+                  <SpotlightCard className="pro-card overflow-hidden flex flex-col group cursor-pointer h-full relative">
+                    {/* Laser Border Beam on Flagship Project */}
+                    {project.id === 1 && (
+                      <BorderBeam size={220} duration={8} colorFrom="#6366F1" colorTo="#A855F7" />
                     )}
 
-                    <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-4 line-clamp-4">
-                      {project.description}
-                    </p>
-                  </div>
+                    {/* Banner / Image Area */}
+                    <div className="relative h-48 overflow-hidden bg-slate-200 dark:bg-slate-800">
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-108"
+                        onError={(e) => {
+                          const target = e.target as HTMLImageElement;
+                          target.style.display = "none";
+                        }}
+                      />
+                      
+                      {/* Fallback gradient banner background */}
+                      <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-20 -z-10`} />
 
-                  <div>
-                    {/* Tech Pills */}
-                    <div className="flex flex-wrap gap-1 mb-4">
-                      {project.tags.slice(0, 5).map((tag) => (
-                        <span key={tag} className="tech-tag text-[10px] py-0.5 px-2">
-                          {tag}
-                        </span>
-                      ))}
-                      {project.tags.length > 5 && (
-                        <span className="text-[10px] text-slate-400 self-center font-medium">
-                          +{project.tags.length - 5}
-                        </span>
+                      {/* Highlight Badge */}
+                      {project.highlight && (
+                        <div className="absolute top-3 right-3 px-2.5 py-1 rounded-full text-white text-[11px] font-bold shadow-md bg-slate-950/85 backdrop-blur-md border border-white/20">
+                          {project.highlight}
+                        </div>
+                      )}
+
+                      {/* Dedicated Server Badge */}
+                      {project.infraBadge && (
+                        <div className="absolute top-3 left-3 flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-white text-[11px] font-bold shadow-md bg-indigo-950/85 backdrop-blur-md border border-indigo-400/30">
+                          <Server className="w-3.5 h-3.5 text-indigo-300" />
+                          <span>{project.infraBadge}</span>
+                        </div>
                       )}
                     </div>
 
-                    {/* Actions */}
-                    <div className="flex items-center justify-between pt-3 border-t border-slate-200/80 dark:border-white/10">
-                      {project.githubLink ? (
-                        <a
-                          href={project.githubLink}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-purple-400 transition-colors"
-                        >
-                          <Github className="w-3.5 h-3.5" />
-                          <span>Code</span>
-                        </a>
-                      ) : (
-                        <span className="text-[11px] text-slate-400 font-medium">Production</span>
-                      )}
+                    {/* Card Content */}
+                    <div className="p-5 sm:p-6 flex-1 flex flex-col justify-between">
+                      <div>
+                        {/* Category Tags */}
+                        <div className="flex flex-wrap gap-1.5 mb-2.5">
+                          {project.category.map((cat) => (
+                            <span key={cat} className="badge-blue text-[10px] py-0.5 px-2">
+                              {cat}
+                            </span>
+                          ))}
+                        </div>
 
-                      {project.demoLink && (
-                        <a
-                          href={project.demoLink}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1.5 text-xs font-bold text-indigo-600 dark:text-purple-400 hover:text-indigo-700 dark:hover:text-purple-300 ml-auto transition-colors"
-                        >
-                          <Globe className="w-3.5 h-3.5" />
-                          <span>Visit Live</span>
-                          <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-                        </a>
-                      )}
+                        <h3 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white mb-2 leading-snug group-hover:text-indigo-600 dark:group-hover:text-purple-400 transition-colors">
+                          {project.title}
+                        </h3>
+
+                        {/* Live URL Pill */}
+                        {project.liveUrl && (
+                          <a
+                            href={project.demoLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1.5 self-start mb-3 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200 dark:bg-emerald-950/40 dark:text-emerald-400 dark:border-emerald-800 hover:bg-emerald-100 transition-colors"
+                          >
+                            <span className="relative flex h-2 w-2">
+                              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+                            </span>
+                            <span>Live: {project.liveUrl}</span>
+                          </a>
+                        )}
+
+                        <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-4 line-clamp-4">
+                          {project.description}
+                        </p>
+                      </div>
+
+                      <div>
+                        {/* Tech Tags */}
+                        <div className="flex flex-wrap gap-1 mb-4">
+                          {project.tags.slice(0, 5).map((tag) => (
+                            <span key={tag} className="tech-tag text-[10px] py-0.5 px-2">
+                              {tag}
+                            </span>
+                          ))}
+                          {project.tags.length > 5 && (
+                            <span className="text-[10px] text-slate-400 self-center font-medium">
+                              +{project.tags.length - 5}
+                            </span>
+                          )}
+                        </div>
+
+                        {/* Actions */}
+                        <div className="flex items-center justify-between pt-3 border-t border-slate-200/80 dark:border-white/10">
+                          {project.githubLink ? (
+                            <a
+                              href={project.githubLink}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-purple-400 transition-colors"
+                            >
+                              <Github className="w-3.5 h-3.5" />
+                              <span>Code</span>
+                            </a>
+                          ) : (
+                            <span className="text-[11px] text-slate-400 font-medium">Production</span>
+                          )}
+
+                          {project.demoLink && (
+                            <a
+                              href={project.demoLink}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-1.5 text-xs font-bold text-indigo-600 dark:text-purple-400 hover:text-indigo-700 dark:hover:text-purple-300 ml-auto transition-colors"
+                            >
+                              <Globe className="w-3.5 h-3.5" />
+                              <span>Visit Live</span>
+                              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                            </a>
+                          )}
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
+                  </SpotlightCard>
+                </TiltCard>
               </motion.div>
             ))}
           </AnimatePresence>

@@ -1,6 +1,9 @@
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { CheckCircle2, Code2, Server, Trophy, Users, Download, Mail, Sparkles, ShieldCheck, Database, Cpu, FileCheck } from "lucide-react";
+import { SpotlightCard } from "./animations/SpotlightCard";
+import { InteractiveTerminal } from "./animations/InteractiveTerminal";
+import { Magnetic } from "./animations/Magnetic";
 
 const stats = [
   { number: 10, suffix: "+",  label: "Production Platforms", icon: Code2,  color: "#4F46E5" },
@@ -69,64 +72,72 @@ export default function About() {
         {/* Bento Grid */}
         <div className="grid lg:grid-cols-12 gap-6">
 
-          {/* Main Story Card (7 cols) */}
+          {/* Main Story Card (7 cols) with Spotlight Effect */}
           <motion.div
-            className="lg:col-span-7 pro-card p-6 sm:p-8 flex flex-col justify-between"
+            className="lg:col-span-7"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <div className="space-y-4 text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold text-indigo-700 dark:text-purple-300 bg-indigo-50 dark:bg-purple-950/40 border border-indigo-200 dark:border-purple-800">
-                <ShieldCheck className="w-3.5 h-3.5" />
-                <span>Full Stack Developer &amp; Systems Engineer</span>
+            <SpotlightCard className="pro-card p-6 sm:p-8 flex flex-col justify-between h-full">
+              <div className="space-y-4 text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold text-indigo-700 dark:text-purple-300 bg-indigo-50 dark:bg-purple-950/40 border border-indigo-200 dark:border-purple-800">
+                  <ShieldCheck className="w-3.5 h-3.5" />
+                  <span>Full Stack Developer &amp; Systems Engineer</span>
+                </div>
+
+                <p>
+                  I am a results-driven <strong className="text-slate-900 dark:text-white font-semibold">Full Stack Developer &amp; Software Development Engineer</strong> with 2+ years of hands-on production experience building high-traffic web applications, multi-tenant enterprise ERP platforms, and responsive client software — currently pursuing B.Tech in Artificial Intelligence &amp; Data Science at Nandha Engineering College.
+                </p>
+
+                <p>
+                  My expertise spans modern frontend architecture in <strong className="text-slate-900 dark:text-white font-semibold">React 18 and TypeScript</strong>, resilient backend micro-services with <strong className="text-slate-900 dark:text-white font-semibold">Node.js, Express, MySQL, and MongoDB</strong>, as well as Linux server deployment, Nginx reverse proxy configuration, PM2 process management, and database query optimization.
+                </p>
+
+                <p>
+                  Across my commercial engineering engagements, I have delivered production systems serving over <strong className="text-slate-900 dark:text-white font-semibold">50,000+ active users</strong> with 99.9% uptime, reduced organizational administrative workloads by up to 60%, and won multiple consecutive innovation awards for hardware-software integration.
+                </p>
               </div>
 
-              <p>
-                I am a results-driven <strong className="text-slate-900 dark:text-white font-semibold">Full Stack Developer &amp; Software Development Engineer</strong> with 2+ years of hands-on production experience building high-traffic web applications, multi-tenant enterprise ERP platforms, and responsive client software — currently pursuing B.Tech in Artificial Intelligence &amp; Data Science at Nandha Engineering College.
-              </p>
-
-              <p>
-                My expertise spans modern frontend architecture in <strong className="text-slate-900 dark:text-white font-semibold">React 18 and TypeScript</strong>, resilient backend micro-services with <strong className="text-slate-900 dark:text-white font-semibold">Node.js, Express, MySQL, and MongoDB</strong>, as well as Linux server deployment, Nginx reverse proxy configuration, PM2 process management, and database query optimization.
-              </p>
-
-              <p>
-                Across my commercial engineering engagements, I have delivered production systems serving over <strong className="text-slate-900 dark:text-white font-semibold">50,000+ active users</strong> with 99.9% uptime, reduced organizational administrative workloads by up to 60%, and won multiple consecutive innovation awards for hardware-software integration.
-              </p>
-            </div>
-
-            {/* Quick Actions */}
-            <div className="mt-8 pt-6 border-t border-slate-200/80 dark:border-white/10 flex flex-wrap gap-3 items-center">
-              <a
-                href="/PrawinKumar-Resume.pdf"
-                download="PrawinKumar-Resume.pdf"
-                className="btn-primary text-xs sm:text-sm px-5 py-2.5"
-              >
-                <Download className="w-4 h-4" />
-                <span>Download Resume</span>
-              </a>
-              <a
-                href="/TCS-NQT-Scorecard.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-secondary text-xs sm:text-sm px-5 py-2.5"
-              >
-                <FileCheck className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
-                <span>View TCS NQT Scorecard</span>
-              </a>
-              <a
-                href="#contact"
-                onClick={(e) => {
-                  e.preventDefault();
-                  document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
-                }}
-                className="btn-secondary text-xs sm:text-sm px-4 py-2.5"
-              >
-                <Mail className="w-4 h-4 text-indigo-600 dark:text-purple-400" />
-                <span>Get In Touch</span>
-              </a>
-            </div>
+              {/* Quick Actions */}
+              <div className="mt-8 pt-6 border-t border-slate-200/80 dark:border-white/10 flex flex-wrap gap-3 items-center">
+                <Magnetic strength={0.25} distance={30}>
+                  <a
+                    href="/PrawinKumar-Resume.pdf"
+                    download="PrawinKumar-Resume.pdf"
+                    className="btn-primary text-xs sm:text-sm px-5 py-2.5 inline-flex items-center gap-2"
+                  >
+                    <Download className="w-4 h-4" />
+                    <span>Download Resume</span>
+                  </a>
+                </Magnetic>
+                <Magnetic strength={0.25} distance={30}>
+                  <a
+                    href="/TCS-NQT-Scorecard.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-secondary text-xs sm:text-sm px-5 py-2.5 inline-flex items-center gap-2"
+                  >
+                    <FileCheck className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+                    <span>View TCS NQT Scorecard</span>
+                  </a>
+                </Magnetic>
+                <Magnetic strength={0.25} distance={30}>
+                  <a
+                    href="#contact"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+                    }}
+                    className="btn-secondary text-xs sm:text-sm px-4 py-2.5 inline-flex items-center gap-2"
+                  >
+                    <Mail className="w-4 h-4 text-indigo-600 dark:text-purple-400" />
+                    <span>Get In Touch</span>
+                  </a>
+                </Magnetic>
+              </div>
+            </SpotlightCard>
           </motion.div>
 
           {/* Right Column Bento Cards (5 cols) */}
@@ -192,6 +203,29 @@ export default function About() {
 
           </div>
         </div>
+
+        {/* Live Interactive Developer Terminal */}
+        <motion.div
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.15 }}
+          className="pt-2"
+        >
+          <div className="flex items-center justify-between mb-3">
+            <div className="flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+              <span className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
+                Live Developer Shell
+              </span>
+            </div>
+            <span className="text-[11px] text-slate-400 dark:text-slate-500 hidden sm:inline-block">
+              Click tabs to run commands
+            </span>
+          </div>
+
+          <InteractiveTerminal />
+        </motion.div>
 
       </div>
     </section>

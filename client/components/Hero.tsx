@@ -2,6 +2,9 @@ import { motion } from "framer-motion";
 import { Github, Linkedin, Mail, Download, MapPin, Building2, GraduationCap, CheckCircle, Users, Briefcase, Sparkles, ArrowRight, Code2, Server, Award, FileCheck } from "lucide-react";
 import { useEffect, useState } from "react";
 import TechParticles3D from "./TechParticles3D";
+import { Magnetic } from "./animations/Magnetic";
+import { TextScramble } from "./animations/TextScramble";
+import { SpotlightCard } from "./animations/SpotlightCard";
 
 const roles = [
   "Full Stack Developer",
@@ -88,7 +91,7 @@ export default function Hero() {
                 <span className="text-xl">👋</span>
               </div>
               <h1 className="text-4xl sm:text-6xl font-black text-slate-900 dark:text-white font-display tracking-tight leading-[1.1] mb-3">
-                Prawin Kumar <span className="text-indigo-600 dark:text-purple-400">N</span>
+                <TextScramble text="Prawin Kumar N" />
               </h1>
               <div className="text-xl sm:text-2xl lg:text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-purple-600 to-sky-500 dark:from-indigo-400 dark:via-purple-300 dark:to-sky-300 min-h-[40px] flex items-center">
                 <span>{displayed}</span>
@@ -144,37 +147,43 @@ export default function Hero() {
 
             {/* Action Buttons & Socials */}
             <div className="flex flex-wrap items-center gap-3 pt-2">
-              <a
-                href="#projects"
-                onClick={(e) => {
-                  e.preventDefault();
-                  document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
-                }}
-                className="btn-primary text-sm px-5 py-3 shadow-md"
-              >
-                <span>View Projects</span>
-                <ArrowRight className="w-4 h-4" />
-              </a>
+              <Magnetic strength={0.25} distance={30}>
+                <a
+                  href="#projects"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
+                  }}
+                  className="btn-primary text-sm px-5 py-3 shadow-md inline-flex items-center gap-2"
+                >
+                  <span>View Projects</span>
+                  <ArrowRight className="w-4 h-4" />
+                </a>
+              </Magnetic>
 
-              <a
-                href="/PrawinKumar-Resume.pdf"
-                download="PrawinKumar-Resume.pdf"
-                id="hero-download-resume"
-                className="btn-secondary text-sm px-5 py-3 shadow-sm"
-              >
-                <Download className="w-4 h-4 text-indigo-600 dark:text-purple-400" />
-                <span>Download Resume</span>
-              </a>
+              <Magnetic strength={0.25} distance={30}>
+                <a
+                  href="/PrawinKumar-Resume.pdf"
+                  download="PrawinKumar-Resume.pdf"
+                  id="hero-download-resume"
+                  className="btn-secondary text-sm px-5 py-3 shadow-sm inline-flex items-center gap-2"
+                >
+                  <Download className="w-4 h-4 text-indigo-600 dark:text-purple-400" />
+                  <span>Download Resume</span>
+                </a>
+              </Magnetic>
 
-              <a
-                href="/TCS-NQT-Scorecard.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-secondary text-sm px-4 py-3 shadow-sm"
-              >
-                <FileCheck className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
-                <span>TCS NQT Scorecard</span>
-              </a>
+              <Magnetic strength={0.25} distance={30}>
+                <a
+                  href="/TCS-NQT-Scorecard.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-secondary text-sm px-4 py-3 shadow-sm inline-flex items-center gap-2"
+                >
+                  <FileCheck className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+                  <span>TCS NQT Scorecard</span>
+                </a>
+              </Magnetic>
 
               {/* Social Channels */}
               <div className="flex items-center gap-1.5 ml-1">
@@ -183,18 +192,19 @@ export default function Hero() {
                   { Icon: Linkedin, href: "https://linkedin.com/in/prawinkumar-n", label: "LinkedIn" },
                   { Icon: Mail, href: "mailto:prawinkumar2k4@gmail.com", label: "Email" },
                 ].map(({ Icon, href, label }) => (
-                  <motion.a
-                    key={label}
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={label}
-                    className="w-10 h-10 rounded-xl bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 flex items-center justify-center text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-purple-300 hover:border-indigo-300 shadow-sm transition-all"
-                    whileHover={{ scale: 1.08, y: -2 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    <Icon className="w-4 h-4" />
-                  </motion.a>
+                  <Magnetic key={label} strength={0.35} distance={25}>
+                    <motion.a
+                      href={href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={label}
+                      className="w-10 h-10 rounded-xl bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 flex items-center justify-center text-slate-700 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-purple-300 hover:border-indigo-300 shadow-sm transition-all"
+                      whileHover={{ scale: 1.08 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      <Icon className="w-4 h-4" />
+                    </motion.a>
+                  </Magnetic>
                 ))}
               </div>
             </div>
