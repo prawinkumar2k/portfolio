@@ -1,6 +1,8 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Briefcase, GraduationCap, Building2, MapPin, Calendar, CheckCircle2, Sparkles } from "lucide-react";
+import { SpotlightCard } from "./animations/SpotlightCard";
+import { BorderBeam } from "./animations/BorderBeam";
 
 interface TimelineItem {
   id: number;
@@ -162,8 +164,12 @@ export default function Experience() {
                 )}
               </div>
 
-              {/* Experience Bento Card */}
-              <div className="pro-card p-6 sm:p-7 hover:border-indigo-300 dark:hover:border-purple-400 transition-all duration-300">
+              {/* Experience Bento Card with Spotlight */}
+              <SpotlightCard className="pro-card p-6 sm:p-7 hover:border-indigo-300 dark:hover:border-purple-400 transition-all duration-300 relative overflow-hidden">
+                {item.id === 1 && (
+                  <BorderBeam size={220} duration={8} colorFrom="#10B981" colorTo="#6366F1" />
+                )}
+
                 {/* Header Row */}
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-3">
                   <div>
@@ -216,7 +222,7 @@ export default function Experience() {
                     </span>
                   ))}
                 </div>
-              </div>
+              </SpotlightCard>
             </motion.div>
           ))}
         </div>

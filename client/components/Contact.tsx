@@ -1,6 +1,9 @@
 import { motion } from "framer-motion";
 import { Mail, Phone, MapPin, Send, Github, Linkedin, Globe, Copy, Check, Sparkles, Download } from "lucide-react";
 import { useState } from "react";
+import { SpotlightCard } from "./animations/SpotlightCard";
+import { Magnetic } from "./animations/Magnetic";
+import { BorderBeam } from "./animations/BorderBeam";
 
 export default function Contact() {
   const [isLoading, setIsLoading] = useState(false);
@@ -200,14 +203,16 @@ export default function Contact() {
             </div>
           </div>
 
-          {/* Contact Form (7 cols) */}
-          <div className="lg:col-span-7 pro-card p-6 sm:p-8">
-            <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2">
-              Send an Instant Inquiry
-            </h3>
-            <p className="text-xs text-slate-500 font-medium mb-6">
-              Fill in your details and message below. You'll receive a response within 24 hours.
-            </p>
+          {/* Contact Form (7 cols) with Spotlight & Laser Border */}
+          <div className="lg:col-span-7">
+            <SpotlightCard className="pro-card p-6 sm:p-8 relative overflow-hidden">
+              <BorderBeam size={260} duration={10} colorFrom="#6366F1" colorTo="#EC4899" />
+              <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2">
+                Send an Instant Inquiry
+              </h3>
+              <p className="text-xs text-slate-500 font-medium mb-6">
+                Fill in your details and message below. You'll receive a response within 24 hours.
+              </p>
 
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid sm:grid-cols-2 gap-4">
@@ -277,22 +282,25 @@ export default function Contact() {
                 </div>
               )}
 
-              <button
-                type="submit"
-                disabled={isLoading}
-                className="btn-primary w-full justify-center text-xs sm:text-sm py-3"
-              >
-                {isLoading ? (
-                  <span>Transmitting message...</span>
-                ) : (
-                  <>
-                    <Send className="w-4 h-4" />
-                    <span>Send Direct Message</span>
-                  </>
-                )}
-              </button>
+              <Magnetic strength={0.2} distance={30}>
+                <button
+                  type="submit"
+                  disabled={isLoading}
+                  className="btn-primary w-full justify-center text-xs sm:text-sm py-3 inline-flex items-center gap-2"
+                >
+                  {isLoading ? (
+                    <span>Transmitting message...</span>
+                  ) : (
+                    <>
+                      <Send className="w-4 h-4" />
+                      <span>Send Direct Message</span>
+                    </>
+                  )}
+                </button>
+              </Magnetic>
             </form>
-          </div>
+          </SpotlightCard>
+        </div>
 
         </div>
 
