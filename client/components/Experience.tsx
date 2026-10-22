@@ -19,16 +19,16 @@ interface TimelineItem {
 const timeline: TimelineItem[] = [
   {
     id: 1,
-    title: "Software Development Engineer (Co-Founder)",
+    title: "Lead Software Development Engineer",
     company: "SearchFirst Technologies Pvt. Ltd.",
     companyInitials: "SF",
     companyColor: "#6366F1",
     period: "Jan 2025 – Present",
     location: "Erode, Tamil Nadu · Full-Time / Active",
     type: "work",
-    badge: "🚀 Co-Founder &amp; Sole Infra Owner",
+    badge: "🏛️ Govt Portal &amp; Sole Infra Owner",
     bullets: [
-      "Co-founded government-registered Private Limited IT company focused on SaaS ERP and government web applications — secured external investor funding for product development.",
+      "Led core engineering for enterprise SaaS ERP platforms and government web portals, architecting scalable backend APIs and high-throughput databases.",
       "Sole developer of Tamil Nadu Govt DOTE Admissions Portal (tnpoly.in) — Node.js, Express.js, MySQL REST APIs serving 50,000+ students statewide with 40% latency reduction and 99.9% uptime.",
       "Full server lifecycle management: Ubuntu Linux installation, Nginx reverse proxy, PM2 process management, UFW firewall, and automated SSL/TLS certificates.",
       "Engineered 3-tier RBAC with server-side gender and hostel-based college filtering — reduced admin workload by 60% and eliminated manual eligibility screening.",
@@ -99,7 +99,7 @@ const timeline: TimelineItem[] = [
     bullets: [
       "Specialized in Deep Learning, Computer Vision, Machine Learning, IoT, Database Design, OS, and Advanced Coding.",
       "Won 1st Prize consecutively (2024 & 2025) for AI-Based Autonomous Smart Car, and 1st Prize (2025) for Image Captioning.",
-      "Co-founded Private Limited IT company securing investor seed funding during degree.",
+      "Architected and deployed production web portals with 99.9% uptime, managing full bare-metal server infrastructure.",
     ],
     technologies: ["Deep Learning", "Computer Vision", "Machine Learning", "TensorFlow", "OpenCV", "Python", "Arduino", "ESP32"],
   },

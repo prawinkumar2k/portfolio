@@ -36,11 +36,11 @@ const projects: Project[] = [
     id: 2,
     title: "Multi-Tenant SaaS ERP Platform",
     description:
-      "Investor-funded SaaS ERP platform built for the education sector. Features modular architecture covering academic management, examination automation, HR/payroll, LMS, NAAC/PCI compliance, library, and finance modules. Developed under secured product development funding.",
+      "Enterprise SaaS ERP platform engineered for the education sector. Features modular architecture covering academic management, examination automation, HR/payroll, LMS, NAAC/PCI compliance, library, and finance modules with 3-tier role-based access control.",
     image: "/sf_cms.png",
     tags: ["MERN Stack", "Node.js", "Express.js", "MongoDB", "React.js", "MySQL", "Tailwind CSS", "JWT", "Docker"],
     category: ["ERP", "Full Stack"],
-    highlight: "Funding Secured (INR 25L)",
+    highlight: "Modular Multi-Tenant Architecture",
     gradient: "from-amber-500 to-orange-500",
   },
   {

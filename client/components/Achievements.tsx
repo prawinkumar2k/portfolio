@@ -13,12 +13,12 @@ const achievements = [
   },
   {
     id: 2,
-    title: "Co-Founded Registered IT Firm",
+    title: "Enterprise SaaS ERP Architecture",
     description:
-      "Co-founded SearchFirst Technologies Pvt. Ltd. and secured INR 25 Lakh in external investor funding for education-sector SaaS ERP product development.",
+      "Architected multi-tenant SaaS ERP platforms for the education sector, engineering secure RBAC, examination automation, and high-performance relational databases.",
     icon: Star,
     color: "#4F46E5",
-    badge: "🚀 Co-Founder",
+    badge: "⚡ Enterprise Systems",
   },
   {
     id: 3,

@@ -98,7 +98,7 @@ export default function Hero() {
 
             {/* Punchy Executive Summary */}
             <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed font-normal max-w-2xl">
-              Co-Founder at <strong className="text-slate-900 dark:text-white font-semibold">SearchFirst Technologies</strong> (Seed Funded) and sole developer &amp; infrastructure owner for the Tamil Nadu Government DOTE Admissions Portal (<a href="https://tnpoly.in" target="_blank" rel="noopener noreferrer" className="text-indigo-600 dark:text-purple-400 font-semibold hover:underline">tnpoly.in</a>) serving <strong className="text-slate-900 dark:text-white font-semibold">50,000+ students</strong> statewide with 99.9% uptime.
+              Lead Software Development Engineer at <strong className="text-slate-900 dark:text-white font-semibold">SearchFirst Technologies</strong> and sole developer &amp; infrastructure owner for the Tamil Nadu Government DOTE Admissions Portal (<a href="https://tnpoly.in" target="_blank" rel="noopener noreferrer" className="text-indigo-600 dark:text-purple-400 font-semibold hover:underline">tnpoly.in</a>) serving <strong className="text-slate-900 dark:text-white font-semibold">50,000+ students</strong> statewide with 99.9% uptime.
             </p>
 
             {/* Meta Row: Location, Company, Education */}
@@ -123,7 +123,7 @@ export default function Hero() {
                 { number: "50K+", label: "Users in Production", color: "#4F46E5" },
                 { number: "99.9%", label: "Live System Uptime", color: "#059669" },
                 { number: "3x", label: "Innovation 1st Prize", color: "#D97706" },
-                { number: "INR 25L", label: "Seed Funding Raised", color: "#7C3AED" },
+                { number: "100+", label: "Colleges Integrated", color: "#7C3AED" },
               ].map((stat) => (
                 <div
                   key={stat.label}
@@ -234,7 +234,7 @@ export default function Hero() {
                     </div>
                     <div className="text-xs text-indigo-300 font-semibold drop-shadow-sm flex items-center gap-1.5">
                       <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                      Software Development Engineer · Co-Founder
+                      Software Development Engineer · Full Stack Architect
                     </div>
                   </div>
                 </div>
@@ -279,17 +279,17 @@ export default function Hero() {
                 </div>
               </motion.div>
 
-              {/* Floating Glass Pill 3: Startup Funding */}
+              {/* Floating Glass Pill 3: Full Stack Architect */}
               <motion.div
                 className="absolute top-1/2 -right-4 sm:-right-8 bg-white/95 dark:bg-[#150B2D]/95 border border-slate-200/90 dark:border-white/15 rounded-2xl p-2.5 shadow-xl backdrop-blur-xl hidden sm:flex items-center gap-2 z-20"
                 animate={{ y: [0, -5, 0] }}
                 transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
               >
-                <div className="w-7 h-7 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold text-xs shadow-sm">
-                  🚀
+                <div className="w-7 h-7 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center font-bold text-xs shadow-sm">
+                  ⚡
                 </div>
                 <div className="text-[10px] font-bold text-slate-800 dark:text-white">
-                  INR 25L Funded
+                  Full Stack Architect
                 </div>
               </motion.div>
             </div>

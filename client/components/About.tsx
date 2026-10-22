@@ -6,7 +6,7 @@ const stats = [
   { number: 10, suffix: "+",  label: "Production Projects", icon: Code2,  color: "#4F46E5" },
   { number: 50, suffix: "K+", label: "Statewide Users Served", icon: Users,  color: "#059669" },
   { number: 3,  suffix: "x",  label: "Innovation 1st Prizes", icon: Trophy, color: "#D97706" },
-  { number: 25, suffix: "L",  label: "INR Investor Funding", icon: Rocket, color: "#7C3AED" },
+  { number: 40, suffix: "%",  label: "API Latency Reduction", icon: Rocket, color: "#7C3AED" },
 ];
 
 const coreCompetencies = [
@@ -88,7 +88,7 @@ export default function About() {
               </p>
 
               <p>
-                As Co-Founder at <strong className="text-slate-900 dark:text-white font-semibold">SearchFirst Technologies Pvt. Ltd.</strong>, I led product engineering and secured external investor seed funding to design and deploy modern SaaS ERP systems for higher education institutions.
+                At <strong className="text-slate-900 dark:text-white font-semibold">SearchFirst Technologies Pvt. Ltd.</strong>, I led product engineering to design, build, and deploy modern, high-throughput SaaS ERP systems and academic portals for higher education institutions.
               </p>
 
               <p>
