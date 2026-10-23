@@ -118,10 +118,10 @@ export default function Skills() {
                       {cat.skills.map((skill) => (
                         <span
                           key={skill}
-                          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-slate-100/90 dark:bg-white/5 border border-slate-200/80 dark:border-white/10 text-slate-800 dark:text-slate-200 hover:border-indigo-300 dark:hover:border-purple-400 transition-colors shadow-sm cursor-default"
+                          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-slate-100/90 dark:bg-white/5 border border-slate-200/80 dark:border-white/10 text-slate-800 dark:text-slate-200 hover:border-indigo-300 dark:hover:border-purple-400 transition-colors shadow-sm cursor-default whitespace-nowrap flex-shrink-0"
                         >
-                          <CheckCircle2 className="w-3.5 h-3.5 opacity-60 text-indigo-600 dark:text-purple-400" />
-                          <span>{skill}</span>
+                          <CheckCircle2 className="w-3.5 h-3.5 opacity-60 text-indigo-600 dark:text-purple-400 flex-shrink-0" />
+                          <span className="whitespace-nowrap">{skill}</span>
                         </span>
                       ))}
                     </div>

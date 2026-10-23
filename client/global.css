@@ -108,10 +108,10 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
-  :where(p, span, li, h1, h2, h3, h4, h5, h6, a, button, label, td, th) {
-    overflow-wrap: anywhere;
-    word-break: break-word;
+  p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
   }
+
 
   pre,
   code {
@@ -157,7 +157,7 @@
 
   /* Badges */
   .badge-blue {
-    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold;
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold whitespace-nowrap flex-shrink-0;
     background: rgba(99, 102, 241, 0.1);
     color: #4F46E5;
     border: 1px solid rgba(99, 102, 241, 0.25);
@@ -170,7 +170,7 @@
   }
 
   .badge-green {
-    @apply inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold;
+    @apply inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold whitespace-nowrap flex-shrink-0;
     background: rgba(16, 185, 129, 0.12);
     color: #059669;
     border: 1px solid rgba(16, 185, 129, 0.25);
@@ -183,7 +183,7 @@
   }
 
   .badge-amber {
-    @apply inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold;
+    @apply inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold whitespace-nowrap flex-shrink-0;
     background: rgba(245, 158, 11, 0.12);
     color: #D97706;
     border: 1px solid rgba(245, 158, 11, 0.25);
@@ -197,7 +197,7 @@
 
   /* Tech tags */
   .tech-tag {
-    @apply px-3 py-1 rounded-lg text-xs font-medium transition-all duration-200;
+    @apply px-3 py-1 rounded-lg text-xs font-medium transition-all duration-200 whitespace-nowrap flex-shrink-0;
     background: #F1F5F9;
     color: #334155;
     border: 1px solid #E2E8F0;
@@ -211,7 +211,7 @@
 
   /* Primary Button */
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-white transition-all duration-300;
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-white transition-all duration-300 whitespace-nowrap flex-shrink-0 select-none;
     background: linear-gradient(135deg, #6366F1 0%, #7C3AED 50%, #8B5CF6 100%);
     box-shadow: 0 4px 18px rgba(99, 102, 241, 0.35);
   }
@@ -228,7 +228,7 @@
 
   /* Secondary Button */
   .btn-secondary {
-    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl font-semibold transition-all duration-200;
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl font-semibold transition-all duration-200 whitespace-nowrap flex-shrink-0 select-none;
     background: #FFFFFF;
     color: #1E293B;
     border: 1px solid #E2E8F0;
@@ -254,7 +254,7 @@
 
   /* Section heading label */
   .section-label {
-    @apply inline-flex items-center gap-2 text-xs font-bold tracking-widest uppercase mb-3 text-indigo-600 dark:text-purple-400;
+    @apply inline-flex items-center gap-2 text-xs font-bold tracking-widest uppercase mb-3 text-indigo-600 dark:text-purple-400 whitespace-nowrap;
   }
 
   /* Custom scrollbar */

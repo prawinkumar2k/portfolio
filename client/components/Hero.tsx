@@ -85,22 +85,24 @@ export default function Hero() {
             {/* Main Greeting & Headline */}
             <div>
               <div className="flex items-center gap-2 mb-2">
-                <span className="text-lg font-bold text-slate-500 dark:text-slate-400">
+                <span className="text-sm sm:text-base font-bold text-slate-500 dark:text-slate-400">
                   Hello, I'm
                 </span>
                 <span className="text-xl">👋</span>
               </div>
-              <h1 className="text-4xl sm:text-6xl font-black text-slate-900 dark:text-white font-display tracking-tight leading-[1.1] mb-3">
-                <TextScramble text="Prawin Kumar N" />
+              <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-slate-900 dark:text-white font-display tracking-tight leading-[1.15] mb-3">
+                <span className="inline-block break-keep">
+                  <TextScramble text="Prawin Kumar N" />
+                </span>
               </h1>
-              <div className="text-xl sm:text-2xl lg:text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-purple-600 to-sky-500 dark:from-indigo-400 dark:via-purple-300 dark:to-sky-300 min-h-[40px] flex items-center">
+              <div className="text-lg sm:text-2xl lg:text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-purple-600 to-sky-500 dark:from-indigo-400 dark:via-purple-300 dark:to-sky-300 min-h-[36px] sm:min-h-[40px] flex items-center">
                 <span>{displayed}</span>
-                <span className="w-0.5 h-6 sm:h-8 bg-indigo-600 dark:bg-purple-400 animate-pulse ml-1 inline-block" />
+                <span className="w-0.5 h-5 sm:h-7 bg-indigo-600 dark:bg-purple-400 animate-pulse ml-1 inline-block" />
               </div>
             </div>
 
             {/* Punchy Executive Summary */}
-            <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed font-normal max-w-2xl">
+            <p className="text-sm sm:text-base lg:text-lg text-slate-600 dark:text-slate-300 leading-relaxed font-normal max-w-2xl">
               Versatile <strong className="text-slate-900 dark:text-white font-semibold">Full Stack Developer &amp; Software Development Engineer</strong> specializing in scalable web architectures, modern React &amp; Node.js applications, robust database design, and high-performance production systems serving tens of thousands of active users.
             </p>
 
@@ -121,7 +123,7 @@ export default function Hero() {
             </div>
 
             {/* Quick Proof Metrics Bento */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3 pt-2">
               {[
                 { number: "50K+", label: "Users in Production", color: "#4F46E5" },
                 { number: "99.9%", label: "Live System Uptime", color: "#059669" },
@@ -130,7 +132,7 @@ export default function Hero() {
               ].map((stat) => (
                 <div
                   key={stat.label}
-                  className="bg-white/80 dark:bg-white/5 border border-slate-200/80 dark:border-white/10 rounded-2xl p-3 text-center shadow-sm hover:border-indigo-300 dark:hover:border-purple-400 transition-colors"
+                  className="bg-white/80 dark:bg-white/5 border border-slate-200/80 dark:border-white/10 rounded-2xl p-2.5 sm:p-3 text-center shadow-sm hover:border-indigo-300 dark:hover:border-purple-400 transition-colors"
                 >
                   <div
                     className="text-lg sm:text-xl font-black font-display"
@@ -138,7 +140,7 @@ export default function Hero() {
                   >
                     {stat.number}
                   </div>
-                  <div className="text-[11px] font-semibold text-slate-500 leading-tight mt-0.5">
+                  <div className="text-[10px] sm:text-[11px] font-semibold text-slate-500 leading-tight mt-0.5">
                     {stat.label}
                   </div>
                 </div>
@@ -146,7 +148,7 @@ export default function Hero() {
             </div>
 
             {/* Action Buttons & Socials */}
-            <div className="flex flex-wrap items-center gap-3 pt-2">
+            <div className="flex flex-wrap items-center gap-2.5 sm:gap-3 pt-2">
               <Magnetic strength={0.25} distance={30}>
                 <a
                   href="#projects"
@@ -154,7 +156,7 @@ export default function Hero() {
                     e.preventDefault();
                     document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
                   }}
-                  className="btn-primary text-sm px-5 py-3 shadow-md inline-flex items-center gap-2"
+                  className="btn-primary text-xs sm:text-sm px-4 py-2.5 sm:px-5 sm:py-3 shadow-md inline-flex items-center gap-2"
                 >
                   <span>View Projects</span>
                   <ArrowRight className="w-4 h-4" />
@@ -166,7 +168,7 @@ export default function Hero() {
                   href="/PrawinKumar-Resume.pdf"
                   download="PrawinKumar-Resume.pdf"
                   id="hero-download-resume"
-                  className="btn-secondary text-sm px-5 py-3 shadow-sm inline-flex items-center gap-2"
+                  className="btn-secondary text-xs sm:text-sm px-4 py-2.5 sm:px-5 sm:py-3 shadow-sm inline-flex items-center gap-2"
                 >
                   <Download className="w-4 h-4 text-indigo-600 dark:text-purple-400" />
                   <span>Download Resume</span>
@@ -178,7 +180,7 @@ export default function Hero() {
                   href="/TCS-NQT-Scorecard.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-secondary text-sm px-4 py-3 shadow-sm inline-flex items-center gap-2"
+                  className="btn-secondary text-xs sm:text-sm px-3.5 py-2.5 sm:px-4 sm:py-3 shadow-sm inline-flex items-center gap-2"
                 >
                   <FileCheck className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
                   <span>TCS NQT Scorecard</span>
@@ -250,18 +252,18 @@ export default function Hero() {
 
               {/* Floating Glass Pill 1: Top Right (Production Scale) */}
               <motion.div
-                className="absolute -top-3 -right-3 sm:-right-5 bg-white/95 dark:bg-[#150B2D]/95 border border-slate-200/90 dark:border-white/15 rounded-2xl p-3 shadow-xl backdrop-blur-xl flex items-center gap-2.5 z-20"
+                className="absolute -top-3 -right-2 sm:-right-4 bg-white/95 dark:bg-[#150B2D]/95 border border-slate-200/90 dark:border-white/15 rounded-2xl p-2.5 sm:p-3 shadow-xl backdrop-blur-xl flex items-center gap-2 sm:gap-2.5 z-20"
                 animate={{ y: [0, -6, 0] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
               >
-                <div className="w-8 h-8 rounded-xl bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-purple-400 flex items-center justify-center font-bold text-sm shadow-sm">
+                <div className="w-8 h-8 rounded-xl bg-indigo-50 dark:bg-indigo-950/60 text-indigo-600 dark:text-purple-400 flex items-center justify-center font-bold text-sm shadow-sm flex-shrink-0">
                   <Server className="w-4 h-4" />
                 </div>
                 <div>
-                  <div className="text-[11px] font-bold text-slate-800 dark:text-white">
+                  <div className="text-[11px] font-bold text-slate-800 dark:text-white whitespace-nowrap">
                     Production Systems
                   </div>
-                  <div className="text-[10px] text-emerald-600 dark:text-emerald-400 font-bold flex items-center gap-1">
+                  <div className="text-[10px] text-emerald-600 dark:text-emerald-400 font-bold flex items-center gap-1 whitespace-nowrap">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
                     50K+ Users Scaled
                   </div>
@@ -270,18 +272,18 @@ export default function Hero() {
 
               {/* Floating Glass Pill 2: Bottom Left (Innovation Award) */}
               <motion.div
-                className="absolute -bottom-3 -left-3 sm:-left-5 bg-white/95 dark:bg-[#150B2D]/95 border border-slate-200/90 dark:border-white/15 rounded-2xl p-3 shadow-xl backdrop-blur-xl flex items-center gap-2.5 z-20"
+                className="absolute -bottom-3 -left-2 sm:-left-4 bg-white/95 dark:bg-[#150B2D]/95 border border-slate-200/90 dark:border-white/15 rounded-2xl p-2.5 sm:p-3 shadow-xl backdrop-blur-xl flex items-center gap-2 sm:gap-2.5 z-20"
                 animate={{ y: [0, 6, 0] }}
                 transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
               >
-                <div className="w-8 h-8 rounded-xl bg-amber-50 dark:bg-amber-950/60 text-amber-600 dark:text-amber-400 flex items-center justify-center font-bold text-sm shadow-sm">
+                <div className="w-8 h-8 rounded-xl bg-amber-50 dark:bg-amber-950/60 text-amber-600 dark:text-amber-400 flex items-center justify-center font-bold text-sm shadow-sm flex-shrink-0">
                   <Award className="w-4 h-4" />
                 </div>
                 <div>
-                  <div className="text-[11px] font-bold text-slate-800 dark:text-white">
+                  <div className="text-[11px] font-bold text-slate-800 dark:text-white whitespace-nowrap">
                     3x 1st Prize Winner
                   </div>
-                  <div className="text-[10px] text-slate-500 font-semibold">
+                  <div className="text-[10px] text-slate-500 font-semibold whitespace-nowrap">
                     Nandha Innovation Day
                   </div>
                 </div>

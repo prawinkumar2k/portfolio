@@ -162,7 +162,7 @@ export default function Projects() {
                 <button
                   key={cat}
                   onClick={() => setActiveCategory(cat)}
-                  className={`relative px-3.5 py-1.5 rounded-xl text-xs font-bold transition-colors duration-200 ${
+                  className={`relative px-3.5 py-1.5 rounded-xl text-xs font-bold transition-colors duration-200 whitespace-nowrap flex-shrink-0 ${
                     isSelected
                       ? "text-white"
                       : "text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white"
@@ -176,7 +176,7 @@ export default function Projects() {
                       transition={{ type: "spring", stiffness: 400, damping: 30 }}
                     />
                   )}
-                  <span className="relative z-10">{cat}</span>
+                  <span className="relative z-10 whitespace-nowrap">{cat}</span>
                 </button>
               );
             })}

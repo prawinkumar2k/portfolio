@@ -1,17 +1,18 @@
 import React, { useRef, useState } from "react";
 import { motion, useSpring } from "framer-motion";
 
-interface TiltCardProps extends React.HTMLAttributes<HTMLDivElement> {
+interface TiltCardProps {
   children: React.ReactNode;
   className?: string;
   maxTilt?: number;
+  id?: string;
 }
 
 export function TiltCard({
   children,
   className = "",
   maxTilt = 7,
-  ...props
+  id,
 }: TiltCardProps) {
   const ref = useRef<HTMLDivElement>(null);
   const rectRef = useRef<DOMRect | null>(null);
@@ -60,7 +61,7 @@ export function TiltCard({
         transformStyle: "preserve-3d",
       }}
       className={`transition-shadow duration-200 ${className}`}
-      {...props}
+      id={id}
     >
       {children}
     </motion.div>

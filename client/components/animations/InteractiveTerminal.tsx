@@ -30,10 +30,10 @@ const commands: Record<string, string[]> = {
     "📜 Certifications: TCS iON NQT (IT) Certified (Java Programming)",
   ],
   "prawin --contact": [
-    "📧 Email: prawinkumar.n.2005@gmail.com",
-    "📞 Phone: +91 93610 83786",
-    "🐙 GitHub: github.com/prawinkumar2k (37+ Repositories)",
-    "💼 LinkedIn: linkedin.com/in/prawin-kumar-n",
+    "📧 Email: prawinkumar2k4@gmail.com",
+    "📞 Phone: +91 8807054164",
+    "🐙 GitHub: github.com/prawinkumar2k",
+    "💼 LinkedIn: linkedin.com/in/prawinkumar-n",
   ],
 };
 

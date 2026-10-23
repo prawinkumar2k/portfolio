@@ -12,7 +12,7 @@ interface TimelineItem {
   companyColor: string;
   period: string;
   location: string;
-  type: "work" | "education";
+  type?: "work" | "education";
   badge?: string;
   bullets: string[];
   technologies: string[];
